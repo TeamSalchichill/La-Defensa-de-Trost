@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8334693654348447652}
   - component: {fileID: 7302021829032653291}
   - component: {fileID: 4165785168406580861}
+  - component: {fileID: -3794505772534834921}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -110,7 +111,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c0977a1e22fe4a4a9636c32c8574147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetType: 0
+  canTarget: 0
+  canColocate: 0
+  anim: {fileID: 0}
+  target: {fileID: 0}
   bullet: {fileID: 3202835052026178675, guid: b660218120a54964fbbf9722e3c36da0, type: 3}
+  bulletPos: {fileID: 1723674981817254988}
+  partToRotate: {fileID: 5166625851487854785}
+  health: 0
+  armor: 0
   range: 10
   fireRate: 1
   fireCountdown: 0
+  turnSpeed: 10
+  price: 0
+  healthDamage: 100
+  armorDamage: 0
+  iceDamage: 0
+  igniteDamage: 0
+  waterDamage: 0
+  ascentDamage: 0
+  bloodDamage: 0
+  transformationDamage: 0
+--- !u!95 &-3794505772534834921
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723674981817254988}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 90c8379c0241de044a742a97570018ab, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

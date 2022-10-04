@@ -27,13 +27,9 @@ public class Generator : MonoBehaviour
 
     [Header("Prefabs Tiles")]
     public GameObject grassBlock;
-    public GameObject multiGrassBlock;
     public GameObject specialGrassBlock;
-    public GameObject multiSpecialGrassBlock;
     public GameObject groundBlock;
-    public GameObject multiGroundBlock;
     public GameObject specialGroundBlock;
-    public GameObject multiSpecialGroundBlock;
     [Header("Prefabs Towers")]
     public GameObject mainTower;
     public GameObject tower;
@@ -82,6 +78,8 @@ public class Generator : MonoBehaviour
     public int probabilitySpecialTiles = 50;
     [Range(0, 100)]
     public int probabilityObstacles = 50;
+    [Range(0, 100)]
+    public int probabilityConectWays = 50;
 
     void Awake()
     {
@@ -561,6 +559,8 @@ public class Generator : MonoBehaviour
         }
         */
 
+        int conectWaysAux = Random.Range(0, 101);
+
         switch (newNextSideOrientation)
         {
             case "North":
@@ -602,16 +602,50 @@ public class Generator : MonoBehaviour
                 }
                 else
                 {
-                    if (!newWay)
+                    if (probabilityConectWays > conectWaysAux && Physics.Raycast(new Vector3(-2, 50, newIdZ * 2) + localOffset1, transform.TransformDirection(-Vector3.up), 1000, LayerMask.GetMask("Grass")))
                     {
-                        Instantiate(enemySpawn, new Vector3(2, 0.75f, newIdZ * 2) + localOffset1, Quaternion.identity);
+                        bool isGrass = true;
+                        int offsetAux = -2;
+
+                        while (isGrass)
+                        {
+                            Vector3 pos = new Vector3(offsetAux, 50, newIdZ * 2) + localOffset1;
+                            RaycastHit hit;
+                            if (Physics.Raycast(pos, transform.TransformDirection(-Vector3.up), out hit, 1000, LayerMask.GetMask("Grass")))
+                            {
+                                Destroy(hit.collider.gameObject);
+
+                                if (Physics.Raycast(pos, transform.TransformDirection(-Vector3.up), out hit, 1000, LayerMask.GetMask("Grass")))
+                                {
+                                    Destroy(hit.collider.gameObject);
+
+                                    if (Physics.Raycast(pos, transform.TransformDirection(-Vector3.up), out hit, 1000, LayerMask.GetMask("Grass")))
+                                    {
+                                        Destroy(hit.collider.gameObject);
+                                    }
+                                }
+
+                                offsetAux -= 2;
+                            }
+                            else
+                            {
+                                isGrass = false;
+                            }
+                        }
                     }
                     else
                     {
-                        Instantiate(treasure, new Vector3(2, 0.75f, newIdZ * 2) + localOffset1, Quaternion.identity);
-                    }
+                        if (!newWay)
+                        {
+                            Instantiate(enemySpawn, new Vector3(2, 0.75f, newIdZ * 2) + localOffset1, Quaternion.identity);
+                        }
+                        else
+                        {
+                            Instantiate(treasure, new Vector3(2, 0.75f, newIdZ * 2) + localOffset1, Quaternion.identity);
+                        }
 
-                    Instantiate(grassBlock, new Vector3(0, 0.75f, newIdZ * 2) + localOffset1, Quaternion.identity);
+                        Instantiate(grassBlock, new Vector3(0, 0.75f, newIdZ * 2) + localOffset1, Quaternion.identity);
+                    }
                 }
                 break;
             case "East":
@@ -653,16 +687,50 @@ public class Generator : MonoBehaviour
                 }
                 else
                 {
-                    if (!newWay)
+                    if (probabilityConectWays > conectWaysAux && Physics.Raycast(new Vector3(newIdX * 2, 50, (sizeZ * 2) - 0) + localOffset2, transform.TransformDirection(-Vector3.up), 1000, LayerMask.GetMask("Grass")))
                     {
-                        Instantiate(enemySpawn, new Vector3(newIdX * 2, 1.5f, (sizeZ * 2) - 4) + localOffset2, Quaternion.identity);
+                        bool isGrass = true;
+                        int offsetAux = 0;
+
+                        while (isGrass)
+                        {
+                            Vector3 pos = new Vector3(newIdX * 2, 50, (sizeZ * 2) - offsetAux) + localOffset2;
+                            RaycastHit hit;
+                            if (Physics.Raycast(pos, transform.TransformDirection(-Vector3.up), out hit, 1000, LayerMask.GetMask("Grass")))
+                            {
+                                Destroy(hit.collider.gameObject);
+
+                                if (Physics.Raycast(pos, transform.TransformDirection(-Vector3.up), out hit, 1000, LayerMask.GetMask("Grass")))
+                                {
+                                    Destroy(hit.collider.gameObject);
+
+                                    if (Physics.Raycast(pos, transform.TransformDirection(-Vector3.up), out hit, 1000, LayerMask.GetMask("Grass")))
+                                    {
+                                        Destroy(hit.collider.gameObject);
+                                    }
+                                }
+
+                                offsetAux -= 2;
+                            }
+                            else
+                            {
+                                isGrass = false;
+                            }
+                        }
                     }
                     else
                     {
-                        Instantiate(treasure, new Vector3(newIdX * 2, 1.5f, (sizeZ * 2) - 4) + localOffset2, Quaternion.identity);
-                    }
+                        if (!newWay)
+                        {
+                            Instantiate(enemySpawn, new Vector3(newIdX * 2, 1.5f, (sizeZ * 2) - 4) + localOffset2, Quaternion.identity);
+                        }
+                        else
+                        {
+                            Instantiate(treasure, new Vector3(newIdX * 2, 1.5f, (sizeZ * 2) - 4) + localOffset2, Quaternion.identity);
+                        }
 
-                    Instantiate(grassBlock, new Vector3(newIdX * 2, 0.75f, (sizeZ * 2) - 2) + localOffset2, Quaternion.identity);
+                        Instantiate(grassBlock, new Vector3(newIdX * 2, 0.75f, (sizeZ * 2) - 2) + localOffset2, Quaternion.identity);
+                    }
                 }
                 break;
             case "South":
@@ -704,16 +772,50 @@ public class Generator : MonoBehaviour
                 }
                 else
                 {
-                    if (!newWay)
+                    if (probabilityConectWays > conectWaysAux && Physics.Raycast(new Vector3((sizeX * 2) - 0, 50, newIdZ * 2) + localOffset3, transform.TransformDirection(-Vector3.up), 1000, LayerMask.GetMask("Grass")))
                     {
-                        Instantiate(enemySpawn, new Vector3((sizeX * 2) - 4, 1.5f, newIdZ * 2) + localOffset3, Quaternion.identity);
+                        bool isGrass = true;
+                        int offsetAux = 0;
+
+                        while (isGrass)
+                        {
+                            Vector3 pos = new Vector3((sizeX * 2) - offsetAux, 50, newIdZ * 2) + localOffset3;
+                            RaycastHit hit;
+                            if (Physics.Raycast(pos, transform.TransformDirection(-Vector3.up), out hit, 1000, LayerMask.GetMask("Grass")))
+                            {
+                                Destroy(hit.collider.gameObject);
+
+                                if (Physics.Raycast(pos, transform.TransformDirection(-Vector3.up), out hit, 1000, LayerMask.GetMask("Grass")))
+                                {
+                                    Destroy(hit.collider.gameObject);
+
+                                    if (Physics.Raycast(pos, transform.TransformDirection(-Vector3.up), out hit, 1000, LayerMask.GetMask("Grass")))
+                                    {
+                                        Destroy(hit.collider.gameObject);
+                                    }
+                                }
+
+                                offsetAux -= 2;
+                            }
+                            else
+                            {
+                                isGrass = false;
+                            }
+                        }
                     }
                     else
                     {
-                        Instantiate(treasure, new Vector3((sizeX * 2) - 4, 1.5f, newIdZ * 2) + localOffset3, Quaternion.identity);
-                    }
+                        if (!newWay)
+                        {
+                            Instantiate(enemySpawn, new Vector3((sizeX * 2) - 4, 1.5f, newIdZ * 2) + localOffset3, Quaternion.identity);
+                        }
+                        else
+                        {
+                            Instantiate(treasure, new Vector3((sizeX * 2) - 4, 1.5f, newIdZ * 2) + localOffset3, Quaternion.identity);
+                        }
 
-                    Instantiate(grassBlock, new Vector3((sizeX * 2) - 2, 0.75f, newIdZ * 2) + localOffset3, Quaternion.identity);
+                        Instantiate(grassBlock, new Vector3((sizeX * 2) - 2, 0.75f, newIdZ * 2) + localOffset3, Quaternion.identity);
+                    }
                 }
                 break;
             case "West":
@@ -755,16 +857,50 @@ public class Generator : MonoBehaviour
                 }
                 else
                 {
-                    if (!newWay)
+                    if (probabilityConectWays > conectWaysAux && Physics.Raycast(new Vector3(newIdX * 2, 50, -2) + localOffset4, transform.TransformDirection(-Vector3.up), 1000, LayerMask.GetMask("Grass")))
                     {
-                        Instantiate(enemySpawn, new Vector3(newIdX * 2, 0.75f, 2) + localOffset4, Quaternion.identity);
+                        bool isGrass = true;
+                        int offsetAux = -2;
+
+                        while (isGrass)
+                        {
+                            Vector3 pos = new Vector3(newIdX * 2, 50, offsetAux) + localOffset4;
+                            RaycastHit hit;
+                            if (Physics.Raycast(pos, transform.TransformDirection(-Vector3.up), out hit, 1000, LayerMask.GetMask("Grass")))
+                            {
+                                Destroy(hit.collider.gameObject);
+
+                                if (Physics.Raycast(pos, transform.TransformDirection(-Vector3.up), out hit, 1000, LayerMask.GetMask("Grass")))
+                                {
+                                    Destroy(hit.collider.gameObject);
+
+                                    if (Physics.Raycast(pos, transform.TransformDirection(-Vector3.up), out hit, 1000, LayerMask.GetMask("Grass")))
+                                    {
+                                        Destroy(hit.collider.gameObject);
+                                    }
+                                }
+
+                                offsetAux -= 2;
+                            }
+                            else
+                            {
+                                isGrass = false;
+                            }
+                        }
                     }
                     else
                     {
-                        Instantiate(treasure, new Vector3(newIdX * 2, 0.75f, 2) + localOffset4, Quaternion.identity);
-                    }
+                        if (!newWay)
+                        {
+                            Instantiate(enemySpawn, new Vector3(newIdX * 2, 0.75f, 2) + localOffset4, Quaternion.identity);
+                        }
+                        else
+                        {
+                            Instantiate(treasure, new Vector3(newIdX * 2, 0.75f, 2) + localOffset4, Quaternion.identity);
+                        }
 
-                    Instantiate(grassBlock, new Vector3(newIdX * 2, 0.75f, 0) + localOffset4, Quaternion.identity);
+                        Instantiate(grassBlock, new Vector3(newIdX * 2, 0.75f, 0) + localOffset4, Quaternion.identity);
+                    }
                 }
                 break;
         }

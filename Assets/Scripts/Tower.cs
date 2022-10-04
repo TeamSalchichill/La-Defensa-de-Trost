@@ -13,10 +13,15 @@ public class Tower : MonoBehaviour
     public enum CanColocate { Ground, Path }
     public CanColocate canColocate;
 
+    [Header("Components")]
+    public Animator anim;
+
     [Header("Resources")]
-    Transform target;
+    public Transform target;
     public GameObject bullet;
-    
+    public GameObject bulletPos;
+    public Transform partToRotate;
+
     [Header("General Stats")]
     public int health;
     public int armor;
@@ -24,6 +29,7 @@ public class Tower : MonoBehaviour
     public float range;
     public float fireRate = 1f;
     public float fireCountdown = 0f;
+    public float turnSpeed = 10f;
     [Space]
     public int price;
 
@@ -38,7 +44,10 @@ public class Tower : MonoBehaviour
     public int bloodDamage = 0;
     public int transformationDamage = 0;
 
-    
+    void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     void Start()
     {
@@ -72,6 +81,11 @@ public class Tower : MonoBehaviour
 
     void Update()
     {
+        if (health <= 0)
+        {
+            anim.SetTrigger("doDie");
+        }
+
         if (target == null)
         {
             return;
@@ -79,9 +93,12 @@ public class Tower : MonoBehaviour
 
         Vector3 dir = target.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
+        Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+        partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
 
         if (fireCountdown <= 0f)
         {
+            anim.SetTrigger("doShoot");
             Shoot();
             fireCountdown = 1f / fireRate;
         }
@@ -91,7 +108,7 @@ public class Tower : MonoBehaviour
 
     void Shoot()
     {
-        GameObject bulletGO = Instantiate(bullet, transform.position, transform.rotation);
+        GameObject bulletGO = Instantiate(bullet, bulletPos.transform.position, transform.rotation);
         Bullet newBullet = bulletGO.GetComponent<Bullet>();
 
         if (newBullet != null)

@@ -6,12 +6,10 @@ public class ColocatorManager : MonoBehaviour
 {
     public static ColocatorManager instance;
 
-    public enum Action { None, Tower }
-    public Action action = Action.None;
-
     public GameObject sticky;
     public GameObject grass;
     public GameObject tower;
+    public GameObject testTower;
 
     public bool canBuild = false;
 
@@ -22,24 +20,18 @@ public class ColocatorManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            action = Action.None;
-            canBuild = false;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            action = Action.Tower;
-            canBuild = true;
+            canBuild = !canBuild;
         }
 
-        if (Input.GetButtonDown("Fire1") || Input.GetButton("Fire1"))
+        if ((Input.GetButtonDown("Fire1") || Input.GetButton("Fire1")) && canBuild)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit rayHit;
             if (Physics.Raycast(ray, out rayHit, 1000))
             {
-                if (rayHit.collider.gameObject.layer == 7 && action == Action.Tower)
+                if (rayHit.collider.gameObject.layer == 7)
                 {
                     Instantiate(tower, rayHit.collider.gameObject.transform.position + new Vector3(0, 1.25f, 0), Quaternion.identity);
                 }
