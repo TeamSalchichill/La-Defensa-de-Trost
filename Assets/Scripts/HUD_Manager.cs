@@ -12,6 +12,7 @@ public class HUD_Manager : MonoBehaviour
     GameManager gameManager;
     CameraController cameraController;
     ColocatorManager colocatorManager;
+    GameFlow gameFlow;
 
     [Header("Sliders")]
     public Slider[] sliders = new Slider[6];
@@ -22,7 +23,6 @@ public class HUD_Manager : MonoBehaviour
     public TextMeshProUGUI[] canActivate = new TextMeshProUGUI[3];
 
     [Header("Temporal messages")]
-    public int coinsNumber;
     public TextMeshProUGUI coinsText;
 
     void Awake()
@@ -36,6 +36,9 @@ public class HUD_Manager : MonoBehaviour
         gameManager = GameManager.instance;
         cameraController = CameraController.instance;
         colocatorManager = ColocatorManager.instance;
+        gameFlow = GameFlow.instance;
+
+        
     }
 
     void Update()
@@ -53,13 +56,15 @@ public class HUD_Manager : MonoBehaviour
         porcentajes[3].text = ((int)(sliders[3].value * 100)).ToString() + "%";
         porcentajes[4].text = ((int)(sliders[4].value * 100)).ToString() + "%";
         porcentajes[5].text = ((int)(sliders[5].value * 100)).ToString() + "%";
+
+        coinsText.text = "Coins: " + gameFlow.coins.ToString();
     }
 
     public void AddCoins(int newCoins)
     {
-        coinsNumber += newCoins;
+        gameFlow.coins += newCoins;
 
-        coinsText.text = "Coins: " + coinsNumber.ToString();
+        //coinsText.text = "Coins: " + gameFlow.coins.ToString();
     }
 
     public void ResetGame()
@@ -77,6 +82,11 @@ public class HUD_Manager : MonoBehaviour
     public void BuildTower()
     {
         colocatorManager.canBuild = !colocatorManager.canBuild;
+    }
+    public void ChangeTower(int id)
+    {
+        colocatorManager.towerID = id;
+        colocatorManager.canBuild = true;
     }
 
     public void MoveCameraW()

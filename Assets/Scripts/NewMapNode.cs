@@ -5,6 +5,7 @@ using UnityEngine;
 public class NewMapNode : MonoBehaviour
 {
     Generator generator;
+    GameFlow gameFlow;
     public GameObject spawn;
     public GameObject auxGrass;
     public GameObject navRemorer;
@@ -25,6 +26,7 @@ public class NewMapNode : MonoBehaviour
     void Start()
     {
         generator = Generator.instance;
+        gameFlow = GameFlow.instance;
 
         rend = GetComponent<Renderer>();
         startColor = rend.material.color;
@@ -45,7 +47,7 @@ public class NewMapNode : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Generator.instance.Generate(startSide, startSideOrientation, offsetStart, mapPos, idX, idZ);
+        generator.Generate(startSide, startSideOrientation, offsetStart, mapPos, idX, idZ);
 
         Destroy(gameObject);
         Destroy(spawn);

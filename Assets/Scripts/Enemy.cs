@@ -5,13 +5,20 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    public enum Type { Pequeño, Mediano, Grande }
+    public Type type;
+
+    GameFlow gameFlow;
+    MainTower mainTower;
+
     public Transform target;
     public NavMeshAgent nav;
 
-    int speed;
-    public int normalSpeed;
-
     [Header("States")]
+    public int damage;
+    public int gold;
+    public int speed;
+    public int normalSpeed;
     public int health = 100;
     public int armor = 0;
     [Space]
@@ -43,6 +50,9 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        gameFlow = GameFlow.instance;
+        mainTower = MainTower.instance;
+
         nav = GetComponent<NavMeshAgent>();
         nav.destination = target.position;
 
@@ -55,6 +65,21 @@ public class Enemy : MonoBehaviour
     {
         if (health < 0)
         {
+            gameFlow.coins += gold;
+
+            switch (type)
+            {
+                case (Type.Pequeño):
+                    gameFlow.enemiesLeft1--;
+                    break;
+                case (Type.Mediano):
+                    gameFlow.enemiesLeft2--;
+                    break;
+                case (Type.Grande):
+                    gameFlow.enemiesLeft3--;
+                    break;
+            }
+
             Destroy(gameObject);
         }
     }
@@ -63,7 +88,33 @@ public class Enemy : MonoBehaviour
     {
         if (other.name == "Main Tower Target")
         {
+            switch (type)
+            {
+                case (Type.Pequeño):
+                    gameFlow.enemiesLeft1--;
+                    break;
+                case (Type.Mediano):
+                    gameFlow.enemiesLeft2--;
+                    break;
+                case (Type.Grande):
+                    gameFlow.enemiesLeft3--;
+                    break;
+            }
+
+            mainTower.health--;
             Destroy(gameObject);
+        }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "TowerPath")
+        {
+            other.gameObject.GetComponentInParent<Tower>().health -= damage;
+        }
+        if (other.tag == "Damage")
+        {
+            health -= other.gameObject.GetComponentInParent<Tower>().healthDamage;
         }
     }
 }

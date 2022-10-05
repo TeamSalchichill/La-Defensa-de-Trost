@@ -18,9 +18,11 @@ public class Generator : MonoBehaviour
 
     public static Generator instance;
 
-    [Header("Match")]
-    public int round = 0;
-    [Space]
+    GameFlow gameFlow;
+
+    public bool activateRounds;
+
+    [Header("Map")]
     public int sizeX;
     public int sizeY;
     public int sizeZ;
@@ -64,6 +66,7 @@ public class Generator : MonoBehaviour
     public List<Vector2> colocatedMap = new List<Vector2>();
     public List<Vector3> openMap = new List<Vector3>();
     public List<GameObject> navRemovers = new List<GameObject>();
+    public List<GameObject> newMapNodes = new List<GameObject>();
 
     [Header("Probabilities")]
     [Range(0, 100)]
@@ -80,6 +83,8 @@ public class Generator : MonoBehaviour
     public int probabilityObstacles = 50;
     [Range(0, 100)]
     public int probabilityConectWays = 50;
+    [Range(0, 100)]
+    public int probabilityMixEnemies = 50;
 
     void Awake()
     {
@@ -88,6 +93,8 @@ public class Generator : MonoBehaviour
 
     void Start()
     {
+        gameFlow = GameFlow.instance;
+
         InicializeMap();
     }
 
@@ -140,6 +147,7 @@ public class Generator : MonoBehaviour
         mapPos += new Vector2(0, -1);
 
         GameObject newMap = Instantiate(nextMap, new Vector3(7f, 1, 7f) + offsetStart, Quaternion.identity);
+        newMapNodes.Add(newMap);
         NewMapNode newMapScript = newMap.GetComponent<NewMapNode>();
         newMapScript.startSide = startSide;
         newMapScript.startSideOrientation = startSideOrientation;
@@ -160,8 +168,6 @@ public class Generator : MonoBehaviour
 
     public void Generate(int newStartSide, string newStartSideOrientation, Vector3 newOffsetStart, Vector2 newMapPos, int newIdX, int newIdZ)
     {
-        round++;
-
         //UpdateProbabilities();
 
         // Colocamos la base de tierra
@@ -379,6 +385,9 @@ public class Generator : MonoBehaviour
             GenerateTwoWays(newStartSideOrientation, nextSideOrientation, newOffsetStart, newMapPos, saveIdX, saveIdZ);
         }
 
+        GameObject grassAux1;
+        GameObject grassAux2;
+
         // Ponemos césped donde no hay camino
         for (int i = 0; i < sizeX; i++)
         {
@@ -390,11 +399,11 @@ public class Generator : MonoBehaviour
                     specialTile *= 12;
                     if (specialTile < probabilitySpecialTiles)
                     {
-                        Instantiate(specialGrassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1) + newOffsetStart, Quaternion.identity);
+                        grassAux1 = Instantiate(specialGrassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1) + newOffsetStart, Quaternion.identity);
                     }
                     else
                     {
-                        Instantiate(grassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1) + newOffsetStart, Quaternion.identity);
+                        grassAux1 = Instantiate(grassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1) + newOffsetStart, Quaternion.identity);
                     }
 
                     map[i, j] = 1;
@@ -404,12 +413,14 @@ public class Generator : MonoBehaviour
                     {
                         if (specialTile < probabilitySpecialTiles)
                         {
-                            Instantiate(specialGrassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 1.25f, 1) + newOffsetStart, Quaternion.identity);
+                            grassAux2 = Instantiate(specialGrassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 1.25f, 1) + newOffsetStart, Quaternion.identity);
                         }
                         else
                         {
-                            Instantiate(grassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 1.25f, 1) + newOffsetStart, Quaternion.identity);
+                            grassAux2 = Instantiate(grassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 1.25f, 1) + newOffsetStart, Quaternion.identity);
                         }
+
+                        grassAux1.layer = 0;
 
                         map[i, j] = 2;
 
@@ -424,6 +435,8 @@ public class Generator : MonoBehaviour
                             {
                                 Instantiate(grassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 1.75f, 1) + newOffsetStart, Quaternion.identity);
                             }
+
+                            grassAux2.layer = 0;
 
                             map[i, j] = 3;
                         }
@@ -445,6 +458,11 @@ public class Generator : MonoBehaviour
 
         // Preparamos las variables para la siguiente iteración
         PrepareNextMap(newStartSide, newStartSideOrientation, newOffsetStart, newMapPos, newIdX, newIdZ, nextSideOrientation, false);
+
+        if (activateRounds)
+        {
+            gameFlow.StartRound();
+        }
     }
 
     void GenerateOneWay(string myStartSideOrientation, string myNextSideOrientation, Vector3 myOffsetStart, Vector2 myMapPos, int myIdX, int myIdZ)
@@ -577,6 +595,7 @@ public class Generator : MonoBehaviour
                 if (!colocatedMap.Contains(newMapPos) && !openMap.Contains(newMapPos) && !deleteWay)
                 {
                     GameObject newMap1 = Instantiate(nextMap, new Vector3(7f, 1, 7f) + newOffsetStart, Quaternion.identity);
+                    newMapNodes.Add(newMap1);
                     NewMapNode newMapScript1 = newMap1.GetComponent<NewMapNode>();
                     newMapScript1.startSide = newStartSide;
                     newMapScript1.startSideOrientation = newStartSideOrientation;
@@ -662,6 +681,7 @@ public class Generator : MonoBehaviour
                 if (!colocatedMap.Contains(newMapPos) && !openMap.Contains(newMapPos) && !deleteWay)
                 {
                     GameObject newMap2 = Instantiate(nextMap, new Vector3(7f, 1, 7f) + newOffsetStart, Quaternion.identity);
+                    newMapNodes.Add(newMap2);
                     NewMapNode newMapScript2 = newMap2.GetComponent<NewMapNode>();
                     newMapScript2.startSide = newStartSide;
                     newMapScript2.startSideOrientation = newStartSideOrientation;
@@ -747,6 +767,7 @@ public class Generator : MonoBehaviour
                 if (!colocatedMap.Contains(newMapPos) && !openMap.Contains(newMapPos) && !deleteWay)
                 {
                     GameObject newMap3 = Instantiate(nextMap, new Vector3(7, 1, 7) + newOffsetStart, Quaternion.identity);
+                    newMapNodes.Add(newMap3);
                     NewMapNode newMapScript3 = newMap3.GetComponent<NewMapNode>();
                     newMapScript3.startSide = newStartSide;
                     newMapScript3.startSideOrientation = newStartSideOrientation;
@@ -832,6 +853,7 @@ public class Generator : MonoBehaviour
                 if (!colocatedMap.Contains(newMapPos) && !openMap.Contains(newMapPos) && !deleteWay)
                 {
                     GameObject newMap4 = Instantiate(nextMap, new Vector3(7, 1, 7) + newOffsetStart, Quaternion.identity);
+                    newMapNodes.Add(newMap4);
                     NewMapNode newMapScript4 = newMap4.GetComponent<NewMapNode>();
                     newMapScript4.startSide = newStartSide;
                     newMapScript4.startSideOrientation = newStartSideOrientation;
@@ -903,58 +925,6 @@ public class Generator : MonoBehaviour
                     }
                 }
                 break;
-        }
-    }
-
-    void UpdateProbabilities()
-    {
-        if (round > 2)
-        {
-            probabilityNewWays = 2;
-            probabilityStraight = 100;
-            probabilityDeleteWay = 3;
-        }
-        if (round > 3)
-        {
-            probabilityNewWays = 7;
-            probabilityStraight = 100;
-            probabilityDeleteWay = 3;
-        }
-        if (round > 5)
-        {
-            probabilityNewWays = 5;
-            probabilityStraight = 100;
-            probabilityDeleteWay = 3;
-        }
-        if (round > 10)
-        {
-            probabilityNewWays = 4;
-            probabilityStraight = 100;
-            probabilityDeleteWay = 3;
-        }
-        if (round > 15)
-        {
-            probabilityNewWays = 3;
-            probabilityStraight = 100;
-            probabilityDeleteWay = 4;
-        }
-        if (round > 20)
-        {
-            probabilityNewWays = 4;
-            probabilityStraight = 100;
-            probabilityDeleteWay = 5;
-        }
-        if (round > 25)
-        {
-            probabilityNewWays = 6;
-            probabilityStraight = 100;
-            probabilityDeleteWay = 6;
-        }
-        if (round > 30)
-        {
-            probabilityNewWays = 8;
-            probabilityStraight = 100;
-            probabilityDeleteWay = 7;
         }
     }
 }

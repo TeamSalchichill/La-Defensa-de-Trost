@@ -7,6 +7,9 @@ public class Tower : MonoBehaviour
     public enum TargetType { SingleTarget, MultiTarget }
     public TargetType targetType;
 
+    public enum AttackType { Melee, Range }
+    public AttackType attackType;
+
     public enum CanTarget { Ground, Air, Both }
     public CanTarget canTarget;
 
@@ -44,11 +47,6 @@ public class Tower : MonoBehaviour
     public int bloodDamage = 0;
     public int transformationDamage = 0;
 
-    void Awake()
-    {
-        anim = GetComponent<Animator>();
-    }
-
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
@@ -83,7 +81,12 @@ public class Tower : MonoBehaviour
     {
         if (health <= 0)
         {
-            anim.SetTrigger("doDie");
+            if (anim != null)
+            {
+                anim.SetTrigger("doDie");
+            }
+            
+            Destroy(gameObject);
         }
 
         if (target == null)
@@ -96,11 +99,31 @@ public class Tower : MonoBehaviour
         Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
 
-        if (fireCountdown <= 0f)
+        switch (attackType)
         {
-            anim.SetTrigger("doShoot");
-            Shoot();
-            fireCountdown = 1f / fireRate;
+            case AttackType.Melee:
+                if (fireCountdown <= 0f)
+                {
+                    if (anim != null)
+                    {
+                        anim.SetTrigger("doShoot");
+                    }
+
+                    fireCountdown = 1f / fireRate;
+                }
+                break;
+            case AttackType.Range:
+                if (fireCountdown <= 0f)
+                {
+                    if (anim != null)
+                    {
+                        anim.SetTrigger("doShoot");
+                    }
+
+                    Shoot();
+                    fireCountdown = 1f / fireRate;
+                }
+                break;
         }
 
         fireCountdown -= Time.deltaTime;
@@ -110,6 +133,7 @@ public class Tower : MonoBehaviour
     {
         GameObject bulletGO = Instantiate(bullet, bulletPos.transform.position, transform.rotation);
         Bullet newBullet = bulletGO.GetComponent<Bullet>();
+        newBullet.damage = healthDamage;
 
         if (newBullet != null)
         {
