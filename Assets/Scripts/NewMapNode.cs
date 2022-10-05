@@ -47,6 +47,7 @@ public class NewMapNode : MonoBehaviour
 
     private void OnMouseDown()
     {
+        MainTower.instance.restRounds--;
         generator.Generate(startSide, startSideOrientation, offsetStart, mapPos, idX, idZ);
 
         Destroy(gameObject);

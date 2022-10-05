@@ -17,21 +17,21 @@ public class Enemy : MonoBehaviour
     [Header("States")]
     public int damage;
     public int gold;
-    public int speed;
+    public float speed;
     public int normalSpeed;
     public int health = 100;
     public int armor = 0;
     [Space]
-    public int iceEffect = 0;
-    public int igniteEffect = 0;
-    public int waterEffect = 0;
-    public int ascentEffect = 0;
-    public int bloodEffect = 0;
-    public int transformationEffect = 0;
+    public float iceEffect = 0;
+    public float igniteEffect = 0;
+    public float waterEffect = 0;
+    public float ascentEffect = 0;
+    public float bloodEffect = 0;
+    public float transformationEffect = 0;
 
     [Header("States multiplier")]
     [Range(0, 1)]
-    public int healthResistence = 100;
+    public int healthResistence = 0;
     [Range(0, 1)]
     public int armorResistence = 0;
     [Space]
@@ -82,6 +82,11 @@ public class Enemy : MonoBehaviour
 
             Destroy(gameObject);
         }
+
+        iceEffect -= (Time.deltaTime * 5);
+        iceEffect = Mathf.Max(iceEffect, 0);
+        speed = (normalSpeed * ((100 - iceEffect) / 100));
+        nav.speed = speed;
     }
 
     void OnTriggerEnter(Collider other)
@@ -114,7 +119,27 @@ public class Enemy : MonoBehaviour
         }
         if (other.tag == "Damage")
         {
-            health -= other.gameObject.GetComponentInParent<Tower>().healthDamage;
+            health -= (int)(other.gameObject.GetComponentInParent<Tower>().healthDamage * 0.1f);
+            iceEffect += (int)(other.gameObject.GetComponentInParent<Tower>().iceDamage * 0.1f);
+        }
+
+        if (other.tag == "SpecialGround")
+        {
+            float speedAux = speed;
+            nav.speed = speedAux * 0.5f;
+        }
+    }
+
+    void OnParticleCollision(GameObject other)
+    {
+        if (other.tag == "Damage")
+        {
+            health -= 1;
+            iceEffect += 1;
+        }
+        if (other.tag == "InstaIce")
+        {
+            iceEffect = 105;
         }
     }
 }

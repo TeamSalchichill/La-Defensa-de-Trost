@@ -8,6 +8,7 @@ public class GameFlow : MonoBehaviour
 
     Generator generator;
     GameManager gameManager;
+    MainTower mainTower;
 
     public int round = 0;
     public int coins = 100;
@@ -36,6 +37,7 @@ public class GameFlow : MonoBehaviour
     {
         generator = Generator.instance;
         gameManager = GameManager.instance;
+        mainTower = MainTower.instance;
 
         enemiesPerRound1 = new int[totalRounds];
 

@@ -16,8 +16,14 @@ public class Tower : MonoBehaviour
     public enum CanColocate { Ground, Path }
     public CanColocate canColocate;
 
+    public enum BulletType { Prefab, Particles }
+    public BulletType bulletType;
+
+    MainTower mainTower;
+
     [Header("Components")]
     public Animator anim;
+    public GameObject particles;
 
     [Header("Resources")]
     public Transform target;
@@ -26,12 +32,14 @@ public class Tower : MonoBehaviour
     public Transform partToRotate;
 
     [Header("General Stats")]
+    public bool specialTile;
+    [Space]
     public int health;
     public int armor;
     [Space]
     public float range;
     public float fireRate = 1f;
-    public float fireCountdown = 0f;
+    float fireCountdown = 0f;
     public float turnSpeed = 10f;
     [Space]
     public int price;
@@ -40,15 +48,51 @@ public class Tower : MonoBehaviour
     public int healthDamage = 100;
     public int armorDamage = 0;
     [Space]
+    [Range(0, 100)]
     public int iceDamage = 0;
+    [Range(0, 100)]
     public int igniteDamage = 0;
+    [Range(0, 100)]
     public int waterDamage = 0;
+    [Range(0, 100)]
     public int ascentDamage = 0;
+    [Range(0, 100)]
     public int bloodDamage = 0;
+    [Range(0, 100)]
     public int transformationDamage = 0;
 
     void Start()
     {
+        mainTower = MainTower.instance;
+
+        if (specialTile)
+        {
+            switch (mainTower.zone)
+            {
+                case MainTower.Zone.None:
+                    
+                    break;
+                case MainTower.Zone.Hielo:
+                    iceDamage *= 3;
+                    break;
+                case MainTower.Zone.Desierto:
+
+                    break;
+                case MainTower.Zone.Atlantis:
+
+                    break;
+                case MainTower.Zone.Vikingos:
+
+                    break;
+                case MainTower.Zone.Fantasia:
+
+                    break;
+                case MainTower.Zone.Infierno:
+
+                    break;
+            }
+        }
+
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
 
@@ -91,6 +135,11 @@ public class Tower : MonoBehaviour
 
         if (target == null)
         {
+            if (particles != null)
+            {
+                particles.SetActive(false);
+            }
+
             return;
         }
 
@@ -115,13 +164,23 @@ public class Tower : MonoBehaviour
             case AttackType.Range:
                 if (fireCountdown <= 0f)
                 {
-                    if (anim != null)
+                    switch (bulletType)
                     {
-                        anim.SetTrigger("doShoot");
-                    }
+                        case BulletType.Prefab:
+                            if (anim != null)
+                            {
+                                anim.SetTrigger("doShoot");
+                            }
 
-                    Shoot();
-                    fireCountdown = 1f / fireRate;
+                            Shoot();
+                            fireCountdown = 1f / fireRate;
+                            break;
+                        case BulletType.Particles:
+                            particles.SetActive(true);
+                            break;
+                        default:
+                            break;
+                    }
                 }
                 break;
         }
@@ -133,7 +192,15 @@ public class Tower : MonoBehaviour
     {
         GameObject bulletGO = Instantiate(bullet, bulletPos.transform.position, transform.rotation);
         Bullet newBullet = bulletGO.GetComponent<Bullet>();
-        newBullet.damage = healthDamage;
+        newBullet.healthDamage = healthDamage;
+        newBullet.armorDamage = armorDamage;
+
+        newBullet.iceDamage = iceDamage;
+        newBullet.igniteDamage = igniteDamage;
+        newBullet.waterDamage = waterDamage;
+        newBullet.ascentDamage = ascentDamage;
+        newBullet.bloodDamage = bloodDamage;
+        newBullet.transformationDamage = transformationDamage;
 
         if (newBullet != null)
         {

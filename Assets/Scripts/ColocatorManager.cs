@@ -53,7 +53,16 @@ public class ColocatorManager : MonoBehaviour
                         rayHit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
                         rayHit.collider.gameObject.layer = 0;
 
-                        Instantiate(towers[towerID], rayHit.collider.gameObject.transform.position + new Vector3(0, 0.25f, 0), Quaternion.identity);
+                        GameObject instTower = Instantiate(towers[towerID], rayHit.collider.gameObject.transform.position + new Vector3(0, 0.25f, 0), Quaternion.identity);
+
+                        if (rayHit.collider.gameObject.tag == "SpecialGrass")
+                        {
+                            instTower.GetComponent<Tower>().specialTile = true;
+                        }
+                        else
+                        {
+                            instTower.GetComponent<Tower>().specialTile = false;
+                        }
                         //Instantiate(towers[towerID], rayHit.collider.gameObject.transform.position + new Vector3(0, 1.25f, 0), Quaternion.identity);
                     }
                 }
@@ -66,7 +75,16 @@ public class ColocatorManager : MonoBehaviour
                         rayHit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
                         rayHit.collider.gameObject.layer = 0;
 
-                        Instantiate(towers[towerID], rayHit.collider.gameObject.transform.position + new Vector3(0, 0.25f, 0), Quaternion.identity);
+                        GameObject instTower = Instantiate(towers[towerID], rayHit.collider.gameObject.transform.position + new Vector3(0, 0.25f, 0), Quaternion.identity);
+
+                        if (rayHit.collider.gameObject.tag == "SpecialGround")
+                        {
+                            instTower.GetComponent<Tower>().specialTile = true;
+                        }
+                        else
+                        {
+                            instTower.GetComponent<Tower>().specialTile = false;
+                        }
                     }
                 }
             }
