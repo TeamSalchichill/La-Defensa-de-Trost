@@ -48,6 +48,11 @@ public class NewMapNode : MonoBehaviour
     private void OnMouseDown()
     {
         MainTower.instance.restRounds--;
+        if (Hero.instance != null)
+        {
+            Hero.instance.nextRound = true;
+            Hero.instance.GetComponentInParent<Tower>().health = 100;
+        }
         generator.Generate(startSide, startSideOrientation, offsetStart, mapPos, idX, idZ);
 
         Destroy(gameObject);

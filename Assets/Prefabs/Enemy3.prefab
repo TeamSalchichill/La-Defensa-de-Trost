@@ -155,13 +155,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  target: {fileID: 1307849052298495844, guid: b773a4ca56193e54883f01e48738731c, type: 3}
+  zone: 1
+  target: {fileID: 7508660107958944948, guid: b773a4ca56193e54883f01e48738731c, type: 3}
   nav: {fileID: 0}
-  damage: 20
+  damage: 2
   gold: 25
   speed: 0
+  range: 15
   normalSpeed: 2
-  health: 100
+  health: 1000
   armor: 0
   iceEffect: 0
   igniteEffect: 0
@@ -171,12 +173,16 @@ MonoBehaviour:
   transformationEffect: 0
   healthResistence: 0
   armorResistence: 0
-  iceResistence: 0
+  iceResistence: 0.5
   igniteResistence: 0
   waterResistence: 0
   ascentResistence: 0
   bloodResistence: 0
   transformationResistence: 0
+  bullet: {fileID: 3202835052026178675, guid: 5402f63699c55504388044e784642f61, type: 3}
+  bulletPos: {fileID: 3397495877646959478}
+  goblins: {fileID: 5041448849748265805, guid: 542eda0c982c2b149b6fb0d79637ac45, type: 3}
+  mamut: {fileID: 3079014553779213453, guid: d8ccd62f37eb2d345bf4425b3862c004, type: 3}
 --- !u!65 &-5929485348241997126
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -199,7 +205,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1435910884985777772}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 5
   m_Direction: 1

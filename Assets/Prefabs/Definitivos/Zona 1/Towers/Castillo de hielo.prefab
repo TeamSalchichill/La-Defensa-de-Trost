@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4686968847305448042}
   - component: {fileID: 5429083563874524866}
   - component: {fileID: 5598982253687516677}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Node-local
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4440550914162788575}
-  m_Layer: 0
+  - component: {fileID: 3227266338541792725}
+  m_Layer: 9
   m_Name: Castillo de hielo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +108,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3957486680709386853}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 7, y: 0, z: 7}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -115,6 +116,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &3227266338541792725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3957486680709386853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dddfb3e699abb64393b5c84cb50ebf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zone: 1
+  health: 10
+  activateTower: 0
+  roundsToReset: 3
+  restRounds: 0
+  blizzard: {fileID: 3522392810799222791, guid: 37fcd8999a7cced47b32782c958235fc, type: 3}
+  blizzadTime: 5
 --- !u!1 &4558818910069832264
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,7 +144,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1204786592024681588}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Node-global
   m_TagString: Untagged
   m_Icon: {fileID: 0}

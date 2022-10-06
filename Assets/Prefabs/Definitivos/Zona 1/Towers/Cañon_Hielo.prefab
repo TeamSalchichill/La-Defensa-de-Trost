@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2743860368443834856}
   - component: {fileID: 3989587111330909012}
   - component: {fileID: 4113482663220451656}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 'Node '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 5121400624299211761}
   - component: {fileID: 5570479205549932377}
   - component: {fileID: 5452239979057336222}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Node-local
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 4303658290208991556}
   - component: {fileID: 4337831846848589535}
   - component: {fileID: 4337831846848589532}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: "Ca\xF1on_Hielo"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3527016446257411070}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.460842, y: 0, z: 3.7791462}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -231,18 +231,22 @@ MonoBehaviour:
   canTarget: 0
   canColocate: 0
   bulletType: 1
+  zone: 1
   anim: {fileID: 0}
   particles: {fileID: 8670430724053398193}
   target: {fileID: 0}
   bullet: {fileID: 3202835052026178675, guid: b660218120a54964fbbf9722e3c36da0, type: 3}
   bulletPos: {fileID: 6205220585038365051}
   partToRotate: {fileID: 2520043521327094820}
+  isHero: 0
+  specialTile: 0
   health: 100
   armor: 0
   range: 10
   fireRate: 1
   turnSpeed: 10
   price: 50
+  isDie: 0
   healthDamage: 100
   armorDamage: 0
   iceDamage: 0
@@ -251,6 +255,7 @@ MonoBehaviour:
   ascentDamage: 0
   bloodDamage: 0
   transformationDamage: 0
+  iceWall: {fileID: 0}
 --- !u!1 &4133607691306949587
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,7 +265,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1630840640074890735}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Node-global
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +297,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2520043521327094820}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 'Node '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -326,6 +331,10 @@ PrefabInstance:
     - target: {fileID: 8709583232544451809, guid: 908a168c83fa6534bad1d4af8fbc4175, type: 3}
       propertyPath: m_Name
       value: Ice Particles
+      objectReference: {fileID: 0}
+    - target: {fileID: 8709583232544451809, guid: 908a168c83fa6534bad1d4af8fbc4175, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8709583232544451836, guid: 908a168c83fa6534bad1d4af8fbc4175, type: 3}
       propertyPath: m_RootOrder

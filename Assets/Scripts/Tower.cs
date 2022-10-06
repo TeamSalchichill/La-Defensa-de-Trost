@@ -19,6 +19,9 @@ public class Tower : MonoBehaviour
     public enum BulletType { Prefab, Particles }
     public BulletType bulletType;
 
+    public enum Zone { None, Hielo, Desierto, Atlantis, Vikingos, Fantasia, Infierno }
+    public Zone zone;
+
     MainTower mainTower;
 
     [Header("Components")]
@@ -32,6 +35,7 @@ public class Tower : MonoBehaviour
     public Transform partToRotate;
 
     [Header("General Stats")]
+    public bool isHero;
     public bool specialTile;
     [Space]
     public int health;
@@ -43,6 +47,7 @@ public class Tower : MonoBehaviour
     public float turnSpeed = 10f;
     [Space]
     public int price;
+    public bool isDie = false;
 
     [Header("Damages")]
     public int healthDamage = 100;
@@ -61,6 +66,9 @@ public class Tower : MonoBehaviour
     [Range(0, 100)]
     public int transformationDamage = 0;
 
+    [Header("Hero")]
+    public GameObject iceWall;
+
     void Start()
     {
         mainTower = MainTower.instance;
@@ -69,9 +77,6 @@ public class Tower : MonoBehaviour
         {
             switch (mainTower.zone)
             {
-                case MainTower.Zone.None:
-                    
-                    break;
                 case MainTower.Zone.Hielo:
                     iceDamage *= 3;
                     break;
@@ -88,6 +93,31 @@ public class Tower : MonoBehaviour
 
                     break;
                 case MainTower.Zone.Infierno:
+
+                    break;
+            }
+        }
+
+        if (isHero)
+        {
+            switch (zone)
+            {
+                case Zone.Hielo:
+                    InvokeRepeating("InvokeIceWall", 1, 20);
+                    break;
+                case Zone.Desierto:
+
+                    break;
+                case Zone.Atlantis:
+
+                    break;
+                case Zone.Vikingos:
+
+                    break;
+                case Zone.Fantasia:
+
+                    break;
+                case Zone.Infierno:
 
                     break;
             }
@@ -123,14 +153,19 @@ public class Tower : MonoBehaviour
 
     void Update()
     {
-        if (health <= 0)
+        if (health <= 0 && !isDie)
         {
+            isDie = true;
+
             if (anim != null)
             {
                 anim.SetTrigger("doDie");
             }
-            
-            Destroy(gameObject);
+
+            if (!isHero)
+            {
+                Destroy(gameObject, 2);
+            }
         }
 
         if (target == null)
@@ -139,8 +174,19 @@ public class Tower : MonoBehaviour
             {
                 particles.SetActive(false);
             }
+            if (isHero && zone == Zone.Hielo)
+            {
+                anim.SetBool("isShoot", false);
+            }
 
             return;
+        }
+        else
+        {
+            if (isHero && zone == Zone.Hielo)
+            {
+                anim.SetBool("isShoot", true);
+            }
         }
 
         Vector3 dir = target.position - transform.position;
@@ -205,6 +251,39 @@ public class Tower : MonoBehaviour
         if (newBullet != null)
         {
             newBullet.Seek(target);
+        }
+    }
+
+    void InvokeIceWall()
+    {
+        List<GameObject> groundsInRange = new List<GameObject>();
+
+        for (int i = -10; i < 10; i+=2)
+        {
+            for (int j = -10; j < 10; j+=2)
+            {
+                RaycastHit hit1;
+                RaycastHit hit2;
+                if (Physics.Raycast(transform.position + new Vector3(i, 50, j), transform.TransformDirection(-Vector3.up), out hit1, 1000, LayerMask.GetMask("Ground")))
+                {
+                    if (!Physics.Raycast(transform.position + new Vector3(i, 50, j), transform.TransformDirection(-Vector3.up), out hit2, 1000, LayerMask.GetMask("Grass")))
+                    {
+                        if (!Physics.Raycast(transform.position + new Vector3(i, 50, j), transform.TransformDirection(-Vector3.up), out hit2, 1000, LayerMask.GetMask("Tower")))
+                        {
+                            groundsInRange.Add(hit1.collider.gameObject);
+                            anim.SetTrigger("doHit");
+                        }
+                    }
+                }
+            }
+        }
+
+        int aux = Random.Range(0, groundsInRange.Count);
+
+        if (aux >= 0 && aux < groundsInRange.Count - 1)
+        {
+            GameObject InstIceWall = Instantiate(iceWall, groundsInRange[aux].transform.position + new Vector3(0, 1, 0), transform.rotation);
+            //Destroy(InstIceWall, 10);
         }
     }
 

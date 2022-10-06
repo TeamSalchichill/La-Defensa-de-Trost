@@ -78,7 +78,6 @@ GameObject:
   - component: {fileID: 5581619323812014961}
   - component: {fileID: 4299993136709600605}
   - component: {fileID: -7706277348949279633}
-  - component: {fileID: 919132148727220900}
   m_Layer: 6
   m_Name: Mamut
   m_TagString: Enemy
@@ -190,15 +189,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  target: {fileID: 1307849052298495844, guid: b773a4ca56193e54883f01e48738731c, type: 3}
+  zone: 0
+  target: {fileID: 7508660107958944948, guid: b773a4ca56193e54883f01e48738731c, type: 3}
   nav: {fileID: 0}
   damage: 50
   gold: 25
   speed: 0
+  range: 0
   normalSpeed: 2
   health: 100
   armor: 0
-  iceEffect: 0
+  iceEffect: 0.5
   igniteEffect: 0
   waterEffect: 0
   ascentEffect: 0
@@ -212,41 +213,10 @@ MonoBehaviour:
   ascentResistence: 0
   bloodResistence: 0
   transformationResistence: 0
---- !u!114 &919132148727220900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3079014553779213453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68dac3a72da62d7489bd0a5e5ce4495c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 2
-  target: {fileID: 1307849052298495844, guid: b773a4ca56193e54883f01e48738731c, type: 3}
-  nav: {fileID: 0}
-  damage: 0
-  gold: 25
-  speed: 0
-  normalSpeed: 2
-  health: 100
-  armor: 0
-  iceEffect: 0
-  igniteEffect: 0
-  waterEffect: 0
-  ascentEffect: 0
-  bloodEffect: 0
-  transformationEffect: 0
-  healthResistence: 100
-  armorResistence: 0
-  iceResistence: 0
-  igniteResistence: 0
-  waterResistence: 0
-  ascentResistence: 0
-  bloodResistence: 0
-  transformationResistence: 0
+  bullet: {fileID: 0}
+  bulletPos: {fileID: 0}
+  goblins: {fileID: 0}
+  mamut: {fileID: 0}
 --- !u!1 &3571521795474154476
 GameObject:
   m_ObjectHideFlags: 0

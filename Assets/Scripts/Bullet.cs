@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public enum Type { Tower, Enemy }
+    public Type type;
+
     private Transform target;
 
     public GameObject impactEffect;
@@ -51,16 +54,24 @@ public class Bullet : MonoBehaviour
         Destroy(efffectIns, 2f);
 
         //Destroy(target.gameObject);
-        target.gameObject.GetComponent<Enemy>().health -= healthDamage;
-        target.gameObject.GetComponent<Enemy>().armor -= healthDamage;
 
-        target.gameObject.GetComponent<Enemy>().iceEffect += healthDamage;
-        target.gameObject.GetComponent<Enemy>().igniteEffect += healthDamage;
-        target.gameObject.GetComponent<Enemy>().waterEffect += healthDamage;
-        target.gameObject.GetComponent<Enemy>().ascentEffect += healthDamage;
-        target.gameObject.GetComponent<Enemy>().bloodEffect += healthDamage;
-        target.gameObject.GetComponent<Enemy>().transformationEffect += healthDamage;
+        if (type == Type.Tower)
+        {
+            target.gameObject.GetComponent<Enemy>().health -= healthDamage;
+            target.gameObject.GetComponent<Enemy>().armor -= armorDamage;
 
+            target.gameObject.GetComponent<Enemy>().iceEffect += iceDamage;
+            target.gameObject.GetComponent<Enemy>().igniteEffect += igniteDamage;
+            target.gameObject.GetComponent<Enemy>().waterEffect += waterDamage;
+            target.gameObject.GetComponent<Enemy>().ascentEffect += ascentDamage;
+            target.gameObject.GetComponent<Enemy>().bloodEffect += bloodDamage;
+            target.gameObject.GetComponent<Enemy>().transformationEffect += transformationDamage;
+        }
+        if (type == Type.Enemy)
+        {
+            target.gameObject.GetComponentInParent<Tower>().health -= (healthDamage * 5);
+        }
+        
         Destroy(gameObject);
     }
 }

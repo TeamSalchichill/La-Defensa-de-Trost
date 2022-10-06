@@ -16,6 +16,7 @@ public class ColocatorManager : MonoBehaviour
     public GameObject[] towers;
 
     public bool canBuild = false;
+    public bool heroBuild = false;
 
     void Awake()
     {
@@ -40,12 +41,21 @@ public class ColocatorManager : MonoBehaviour
 
         if ((Input.GetButtonDown("Fire1") || Input.GetButton("Fire1")) && canBuild)
         {
+            if (heroBuild && towerID == 0)
+            {
+                return;
+            }
+
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit rayHit;
             if (Physics.Raycast(ray, out rayHit, 1000))
             {
                 if (rayHit.collider.gameObject.layer == 7 && towers[towerID].GetComponent<Tower>().canColocate == Tower.CanColocate.Ground)
                 {
+                    if (towerID == 0)
+                    {
+                        heroBuild = true;
+                    }
                     if (gameFlow.coins >= towers[towerID].GetComponent<Tower>().price)
                     {
                         gameFlow.coins -= towers[towerID].GetComponent<Tower>().price;
@@ -68,6 +78,10 @@ public class ColocatorManager : MonoBehaviour
                 }
                 else if (rayHit.collider.gameObject.layer == 8 && towers[towerID].GetComponent<Tower>().canColocate == Tower.CanColocate.Path)
                 {
+                    if (towerID == 0)
+                    {
+                        heroBuild = true;
+                    }
                     if (gameFlow.coins >= towers[towerID].GetComponent<Tower>().price)
                     {
                         gameFlow.coins -= towers[towerID].GetComponent<Tower>().price;

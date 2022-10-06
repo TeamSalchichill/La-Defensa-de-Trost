@@ -8,18 +8,22 @@ public class Enemy : MonoBehaviour
     public enum Type { Pequeño, Mediano, Grande }
     public Type type;
 
+    public enum Zone { None, Hielo, Desierto, Atlantis, Vikingos, Fantasia, Infierno }
+    public Zone zone;
+
     GameFlow gameFlow;
     MainTower mainTower;
 
     public Transform target;
     public NavMeshAgent nav;
-
+    
     [Header("States")]
     public int damage;
     public int gold;
     public float speed;
+    public int range;
     public int normalSpeed;
-    public int health = 100;
+    public float health = 100;
     public int armor = 0;
     [Space]
     public float iceEffect = 0;
@@ -31,22 +35,29 @@ public class Enemy : MonoBehaviour
 
     [Header("States multiplier")]
     [Range(0, 1)]
-    public int healthResistence = 0;
+    public float healthResistence = 0;
     [Range(0, 1)]
-    public int armorResistence = 0;
+    public float armorResistence = 0;
     [Space]
     [Range(0, 1)]
-    public int iceResistence = 0;
+    public float iceResistence = 0;
     [Range(0, 1)]
-    public int igniteResistence = 0;
+    public float igniteResistence = 0;
     [Range(0, 1)]
-    public int waterResistence = 0;
+    public float waterResistence = 0;
     [Range(0, 1)]
-    public int ascentResistence = 0;
+    public float ascentResistence = 0;
     [Range(0, 1)]
-    public int bloodResistence = 0;
+    public float bloodResistence = 0;
     [Range(0, 1)]
-    public int transformationResistence = 0;
+    public float transformationResistence = 0;
+
+    [Header("Boss")]
+    public GameObject bullet;
+    public GameObject bulletPos;
+
+    public GameObject goblins;
+    public GameObject mamut;
 
     void Start()
     {
@@ -59,6 +70,33 @@ public class Enemy : MonoBehaviour
         nav.speed = normalSpeed;
 
         Destroy(gameObject, 120);
+
+        if (type == Type.Grande)
+        {
+            switch (zone)
+            {
+                case Zone.Hielo:
+                    InvokeRepeating("Zone1Attack1", 1, 5);
+                    InvokeRepeating("Zone1Attack2", 3.5f, 5);
+                    InvokeRepeating("Zone1Attack3", 3.5f, 20);
+                    break;
+                case Zone.Desierto:
+
+                    break;
+                case Zone.Atlantis:
+
+                    break;
+                case Zone.Vikingos:
+
+                    break;
+                case Zone.Fantasia:
+
+                    break;
+                case Zone.Infierno:
+
+                    break;
+            }
+        }
     }
 
     void Update()
@@ -89,9 +127,43 @@ public class Enemy : MonoBehaviour
         nav.speed = speed;
     }
 
+    void Zone1Attack1()
+    {
+        RaycastHit[] rayHitsPlayers = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Tower"));
+        if (rayHitsPlayers.Length > 0)
+        {
+            GameObject bulletGO = Instantiate(bullet, bulletPos.transform.position, transform.rotation);
+            Bullet newBullet = bulletGO.GetComponent<Bullet>();
+
+            newBullet.healthDamage = damage;
+
+            newBullet.Seek(rayHitsPlayers[0].transform);
+        }
+    }
+    void Zone1Attack2()
+    {
+        StartCoroutine(SpawnGoblins());
+    }
+
+    IEnumerator SpawnGoblins()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            Instantiate(goblins, transform.position + (transform.forward * 2), transform.rotation);
+            gameFlow.enemiesLeft1++;
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+    void Zone1Attack3()
+    {
+        Instantiate(mamut, transform.position + (transform.forward * 3), transform.rotation);
+        gameFlow.enemiesLeft2++;
+    }
+
     void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Main Tower Target")
+        if (other.name == "Main Tower Collider")
         {
             switch (type)
             {
@@ -103,6 +175,7 @@ public class Enemy : MonoBehaviour
                     break;
                 case (Type.Grande):
                     gameFlow.enemiesLeft3--;
+                    mainTower.health = -1;
                     break;
             }
 
@@ -119,8 +192,10 @@ public class Enemy : MonoBehaviour
         }
         if (other.tag == "Damage")
         {
-            health -= (int)(other.gameObject.GetComponentInParent<Tower>().healthDamage * 0.1f);
-            iceEffect += (int)(other.gameObject.GetComponentInParent<Tower>().iceDamage * 0.1f);
+            health -= (other.gameObject.GetComponentInParent<Tower>().healthDamage * 0.1f);
+            iceEffect += ((other.gameObject.GetComponentInParent<Tower>().iceDamage * 0.1f) * iceResistence);
+
+            other.gameObject.GetComponentInParent<Tower>().health -= damage;
         }
 
         if (other.tag == "SpecialGround")
@@ -135,7 +210,7 @@ public class Enemy : MonoBehaviour
         if (other.tag == "Damage")
         {
             health -= 1;
-            iceEffect += 1;
+            iceEffect += (1 * iceResistence);
         }
         if (other.tag == "InstaIce")
         {
