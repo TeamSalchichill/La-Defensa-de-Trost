@@ -6,6 +6,8 @@ public class NewMapNode : MonoBehaviour
 {
     Generator generator;
     GameFlow gameFlow;
+    ColocatorManager colocatorManager;
+
     public GameObject spawn;
     public GameObject auxGrass;
     public GameObject navRemorer;
@@ -27,6 +29,7 @@ public class NewMapNode : MonoBehaviour
     {
         generator = Generator.instance;
         gameFlow = GameFlow.instance;
+        colocatorManager = ColocatorManager.instance;
 
         rend = GetComponent<Renderer>();
         startColor = rend.material.color;
@@ -53,7 +56,9 @@ public class NewMapNode : MonoBehaviour
             Hero.instance.nextRound = true;
             Hero.instance.GetComponentInParent<Tower>().health = 100;
         }
+
         generator.Generate(startSide, startSideOrientation, offsetStart, mapPos, idX, idZ);
+        colocatorManager.canBuild = false;
 
         Destroy(gameObject);
         Destroy(spawn);

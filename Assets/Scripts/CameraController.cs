@@ -5,7 +5,10 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public static CameraController instance;
-    Vector3 touchStart;
+
+    ColocatorManager colocatorManager;
+    HUD_Manager hudManager;
+    
     public  bool doMovement;
 
     public float panSpeed = 30f;
@@ -14,13 +17,27 @@ public class CameraController : MonoBehaviour
     public float zoomMin = 10f;
     public float zoomMax = 80f;
 
+    Vector3 touchStart;
+
     void Awake()
     {
         instance = this;
     }
 
+    void Start()
+    {
+        colocatorManager = ColocatorManager.instance;
+        hudManager = HUD_Manager.instance;
+    }
+
     void FixedUpdate()
     {
+        // Bloquear movimiento de la cámara con el ratón
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            doMovement = !doMovement;
+        }
+
         // Mover la cámara con el teclado
         if (Input.GetKey("w"))
         {
@@ -42,11 +59,13 @@ public class CameraController : MonoBehaviour
         // Hacer zoom con el ratón
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         float size = Camera.main.orthographicSize;
+
         if (Input.GetMouseButtonDown(0))
         {
             touchStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
-        if (Input.touchCount == 2)
+
+        if (Input.touchCount == 2 && doMovement && !colocatorManager.canBuild && !hudManager.isShowInfo)
         {
             Touch touchZero = Input.GetTouch(0);
             Touch touchOne = Input.GetTouch(1);
@@ -59,22 +78,25 @@ public class CameraController : MonoBehaviour
 
             float difference = currentMagnitude - prevMagnitude;
 
-            zoom(difference * 0.01f, size);
+            Zoom(difference * 0.01f, size);
         }
-        else if (Input.GetMouseButton(0))
+        else if (Input.GetMouseButton(0) && doMovement && !colocatorManager.canBuild && !hudManager.isShowInfo)
         {
             Vector3 direction = touchStart - Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Camera.main.transform.position += direction;
         }
-        zoom(scroll, size);
+
+        Zoom(scroll, size);
     }
 
-    void zoom(float increment, float size)
+    void Zoom(float increment, float size)
     {
         if (increment < 0)
         {
             size += 5;
-        }else if(increment > 0) {
+        }
+        else if(increment > 0) 
+        {
             size -= 5;
         }
 

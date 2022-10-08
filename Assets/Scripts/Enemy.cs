@@ -11,6 +11,9 @@ public class Enemy : MonoBehaviour
     public enum Zone { None, Hielo, Desierto, Atlantis, Vikingos, Fantasia, Infierno }
     public Zone zone;
 
+    public enum TargetPreference { MainTower, OtherTowers }
+    public TargetPreference targetPreference;
+
     GameFlow gameFlow;
     MainTower mainTower;
 
@@ -103,6 +106,35 @@ public class Enemy : MonoBehaviour
                     break;
             }
         }
+
+        if (targetPreference == TargetPreference.OtherTowers)
+        {
+            InvokeRepeating("UpdateTarget", 0f, 0.5f);
+        }
+    }
+
+    void UpdateTarget()
+    {
+        RaycastHit[] towerInRange = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Tower"));
+        if (towerInRange.Length > 0)
+        {
+            if (towerInRange[0].collider.GetComponent<Tower>())
+            {
+                if (towerInRange[0].collider.GetComponent<Tower>().health > 0)
+                {
+                    if (!towerInRange[0].collider.GetComponent<Tower>().isHero)
+                    {
+                        nav.destination = towerInRange[0].transform.position;
+                        towerInRange[0].collider.GetComponent<Tower>().health -= (damage * 3);
+                        anim.SetTrigger("doHit");
+                    }
+                }
+            }
+        }
+        else
+        {
+            nav.destination = target.position;
+        }
     }
 
     void Update()
@@ -178,7 +210,7 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Main Tower Collider")
+        if (other.tag == "MainTower")
         {
             switch (type)
             {
@@ -203,7 +235,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.tag == "TowerPath")
         {
-            other.gameObject.GetComponentInParent<Tower>().health -= damage;
+            //other.gameObject.GetComponentInParent<Tower>().health -= damage;
         }
         if (other.tag == "Damage")
         {

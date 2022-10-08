@@ -41,7 +41,7 @@ public class EnemySpawnManager : MonoBehaviour
         enemies2Count = enemies2.Count;
         enemies3Count = enemies3.Count;
 
-        InvokeRepeating("SpawnEnemy", 1, 5);
+        InvokeRepeating("SpawnEnemy", 1, gameFlow.spawnRate);
     }
 
     void SpawnEnemy()

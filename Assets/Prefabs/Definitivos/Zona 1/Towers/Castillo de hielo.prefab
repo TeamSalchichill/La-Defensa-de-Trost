@@ -93,9 +93,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4440550914162788575}
   - component: {fileID: 3227266338541792725}
+  - component: {fileID: -5126445362107006203}
   m_Layer: 9
   m_Name: Castillo de hielo
-  m_TagString: Untagged
+  m_TagString: MainTower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,6 +136,21 @@ MonoBehaviour:
   restRounds: 0
   blizzard: {fileID: 3522392810799222791, guid: 37fcd8999a7cced47b32782c958235fc, type: 3}
   blizzadTime: 5
+--- !u!114 &-5126445362107006203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3957486680709386853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3fbfe8f8037ed54285c9166d87b7002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  offsetPos: {x: 0, y: 0, z: 0}
+  offsetRot: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
 --- !u!1 &4558818910069832264
 GameObject:
   m_ObjectHideFlags: 0

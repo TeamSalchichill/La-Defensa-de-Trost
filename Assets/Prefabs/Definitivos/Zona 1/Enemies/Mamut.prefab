@@ -991,8 +991,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0, y: 2, z: 0}
+  m_Size: {x: 2, y: 6.1104717, z: 2}
+  m_Center: {x: 0, y: 4.055236, z: 0}
 --- !u!95 &8315093864869241559
 Animator:
   serializedVersion: 4
@@ -1027,6 +1027,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   zone: 0
+  targetPreference: 1
   anim: {fileID: 8315093864869241559}
   target: {fileID: 7508660107958944948, guid: b773a4ca56193e54883f01e48738731c, type: 3}
   nav: {fileID: 0}
@@ -1034,7 +1035,7 @@ MonoBehaviour:
   damage: 2
   gold: 25
   speed: 0
-  range: 0
+  range: 3
   normalSpeed: 2
   health: 100
   armor: 0

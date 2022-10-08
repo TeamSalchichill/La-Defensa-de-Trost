@@ -75,8 +75,6 @@ public class Generator : MonoBehaviour
     public int probabilityNewWays = 50;
     [Range(0, 100)]
     public int probabilityDeleteWay = 50;
-    //[Range(0, 100)]
-    //public int probabilityGenerateSpwan = 50;
     [Range(0, 100)]
     public int probabilitySpecialTiles = 50;
     [Range(0, 100)]
@@ -563,19 +561,6 @@ public class Generator : MonoBehaviour
         {
             deleteWay = false;
         }
-
-        /*
-        bool newSpawn;
-        int newSpawnAux = Random.Range(0, 101);
-        if (newSpawnAux < probabilityGenerateSpwan)
-        {
-            newSpawn = true;
-        }
-        else
-        {
-            newSpawn = false;
-        }
-        */
 
         int conectWaysAux = Random.Range(0, 101);
 

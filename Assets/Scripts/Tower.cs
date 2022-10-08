@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tower : MonoBehaviour
 {
@@ -26,6 +27,9 @@ public class Tower : MonoBehaviour
     GameFlow gameFlow;
     HUD_Manager hudManager;
 
+    public string towerName;
+    public Image icon;
+
     [Header("Components")]
     public Animator anim;
     public GameObject particles;
@@ -40,8 +44,14 @@ public class Tower : MonoBehaviour
     public bool isHero;
     public bool specialTile;
     [Space]
+    public int level = 1;
+    public float levelMultiplier = 1.2f;
+    public int levelUpPrice = 100;
+    public int acumulateGold = 0;
     public int health;
+    public int healthMax;
     public int armor;
+    public int armorMax;
     [Space]
     public float range;
     public float fireRate = 1f;
@@ -76,6 +86,10 @@ public class Tower : MonoBehaviour
         mainTower = MainTower.instance;
         gameFlow = GameFlow.instance;
         hudManager = HUD_Manager.instance;
+
+        healthMax = health;
+        armorMax = armor;
+        acumulateGold = price;
 
         if (specialTile)
         {
@@ -157,6 +171,12 @@ public class Tower : MonoBehaviour
 
     void Update()
     {
+        if (gameFlow.nextRound)
+        {
+            health = healthMax;
+            armor = armorMax;
+        }
+
         if (health <= 0 && !isDie)
         {
             isDie = true;
@@ -296,9 +316,13 @@ public class Tower : MonoBehaviour
 
         if (aux >= 0 && aux < groundsInRange.Count - 1)
         {
-            GameObject InstIceWall = Instantiate(iceWall, groundsInRange[aux].transform.position + new Vector3(0, 1, 0), transform.rotation);
-            //Destroy(InstIceWall, 10);
+            Instantiate(iceWall, groundsInRange[aux].transform.position + new Vector3(0, 1, 0), transform.rotation);
         }
+    }
+
+    private void OnMouseDown()
+    {
+        hudManager.ShowTowerInfo(gameObject.GetComponent<Tower>());
     }
 
     private void OnDrawGizmosSelected()
