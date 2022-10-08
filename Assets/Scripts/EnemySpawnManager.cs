@@ -21,7 +21,7 @@ public class EnemySpawnManager : MonoBehaviour
         gameManager = GameManager.instance;
         gameFlow = GameFlow.instance;
 
-        foreach (GameObject enemy in enemies)
+        foreach (GameObject enemy in gameFlow.enemies)
         {
             switch (enemy.GetComponent<Enemy>().type)
             {

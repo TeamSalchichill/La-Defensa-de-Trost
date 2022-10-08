@@ -14,8 +14,12 @@ public class Enemy : MonoBehaviour
     GameFlow gameFlow;
     MainTower mainTower;
 
+    [Header("Components")]
+    public Animator anim;
     public Transform target;
     public NavMeshAgent nav;
+    [Space]
+    public GameObject skull;
     
     [Header("States")]
     public int damage;
@@ -53,6 +57,8 @@ public class Enemy : MonoBehaviour
     public float transformationResistence = 0;
 
     [Header("Boss")]
+    public bool isBoss;
+
     public GameObject bullet;
     public GameObject bulletPos;
 
@@ -118,6 +124,9 @@ public class Enemy : MonoBehaviour
                     break;
             }
 
+            GameObject instSkull = Instantiate(skull, transform.position + new Vector3(0, 1, 0), transform.rotation);
+            instSkull.transform.rotation = Quaternion.AngleAxis(90, Vector3.right);
+
             Destroy(gameObject);
         }
 
@@ -132,6 +141,8 @@ public class Enemy : MonoBehaviour
         RaycastHit[] rayHitsPlayers = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Tower"));
         if (rayHitsPlayers.Length > 0)
         {
+            anim.SetTrigger("doHit");
+
             GameObject bulletGO = Instantiate(bullet, bulletPos.transform.position, transform.rotation);
             Bullet newBullet = bulletGO.GetComponent<Bullet>();
 
@@ -147,6 +158,8 @@ public class Enemy : MonoBehaviour
 
     IEnumerator SpawnGoblins()
     {
+        anim.SetTrigger("doHit");
+
         for (int i = 0; i < 4; i++)
         {
             Instantiate(goblins, transform.position + (transform.forward * 2), transform.rotation);
@@ -157,6 +170,8 @@ public class Enemy : MonoBehaviour
 
     void Zone1Attack3()
     {
+        anim.SetTrigger("doHit");
+
         Instantiate(mamut, transform.position + (transform.forward * 3), transform.rotation);
         gameFlow.enemiesLeft2++;
     }
@@ -196,6 +211,18 @@ public class Enemy : MonoBehaviour
             iceEffect += ((other.gameObject.GetComponentInParent<Tower>().iceDamage * 0.1f) * iceResistence);
 
             other.gameObject.GetComponentInParent<Tower>().health -= damage;
+
+            if (anim != null && !isBoss)
+            {
+                anim.SetBool("isHit", true);
+            }
+        }
+        else
+        {
+            if (anim != null && !isBoss)
+            {
+                anim.SetBool("isHit", false);
+            }
         }
 
         if (other.tag == "SpecialGround")

@@ -656,7 +656,8 @@ public class Generator : MonoBehaviour
                     {
                         if (!newWay)
                         {
-                            Instantiate(enemySpawn, new Vector3(2, 0.75f, newIdZ * 2) + localOffset1, Quaternion.identity);
+                            GameObject instSpawn = Instantiate(enemySpawn, new Vector3(2, 0.75f, newIdZ * 2) + localOffset1, Quaternion.identity);
+                            instSpawn.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
                         }
                         else
                         {
@@ -742,7 +743,8 @@ public class Generator : MonoBehaviour
                     {
                         if (!newWay)
                         {
-                            Instantiate(enemySpawn, new Vector3(newIdX * 2, 1.5f, (sizeZ * 2) - 4) + localOffset2, Quaternion.identity);
+                            GameObject instSpawn = Instantiate(enemySpawn, new Vector3(newIdX * 2, 1.5f, (sizeZ * 2) - 4) + localOffset2, Quaternion.identity);
+                            instSpawn.transform.rotation = Quaternion.AngleAxis(270, Vector3.up);
                         }
                         else
                         {
@@ -828,7 +830,8 @@ public class Generator : MonoBehaviour
                     {
                         if (!newWay)
                         {
-                            Instantiate(enemySpawn, new Vector3((sizeX * 2) - 4, 1.5f, newIdZ * 2) + localOffset3, Quaternion.identity);
+                            GameObject instSpawn = Instantiate(enemySpawn, new Vector3((sizeX * 2) - 4, 1.5f, newIdZ * 2) + localOffset3, Quaternion.identity);
+                            instSpawn.transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
                         }
                         else
                         {
@@ -914,7 +917,8 @@ public class Generator : MonoBehaviour
                     {
                         if (!newWay)
                         {
-                            Instantiate(enemySpawn, new Vector3(newIdX * 2, 0.75f, 2) + localOffset4, Quaternion.identity);
+                            GameObject instSpawn = Instantiate(enemySpawn, new Vector3(newIdX * 2, 0.75f, 2) + localOffset4, Quaternion.identity);
+                            instSpawn.transform.rotation = Quaternion.AngleAxis(90, Vector3.up);
                         }
                         else
                         {

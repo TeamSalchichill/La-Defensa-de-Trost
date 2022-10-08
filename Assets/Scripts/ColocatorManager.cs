@@ -50,54 +50,82 @@ public class ColocatorManager : MonoBehaviour
             RaycastHit rayHit;
             if (Physics.Raycast(ray, out rayHit, 1000))
             {
-                if (rayHit.collider.gameObject.layer == 7 && towers[towerID].GetComponent<Tower>().canColocate == Tower.CanColocate.Ground)
+                Tower towerScript;
+                if (towers[towerID].GetComponent<Tower>())
+                {
+                    towerScript = towers[towerID].GetComponent<Tower>();
+                }
+                else
+                {
+                    towerScript = towers[towerID].GetComponentInChildren<Tower>();
+                }
+
+                if (rayHit.collider.gameObject.layer == 7 && towerScript.canColocate == Tower.CanColocate.Ground)
                 {
                     if (towerID == 0)
                     {
                         heroBuild = true;
                     }
-                    if (gameFlow.coins >= towers[towerID].GetComponent<Tower>().price)
+                    if (gameFlow.coins >= towerScript.price)
                     {
-                        gameFlow.coins -= towers[towerID].GetComponent<Tower>().price;
+                        gameFlow.coins -= towerScript.price;
 
                         rayHit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
                         rayHit.collider.gameObject.layer = 0;
 
                         GameObject instTower = Instantiate(towers[towerID], rayHit.collider.gameObject.transform.position + new Vector3(0, 0.25f, 0), Quaternion.identity);
-
-                        if (rayHit.collider.gameObject.tag == "SpecialGrass")
+                        Tower instTowerScript;
+                        if (towers[towerID].GetComponent<Tower>())
                         {
-                            instTower.GetComponent<Tower>().specialTile = true;
+                            instTowerScript = instTower.GetComponent<Tower>();
                         }
                         else
                         {
-                            instTower.GetComponent<Tower>().specialTile = false;
+                            instTowerScript = instTower.GetComponentInChildren<Tower>();
+                        }
+
+                        if (rayHit.collider.gameObject.tag == "SpecialGrass")
+                        {
+                            instTowerScript.specialTile = true;
+                        }
+                        else
+                        {
+                            instTowerScript.specialTile = false;
                         }
                         //Instantiate(towers[towerID], rayHit.collider.gameObject.transform.position + new Vector3(0, 1.25f, 0), Quaternion.identity);
                     }
                 }
-                else if (rayHit.collider.gameObject.layer == 8 && towers[towerID].GetComponent<Tower>().canColocate == Tower.CanColocate.Path)
+                else if (rayHit.collider.gameObject.layer == 8 && towerScript.canColocate == Tower.CanColocate.Path)
                 {
                     if (towerID == 0)
                     {
                         heroBuild = true;
                     }
-                    if (gameFlow.coins >= towers[towerID].GetComponent<Tower>().price)
+                    if (gameFlow.coins >= towerScript.price)
                     {
-                        gameFlow.coins -= towers[towerID].GetComponent<Tower>().price;
+                        gameFlow.coins -= towerScript.price;
 
                         rayHit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
                         rayHit.collider.gameObject.layer = 0;
 
                         GameObject instTower = Instantiate(towers[towerID], rayHit.collider.gameObject.transform.position + new Vector3(0, 0.25f, 0), Quaternion.identity);
-
-                        if (rayHit.collider.gameObject.tag == "SpecialGround")
+                        Tower instTowerScript;
+                        if (towers[towerID].GetComponent<Tower>())
                         {
-                            instTower.GetComponent<Tower>().specialTile = true;
+                            instTowerScript = instTower.GetComponent<Tower>();
                         }
                         else
                         {
-                            instTower.GetComponent<Tower>().specialTile = false;
+                            instTowerScript = instTower.GetComponentInChildren<Tower>();
+                        }
+
+                        if (rayHit.collider.gameObject.tag == "SpecialGround")
+                        {
+                            instTowerScript.specialTile = true;
+                        }
+                        else
+                        {
+                            instTowerScript.specialTile = false;
                         }
                     }
                 }
