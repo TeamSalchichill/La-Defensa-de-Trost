@@ -69,7 +69,10 @@ public class Bullet : MonoBehaviour
         }
         if (type == Type.Enemy)
         {
-            target.gameObject.GetComponentInParent<Tower>().health -= (healthDamage * 5);
+            if (target.gameObject.GetComponentInParent<Tower>())
+            {
+                target.gameObject.GetComponentInParent<Tower>().health -= (healthDamage * 5);
+            }
         }
         
         Destroy(gameObject);

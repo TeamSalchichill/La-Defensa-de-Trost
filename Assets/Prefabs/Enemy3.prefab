@@ -156,8 +156,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   zone: 1
+  anim: {fileID: 0}
   target: {fileID: 7508660107958944948, guid: b773a4ca56193e54883f01e48738731c, type: 3}
   nav: {fileID: 0}
+  skull: {fileID: 1284120687039949133, guid: 1ac12f2712a02d741a31b9414da25769, type: 3}
   damage: 2
   gold: 25
   speed: 0
@@ -179,10 +181,11 @@ MonoBehaviour:
   ascentResistence: 0
   bloodResistence: 0
   transformationResistence: 0
+  isBoss: 0
   bullet: {fileID: 3202835052026178675, guid: 5402f63699c55504388044e784642f61, type: 3}
   bulletPos: {fileID: 3397495877646959478}
-  goblins: {fileID: 5041448849748265805, guid: 542eda0c982c2b149b6fb0d79637ac45, type: 3}
-  mamut: {fileID: 3079014553779213453, guid: d8ccd62f37eb2d345bf4425b3862c004, type: 3}
+  goblins: {fileID: 1435910884985777772, guid: 8a311c856b984eb4c9799aa90dd9894f, type: 3}
+  mamut: {fileID: 1435910884985777772, guid: 8a4b189e6509be94ab6a4f2689a463d4, type: 3}
 --- !u!65 &-5929485348241997126
 BoxCollider:
   m_ObjectHideFlags: 0

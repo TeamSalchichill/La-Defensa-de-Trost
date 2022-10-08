@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    public enum TargetType { SingleTarget, MultiTarget }
+    public enum TargetType { SingleTarget, MultiTarget, Resources }
     public TargetType targetType;
 
     public enum AttackType { Melee, Range }
@@ -23,6 +23,8 @@ public class Tower : MonoBehaviour
     public Zone zone;
 
     MainTower mainTower;
+    GameFlow gameFlow;
+    HUD_Manager hudManager;
 
     [Header("Components")]
     public Animator anim;
@@ -72,6 +74,8 @@ public class Tower : MonoBehaviour
     void Start()
     {
         mainTower = MainTower.instance;
+        gameFlow = GameFlow.instance;
+        hudManager = HUD_Manager.instance;
 
         if (specialTile)
         {
@@ -168,6 +172,18 @@ public class Tower : MonoBehaviour
             }
         }
 
+        if (targetType == TargetType.Resources)
+        {
+            if (fireCountdown <= 0f)
+            {
+                hudManager.AddCoins(healthDamage);
+
+                fireCountdown = 1f / fireRate;
+            }
+        }
+
+        fireCountdown -= Time.deltaTime;
+
         if (target == null)
         {
             if (particles != null)
@@ -230,8 +246,6 @@ public class Tower : MonoBehaviour
                 }
                 break;
         }
-
-        fireCountdown -= Time.deltaTime;
     }
 
     void Shoot()

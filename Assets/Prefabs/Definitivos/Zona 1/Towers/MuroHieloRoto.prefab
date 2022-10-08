@@ -103,6 +103,7 @@ Transform:
   - {fileID: 2573142860108546506}
   - {fileID: 7529193607521854386}
   - {fileID: 124919078293831467}
+  - {fileID: 6612087324589178208}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -140,9 +141,9 @@ MonoBehaviour:
   anim: {fileID: -5736283115773286770}
   particles: {fileID: 0}
   target: {fileID: 0}
-  bullet: {fileID: 3202835052026178675, guid: b660218120a54964fbbf9722e3c36da0, type: 3}
-  bulletPos: {fileID: 6205220585038365051, guid: bd59b3c83bc3563408a78f854f598ecc, type: 3}
-  partToRotate: {fileID: 3216572610668276608}
+  bullet: {fileID: 0}
+  bulletPos: {fileID: 0}
+  partToRotate: {fileID: 6612087324589178208}
   isHero: 0
   specialTile: 0
   health: 100
@@ -194,6 +195,37 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &3065289393856435096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6612087324589178208}
+  m_Layer: 9
+  m_Name: Turn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6612087324589178208
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3065289393856435096}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3216572610668276608}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3334813947732433175
 GameObject:
   m_ObjectHideFlags: 0

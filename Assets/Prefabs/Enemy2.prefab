@@ -156,8 +156,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   zone: 0
+  anim: {fileID: 0}
   target: {fileID: 7508660107958944948, guid: b773a4ca56193e54883f01e48738731c, type: 3}
   nav: {fileID: 0}
+  skull: {fileID: 1284120687039949133, guid: 1ac12f2712a02d741a31b9414da25769, type: 3}
   damage: 2
   gold: 25
   speed: 0
@@ -179,6 +181,7 @@ MonoBehaviour:
   ascentResistence: 0
   bloodResistence: 0
   transformationResistence: 0
+  isBoss: 0
   bullet: {fileID: 0}
   bulletPos: {fileID: 0}
   goblins: {fileID: 0}
