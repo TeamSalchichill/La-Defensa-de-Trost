@@ -8119,6 +8119,8 @@ GameObject:
   - component: {fileID: 1696939827}
   - component: {fileID: 1696939826}
   - component: {fileID: 1696939828}
+  - component: {fileID: 1696939830}
+  - component: {fileID: 1696939829}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -8244,11 +8246,12 @@ MonoBehaviour:
   nextRound: 0
   spawnRate: 3
   enemies:
+  - {fileID: 9136175907230412336, guid: 68587fde80b0cf346b7904f83d2c964b, type: 3}
+  - {fileID: 868145747749275439, guid: 908b5c6fc4e402542904b6731c093a93, type: 3}
   - {fileID: 3346520024173854372, guid: 4dcceae5751576446999cb8c8ee3cf2f, type: 3}
   - {fileID: 9197559908281786240, guid: b28faee677ff7694c844f16263d41d22, type: 3}
   - {fileID: 3195256352182299345, guid: 3dbf9a3204bd17b4d8eb7a357d440f26, type: 3}
-  - {fileID: 9136175907230412336, guid: 68587fde80b0cf346b7904f83d2c964b, type: 3}
-  - {fileID: 868145747749275439, guid: 908b5c6fc4e402542904b6731c093a93, type: 3}
+  - {fileID: 8186453176764820796, guid: c3dbe309af1e9fc429c94b278cbda263, type: 3}
   enemiesPerRound1: 
   enemiesPerRound2: 
   enemiesPerRound3: 
@@ -8268,6 +8271,115 @@ MonoBehaviour:
   enemyCardsLevel3: []
   blockCard: {fileID: 0}
   cardsRate: 5
+--- !u!82 &1696939829
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696939823}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1696939830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696939823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d07926de98efdda40b06fa7dac7ebc4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audios: []
 --- !u!1 &1702087870
 GameObject:
   m_ObjectHideFlags: 0

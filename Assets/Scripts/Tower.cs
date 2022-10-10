@@ -23,12 +23,17 @@ public class Tower : MonoBehaviour
     public enum Zone { None, Hielo, Desierto, Atlantis, Vikingos, Fantasia, Infierno }
     public Zone zone;
 
+    public enum SpecialStat { None, Health, Range, ShootSpeed, TurnSpeed, HealthDamage, IceEffect, IgniteEffect, WaterEffect, AscensionEffect, BloodEffect, CrazyEffect}
+    public SpecialStat specialStat;
+
     MainTower mainTower;
     GameFlow gameFlow;
     HUD_Manager hudManager;
 
     public string towerName;
     public Image icon;
+    public Light level5Light;
+    public GameObject rangeArea;
 
     [Header("Components")]
     public Animator anim;
@@ -46,6 +51,7 @@ public class Tower : MonoBehaviour
     [Space]
     public int level = 1;
     public float levelMultiplier = 1.2f;
+    public float levelMultiplierSpecialStat = 1.3f;
     public int levelUpPrice = 100;
     public int acumulateGold = 0;
     public int health;
@@ -83,6 +89,10 @@ public class Tower : MonoBehaviour
 
     void Start()
     {
+        rangeArea.transform.localScale = new Vector3(rangeArea.transform.localScale.x * range, rangeArea.transform.localScale.y, rangeArea.transform.localScale.z * range);
+        rangeArea.SetActive(false);
+        level5Light = GetComponentInChildren<Light>();
+
         mainTower = MainTower.instance;
         gameFlow = GameFlow.instance;
         hudManager = HUD_Manager.instance;

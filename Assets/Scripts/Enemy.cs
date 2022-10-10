@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
     public int range;
     public int normalSpeed;
     public float health = 100;
+    public float healthMax = 0;
     public int armor = 0;
     [Space]
     public float iceEffect = 0;
@@ -68,8 +69,19 @@ public class Enemy : MonoBehaviour
     public GameObject goblins;
     public GameObject mamut;
 
+    [Header("Health Bar")]
+    public GameObject HealthBar;
+    float initialScaleX;
+
+    public Material healthBarGreen;
+    public Material healthBarYellow;
+    public Material healthBarRed;
+
     void Start()
     {
+        healthMax = health;
+        initialScaleX = HealthBar.transform.localScale.x;
+
         gameFlow = GameFlow.instance;
         mainTower = MainTower.instance;
 
@@ -139,6 +151,25 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        float newScaleX = initialScaleX * (health / healthMax);
+        float newPosX = (initialScaleX - newScaleX) / 2;
+        HealthBar.transform.localScale = new Vector3(newScaleX, HealthBar.transform.localScale.y, HealthBar.transform.localScale.z);
+        HealthBar.transform.localPosition = new Vector3(newPosX, HealthBar.transform.localPosition.y, HealthBar.transform.localPosition.z);
+
+        float healthNormalized = (health / healthMax) * 100;
+        if (healthNormalized > 50)
+        {
+            HealthBar.GetComponent<MeshRenderer>().material = healthBarGreen;
+        }
+        else if (healthNormalized > 20)
+        {
+            HealthBar.GetComponent<MeshRenderer>().material = healthBarYellow;
+        }
+        else
+        {
+            HealthBar.GetComponent<MeshRenderer>().material = healthBarRed;
+        }
+
         if (health < 0)
         {
             gameFlow.coins += gold;
@@ -226,7 +257,7 @@ public class Enemy : MonoBehaviour
                     break;
             }
 
-            mainTower.health--;
+            MainTower.instance.health--;
             Destroy(gameObject);
         }
     }

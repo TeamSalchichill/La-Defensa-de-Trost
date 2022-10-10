@@ -74,6 +74,8 @@ public class HUD_Manager : MonoBehaviour
         {
             isShowInfo = false;
 
+            activeTower.rangeArea.SetActive(false);
+
             fichaTecnica.SetActive(false);
         }
 
@@ -83,13 +85,11 @@ public class HUD_Manager : MonoBehaviour
             " ----- STATS -----\n" +
             "Nivel: " + activeTower.level + "\n" +
             "Vida: " + activeTower.health + "\n" +
-            "Armadura: " + activeTower.armor + "\n" +
             "Rango: " + activeTower.range + "\n" +
             "Velocidad de disparo: " + activeTower.fireRate + "\n" +
             "Velocidad de giro: " + activeTower.turnSpeed + "\n" +
             " ----- DAÑOS -----\n" +
             "Vida: " + activeTower.healthDamage + "\n" +
-            "Armadura: " + activeTower.armorDamage + "\n" +
             "Hielo: " + activeTower.iceDamage + "%" + "\n" +
             "Fuego: " + activeTower.igniteDamage + "%" + "\n" +
             "Agua: " + activeTower.waterDamage + "%" + "\n" +
@@ -97,6 +97,15 @@ public class HUD_Manager : MonoBehaviour
             "Sangrado: " + activeTower.bloodDamage + "%" + "\n" +
             "Locura: " + activeTower.transformationDamage + "%" + "\n"
             ;
+
+            if (activeTower.level == 5)
+            {
+                levelUpButton.gameObject.SetActive(false);
+            }
+            else
+            {
+                levelUpButton.gameObject.SetActive(true);
+            }
 
             levelUpButton.text = "Mejorar" + "\n" + "(" + activeTower.levelUpPrice + ")";
             sellButton.text = "Vender" + "\n" + "(" + (int)(activeTower.acumulateGold * 0.7f) + ")";
@@ -156,7 +165,14 @@ public class HUD_Manager : MonoBehaviour
 
     public void ShowTowerInfo(Tower tower)
     {
+        if (activeTower != null)
+        {
+            activeTower.rangeArea.SetActive(false);
+        }
+
         activeTower = tower;
+
+        tower.rangeArea.SetActive(true);
 
         towerName.text = tower.towerName;
         //icon = tower.icon;
@@ -164,13 +180,11 @@ public class HUD_Manager : MonoBehaviour
             " ----- STATS -----\n" +
             "Nivel: " + tower.level + "\n" +
             "Vida: " + tower.health + "\n" + 
-            "Armadura: " + tower.armor + "\n" +
             "Rango: " + tower.range + "\n" +
             "Velocidad de disparo: " + tower.fireRate + "\n" +
             "Velocidad de giro: " + tower.turnSpeed + "\n" +
             " ----- DAÑOS -----\n" +
             "Vida: " + tower.healthDamage + "\n" +
-            "Armadura: " + tower.armorDamage + "\n" +
             "Hielo: " + tower.iceDamage + "%" + "\n" +
             "Fuego: " + tower.igniteDamage + "%" + "\n" +
             "Agua: " + tower.waterDamage + "%" + "\n" +
@@ -178,6 +192,15 @@ public class HUD_Manager : MonoBehaviour
             "Sangrado: " + tower.bloodDamage + "%" + "\n" +
             "Locura: " + tower.transformationDamage + "%" + "\n"
             ;
+
+        if (tower.level == 5)
+        {
+            levelUpButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            levelUpButton.gameObject.SetActive(true);
+        }
 
         levelUpButton.text = "Mejorar" + "\n" + "(" + tower.levelUpPrice + ")";
         sellButton.text = "Vender" + "\n" + "(" + (int)(tower.acumulateGold * 0.7f) + ")";
@@ -218,9 +241,49 @@ public class HUD_Manager : MonoBehaviour
             activeTower.bloodDamage = (int)(activeTower.bloodDamage * activeTower.levelMultiplier);
             activeTower.transformationDamage = (int)(activeTower.transformationDamage * activeTower.levelMultiplier);
 
+            switch (activeTower.specialStat)
+            {
+                case Tower.SpecialStat.None:
+
+                    break;
+                case Tower.SpecialStat.Health:
+                    activeTower.healthMax = (int)(activeTower.healthMax * activeTower.levelMultiplierSpecialStat);
+                    break;
+                case Tower.SpecialStat.Range:
+                    activeTower.range = (int)(activeTower.range * activeTower.levelMultiplierSpecialStat);
+                    break;
+                case Tower.SpecialStat.ShootSpeed:
+                    activeTower.fireRate = (int)(activeTower.fireRate * activeTower.levelMultiplierSpecialStat);
+                    break;
+                case Tower.SpecialStat.TurnSpeed:
+                    activeTower.turnSpeed = (int)(activeTower.turnSpeed * activeTower.levelMultiplierSpecialStat);
+                    break;
+                case Tower.SpecialStat.HealthDamage:
+                    activeTower.healthDamage = (int)(activeTower.healthDamage * activeTower.levelMultiplierSpecialStat);
+                    break;
+                case Tower.SpecialStat.IceEffect:
+                    activeTower.iceDamage = (int)(activeTower.iceDamage * activeTower.levelMultiplierSpecialStat);
+                    break;
+                case Tower.SpecialStat.IgniteEffect:
+                    activeTower.igniteDamage = (int)(activeTower.igniteDamage * activeTower.levelMultiplierSpecialStat);
+                    break;
+                case Tower.SpecialStat.WaterEffect:
+                    activeTower.waterDamage = (int)(activeTower.waterDamage * activeTower.levelMultiplierSpecialStat);
+                    break;
+                case Tower.SpecialStat.AscensionEffect:
+                    activeTower.ascentDamage = (int)(activeTower.ascentDamage * activeTower.levelMultiplierSpecialStat);
+                    break;
+                case Tower.SpecialStat.BloodEffect:
+                    activeTower.bloodDamage = (int)(activeTower.bloodDamage * activeTower.levelMultiplierSpecialStat);
+                    break;
+                case Tower.SpecialStat.CrazyEffect:
+                    activeTower.transformationDamage = (int)(activeTower.transformationDamage * activeTower.levelMultiplierSpecialStat);
+                    break;
+            }
+
             if (activeTower.level == 5)
             {
-                // Poner luz
+                activeTower.level5Light.enabled = true;
             }
         }
     }
