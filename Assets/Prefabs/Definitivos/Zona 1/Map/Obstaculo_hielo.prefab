@@ -42,6 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2673069838190111963}
   - component: {fileID: 8302466476799395840}
+  - component: {fileID: 2056250362266061993}
   m_Layer: 0
   m_Name: Obstaculo_hielo
   m_TagString: Untagged
@@ -78,6 +79,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.996748, y: 2.3559923, z: 4.0598726}
   m_Center: {x: 0, y: 1.146136, z: 0}
+--- !u!114 &2056250362266061993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3338141999861708385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3fbfe8f8037ed54285c9166d87b7002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  offsetPos: {x: 0, y: -2, z: 0}
+  offsetRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &3665683188434282419
 GameObject:
   m_ObjectHideFlags: 0

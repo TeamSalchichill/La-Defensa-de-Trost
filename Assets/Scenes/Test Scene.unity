@@ -2987,7 +2987,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Torre 1
+  m_text: "Mu\xF1eco de nieve"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3391,7 +3391,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Torre 5
+  m_text: Barricada
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4329,7 +4329,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Coins: 0'
+  m_text: 'Monedas: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4734,7 +4734,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Lock Camera (L)
+  m_text: Bloquear Camera (L)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4761,8 +4761,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39
-  m_fontSizeBase: 39
+  m_fontSize: 31
+  m_fontSizeBase: 31
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5269,7 +5269,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Torre 2
+  m_text: Guardian de hielo
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5404,7 +5404,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Reset (R)
+  m_text: Reiniciar (R)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5826,7 +5826,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Torre 3
+  m_text: Spray de hielo
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6510,11 +6510,11 @@ RectTransform:
   m_Children:
   - {fileID: 957070347}
   m_Father: {fileID: 1557379528}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -200, y: -90}
+  m_AnchoredPosition: {x: -200, y: 0}
   m_SizeDelta: {x: 300, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1339878719
@@ -7130,7 +7130,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1469104700
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7145,11 +7145,11 @@ RectTransform:
   m_Children:
   - {fileID: 1626978581}
   m_Father: {fileID: 1557379528}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -200, y: 0}
+  m_AnchoredPosition: {x: -200, y: -90}
   m_SizeDelta: {x: 300, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1469104701
@@ -7446,8 +7446,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1469104700}
   - {fileID: 1339878718}
+  - {fileID: 1469104700}
   - {fileID: 5693722}
   m_Father: {fileID: 494322154}
   m_RootOrder: 0
@@ -7724,7 +7724,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Torre 4
+  m_text: Torre de arqueras
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8200,17 +8200,17 @@ MonoBehaviour:
   sizeX: 7
   sizeY: 3
   sizeZ: 7
-  grassBlock: {fileID: 914055229213118624, guid: 69781493d44dd884db436393193c3e8a, type: 3}
-  specialGrassBlock: {fileID: 914055229213118624, guid: ebcb174bae7b28e4db0aca296de3fa11, type: 3}
-  groundBlock: {fileID: 1723674981817254988, guid: 8433cfd2df3534e42ac7ca6f6d8e495a, type: 3}
-  specialGroundBlock: {fileID: 1723674981817254988, guid: 26aa84225f9c9ea4b8d38b6ebe9f07fe, type: 3}
-  mainTower: {fileID: 1723674981817254988, guid: 774b562aba8dd06489f4495dd8c8e79e, type: 3}
+  grassBlock: {fileID: 8998596808318238853, guid: f6f06c58271383b469dadb3427f3f468, type: 3}
+  specialGrassBlock: {fileID: 4515647184745499033, guid: 7bf0cd95234467b48aa97b43b11da637, type: 3}
+  groundBlock: {fileID: 3987538594311521514, guid: c57c703f4f9f56e418770ff0f5b8ebe5, type: 3}
+  specialGroundBlock: {fileID: 5359473346394995442, guid: 54a9da05c75cda74abfa4adff209958e, type: 3}
+  mainTower: {fileID: 3957486680709386853, guid: b79ea236e426256408e3ef297128ec71, type: 3}
   tower: {fileID: 1723674981817254988, guid: 77af314f23e583640b3069455f8af6fc, type: 3}
   nextMap: {fileID: 1723674981817254988, guid: 6f2ec046c387f1544811f4777c80d56c, type: 3}
   enemySpawn: {fileID: 7456607890400235275, guid: 911e91e6028c3b446b2b41ff5f406b25, type: 3}
   transparentEnemySpawn: {fileID: 1723674981817254988, guid: d642f908b56ca7e49b1d082fccc59b55, type: 3}
   treasure: {fileID: 1723674981817254988, guid: 9d06a379e26aa4e4f8126219b3e16b34, type: 3}
-  obstacleBlock: {fileID: 1158013108740032123, guid: 19149d0cfb3644a419aa72d7445bf268, type: 3}
+  obstacleBlock: {fileID: 3338141999861708385, guid: e41f31a9592714948a6fa39dcdcda4da, type: 3}
   auxBlock: {fileID: 1723674981817254988, guid: a08bf5c2f9be9e847ac481e99e410a9f, type: 3}
   navRemover: {fileID: 3721603037256706313, guid: b05413d1e8fe814489eb847a94e04b4b, type: 3}
   blockNavRemover: {fileID: 914055229213118624, guid: 2375cdf40dfdefc47877c04112258e1d, type: 3}
@@ -8251,7 +8251,6 @@ MonoBehaviour:
   - {fileID: 3346520024173854372, guid: 4dcceae5751576446999cb8c8ee3cf2f, type: 3}
   - {fileID: 9197559908281786240, guid: b28faee677ff7694c844f16263d41d22, type: 3}
   - {fileID: 3195256352182299345, guid: 3dbf9a3204bd17b4d8eb7a357d440f26, type: 3}
-  - {fileID: 8186453176764820796, guid: c3dbe309af1e9fc429c94b278cbda263, type: 3}
   enemiesPerRound1: 
   enemiesPerRound2: 
   enemiesPerRound3: 
@@ -8475,7 +8474,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Torre 6
+  m_text: "Ca\xF1\xF3n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9477,7 +9476,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Round: 0'
+  m_text: 'Ronda: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
