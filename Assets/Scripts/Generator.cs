@@ -646,7 +646,8 @@ public class Generator : MonoBehaviour
                         }
                         else
                         {
-                            Instantiate(treasure, new Vector3(2, 0.75f, newIdZ * 2) + localOffset1, Quaternion.identity);
+                            GameObject instTreasure = Instantiate(treasure, new Vector3(2, 0.75f, newIdZ * 2) + localOffset1, Quaternion.identity);
+                            instTreasure.transform.rotation = Quaternion.AngleAxis(90, Vector3.up);
                         }
 
                         Instantiate(grassBlock, new Vector3(0, 0.75f, newIdZ * 2) + localOffset1, Quaternion.identity);
@@ -733,7 +734,8 @@ public class Generator : MonoBehaviour
                         }
                         else
                         {
-                            Instantiate(treasure, new Vector3(newIdX * 2, 1.5f, (sizeZ * 2) - 4) + localOffset2, Quaternion.identity);
+                            GameObject instTreasure = Instantiate(treasure, new Vector3(newIdX * 2, 1.5f, (sizeZ * 2) - 4) + localOffset2, Quaternion.identity);
+                            instTreasure.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
                         }
 
                         Instantiate(grassBlock, new Vector3(newIdX * 2, 0.75f, (sizeZ * 2) - 2) + localOffset2, Quaternion.identity);
@@ -820,7 +822,8 @@ public class Generator : MonoBehaviour
                         }
                         else
                         {
-                            Instantiate(treasure, new Vector3((sizeX * 2) - 4, 1.5f, newIdZ * 2) + localOffset3, Quaternion.identity);
+                            GameObject instTreasure = Instantiate(treasure, new Vector3((sizeX * 2) - 4, 1.5f, newIdZ * 2) + localOffset3, Quaternion.identity);
+                            instTreasure.transform.rotation = Quaternion.AngleAxis(270, Vector3.up);
                         }
 
                         Instantiate(grassBlock, new Vector3((sizeX * 2) - 2, 0.75f, newIdZ * 2) + localOffset3, Quaternion.identity);
@@ -907,7 +910,8 @@ public class Generator : MonoBehaviour
                         }
                         else
                         {
-                            Instantiate(treasure, new Vector3(newIdX * 2, 0.75f, 2) + localOffset4, Quaternion.identity);
+                            GameObject instTreasure = Instantiate(treasure, new Vector3(newIdX * 2, 0.75f, 2) + localOffset4, Quaternion.identity);
+                            instTreasure.transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
                         }
 
                         Instantiate(grassBlock, new Vector3(newIdX * 2, 0.75f, 0) + localOffset4, Quaternion.identity);
