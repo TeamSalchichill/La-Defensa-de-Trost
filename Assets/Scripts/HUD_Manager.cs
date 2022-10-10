@@ -241,6 +241,8 @@ public class HUD_Manager : MonoBehaviour
             activeTower.bloodDamage = (int)(activeTower.bloodDamage * activeTower.levelMultiplier);
             activeTower.transformationDamage = (int)(activeTower.transformationDamage * activeTower.levelMultiplier);
 
+            activeTower.rangeArea.transform.localScale = new Vector3(activeTower.range * activeTower.rangeAreaOriginalScale, activeTower.rangeAreaOriginalScale, activeTower.range * activeTower.rangeAreaOriginalScale);
+
             switch (activeTower.specialStat)
             {
                 case Tower.SpecialStat.None:

@@ -7,9 +7,15 @@ public class Recolocate : MonoBehaviour
     public Vector3 offsetPos;
     public Quaternion offsetRot;
 
+    public bool isSpawn;
+
     void Start()
     {
+        if (!isSpawn)
+        {
+            transform.rotation = offsetRot;
+        }
         transform.position += offsetPos;
-        transform.rotation = offsetRot;
+        
     }
 }

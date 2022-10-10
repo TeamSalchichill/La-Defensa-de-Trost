@@ -34,6 +34,7 @@ public class Tower : MonoBehaviour
     public Image icon;
     public Light level5Light;
     public GameObject rangeArea;
+    public float rangeAreaOriginalScale;
 
     [Header("Components")]
     public Animator anim;
@@ -89,6 +90,7 @@ public class Tower : MonoBehaviour
 
     void Start()
     {
+        rangeAreaOriginalScale = rangeArea.transform.localScale.x;
         rangeArea.transform.localScale = new Vector3(rangeArea.transform.localScale.x * range, rangeArea.transform.localScale.y, rangeArea.transform.localScale.z * range);
         rangeArea.SetActive(false);
         level5Light = GetComponentInChildren<Light>();
