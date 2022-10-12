@@ -48,6 +48,7 @@ public class ColocatorManager : MonoBehaviour
             Destroy(instTowerPlace);
 
             instTowerPlace = Instantiate(towers[towerID], new Vector3(1000, 1000, 1000), Quaternion.identity);
+            instTowerPlace.GetComponent<Tower>().rangeArea.transform.localScale = new Vector3(instTowerPlace.GetComponent<Tower>().rangeArea.transform.localScale.x * instTowerPlace.GetComponent<Tower>().range, instTowerPlace.GetComponent<Tower>().rangeArea.transform.localScale.y, instTowerPlace.GetComponent<Tower>().rangeArea.transform.localScale.z * instTowerPlace.GetComponent<Tower>().range);
             if (instTowerPlace.GetComponent<Tower>())
             {
                 instTowerPlace.GetComponent<Tower>().enabled = false;
@@ -137,7 +138,7 @@ public class ColocatorManager : MonoBehaviour
                         rayHit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
                         rayHit.collider.gameObject.layer = 0;
 
-                        GameObject instTower = Instantiate(towers[towerID], rayHit.collider.gameObject.transform.position + new Vector3(0, 0.25f, 0), Quaternion.identity);
+                        GameObject instTower = Instantiate(towers[towerID], rayHit.collider.gameObject.transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
                         Tower instTowerScript;
                         if (towers[towerID].GetComponent<Tower>())
                         {
@@ -151,10 +152,19 @@ public class ColocatorManager : MonoBehaviour
                         if (rayHit.collider.gameObject.tag == "SpecialGrass")
                         {
                             instTowerScript.specialTile = true;
+                            instTowerScript.burnTile = false;
+                        }
+                        else if (rayHit.collider.gameObject.tag == "Burn")
+                        {
+                            instTower.transform.position += new Vector3(0, -0.25f, 0);
+
+                            instTowerScript.burnTile = true;
+                            instTowerScript.specialTile = false;
                         }
                         else
                         {
                             instTowerScript.specialTile = false;
+                            instTowerScript.burnTile = false;
                         }
                         //Instantiate(towers[towerID], rayHit.collider.gameObject.transform.position + new Vector3(0, 1.25f, 0), Quaternion.identity);
                     }
@@ -172,7 +182,7 @@ public class ColocatorManager : MonoBehaviour
                         rayHit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
                         rayHit.collider.gameObject.layer = 0;
 
-                        GameObject instTower = Instantiate(towers[towerID], rayHit.collider.gameObject.transform.position + new Vector3(0, 0.25f, 0), Quaternion.identity);
+                        GameObject instTower = Instantiate(towers[towerID], rayHit.collider.gameObject.transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
                         Tower instTowerScript;
                         if (towers[towerID].GetComponent<Tower>())
                         {

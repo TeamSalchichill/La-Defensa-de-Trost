@@ -23,13 +23,14 @@ public class Enemy : MonoBehaviour
     public NavMeshAgent nav;
     [Space]
     public GameObject skull;
+    public ParticleSystem deadParticle;
     
     [Header("States")]
     public int damage;
     public int gold;
     public float speed;
     public int range;
-    public int normalSpeed;
+    public float normalSpeed;
     public float health = 100;
     public float healthMax = 0;
     public int armor = 0;
@@ -40,6 +41,8 @@ public class Enemy : MonoBehaviour
     public float ascentEffect = 0;
     public float bloodEffect = 0;
     public float transformationEffect = 0;
+
+    public bool infectationMode = false;
 
     [Header("States multiplier")]
     [Range(0, 1)]
@@ -127,25 +130,28 @@ public class Enemy : MonoBehaviour
 
     void UpdateTarget()
     {
-        RaycastHit[] towerInRange = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Tower"));
-        if (towerInRange.Length > 0)
+        if (!infectationMode)
         {
-            if (towerInRange[0].collider.GetComponent<Tower>())
+            RaycastHit[] towerInRange = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Tower"));
+            if (towerInRange.Length > 0)
             {
-                if (towerInRange[0].collider.GetComponent<Tower>().health > 0)
+                if (towerInRange[0].collider.GetComponent<Tower>())
                 {
-                    if (!towerInRange[0].collider.GetComponent<Tower>().isHero)
+                    if (towerInRange[0].collider.GetComponent<Tower>().health > 0)
                     {
-                        nav.destination = towerInRange[0].transform.position;
-                        towerInRange[0].collider.GetComponent<Tower>().health -= (damage * 3);
-                        anim.SetTrigger("doHit");
+                        if (!towerInRange[0].collider.GetComponent<Tower>().isHero)
+                        {
+                            nav.destination = towerInRange[0].transform.position;
+                            towerInRange[0].collider.GetComponent<Tower>().health -= (damage * 3);
+                            anim.SetTrigger("doHit");
+                        }
                     }
                 }
             }
-        }
-        else
-        {
-            nav.destination = target.position;
+            else
+            {
+                nav.destination = target.position;
+            }
         }
     }
 
@@ -190,6 +196,8 @@ public class Enemy : MonoBehaviour
             GameObject instSkull = Instantiate(skull, transform.position + new Vector3(0, 1, 0), transform.rotation);
             instSkull.transform.rotation = Quaternion.AngleAxis(90, Vector3.right);
 
+            Instantiate(deadParticle, transform.position, transform.rotation);
+
             Destroy(gameObject);
         }
 
@@ -197,6 +205,63 @@ public class Enemy : MonoBehaviour
         iceEffect = Mathf.Max(iceEffect, 0);
         speed = (normalSpeed * ((100 - iceEffect) / 100));
         nav.speed = speed;
+
+        igniteEffect -= (Time.deltaTime * 5);
+        igniteEffect = Mathf.Max(igniteEffect, 0);
+        health -= (igniteEffect * 0.01f);
+        if (igniteEffect >= 100)
+        {
+            health -= igniteEffect;
+            igniteEffect = 0;
+        }
+
+        if (infectationMode)
+        {
+            RaycastHit[] enemiesInRange = Physics.SphereCastAll(transform.position, 50, transform.forward, 1.0f, LayerMask.GetMask("Enemy"));
+            if (enemiesInRange.Length > 0)
+            {
+                int enemyID = -1;
+
+                for (int i = 0; i < enemiesInRange.Length; i++)
+                {
+                    if (enemiesInRange[i].collider.gameObject != gameObject)
+                    {
+                        enemyID = i;
+                        break;
+                    }
+                }
+
+                if (enemyID != -1)
+                {
+                    if (nav.isActiveAndEnabled)
+                    {
+                        nav.destination = enemiesInRange[0].transform.position;
+                    }
+
+                    if (Vector3.Distance(transform.position, enemiesInRange[0].transform.position) < range)
+                    {
+                        enemiesInRange[0].collider.GetComponent<Enemy>().health -= (damage * 3);
+                        anim.SetTrigger("doHit");
+                    }
+                }
+                else
+                {
+                    nav.destination = target.position;
+                }
+            }
+            else
+            {
+                nav.destination = target.position;
+            }
+        }
+        else if (targetPreference == TargetPreference.MainTower)
+        {
+            if (isActiveAndEnabled)
+            {
+                nav.destination = target.position;
+            }
+            //nav.destination = target.position;
+        }
     }
 
     void Zone1Attack1()
@@ -272,6 +337,7 @@ public class Enemy : MonoBehaviour
         {
             health -= (other.gameObject.GetComponentInParent<Tower>().healthDamage * 0.1f);
             iceEffect += ((other.gameObject.GetComponentInParent<Tower>().iceDamage * 0.1f) * iceResistence);
+            iceEffect = Mathf.Min(iceEffect, 50);
 
             other.gameObject.GetComponentInParent<Tower>().health -= damage;
 
@@ -301,10 +367,22 @@ public class Enemy : MonoBehaviour
         {
             health -= 1;
             iceEffect += (1 * iceResistence);
+            iceEffect = Mathf.Min(iceEffect, 50);
         }
         if (other.tag == "InstaIce")
         {
             iceEffect = 105;
         }
+        if (other.tag == "Infectation")
+        {
+            infectationMode = true;
+
+            Invoke("NoInfectationMode", mainTower.infectationDuration);
+        }
+    }
+
+    void NoInfectationMode()
+    {
+        infectationMode = false;
     }
 }

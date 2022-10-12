@@ -18,6 +18,7 @@ public class CameraController : MonoBehaviour
     public float zoomMax = 80f;
 
     Vector3 touchStart;
+    bool cameraIsMove = false;
 
     void Awake()
     {
@@ -63,6 +64,8 @@ public class CameraController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             touchStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            cameraIsMove = true;
         }
 
         if (Input.touchCount == 2 && doMovement && !colocatorManager.canBuild && !hudManager.isShowInfo)
@@ -80,10 +83,15 @@ public class CameraController : MonoBehaviour
 
             Zoom(difference * 0.01f, size);
         }
-        else if (Input.GetMouseButton(0) && doMovement && !colocatorManager.canBuild && !hudManager.isShowInfo)
+        else if (Input.GetMouseButton(0) && doMovement && !colocatorManager.canBuild && !hudManager.isShowInfo && cameraIsMove)
         {
             Vector3 direction = touchStart - Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Camera.main.transform.position += direction;
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            cameraIsMove = false;
         }
 
         Zoom(scroll, size);

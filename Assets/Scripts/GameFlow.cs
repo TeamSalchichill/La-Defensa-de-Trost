@@ -11,12 +11,24 @@ public class GameFlow : MonoBehaviour
     GameManager gameManager;
 
     public int round = 0;
-    public int coins = 100;
+    public int coins = 250;
+    public int specialCoins = 50;
+    public int newSpecialCoinsPerRound = 5;
 
     public int totalRounds;
 
     public bool roundFinished = true;
     public bool nextRound = false;
+
+    [Header("Zona Desierto")]
+    public ParticleSystem sandStorm;
+    [Range(0, 100)]
+    public int sandStormProbavility;
+    public int sandStormDuration;
+    public Vector3 lastNodePosition;
+    bool isActiveSandStorm = true;
+    int startSandStormRound = -1;
+    ParticleSystem instSandStorm;
 
     [Header("Enemy waves")]
     public float spawnRate;
@@ -86,6 +98,8 @@ public class GameFlow : MonoBehaviour
         {
             roundFinished = true;
 
+            specialCoins += newSpecialCoinsPerRound;
+
             gameManager.doSpawnEnemies = false;
 
             foreach (var newNode in generator.newMapNodes)
@@ -100,6 +114,25 @@ public class GameFlow : MonoBehaviour
 
     public void StartRound()
     {
+        if (round == (startSandStormRound + sandStormDuration))
+        {
+            Destroy(instSandStorm);
+            isActiveSandStorm = false;
+        }
+
+        if (!isActiveSandStorm)
+        {
+            int spawnSandStorm = Random.Range(0, 100);
+
+            if (spawnSandStorm < sandStormProbavility)
+            {
+                startSandStormRound = round;
+                isActiveSandStorm = true;
+                instSandStorm = Instantiate(sandStorm, lastNodePosition, Quaternion.identity);
+                instSandStorm.transform.rotation = Quaternion.AngleAxis(90, Vector3.right);
+            }
+        }
+
         roundFinished = false;
         nextRound = true;
         Invoke("StopNextRound", 0.2f);

@@ -110,10 +110,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dddfb3e699abb64393b5c84cb50ebf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zone: 1
-  health: 10
+  zone: 2
+  health: 25
   activateTower: 0
   roundsToReset: 3
   restRounds: 0
   blizzard: {fileID: 3522392810799222791, guid: 37fcd8999a7cced47b32782c958235fc, type: 3}
   blizzadTime: 5
+  infection: {fileID: 3522392810799222791, guid: 1b09d6e959bc3074fa7a4eb6143aa5dc, type: 3}
+  infectationDuration: 4

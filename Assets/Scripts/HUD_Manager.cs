@@ -24,6 +24,7 @@ public class HUD_Manager : MonoBehaviour
 
     [Header("Temporal messages")]
     public TextMeshProUGUI coinsText;
+    public TextMeshProUGUI specialCoinsText;
     public TextMeshProUGUI roundText;
 
     [Header("Tower Info")]
@@ -67,7 +68,8 @@ public class HUD_Manager : MonoBehaviour
         porcentajes[4].text = ((int)(sliders[4].value * 100)).ToString() + "%";
         porcentajes[5].text = ((int)(sliders[5].value * 100)).ToString() + "%";
 
-        coinsText.text = "Monedas: " + gameFlow.coins.ToString();
+        coinsText.text = "Monedas: " + gameFlow.coins.ToString() + "€";
+        specialCoinsText.text = "Monedas: " + gameFlow.specialCoins.ToString() + "$";
         roundText.text = "Ronda: " + gameFlow.round.ToString();
 
         if (isShowInfo && (Input.GetButtonDown("Fire2") || Input.GetButton("Fire2")))
@@ -107,7 +109,7 @@ public class HUD_Manager : MonoBehaviour
                 levelUpButton.gameObject.SetActive(true);
             }
 
-            levelUpButton.text = "Mejorar" + "\n" + "(" + activeTower.levelUpPrice + ")";
+            levelUpButton.text = "Mejorar" + "\n" + "(" + activeTower.levelUpPrice + activeTower.priceLogo + ")";
             sellButton.text = "Vender" + "\n" + "(" + (int)(activeTower.acumulateGold * 0.7f) + ")";
         }
     }
@@ -216,13 +218,30 @@ public class HUD_Manager : MonoBehaviour
 
     public void LevelUp()
     {
-        if (activeTower.level < 5 && gameFlow.coins >= activeTower.levelUpPrice)
+        if ((activeTower.level < 4 && gameFlow.coins >= activeTower.levelUpPrice) || (activeTower.level == 4 && gameFlow.specialCoins >= activeTower.levelUpPrice))
         {
-            gameFlow.coins -= activeTower.levelUpPrice;
-
+            if (activeTower.level < 4)
+            {
+                gameFlow.coins -= activeTower.levelUpPrice;
+            }
+            else
+            {
+                gameFlow.specialCoins -= activeTower.levelUpPrice;
+            }
+            
             activeTower.level++;
             activeTower.acumulateGold += activeTower.levelUpPrice;
-            activeTower.levelUpPrice = (int)(activeTower.levelUpPrice * activeTower.levelMultiplier);
+
+            if (activeTower.level < 4)
+            {
+                activeTower.levelUpPrice = (int)(activeTower.levelUpPrice * activeTower.levelMultiplier);
+            }
+            else
+            {
+                activeTower.levelUpPrice = activeTower.level5Price;
+                activeTower.priceLogo = "$";
+            }
+            
 
             activeTower.healthMax = (int)(activeTower.healthMax * activeTower.levelMultiplier);
             activeTower.health = (int)(activeTower.health * activeTower.levelMultiplier);

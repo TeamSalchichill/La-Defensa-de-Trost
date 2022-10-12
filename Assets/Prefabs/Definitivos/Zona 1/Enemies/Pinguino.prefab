@@ -589,12 +589,13 @@ MonoBehaviour:
   target: {fileID: 7508660107958944948, guid: b773a4ca56193e54883f01e48738731c, type: 3}
   nav: {fileID: 0}
   skull: {fileID: 1284120687039949133, guid: 1ac12f2712a02d741a31b9414da25769, type: 3}
+  deadParticle: {fileID: 5107351696323173831, guid: cbb13d85c1d0b8e47a172c4a048ff446, type: 3}
   damage: 2
   gold: 25
   speed: 0
   range: 0
   normalSpeed: 2
-  health: 100
+  health: 300
   healthMax: 0
   armor: 0
   iceEffect: 0
@@ -605,7 +606,7 @@ MonoBehaviour:
   transformationEffect: 0
   healthResistence: 0
   armorResistence: 0
-  iceResistence: 0
+  iceResistence: 0.8
   igniteResistence: 0
   waterResistence: 0
   ascentResistence: 0

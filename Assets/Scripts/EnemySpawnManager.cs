@@ -16,6 +16,8 @@ public class EnemySpawnManager : MonoBehaviour
     int enemies2Count;
     int enemies3Count;
 
+    public ParticleSystem spawnParticles;
+
     void Start()
     {
         gameManager = GameManager.instance;
@@ -56,6 +58,7 @@ public class EnemySpawnManager : MonoBehaviour
             {
                 gameFlow.enemiesToSpawn3--;
                 Instantiate(enemies3[chooseEnemy3], transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+                Instantiate(spawnParticles, transform.position, transform.rotation);
             }
             else if(gameFlow.enemiesToSpawn1 > 0 || gameFlow.enemiesToSpawn2 > 0)
             {
@@ -89,6 +92,9 @@ public class EnemySpawnManager : MonoBehaviour
                         }
                         break;
                 }
+
+                ParticleSystem instParticle = Instantiate(spawnParticles, transform.position, transform.rotation);
+                instParticle.transform.rotation = Quaternion.AngleAxis(270, Vector3.right);
             }
         }
     }

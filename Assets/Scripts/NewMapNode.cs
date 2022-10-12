@@ -50,6 +50,8 @@ public class NewMapNode : MonoBehaviour
 
     private void OnMouseDown()
     {
+        gameFlow.lastNodePosition = transform.position;
+
         MainTower.instance.restRounds--;
         if (Hero.instance != null)
         {

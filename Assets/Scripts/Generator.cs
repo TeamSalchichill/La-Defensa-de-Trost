@@ -19,6 +19,7 @@ public class Generator : MonoBehaviour
     public static Generator instance;
 
     GameFlow gameFlow;
+    MainTower mainTowerScript;
 
     public bool activateRounds;
 
@@ -43,6 +44,7 @@ public class Generator : MonoBehaviour
     public GameObject treasure;
     [Space]
     public GameObject obstacleBlock;
+    public GameObject fireTile;
 
     [Header("Prefabs Aux")]
     public GameObject auxBlock;
@@ -83,6 +85,8 @@ public class Generator : MonoBehaviour
     public int probabilityConectWays = 50;
     [Range(0, 100)]
     public int probabilityMixEnemies = 50;
+    [Range(0, 100)]
+    public int probabilityFireTile = 50;
 
     void Awake()
     {
@@ -401,7 +405,15 @@ public class Generator : MonoBehaviour
                     }
                     else
                     {
-                        grassAux1 = Instantiate(grassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1) + newOffsetStart, Quaternion.identity);
+                        int burnTile = Random.Range(0, 101);
+                        if (burnTile < probabilityFireTile)
+                        {
+                            grassAux1 = Instantiate(fireTile, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1) + newOffsetStart, Quaternion.identity);
+                        }
+                        else
+                        {
+                            grassAux1 = Instantiate(grassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1) + newOffsetStart, Quaternion.identity);
+                        }
                     }
 
                     map[i, j] = 1;

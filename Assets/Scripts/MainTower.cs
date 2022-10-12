@@ -17,10 +17,16 @@ public class MainTower : MonoBehaviour
     public int roundsToReset;
     public int restRounds;
 
+    [Header("General")]
+    float timeToWait = 0;
+
     [Header("Zona de hielo")]
     public GameObject blizzard;
     public float blizzadTime;
-    float timeToWait = 0;
+
+    [Header("Zona de desierto")]
+    public GameObject infection;
+    public float infectationDuration;
 
     void Awake()
     {
@@ -44,11 +50,11 @@ public class MainTower : MonoBehaviour
             activateTower = false;
         }
 
+        timeToWait += Time.deltaTime;
+
         switch (zone)
         {
             case Zone.Hielo:
-                timeToWait += Time.deltaTime;
-
                 if (Input.GetButtonDown("Fire1") && timeToWait > 0.2f && activateTower)
                 {
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -65,7 +71,20 @@ public class MainTower : MonoBehaviour
                 }
                 break;
             case Zone.Desierto:
+                if (Input.GetButtonDown("Fire1") && timeToWait > 0.2f && activateTower)
+                {
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    RaycastHit rayHit;
+                    if (Physics.Raycast(ray, out rayHit, 1000))
+                    {
+                        GameObject instInfestation = Instantiate(infection, rayHit.point, Quaternion.identity);
+                        Destroy(instInfestation, 1);
+                        activateTower = false;
+                        restRounds = roundsToReset;
+                    }
 
+                    timeToWait = 0;
+                }
                 break;
             case Zone.Atlantis:
 

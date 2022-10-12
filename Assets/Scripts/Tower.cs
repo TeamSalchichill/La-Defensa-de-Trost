@@ -49,11 +49,14 @@ public class Tower : MonoBehaviour
     [Header("General Stats")]
     public bool isHero;
     public bool specialTile;
+    public bool burnTile;
     [Space]
     public int level = 1;
     public float levelMultiplier = 1.2f;
     public float levelMultiplierSpecialStat = 1.3f;
     public int levelUpPrice = 100;
+    public int level5Price = 100;
+    public string priceLogo = "€";
     public int acumulateGold = 0;
     public int health;
     public int healthMax;
@@ -84,12 +87,31 @@ public class Tower : MonoBehaviour
     public int bloodDamage = 0;
     [Range(0, 100)]
     public int transformationDamage = 0;
+    [Space]
+    [Range(0, 100)]
+    public bool isBurn = false;
+    public float burnEffect = 0;
+    public float burnEffectPerShoot = 2;
+    public float timeInOverHeat = 10;
+    public ParticleSystem smokeOverHeat;
+    ParticleSystem instSmoke;
 
     [Header("Hero")]
     public GameObject iceWall;
 
+    public ParticleSystem spawnParticles;
+
     void Start()
     {
+        ParticleSystem instParticle = Instantiate(spawnParticles, transform.position, transform.rotation);
+        instParticle.transform.rotation = Quaternion.AngleAxis(270, Vector3.right);
+        //instParticle.transform.rotation = new Quaternion(-90, 0, 0, 0);
+
+        if (burnTile)
+        {
+            fireRate *= 1.2f;
+        }
+
         rangeAreaOriginalScale = rangeArea.transform.localScale.x;
         rangeArea.transform.localScale = new Vector3(rangeArea.transform.localScale.x * range, rangeArea.transform.localScale.y, rangeArea.transform.localScale.z * range);
         rangeArea.SetActive(false);
@@ -111,7 +133,7 @@ public class Tower : MonoBehaviour
                     iceDamage *= 3;
                     break;
                 case MainTower.Zone.Desierto:
-
+                    igniteDamage *= 3;
                     break;
                 case MainTower.Zone.Atlantis:
 
@@ -204,10 +226,15 @@ public class Tower : MonoBehaviour
             }
         }
 
-        if (targetType == TargetType.Resources)
+        if (targetType == TargetType.Resources && !gameFlow.roundFinished)
         {
-            if (fireCountdown <= 0f)
+            if (fireCountdown <= 0f && !isBurn)
             {
+                if (burnTile)
+                {
+                    burnEffect += burnEffectPerShoot;
+                }
+
                 hudManager.AddCoins(healthDamage);
 
                 fireCountdown = 1f / fireRate;
@@ -242,42 +269,83 @@ public class Tower : MonoBehaviour
         Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
 
-        switch (attackType)
+        if (burnEffect >= 100)
         {
-            case AttackType.Melee:
-                if (fireCountdown <= 0f)
-                {
-                    if (anim != null)
-                    {
-                        anim.SetTrigger("doShoot");
-                    }
+            instSmoke = Instantiate(smokeOverHeat, transform.position, transform.rotation);
 
-                    fireCountdown = 1f / fireRate;
-                }
-                break;
-            case AttackType.Range:
-                if (fireCountdown <= 0f)
-                {
-                    switch (bulletType)
-                    {
-                        case BulletType.Prefab:
-                            if (anim != null)
-                            {
-                                anim.SetTrigger("doShoot");
-                            }
+            isBurn = true;
 
-                            Shoot();
-                            fireCountdown = 1f / fireRate;
-                            break;
-                        case BulletType.Particles:
-                            particles.SetActive(true);
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                break;
+            burnEffect = 0;
+
+            if (particles != null)
+            {
+                particles.SetActive(false);
+            }
+
+            Invoke("NoBurn", timeInOverHeat);
         }
+
+        if (!isBurn)
+        {
+            switch (attackType)
+            {
+                case AttackType.Melee:
+                    if (fireCountdown <= 0f)
+                    {
+                        if (burnTile)
+                        {
+                            burnEffect += burnEffectPerShoot;
+                        }
+
+                        if (anim != null)
+                        {
+                            anim.SetTrigger("doShoot");
+                        }
+
+                        fireCountdown = 1f / fireRate;
+                    }
+                    break;
+                case AttackType.Range:
+                    if (fireCountdown <= 0f)
+                    {
+                        switch (bulletType)
+                        {
+                            case BulletType.Prefab:
+                                if (burnTile)
+                                {
+                                    burnEffect += burnEffectPerShoot;
+                                }
+
+                                if (anim != null)
+                                {
+                                    anim.SetTrigger("doShoot");
+                                }
+
+                                Shoot();
+                                fireCountdown = 1f / fireRate;
+                                break;
+                            case BulletType.Particles:
+                                if (burnTile)
+                                {
+                                    burnEffect += Time.deltaTime;
+                                }
+                                
+                                particles.SetActive(true);
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    break;
+            }
+        }
+    }
+
+    void NoBurn()
+    {
+        Destroy(instSmoke);
+
+        isBurn = false;
     }
 
     void Shoot()
@@ -334,7 +402,14 @@ public class Tower : MonoBehaviour
 
     private void OnMouseDown()
     {
-        hudManager.ShowTowerInfo(gameObject.GetComponent<Tower>());
+        if (gameObject.GetComponent<Tower>())
+        {
+            hudManager.ShowTowerInfo(gameObject.GetComponent<Tower>());
+        }
+        else
+        {
+            hudManager.ShowTowerInfo(gameObject.GetComponentInChildren<Tower>());
+        }
     }
 
     private void OnDrawGizmosSelected()
