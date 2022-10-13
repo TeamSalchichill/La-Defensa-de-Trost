@@ -36,6 +36,14 @@ public class Hero : MonoBehaviour
                         transform.position = rayHit.collider.gameObject.transform.position + new Vector3(0, 0.25f, 0);
                         realocate = false;
                         nextRound = false;
+
+                        if (GetComponent<Recolocate>())
+                        {
+                            if (GetComponent<Recolocate>().oritateToPath)
+                            {
+                                GetComponent<Recolocate>().Orientate();
+                            }
+                        }
                     }
                 }
             }

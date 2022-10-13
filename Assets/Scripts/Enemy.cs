@@ -72,6 +72,13 @@ public class Enemy : MonoBehaviour
     public GameObject goblins;
     public GameObject mamut;
 
+    public float attackRate = 5;
+    public float invokeGloblinsRate = 10;
+    public float invokeMamutRate = 20;
+    [Space]
+    public float healthRate = 10;
+    public float areaAtacckRate = 10;
+
     [Header("Health Bar")]
     public GameObject HealthBar;
     float initialScaleX;
@@ -100,12 +107,13 @@ public class Enemy : MonoBehaviour
             switch (zone)
             {
                 case Zone.Hielo:
-                    InvokeRepeating("Zone1Attack1", 1, 5);
-                    InvokeRepeating("Zone1Attack2", 3.5f, 5);
-                    InvokeRepeating("Zone1Attack3", 3.5f, 20);
+                    InvokeRepeating("Zone1Attack1", 1, attackRate);
+                    InvokeRepeating("Zone1Attack2", 3.5f, invokeGloblinsRate);
+                    InvokeRepeating("Zone1Attack3", 3.5f, invokeMamutRate);
                     break;
                 case Zone.Desierto:
-
+                    InvokeRepeating("Zone2Attack1", 1, healthRate);
+                    InvokeRepeating("Zone2Attack2", 6, areaAtacckRate);
                     break;
                 case Zone.Atlantis:
 
@@ -203,6 +211,7 @@ public class Enemy : MonoBehaviour
 
         iceEffect -= (Time.deltaTime * 5);
         iceEffect = Mathf.Max(iceEffect, 0);
+        iceEffect = Mathf.Min(iceEffect, 50);
         speed = (normalSpeed * ((100 - iceEffect) / 100));
         nav.speed = speed;
 
@@ -302,6 +311,42 @@ public class Enemy : MonoBehaviour
 
         Instantiate(mamut, transform.position + (transform.forward * 3), transform.rotation);
         gameFlow.enemiesLeft2++;
+    }
+
+    void Zone2Attack1()
+    {
+        anim.SetTrigger("doInvoke");
+        speed = 0;
+
+        health += 200;
+        health = Mathf.Min(health, healthMax);
+
+        Invoke("canMove", 1.15f);
+    }
+
+    void Zone2Attack2()
+    {
+        anim.SetTrigger("doHit");
+        speed = 0;
+
+        RaycastHit[] towerInrange = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Tower"));
+        if (towerInrange.Length > 0)
+        {
+            foreach (var tower in towerInrange)
+            {
+                if (tower.collider.gameObject.GetComponent<Tower>())
+                {
+                    tower.collider.gameObject.GetComponent<Tower>().health -= damage;
+                }
+            }
+        }
+
+        Invoke("canMove", 1.15f);
+    }
+
+    void canMove()
+    {
+        speed = normalSpeed;
     }
 
     void OnTriggerEnter(Collider other)

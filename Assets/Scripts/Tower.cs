@@ -100,9 +100,27 @@ public class Tower : MonoBehaviour
     public GameObject iceWall;
 
     public ParticleSystem spawnParticles;
+    [Space]
+    public int curation = 50;
+    public GameObject[] RaParticles;
+    public int numRays;
+    public GameObject partToRotateGO;
+    public List<GameObject> allEnemiesInRange;
+    
 
     void Start()
     {
+        if (isHero && zone == Zone.Desierto)
+        {
+            RaParticles = new GameObject[numRays];
+
+            for (int i = 0; i < numRays; i++)
+            {
+                RaParticles[i] = Instantiate(partToRotateGO, partToRotate.transform.position, partToRotate.transform.rotation);
+                RaParticles[i].transform.SetParent(transform);
+            }
+        }
+
         ParticleSystem instParticle = Instantiate(spawnParticles, transform.position, transform.rotation);
         instParticle.transform.rotation = Quaternion.AngleAxis(270, Vector3.right);
         //instParticle.transform.rotation = new Quaternion(-90, 0, 0, 0);
@@ -158,7 +176,7 @@ public class Tower : MonoBehaviour
                     InvokeRepeating("InvokeIceWall", 1, 20);
                     break;
                 case Zone.Desierto:
-
+                    InvokeRepeating("HealthTowers", 1, 15);
                     break;
                 case Zone.Atlantis:
 
@@ -180,6 +198,8 @@ public class Tower : MonoBehaviour
 
     void UpdateTarget()
     {
+        allEnemiesInRange = new List<GameObject>();
+
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
@@ -190,6 +210,8 @@ public class Tower : MonoBehaviour
             {
                 shortestDistance = distanceToEnemy;
                 nearestEnemy = enemy;
+
+                allEnemiesInRange.Add(enemy);
             }
         }
 
@@ -220,10 +242,7 @@ public class Tower : MonoBehaviour
                 anim.SetTrigger("doDie");
             }
 
-            if (!isHero)
-            {
-                Destroy(gameObject, 2);
-            }
+            Destroy(gameObject, 2);
         }
 
         if (targetType == TargetType.Resources && !gameFlow.roundFinished)
@@ -247,7 +266,20 @@ public class Tower : MonoBehaviour
         {
             if (particles != null)
             {
+                if (isHero && zone == Zone.Desierto)
+                {
+                    foreach (var particle in RaParticles)
+                    {
+                        particle.SetActive(false);
+                    }
+                }
+
                 particles.SetActive(false);
+
+                if (isHero)
+                {
+                    anim.SetBool("isShoot", false);
+                }
             }
             if (isHero && zone == Zone.Hielo)
             {
@@ -267,7 +299,39 @@ public class Tower : MonoBehaviour
         Vector3 dir = target.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-        partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+        if (isHero && bulletType == BulletType.Particles)
+        {
+            partToRotate.rotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
+
+            foreach (var particle in RaParticles)
+            {
+                if (allEnemiesInRange.Count > 0)
+                {
+                    int enemyChoose = Random.Range(0, allEnemiesInRange.Count);
+
+                    if (allEnemiesInRange[enemyChoose] != null)
+                    {
+                        Vector3 localDir = allEnemiesInRange[enemyChoose].transform.position - transform.position;
+                        Quaternion localLookRotation = Quaternion.LookRotation(localDir);
+                        Vector3 localRotation = Quaternion.Lerp(particle.transform.rotation, localLookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+
+                        particle.transform.rotation = Quaternion.Euler(localRotation.x, localRotation.y, localRotation.z);
+                    }
+                    else
+                    {
+                        particle.transform.rotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
+                    }
+                }
+                else
+                {
+                    
+                }
+            }
+        }
+        else
+        {
+            partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+        }
 
         if (burnEffect >= 100)
         {
@@ -279,7 +343,20 @@ public class Tower : MonoBehaviour
 
             if (particles != null)
             {
+                if (isHero && zone == Zone.Desierto)
+                {
+                    foreach (var particle in RaParticles)
+                    {
+                        particle.SetActive(false);
+                    }
+                }
+
                 particles.SetActive(false);
+
+                if (isHero)
+                {
+                    anim.SetBool("isShoot", false);
+                }
             }
 
             Invoke("NoBurn", timeInOverHeat);
@@ -329,8 +406,21 @@ public class Tower : MonoBehaviour
                                 {
                                     burnEffect += Time.deltaTime;
                                 }
-                                
+
+                                if (isHero && zone == Zone.Desierto)
+                                {
+                                    foreach (var particle in RaParticles)
+                                    {
+                                        particle.SetActive(true);
+                                    }
+                                }
+
                                 particles.SetActive(true);
+
+                                if (isHero)
+                                {
+                                    anim.SetBool("isShoot", true);
+                                }
                                 break;
                             default:
                                 break;
@@ -397,6 +487,24 @@ public class Tower : MonoBehaviour
         if (aux >= 0 && aux < groundsInRange.Count - 1)
         {
             Instantiate(iceWall, groundsInRange[aux].transform.position + new Vector3(0, 1, 0), transform.rotation);
+        }
+    }
+
+    void HealthTowers()
+    {
+        anim.SetTrigger("doHit");
+
+        RaycastHit[] towerInrange = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Tower"));
+        if (towerInrange.Length > 0)
+        {
+            foreach (var tower in towerInrange)
+            {
+                if (tower.collider.gameObject.GetComponent<Tower>())
+                {
+                    tower.collider.gameObject.GetComponent<Tower>().health += curation;
+                    tower.collider.gameObject.GetComponent<Tower>().health = Mathf.Min(tower.collider.gameObject.GetComponent<Tower>().health, tower.collider.gameObject.GetComponent<Tower>().healthMax);
+                }
+            }
         }
     }
 

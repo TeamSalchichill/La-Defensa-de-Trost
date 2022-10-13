@@ -78,7 +78,7 @@ public class MainTower : MonoBehaviour
                     if (Physics.Raycast(ray, out rayHit, 1000))
                     {
                         GameObject instInfestation = Instantiate(infection, rayHit.point, Quaternion.identity);
-                        Destroy(instInfestation, 1);
+                        Destroy(instInfestation, 5);
                         activateTower = false;
                         restRounds = roundsToReset;
                     }
