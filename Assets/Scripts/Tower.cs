@@ -324,7 +324,7 @@ public class Tower : MonoBehaviour
                 }
                 else
                 {
-                    
+                    particle.transform.rotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
                 }
             }
         }
