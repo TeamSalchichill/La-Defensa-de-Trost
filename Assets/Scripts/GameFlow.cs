@@ -88,7 +88,7 @@ public class GameFlow : MonoBehaviour
         for (int i = 0; i < totalRounds; i++)
         {
             enemiesPerRound3[i] = (i / 2) + 1;
-            enemiesPerRound3[i] = 0;
+            //enemiesPerRound3[i] = 0;
         }
     }
 
