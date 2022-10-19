@@ -619,7 +619,7 @@ GameObject:
   - component: {fileID: 8989138212871072241}
   m_Layer: 9
   m_Name: Muneco de nieve
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -693,6 +693,8 @@ MonoBehaviour:
   bullet: {fileID: 983131356506886144, guid: 4f39d614e775b1542bc72d3396e33fb5, type: 3}
   bulletPos: {fileID: 1546471722073418272}
   partToRotate: {fileID: 5429601550631614790}
+  fullRotate: 0
+  offsetY: 0
   isHero: 0
   specialTile: 0
   burnTile: 0
@@ -727,6 +729,11 @@ MonoBehaviour:
   smokeOverHeat: {fileID: 8550112519114524154, guid: 0e92832738859c442a7291bfea6e6f75, type: 3}
   iceWall: {fileID: 0}
   spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
+  curation: 50
+  RaParticles: []
+  numRays: 0
+  partToRotateGO: {fileID: 0}
+  allEnemiesInRange: []
 --- !u!65 &8989138212871072241
 BoxCollider:
   m_ObjectHideFlags: 0

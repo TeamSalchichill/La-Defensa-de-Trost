@@ -856,7 +856,7 @@ Transform:
   m_GameObject: {fileID: 1275073933573158938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 20, y: 0, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: -1}
+  m_LocalScale: {x: -0.75, y: 0.75, z: -0.75}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 268944954815354816}
@@ -902,10 +902,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1
-  m_Height: 5
+  m_Radius: 1.5
+  m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0, y: 2.5, z: 0}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!114 &2121355047466359958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -926,11 +926,12 @@ MonoBehaviour:
   nav: {fileID: 0}
   skull: {fileID: 1284120687039949133, guid: 1ac12f2712a02d741a31b9414da25769, type: 3}
   deadParticle: {fileID: 5107351696323173831, guid: cbb13d85c1d0b8e47a172c4a048ff446, type: 3}
+  enemyName: 
   damage: 2
   gold: 25
   speed: 0
-  range: 3
-  normalSpeed: 2
+  range: 2
+  normalSpeed: 1
   health: 2000
   healthMax: 0
   armor: 0
@@ -972,7 +973,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1275073933573158938}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.1
   m_Speed: 2
   m_Acceleration: 4
   avoidancePriority: 50
@@ -981,7 +982,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 5
+  m_Height: 3
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4

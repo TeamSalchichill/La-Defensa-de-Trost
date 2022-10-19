@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
 
     GameFlow gameFlow;
     MainTower mainTower;
+    Generator generator;
 
     [Header("Components")]
     public Animator anim;
@@ -26,13 +27,14 @@ public class Enemy : MonoBehaviour
     public ParticleSystem deadParticle;
     
     [Header("States")]
-    public int damage;
-    public int gold;
+    public string enemyName;
+    public int damage;//
+    public int gold;//
     public float speed;
-    public int range;
-    public float normalSpeed;
+    public int range;//
+    public float normalSpeed;//
     public float health = 100;
-    public float healthMax = 0;
+    public float healthMax = 0;//
     public int armor = 0;
     [Space]
     public float iceEffect = 0;
@@ -94,6 +96,7 @@ public class Enemy : MonoBehaviour
 
         gameFlow = GameFlow.instance;
         mainTower = MainTower.instance;
+        generator = Generator.instance;
 
         nav = GetComponent<NavMeshAgent>();
         nav.destination = target.position;
@@ -401,8 +404,28 @@ public class Enemy : MonoBehaviour
 
         if (other.tag == "SpecialGround")
         {
-            float speedAux = speed;
-            nav.speed = speedAux * 0.5f;
+            switch (generator.zone)
+            {
+                case Generator.Zone.Hielo:
+                    float speedAux = speed;
+                    nav.speed = speedAux * 0.5f;
+                    break;
+                case Generator.Zone.Desierto:
+
+                    break;
+                case Generator.Zone.Atlantis:
+
+                    break;
+                case Generator.Zone.Valhalla:
+
+                    break;
+                case Generator.Zone.Fantasia:
+
+                    break;
+                case Generator.Zone.Infierno:
+
+                    break;
+            }
         }
     }
 
@@ -425,6 +448,15 @@ public class Enemy : MonoBehaviour
             Invoke("NoInfectationMode", mainTower.infectationDuration);
         }
     }
+    /*
+    void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Physics.IgnoreCollision(collision.collider.gameObject.GetComponent<Collider>(), GetComponent<Collider>(), true);
+        }
+    }
+    */
 
     void NoInfectationMode()
     {

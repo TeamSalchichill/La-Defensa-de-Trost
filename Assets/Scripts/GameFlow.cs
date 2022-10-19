@@ -47,17 +47,16 @@ public class GameFlow : MonoBehaviour
 
     [Header("Dados")]
     public bool activateDados;
-
-    public Vector2[] cardsPos;
-    public Button[] towerCardsLevel1;
-    public Button[] towerCardsLevel2;
-    public Button[] towerCardsLevel3;
-    public Button[] enemyCardsLevel1;
-    public Button[] enemyCardsLevel2;
-    public Button[] enemyCardsLevel3;
-    public Image blockCard;
+    
+    public Image[] cardsPos;
+    public Card[] cardsScripts;
 
     public int cardsRate;
+
+    public bool showCards = false;
+    public bool cardSelected = true;
+
+    public Image dadosBackGround;
 
     void Awake()
     {
@@ -69,26 +68,31 @@ public class GameFlow : MonoBehaviour
         generator = Generator.instance;
         gameManager = GameManager.instance;
 
-        enemiesPerRound1 = new int[totalRounds];
+        cardsScripts = new Card[cardsPos.Length];
+        for (int i = 0; i < cardsPos.Length; i++)
+        {
+            cardsScripts[i] = cardsPos[i].GetComponent<Card>();
+            cardsScripts[i].id = i;
+        }
 
+        enemiesPerRound1 = new int[totalRounds];
         for (int i = 0; i < totalRounds; i++)
         {
-            enemiesPerRound1[i] = (i * i) + 1;
+            enemiesPerRound1[i] = (i * i * 3) + 1;
         }
 
         enemiesPerRound2 = new int[totalRounds];
-
         for (int i = 0; i < totalRounds; i++)
         {
-            enemiesPerRound2[i] = i + 1;
+            enemiesPerRound2[i] = (i * 3) + 1;
+            //enemiesPerRound2[i] = 0;
         }
 
         enemiesPerRound3 = new int[totalRounds];
-
         for (int i = 0; i < totalRounds; i++)
         {
             enemiesPerRound3[i] = (i / 2) + 1;
-            //enemiesPerRound3[i] = 0;
+            enemiesPerRound3[i] = 0;
         }
     }
 
@@ -97,6 +101,33 @@ public class GameFlow : MonoBehaviour
         if (enemiesLeft1 <= 0 && enemiesLeft2 <= 0  && enemiesLeft3 <= 0 && !roundFinished)
         {
             roundFinished = true;
+
+            if (activateDados && showCards)
+            {
+                showCards = false;
+                cardSelected = false;
+                dadosBackGround.gameObject.SetActive(true);
+
+                // Towers cards
+                int towerCardAmount = Random.Range(1, 7);
+                int towerCardRarity = Random.Range(0, 3);
+
+                print("Cantidad: " + towerCardAmount);
+                print("Rareza: " + towerCardRarity);
+
+                foreach (var cardPos in cardsPos)
+                {
+                    //cardPos.enabled = true;
+                    cardPos.gameObject.SetActive(true);
+                }
+                foreach (var cardScript in cardsScripts)
+                {
+                    cardScript.NewTowerCard(towerCardAmount, towerCardRarity);
+                }
+
+                // Enemies cards
+
+            }
 
             specialCoins += newSpecialCoinsPerRound;
 
@@ -154,117 +185,16 @@ public class GameFlow : MonoBehaviour
 
         round++;
 
-        if (round % cardsRate == 0 && activateDados)
+        gameManager.doSpawnEnemies = true;
+
+        if (round % cardsRate == 0)
         {
-            int rarity1 = Random.Range(0, 3);
-            int numCards1 = Random.Range(0, 6);
-
-            switch (rarity1)
-            {
-                case 0:
-                    for (int i = 0; i < numCards1; i++)
-                    {
-                        int choose = Random.Range(0, towerCardsLevel1.Length);
-
-                        towerCardsLevel1[choose].transform.position = cardsPos[i];
-                    }
-                    break;
-                case 1:
-                    for (int i = 0; i < numCards1; i++)
-                    {
-                        int choose = Random.Range(0, towerCardsLevel2.Length);
-
-                        towerCardsLevel2[choose].transform.position = cardsPos[i];
-                    }
-                    break;
-                case 2:
-                    for (int i = 0; i < numCards1; i++)
-                    {
-                        int choose = Random.Range(0, towerCardsLevel3.Length);
-
-                        towerCardsLevel3[choose].transform.position = cardsPos[i];
-                    }
-                    break;
-            }
-
-            //Invoke("StartRoundDelay", 5);
-        }
-        else
-        {
-            gameManager.doSpawnEnemies = true;
+            showCards = true;
         }
     }
 
     void StopNextRound()
     {
         nextRound = false;
-    }
-
-    public void ShowCards()
-    {
-        foreach (var card in towerCardsLevel1)
-        {
-            card.transform.position = new Vector2(1000, 1000);
-        }
-        foreach (var card in towerCardsLevel2)
-        {
-            card.transform.position = new Vector2(1000, 1000);
-        }
-        foreach (var card in towerCardsLevel3)
-        {
-            card.transform.position = new Vector2(1000, 1000);
-        }
-
-        int rarity2 = Random.Range(0, 3);
-        int numCards2 = Random.Range(0, 6);
-
-        switch (rarity2)
-        {
-            case 0:
-                for (int i = 0; i < numCards2; i++)
-                {
-                    int choose = Random.Range(0, enemyCardsLevel1.Length);
-
-                    enemyCardsLevel1[choose].transform.position = cardsPos[i];
-                }
-                break;
-            case 1:
-                for (int i = 0; i < numCards2; i++)
-                {
-                    int choose = Random.Range(0, enemyCardsLevel2.Length);
-
-                    enemyCardsLevel2[choose].transform.position = cardsPos[i];
-                }
-                break;
-            case 2:
-                for (int i = 0; i < numCards2; i++)
-                {
-                    int choose = Random.Range(0, enemyCardsLevel3.Length);
-
-                    enemyCardsLevel3[choose].transform.position = cardsPos[i];
-                }
-                break;
-        }
-    }
-
-    public void HideCards()
-    {
-        foreach (var card in enemyCardsLevel1)
-        {
-            card.transform.position = new Vector2(1000, 1000);
-        }
-        foreach (var card in enemyCardsLevel2)
-        {
-            card.transform.position = new Vector2(1000, 1000);
-        }
-        foreach (var card in enemyCardsLevel3)
-        {
-            card.transform.position = new Vector2(1000, 1000);
-        }
-    }
-
-    void StartRoundDelay()
-    {
-        gameManager.doSpawnEnemies = true;
     }
 }

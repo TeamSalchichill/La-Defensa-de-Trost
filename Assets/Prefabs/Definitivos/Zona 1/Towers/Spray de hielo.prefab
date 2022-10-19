@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 4337831846848589532}
   m_Layer: 9
   m_Name: Spray de hielo
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -340,6 +340,8 @@ MonoBehaviour:
   bullet: {fileID: 3202835052026178675, guid: b660218120a54964fbbf9722e3c36da0, type: 3}
   bulletPos: {fileID: 6205220585038365051}
   partToRotate: {fileID: 2520043521327094820}
+  fullRotate: 0
+  offsetY: 0
   isHero: 0
   specialTile: 0
   burnTile: 0
@@ -374,6 +376,11 @@ MonoBehaviour:
   smokeOverHeat: {fileID: 8550112519114524154, guid: 0e92832738859c442a7291bfea6e6f75, type: 3}
   iceWall: {fileID: 0}
   spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
+  curation: 50
+  RaParticles: []
+  numRays: 0
+  partToRotateGO: {fileID: 0}
+  allEnemiesInRange: []
 --- !u!1 &4133607691306949587
 GameObject:
   m_ObjectHideFlags: 0

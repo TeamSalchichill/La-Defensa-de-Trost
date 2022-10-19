@@ -50,23 +50,26 @@ public class NewMapNode : MonoBehaviour
 
     private void OnMouseDown()
     {
-        gameFlow.lastNodePosition = transform.position;
-
-        MainTower.instance.restRounds--;
-        if (Hero.instance != null)
+        if (gameFlow.cardSelected)
         {
-            Hero.instance.nextRound = true;
-            Hero.instance.GetComponentInParent<Tower>().health = 100;
+            gameFlow.lastNodePosition = transform.position;
+
+            MainTower.instance.restRounds--;
+            if (Hero.instance != null)
+            {
+                Hero.instance.nextRound = true;
+                Hero.instance.GetComponentInParent<Tower>().health = 100;
+            }
+
+            generator.Generate(startSide, startSideOrientation, offsetStart, mapPos, idX, idZ);
+            colocatorManager.canBuild = false;
+
+            Destroy(gameObject);
+            Destroy(spawn);
+            Destroy(auxGrass);
+            generator.navRemovers.Remove(navRemorer);
+            Destroy(navRemorer);
         }
-
-        generator.Generate(startSide, startSideOrientation, offsetStart, mapPos, idX, idZ);
-        colocatorManager.canBuild = false;
-
-        Destroy(gameObject);
-        Destroy(spawn);
-        Destroy(auxGrass);
-        generator.navRemovers.Remove(navRemorer);
-        Destroy(navRemorer);
     }
 
     private void OnMouseEnter()

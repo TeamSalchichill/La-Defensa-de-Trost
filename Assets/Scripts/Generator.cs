@@ -21,6 +21,9 @@ public class Generator : MonoBehaviour
     GameFlow gameFlow;
     MainTower mainTowerScript;
 
+    public enum Zone { Hielo, Desierto, Atlantis, Valhalla, Fantasia, Infierno }
+    public Zone zone;
+
     public bool activateRounds;
 
     [Header("Map")]

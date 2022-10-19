@@ -71,24 +71,24 @@ public class EnemySpawnManager : MonoBehaviour
                         {
                             gameFlow.enemiesToSpawn1--;
 
-                            Instantiate(enemies1[chooseEnemy1], transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+                            Instantiate(enemies1[chooseEnemy1], transform.position + new Vector3(0, 0, 0), Quaternion.identity);
                         }
                         else
                         {
                             gameFlow.enemiesToSpawn2--;
-                            Instantiate(enemies2[chooseEnemy2], transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+                            Instantiate(enemies2[chooseEnemy2], transform.position + new Vector3(0, 0, 0), Quaternion.identity);
                         }
                         break;
                     case 1:
                         if (gameFlow.enemiesToSpawn2 > 0)
                         {
                             gameFlow.enemiesToSpawn2--;
-                            Instantiate(enemies2[chooseEnemy2], transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+                            Instantiate(enemies2[chooseEnemy2], transform.position + new Vector3(0, 0, 0), Quaternion.identity);
                         }
                         else
                         {
                             gameFlow.enemiesToSpawn1--;
-                            Instantiate(enemies1[chooseEnemy1], transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+                            Instantiate(enemies1[chooseEnemy1], transform.position + new Vector3(0, 0, 0), Quaternion.identity);
                         }
                         break;
                 }

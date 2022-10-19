@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 912101733}
   m_Layer: 9
   m_Name: Rey Hielo
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -398,6 +398,8 @@ MonoBehaviour:
   bullet: {fileID: 7269004132365004512, guid: b97459160e0c79342b90eeec9067fb2f, type: 3}
   bulletPos: {fileID: 8694390258520073454}
   partToRotate: {fileID: 1450864803487915508}
+  fullRotate: 0
+  offsetY: 0
   isHero: 1
   specialTile: 0
   burnTile: 0
@@ -432,6 +434,11 @@ MonoBehaviour:
   smokeOverHeat: {fileID: 8550112519114524154, guid: 0e92832738859c442a7291bfea6e6f75, type: 3}
   iceWall: {fileID: 2875652900901777722, guid: 81a426079a166ec4c85a9c19e739a18e, type: 3}
   spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
+  curation: 50
+  RaParticles: []
+  numRays: 0
+  partToRotateGO: {fileID: 0}
+  allEnemiesInRange: []
 --- !u!114 &7576927462864335720
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -45,6 +45,8 @@ public class Tower : MonoBehaviour
     public GameObject bullet;
     public GameObject bulletPos;
     public Transform partToRotate;
+    public bool fullRotate = false;
+    public float offsetY = 0;
 
     [Header("General Stats")]
     public bool isHero;
@@ -98,8 +100,11 @@ public class Tower : MonoBehaviour
 
     [Header("Hero")]
     public GameObject iceWall;
-
+    public bool exploteIceWall = false;
+    public bool frezzeIceWall = false;
+    
     public ParticleSystem spawnParticles;
+
     [Space]
     public int curation = 50;
     public GameObject[] RaParticles;
@@ -107,7 +112,6 @@ public class Tower : MonoBehaviour
     public GameObject partToRotateGO;
     public List<GameObject> allEnemiesInRange;
     
-
     void Start()
     {
         if (isHero && zone == Zone.Desierto)
@@ -130,9 +134,13 @@ public class Tower : MonoBehaviour
             fireRate *= 1.2f;
         }
 
-        rangeAreaOriginalScale = rangeArea.transform.localScale.x;
-        rangeArea.transform.localScale = new Vector3(rangeArea.transform.localScale.x * range, rangeArea.transform.localScale.y, rangeArea.transform.localScale.z * range);
-        rangeArea.SetActive(false);
+        if (rangeAreaOriginalScale == 0)
+        {
+            rangeAreaOriginalScale = rangeArea.transform.localScale.x;
+            rangeArea.transform.localScale = new Vector3(rangeArea.transform.localScale.x * range, rangeArea.transform.localScale.y, rangeArea.transform.localScale.z * range);
+            rangeArea.SetActive(false);
+        }
+
         level5Light = GetComponentInChildren<Light>();
 
         mainTower = MainTower.instance;
@@ -296,7 +304,7 @@ public class Tower : MonoBehaviour
             }
         }
 
-        Vector3 dir = target.position - transform.position;
+        Vector3 dir = target.position - (transform.position + new Vector3(0, offsetY, 0));
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         if (isHero && bulletType == BulletType.Particles)
@@ -311,7 +319,7 @@ public class Tower : MonoBehaviour
 
                     if (allEnemiesInRange[enemyChoose] != null)
                     {
-                        Vector3 localDir = allEnemiesInRange[enemyChoose].transform.position - transform.position;
+                        Vector3 localDir = allEnemiesInRange[enemyChoose].transform.position - (transform.position + new Vector3(0, offsetY, 0));
                         Quaternion localLookRotation = Quaternion.LookRotation(localDir);
                         Vector3 localRotation = Quaternion.Lerp(particle.transform.rotation, localLookRotation, Time.deltaTime * turnSpeed).eulerAngles;
 
@@ -330,7 +338,14 @@ public class Tower : MonoBehaviour
         }
         else
         {
-            partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+            if (fullRotate)
+            {
+                partToRotate.rotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
+            }
+            else
+            {
+                partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+            }
         }
 
         if (burnEffect >= 100)
@@ -486,7 +501,9 @@ public class Tower : MonoBehaviour
 
         if (aux >= 0 && aux < groundsInRange.Count - 1)
         {
-            Instantiate(iceWall, groundsInRange[aux].transform.position + new Vector3(0, 1, 0), transform.rotation);
+            GameObject instWall = Instantiate(iceWall, groundsInRange[aux].transform.position + new Vector3(0, 1, 0), transform.rotation);
+            instWall.GetComponent<Destroy>().explote = exploteIceWall;
+            instWall.GetComponent<Destroy>().frezze = frezzeIceWall;
         }
     }
 

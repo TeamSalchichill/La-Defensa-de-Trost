@@ -28,6 +28,15 @@ public class ColocatorManager : MonoBehaviour
     {
         gameFlow = GameFlow.instance;
         //instTowerPlace = Instantiate(towerPlace, new Vector3(1000, 1000, 1000), Quaternion.identity);
+        
+        for (int i = 0; i < towers.Length; i++)
+        {
+            GameObject instTower = Instantiate(towers[i], new Vector3(0, -1000, 0), transform.rotation);
+            instTower.GetComponent<Tower>().enabled = false;
+            
+            towers[i] = instTower;
+        }
+        
     }
 
     void Update()
@@ -139,6 +148,16 @@ public class ColocatorManager : MonoBehaviour
                         rayHit.collider.gameObject.layer = 0;
 
                         GameObject instTower = Instantiate(towers[towerID], rayHit.collider.gameObject.transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+                        instTower.GetComponent<Tower>().enabled = true;
+
+                        if (heroBuild && towerID == 0)
+                        {
+                            foreach (var cardScript in gameFlow.cardsScripts)
+                            {
+                                cardScript.hero = instTower.GetComponent<Hero>();
+                            }
+                        }
+
                         Tower instTowerScript;
                         if (towers[towerID].GetComponent<Tower>())
                         {
@@ -183,6 +202,7 @@ public class ColocatorManager : MonoBehaviour
                         rayHit.collider.gameObject.layer = 0;
 
                         GameObject instTower = Instantiate(towers[towerID], rayHit.collider.gameObject.transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+                        instTower.GetComponent<Tower>().enabled = true;
                         Tower instTowerScript;
                         if (towers[towerID].GetComponent<Tower>())
                         {
