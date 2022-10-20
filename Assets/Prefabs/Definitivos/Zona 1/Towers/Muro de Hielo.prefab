@@ -252,8 +252,8 @@ MonoBehaviour:
   specialTile: 0
   burnTile: 0
   level: 1
-  levelMultiplier: 1.2
-  levelMultiplierSpecialStat: 1.3
+  levelMultiplier: 1.1
+  levelMultiplierSpecialStat: 1.25
   levelUpPrice: 100
   level5Price: 100
   priceLogo: "\u20AC"
@@ -281,6 +281,8 @@ MonoBehaviour:
   timeInOverHeat: 10
   smokeOverHeat: {fileID: 8550112519114524154, guid: 0e92832738859c442a7291bfea6e6f75, type: 3}
   iceWall: {fileID: 0}
+  exploteIceWall: 0
+  frezzeIceWall: 0
   spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
   curation: 50
   RaParticles: []
@@ -300,6 +302,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: -5736283115773286770}
+  explote: 0
+  frezze: 0
 --- !u!95 &-5736283115773286770
 Animator:
   serializedVersion: 4

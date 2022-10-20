@@ -122,7 +122,7 @@ MonoBehaviour:
   deadParticle: {fileID: 5107351696323173831, guid: cbb13d85c1d0b8e47a172c4a048ff446, type: 3}
   enemyName: 
   damage: 50
-  gold: 500
+  gold: 5000
   speed: 0
   range: 15
   normalSpeed: 0.5
@@ -158,6 +158,7 @@ MonoBehaviour:
   healthBarGreen: {fileID: 2100000, guid: 78f5d8b4de1f2b345bc3dd00a5025bc2, type: 2}
   healthBarYellow: {fileID: 2100000, guid: 6db1dac8f7c5c1d48908fa418aba0c55, type: 2}
   healthBarRed: {fileID: 2100000, guid: 4a43ecf05c7fbcb4b84d7c8daa908c97, type: 2}
+  miniTowerFound: 0
 --- !u!195 &823950714019470134
 NavMeshAgent:
   m_ObjectHideFlags: 0

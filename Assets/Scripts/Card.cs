@@ -309,13 +309,13 @@ public class Card : MonoBehaviour
                         switch (randomUpgrade)
                         {
                             case 0:
-                                text.text = colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " cura cada menos tiempo";
+                                text.text = "WIP";
                                 break;
                             case 1:
-                                text.text = colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " lanza más rayos simultaneamente";
+                                text.text = "WIP";
                                 break;
                             case 2:
-                                text.text = colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " no hace absolutamente nada nuevo";
+                                text.text = "WIP";
                                 break;
                         }
                         break;

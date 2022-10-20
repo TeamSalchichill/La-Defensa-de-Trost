@@ -466,8 +466,8 @@ MonoBehaviour:
   canTarget: 0
   canColocate: 0
   bulletType: 0
-  zone: 1
-  specialStat: 0
+  zone: 0
+  specialStat: 3
   towerName: Mina de oro
   icon: {fileID: 0}
   level5Light: {fileID: 0}
@@ -479,26 +479,28 @@ MonoBehaviour:
   bullet: {fileID: 0}
   bulletPos: {fileID: 0}
   partToRotate: {fileID: 9167911101740927899}
+  fullRotate: 0
+  offsetY: 0
   isHero: 0
   specialTile: 0
   burnTile: 0
   level: 1
-  levelMultiplier: 1.2
-  levelMultiplierSpecialStat: 1.3
-  levelUpPrice: 100
-  level5Price: 100
+  levelMultiplier: 1.1
+  levelMultiplierSpecialStat: 1.25
+  levelUpPrice: 600
+  level5Price: 70
   priceLogo: "\u20AC"
   acumulateGold: 0
-  health: 100
+  health: 500
   healthMax: 0
   armor: 0
   armorMax: 0
   range: 15
-  fireRate: 0.25
+  fireRate: 0.2
   turnSpeed: 10
-  price: 20
+  price: 1000
   isDie: 0
-  healthDamage: 20
+  healthDamage: 200
   armorDamage: 0
   iceDamage: 0
   igniteDamage: 0
@@ -512,7 +514,14 @@ MonoBehaviour:
   timeInOverHeat: 10
   smokeOverHeat: {fileID: 8550112519114524154, guid: 0e92832738859c442a7291bfea6e6f75, type: 3}
   iceWall: {fileID: 0}
+  exploteIceWall: 0
+  frezzeIceWall: 0
   spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
+  curation: 50
+  RaParticles: []
+  numRays: 0
+  partToRotateGO: {fileID: 0}
+  allEnemiesInRange: []
 --- !u!114 &-2740585283258192185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,6 +537,7 @@ MonoBehaviour:
   offsetPos: {x: 0, y: -1.25, z: 0}
   offsetRot: {x: 0, y: 1, z: 0, w: -0.00000004371139}
   isSpawn: 0
+  oritateToPath: 0
 --- !u!65 &4256899352908770905
 BoxCollider:
   m_ObjectHideFlags: 0

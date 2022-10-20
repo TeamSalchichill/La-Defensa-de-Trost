@@ -557,7 +557,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 8186453176764820796}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1
+  m_Radius: 0.2
   m_Speed: 2
   m_Acceleration: 4
   avoidancePriority: 50
@@ -590,12 +590,13 @@ MonoBehaviour:
   nav: {fileID: 0}
   skull: {fileID: 1284120687039949133, guid: 1ac12f2712a02d741a31b9414da25769, type: 3}
   deadParticle: {fileID: 5107351696323173831, guid: cbb13d85c1d0b8e47a172c4a048ff446, type: 3}
+  enemyName: 
   damage: 2
   gold: 25
   speed: 0
   range: 0
   normalSpeed: 2
-  health: 300
+  health: 400
   healthMax: 0
   armor: 0
   iceEffect: 0
@@ -604,6 +605,7 @@ MonoBehaviour:
   ascentEffect: 0
   bloodEffect: 0
   transformationEffect: 0
+  infectationMode: 0
   healthResistence: 0
   armorResistence: 0
   iceResistence: 0.8
@@ -617,10 +619,16 @@ MonoBehaviour:
   bulletPos: {fileID: 0}
   goblins: {fileID: 0}
   mamut: {fileID: 0}
+  attackRate: 5
+  invokeGloblinsRate: 10
+  invokeMamutRate: 20
+  healthRate: 10
+  areaAtacckRate: 10
   HealthBar: {fileID: 377621362192826300}
   healthBarGreen: {fileID: 2100000, guid: 78f5d8b4de1f2b345bc3dd00a5025bc2, type: 2}
   healthBarYellow: {fileID: 2100000, guid: 6db1dac8f7c5c1d48908fa418aba0c55, type: 2}
   healthBarRed: {fileID: 2100000, guid: 4a43ecf05c7fbcb4b84d7c8daa908c97, type: 2}
+  miniTowerFound: 0
 --- !u!1 &8253113885821629667
 GameObject:
   m_ObjectHideFlags: 0

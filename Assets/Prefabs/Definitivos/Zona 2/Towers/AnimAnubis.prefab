@@ -1861,7 +1861,7 @@ MonoBehaviour:
   canColocate: 0
   bulletType: 0
   zone: 2
-  specialStat: 0
+  specialStat: 5
   towerName: Anubis
   icon: {fileID: 0}
   level5Light: {fileID: 0}
@@ -1879,22 +1879,22 @@ MonoBehaviour:
   specialTile: 0
   burnTile: 0
   level: 1
-  levelMultiplier: 1.2
-  levelMultiplierSpecialStat: 1.3
+  levelMultiplier: 1.1
+  levelMultiplierSpecialStat: 1.2
   levelUpPrice: 100
   level5Price: 100
   priceLogo: "\u20AC"
   acumulateGold: 0
-  health: 100
+  health: 700
   healthMax: 0
   armor: 0
   armorMax: 0
   range: 7
   fireRate: 0.5
   turnSpeed: 3
-  price: 20
+  price: 500
   isDie: 0
-  healthDamage: 20
+  healthDamage: 100
   armorDamage: 0
   iceDamage: 0
   igniteDamage: 1
@@ -1908,6 +1908,8 @@ MonoBehaviour:
   timeInOverHeat: 10
   smokeOverHeat: {fileID: 8550112519114524154, guid: 0e92832738859c442a7291bfea6e6f75, type: 3}
   iceWall: {fileID: 0}
+  exploteIceWall: 0
+  frezzeIceWall: 0
   spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
   curation: 50
   RaParticles: []

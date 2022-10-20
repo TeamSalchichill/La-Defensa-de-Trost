@@ -74,7 +74,7 @@ public class GameFlow : MonoBehaviour
             cardsScripts[i] = cardsPos[i].GetComponent<Card>();
             cardsScripts[i].id = i;
         }
-
+        /*
         enemiesPerRound1 = new int[totalRounds];
         for (int i = 0; i < totalRounds; i++)
         {
@@ -94,6 +94,7 @@ public class GameFlow : MonoBehaviour
             enemiesPerRound3[i] = (i / 2) + 1;
             enemiesPerRound3[i] = 0;
         }
+        */
     }
 
     void Update()

@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 529317124}
   - component: {fileID: 529317125}
   m_Layer: 9
-  m_Name: Temporal Obelisco
+  m_Name: Temporal Obelisco save
   m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -266,7 +266,7 @@ MonoBehaviour:
   canColocate: 0
   bulletType: 1
   zone: 2
-  specialStat: 0
+  specialStat: 2
   towerName: Obelisco
   icon: {fileID: 0}
   level5Light: {fileID: 0}
@@ -284,22 +284,22 @@ MonoBehaviour:
   specialTile: 0
   burnTile: 0
   level: 1
-  levelMultiplier: 1.2
-  levelMultiplierSpecialStat: 1.3
-  levelUpPrice: 100
+  levelMultiplier: 1.1
+  levelMultiplierSpecialStat: 1.2
+  levelUpPrice: 150
   level5Price: 100
   priceLogo: "\u20AC"
   acumulateGold: 0
-  health: 100
+  health: 500
   healthMax: 0
   armor: 0
   armorMax: 0
-  range: 15
+  range: 9
   fireRate: 3
   turnSpeed: 10
-  price: 20
+  price: 200
   isDie: 0
-  healthDamage: 20
+  healthDamage: 40
   armorDamage: 0
   iceDamage: 0
   igniteDamage: 1
@@ -313,6 +313,8 @@ MonoBehaviour:
   timeInOverHeat: 10
   smokeOverHeat: {fileID: 8550112519114524154, guid: 0e92832738859c442a7291bfea6e6f75, type: 3}
   iceWall: {fileID: 0}
+  exploteIceWall: 0
+  frezzeIceWall: 0
   spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
   curation: 50
   RaParticles: []

@@ -36,7 +36,12 @@ public class ColocatorManager : MonoBehaviour
             
             towers[i] = instTower;
         }
-        
+
+        foreach (var cardScript in gameFlow.cardsScripts)
+        {
+            cardScript.hero = towers[0].GetComponent<Hero>();
+        }
+
     }
 
     void Update()

@@ -471,8 +471,8 @@ MonoBehaviour:
   canTarget: 0
   canColocate: 0
   bulletType: 0
-  zone: 1
-  specialStat: 0
+  zone: 0
+  specialStat: 3
   towerName: Torre de arqueras
   icon: {fileID: 0}
   level5Light: {fileID: 0}
@@ -484,28 +484,30 @@ MonoBehaviour:
   bullet: {fileID: 6537389260430315145, guid: eb9059e701488974f80a838c11d28736, type: 3}
   bulletPos: {fileID: 8556126816978311925}
   partToRotate: {fileID: 6188050100766881612}
+  fullRotate: 0
+  offsetY: 0
   isHero: 0
   specialTile: 0
   burnTile: 0
   level: 1
-  levelMultiplier: 1.2
-  levelMultiplierSpecialStat: 1.3
-  levelUpPrice: 100
-  level5Price: 100
+  levelMultiplier: 1.1
+  levelMultiplierSpecialStat: 1.25
+  levelUpPrice: 120
+  level5Price: 70
   priceLogo: "\u20AC"
   acumulateGold: 0
-  health: 100
+  health: 700
   healthMax: 0
   armor: 0
   armorMax: 0
-  range: 15
-  fireRate: 3
+  range: 10
+  fireRate: 1.25
   turnSpeed: 10
-  price: 20
+  price: 200
   isDie: 0
-  healthDamage: 20
+  healthDamage: 200
   armorDamage: 0
-  iceDamage: 1
+  iceDamage: 0
   igniteDamage: 0
   waterDamage: 0
   ascentDamage: 0
@@ -517,7 +519,14 @@ MonoBehaviour:
   timeInOverHeat: 10
   smokeOverHeat: {fileID: 8550112519114524154, guid: 0e92832738859c442a7291bfea6e6f75, type: 3}
   iceWall: {fileID: 0}
+  exploteIceWall: 0
+  frezzeIceWall: 0
   spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
+  curation: 50
+  RaParticles: []
+  numRays: 0
+  partToRotateGO: {fileID: 0}
+  allEnemiesInRange: []
 --- !u!65 &1209624331256980349
 BoxCollider:
   m_ObjectHideFlags: 0

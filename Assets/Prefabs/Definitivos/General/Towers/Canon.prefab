@@ -505,8 +505,8 @@ MonoBehaviour:
   canTarget: 0
   canColocate: 0
   bulletType: 0
-  zone: 1
-  specialStat: 0
+  zone: 0
+  specialStat: 5
   towerName: "Ca\xF1\xF3n"
   icon: {fileID: 0}
   level5Light: {fileID: 0}
@@ -518,29 +518,31 @@ MonoBehaviour:
   bullet: {fileID: 1536177878589559329, guid: c990bfc289b7d2b4ca26a8aa761b277b, type: 3}
   bulletPos: {fileID: 1565910784535573150}
   partToRotate: {fileID: 1565910784243148938}
+  fullRotate: 0
+  offsetY: 0
   isHero: 0
   specialTile: 0
   burnTile: 0
   level: 1
-  levelMultiplier: 1.2
-  levelMultiplierSpecialStat: 1.3
-  levelUpPrice: 100
-  level5Price: 100
+  levelMultiplier: 1.1
+  levelMultiplierSpecialStat: 1.25
+  levelUpPrice: 300
+  level5Price: 70
   priceLogo: "\u20AC"
   acumulateGold: 0
-  health: 100
+  health: 750
   healthMax: 0
   armor: 0
   armorMax: 0
-  range: 15
-  fireRate: 3
+  range: 5
+  fireRate: 2
   turnSpeed: 10
-  price: 20
+  price: 500
   isDie: 0
-  healthDamage: 20
+  healthDamage: 600
   armorDamage: 0
   iceDamage: 0
-  igniteDamage: 5
+  igniteDamage: 0
   waterDamage: 0
   ascentDamage: 0
   bloodDamage: 0
@@ -551,7 +553,14 @@ MonoBehaviour:
   timeInOverHeat: 10
   smokeOverHeat: {fileID: 8550112519114524154, guid: 0e92832738859c442a7291bfea6e6f75, type: 3}
   iceWall: {fileID: 0}
+  exploteIceWall: 0
+  frezzeIceWall: 0
   spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
+  curation: 50
+  RaParticles: []
+  numRays: 0
+  partToRotateGO: {fileID: 0}
+  allEnemiesInRange: []
 --- !u!65 &2969877446583160812
 BoxCollider:
   m_ObjectHideFlags: 0

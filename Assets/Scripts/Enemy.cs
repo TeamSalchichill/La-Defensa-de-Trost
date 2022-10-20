@@ -89,6 +89,9 @@ public class Enemy : MonoBehaviour
     public Material healthBarYellow;
     public Material healthBarRed;
 
+    [Header("Others")]
+    public bool miniTowerFound = false;
+
     void Start()
     {
         healthMax = health;
@@ -143,6 +146,8 @@ public class Enemy : MonoBehaviour
     {
         if (!infectationMode)
         {
+            miniTowerFound = false;
+
             RaycastHit[] miniMainTowerInRange = Physics.SphereCastAll(transform.position, 40, transform.forward, 1.0f, LayerMask.GetMask("Tower"));
             if (miniMainTowerInRange.Length > 0)
             {
@@ -150,6 +155,8 @@ public class Enemy : MonoBehaviour
                 {
                     if (miniMainTower.collider.gameObject.tag == "MiniMainTower")
                     {
+                        miniTowerFound = true;
+
                         nav.destination = miniMainTower.collider.gameObject.transform.position;
 
                         if (Vector3.Distance(transform.position, miniMainTower.collider.gameObject.transform.position) < 5)
@@ -176,7 +183,8 @@ public class Enemy : MonoBehaviour
                     }
                 }
             }
-            else
+
+            if (!miniTowerFound)
             {
                 RaycastHit[] towerInRange = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Tower"));
                 if (towerInRange.Length > 0)
@@ -294,7 +302,10 @@ public class Enemy : MonoBehaviour
                 }
                 else
                 {
-                    nav.destination = target.position;
+                    if (gameObject != null)
+                    {
+                        nav.destination = target.position;
+                    }
                 }
             }
             else
@@ -469,7 +480,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.tag == "Damage")
         {
-            health -= 1;
+            health -= 2;
             iceEffect += (1 * iceResistence);
             iceEffect = Mathf.Min(iceEffect, 50);
         }
