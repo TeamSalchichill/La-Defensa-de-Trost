@@ -143,25 +143,61 @@ public class Enemy : MonoBehaviour
     {
         if (!infectationMode)
         {
-            RaycastHit[] towerInRange = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Tower"));
-            if (towerInRange.Length > 0)
+            RaycastHit[] miniMainTowerInRange = Physics.SphereCastAll(transform.position, 40, transform.forward, 1.0f, LayerMask.GetMask("Tower"));
+            if (miniMainTowerInRange.Length > 0)
             {
-                if (towerInRange[0].collider.GetComponent<Tower>())
+                foreach (var miniMainTower in miniMainTowerInRange)
                 {
-                    if (towerInRange[0].collider.GetComponent<Tower>().health > 0)
+                    if (miniMainTower.collider.gameObject.tag == "MiniMainTower")
                     {
-                        if (!towerInRange[0].collider.GetComponent<Tower>().isHero)
+                        nav.destination = miniMainTower.collider.gameObject.transform.position;
+
+                        if (Vector3.Distance(transform.position, miniMainTower.collider.gameObject.transform.position) < 5)
                         {
-                            nav.destination = towerInRange[0].transform.position;
-                            towerInRange[0].collider.GetComponent<Tower>().health -= (damage * 3);
-                            anim.SetTrigger("doHit");
+                            switch (type)
+                            {
+                                case (Type.Pequeño):
+                                    gameFlow.enemiesLeft1--;
+                                    break;
+                                case (Type.Mediano):
+                                    gameFlow.enemiesLeft2--;
+                                    break;
+                                case (Type.Grande):
+                                    gameFlow.enemiesLeft3--;
+                                    break;
+                            }
+
+                            miniMainTower.collider.gameObject.GetComponent<MiniMainTower>().health--;
+
+                            Destroy(gameObject);
                         }
+
+                        break;
                     }
                 }
             }
             else
             {
-                nav.destination = target.position;
+                RaycastHit[] towerInRange = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Tower"));
+                if (towerInRange.Length > 0)
+                {
+                    if (towerInRange[0].collider.GetComponent<Tower>())
+                    {
+                        if (towerInRange[0].collider.GetComponent<Tower>().health > 0)
+                        {
+                            if (!towerInRange[0].collider.GetComponent<Tower>().isHero)
+                            {
+                                nav.destination = towerInRange[0].transform.position;
+                                towerInRange[0].collider.GetComponent<Tower>().health -= (damage * 3);
+                                anim.SetTrigger("doHit");
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    nav.destination = target.position;
+                }
             }
         }
     }

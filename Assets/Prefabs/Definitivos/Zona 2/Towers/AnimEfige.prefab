@@ -283,6 +283,7 @@ GameObject:
   - component: {fileID: 1202983320538885319}
   - component: {fileID: 1202983320538885317}
   - component: {fileID: 1202983320538885316}
+  - component: {fileID: 2600428286906170997}
   m_Layer: 9
   m_Name: AnimEfige
   m_TagString: Tower
@@ -395,6 +396,8 @@ MonoBehaviour:
   timeInOverHeat: 10
   smokeOverHeat: {fileID: 8550112519114524154, guid: 0e92832738859c442a7291bfea6e6f75, type: 3}
   iceWall: {fileID: 0}
+  exploteIceWall: 0
+  frezzeIceWall: 0
   spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
   curation: 50
   RaParticles: []
@@ -414,6 +417,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 11.456585, y: 2.6440353, z: 12.5696335}
   m_Center: {x: 0, y: 1.3055577, z: 0}
+--- !u!114 &2600428286906170997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049334802879713680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3fbfe8f8037ed54285c9166d87b7002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offsetPos: {x: 0, y: 0, z: 0}
+  offsetRot: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
+  isSpawn: 0
+  oritateToPath: 0
 --- !u!1001 &1202983321257138620
 PrefabInstance:
   m_ObjectHideFlags: 0

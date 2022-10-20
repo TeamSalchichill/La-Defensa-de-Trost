@@ -78,13 +78,13 @@ public class GameFlow : MonoBehaviour
         enemiesPerRound1 = new int[totalRounds];
         for (int i = 0; i < totalRounds; i++)
         {
-            enemiesPerRound1[i] = (i * i * 3) + 1;
+            enemiesPerRound1[i] = (i * i * 1) + 1;
         }
 
         enemiesPerRound2 = new int[totalRounds];
         for (int i = 0; i < totalRounds; i++)
         {
-            enemiesPerRound2[i] = (i * 3) + 1;
+            enemiesPerRound2[i] = (i * 1) + 1;
             //enemiesPerRound2[i] = 0;
         }
 
@@ -112,8 +112,8 @@ public class GameFlow : MonoBehaviour
                 int towerCardAmount = Random.Range(1, 7);
                 int towerCardRarity = Random.Range(0, 3);
 
-                print("Cantidad: " + towerCardAmount);
-                print("Rareza: " + towerCardRarity);
+                //print("Cantidad: " + towerCardAmount);
+                //print("Rareza: " + towerCardRarity);
 
                 foreach (var cardPos in cardsPos)
                 {
@@ -155,7 +155,7 @@ public class GameFlow : MonoBehaviour
         {
             int spawnSandStorm = Random.Range(0, 100);
 
-            if (spawnSandStorm < sandStormProbavility)
+            if (spawnSandStorm < sandStormProbavility && !isActiveSandStorm)
             {
                 startSandStormRound = round;
                 isActiveSandStorm = true;

@@ -364,6 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80eb07a19f98c3042a2f00c52f80c6e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hero: {fileID: 0}
   rarity: 0
   id: 0
   border: {fileID: 0}
@@ -722,7 +723,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.05
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3509,6 +3510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80eb07a19f98c3042a2f00c52f80c6e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hero: {fileID: 0}
   rarity: 0
   id: 0
   border: {fileID: 0}
@@ -5518,6 +5520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80eb07a19f98c3042a2f00c52f80c6e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hero: {fileID: 0}
   rarity: 0
   id: 0
   border: {fileID: 0}
@@ -7169,7 +7172,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.4
+  m_Value: 0.6
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7651,6 +7654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80eb07a19f98c3042a2f00c52f80c6e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hero: {fileID: 0}
   rarity: 0
   id: 0
   border: {fileID: 0}
@@ -7929,6 +7933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80eb07a19f98c3042a2f00c52f80c6e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hero: {fileID: 0}
   rarity: 0
   id: 0
   border: {fileID: 0}
@@ -8161,7 +8166,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.6
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -10644,7 +10649,9 @@ MonoBehaviour:
   groundBlock: {fileID: 8993828478750184476, guid: 7cc533fed9c2fae439c2c6f739de7dd3, type: 3}
   specialGroundBlock: {fileID: 6218009484647362925, guid: 9e95e64539516ef48b37da0a0db49c76, type: 3}
   mainTower: {fileID: 1725537150487209384, guid: 23cd3f9f0c4618948975ad09751e71e9, type: 3}
+  miniMainTower: {fileID: 1725537150487209384, guid: 1e88476038231f5469bd45ead2630db3, type: 3}
   tower: {fileID: 1723674981817254988, guid: 77af314f23e583640b3069455f8af6fc, type: 3}
+  miniMainTowerColocate: 0
   nextMap: {fileID: 1723674981817254988, guid: 6f2ec046c387f1544811f4777c80d56c, type: 3}
   enemySpawn: {fileID: 5737748087402617350, guid: 4492fde084ed6b84f8ae0ebdc7cd9ba6, type: 3}
   transparentEnemySpawn: {fileID: 1723674981817254988, guid: d642f908b56ca7e49b1d082fccc59b55, type: 3}
@@ -10660,6 +10667,8 @@ MonoBehaviour:
   openMap: []
   navRemovers: []
   newMapNodes: []
+  numNewMapNodes: 1
+  repiteNewMapNode: 0
   probabilityStraight: 100
   probabilityNewWays: 50
   probabilityDeleteWay: 5
@@ -10691,7 +10700,7 @@ MonoBehaviour:
   sandStormProbavility: 100
   sandStormDuration: 3
   lastNodePosition: {x: 0, y: 0, z: 0}
-  spawnRate: 0.2
+  spawnRate: 0.5
   enemies:
   - {fileID: 553427216114017892, guid: 11209bfd2e80f93478ab564898b2e758, type: 3}
   - {fileID: 1275073933573158938, guid: f7d3e8bb3b5e51f4c9b5b26a7a21d4f6, type: 3}
@@ -12577,6 +12586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80eb07a19f98c3042a2f00c52f80c6e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hero: {fileID: 0}
   rarity: 0
   id: 0
   border: {fileID: 0}
@@ -13017,7 +13027,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

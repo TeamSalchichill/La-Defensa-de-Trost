@@ -38,7 +38,9 @@ public class Generator : MonoBehaviour
     public GameObject specialGroundBlock;
     [Header("Prefabs Towers")]
     public GameObject mainTower;
+    public GameObject miniMainTower;
     public GameObject tower;
+    public bool miniMainTowerColocate = false;
     [Header("Prefabs Map")]
     public GameObject nextMap;
     [Space]
@@ -72,6 +74,9 @@ public class Generator : MonoBehaviour
     public List<Vector3> openMap = new List<Vector3>();
     public List<GameObject> navRemovers = new List<GameObject>();
     public List<GameObject> newMapNodes = new List<GameObject>();
+
+    public int numNewMapNodes = 1;
+    public int repiteNewMapNode = 0;
 
     [Header("Probabilities")]
     [Range(0, 100)]
@@ -144,6 +149,7 @@ public class Generator : MonoBehaviour
         Instantiate(mainTower, new Vector3(7, 4, 7), Quaternion.identity);
 
         colocatedMap.Add(mapPos);
+        openMap.Add(Vector3.zero);
 
         idX = 0;
         idZ = 3;
@@ -173,8 +179,6 @@ public class Generator : MonoBehaviour
 
     public void Generate(int newStartSide, string newStartSideOrientation, Vector3 newOffsetStart, Vector2 newMapPos, int newIdX, int newIdZ)
     {
-        //UpdateProbabilities();
-
         // Colocamos la base de tierra
         for (int i = 0; i < sizeX; i++)
         {
@@ -194,289 +198,400 @@ public class Generator : MonoBehaviour
             }
         }
 
-        // Creamos las 2 primeras posiciones del camino
-        switch (newStartSide)
+        if (gameFlow.round % 3 == 0 && !miniMainTowerColocate && gameFlow.round > 1)
         {
-            case 0:
-                map[newIdX, newIdZ] = -1;
-                newIdX++;
-                map[newIdX, newIdZ] = -1;
+            miniMainTowerColocate = true;
+            
+            map[1, 1] = -1;
+            map[2, 1] = -1;
+            map[1, 2] = -1;
 
-                newStartSideOrientation = "North";
-                break;
-            case 1:
-                map[newIdX, newIdZ] = -1;
-                newIdZ--;
-                map[newIdX, newIdZ] = -1;
+            map[5, 5] = -1;
+            map[5, 4] = -1;
+            map[4, 5] = -1;
 
-                newStartSideOrientation = "East";
-                break;
-            case 2:
-                map[newIdX, newIdZ] = -1;
-                newIdX--;
-                map[newIdX, newIdZ] = -1;
+            map[1, 5] = -1;
+            map[2, 5] = -1;
+            map[1, 4] = -1;
 
-                newStartSideOrientation = "South";
-                break;
-            case 3:
-                map[newIdX, newIdZ] = -1;
-                newIdZ++;
-                map[newIdX, newIdZ] = -1;
+            map[5, 1] = -1;
+            map[5, 2] = -1;
+            map[4, 1] = -1;
+            /*
+            map[3, 3] = -1;
+            map[3, 2] = -1;
+            map[3, 4] = -1;
+            map[2, 3] = -1;
+            map[4, 3] = -1;
 
-                newStartSideOrientation = "West";
-                break;
-        }
-
-        int iter = 0;
-        int ways = -1;
-        int saveIdX = -1;
-        int saveIdZ = -1;
-
-        // Creamos trozos de camino hasta que llegue al borde
-        while (newIdX > 0 && newIdX < sizeX - 1 && newIdZ > 0 && newIdZ < sizeZ - 1)
-        {
-            // En el trozo 4 vemos si creamos 1 o 2 caminos extras
-            if (iter == 4)
+            map[2, 2] = -1;
+            map[4, 4] = -1;
+            map[2, 4] = -1;
+            map[4, 2] = -1;
+            */
+            // Ponemos césped donde no hay camino
+            for (int i = 0; i < sizeX; i++)
             {
-                int probabilityNewWaysAux = ((probabilityNewWays * 50) / 100) + 25;
-                int waysAux = Random.Range(probabilityNewWaysAux - 25, probabilityNewWaysAux + 25);
-
-                if (waysAux <= 50)
+                for (int j = 0; j < sizeZ; j++)
                 {
-                    ways = 0;
-                }
-                else
-                {
-                    int aux = Random.Range(0, 3);
-                    if (aux == 0)
+                    if (map[i, j] == -1)
                     {
-                        ways = 1;
-                    }
-                    else
-                    {
-                        ways = 2;
+                        Instantiate(grassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1) + newOffsetStart, Quaternion.identity);
                     }
                 }
-
-                saveIdX = newIdX;
-                saveIdZ = newIdZ;
             }
 
-            // Elegimos la dirección
-
-            int probabilityStraightAux = ((probabilityStraight * 50) / 100) + 25;
-            nextSide = Random.Range(probabilityStraightAux - 25, probabilityStraightAux + 25);
-            nextSideOrientation = "";
+            Instantiate(miniMainTower, new Vector3(3 * 2, 0, 3 * 2) + new Vector3(1, 3.5f, 1) + newOffsetStart, Quaternion.identity);
 
             switch (newStartSideOrientation)
             {
                 case "North":
-                    if (nextSide >= 50)
-                    {
-                        nextSideOrientation = "South";
-                    }
-                    else
-                    {
-                        int aux = Random.Range(0, 2);
-                        if (aux == 0)
-                        {
-                            nextSideOrientation = "East";
-                        }
-                        else
-                        {
-                            nextSideOrientation = "West";
-                        }
-                    }
-                    break;
-                case "East":
-                    if (nextSide >= 50)
-                    {
-                        nextSideOrientation = "West";
-                    }
-                    else
-                    {
-                        int aux = Random.Range(0, 2);
-                        if (aux == 0)
-                        {
-                            nextSideOrientation = "North";
-                        }
-                        else
-                        {
-                            nextSideOrientation = "South";
-                        }
-                    }
+                    nextSideOrientation = "South";
                     break;
                 case "South":
-                    if (nextSide >= 50)
-                    {
-                        nextSideOrientation = "North";
-                    }
-                    else
-                    {
-                        int aux = Random.Range(0, 2);
-                        if (aux == 0)
-                        {
-                            nextSideOrientation = "East";
-                        }
-                        else
-                        {
-                            nextSideOrientation = "West";
-                        }
-                    }
+                    nextSideOrientation = "North";
+                    break;
+                case "East":
+                    nextSideOrientation = "West";
                     break;
                 case "West":
-                    if (nextSide >= 50)
-                    {
-                        nextSideOrientation = "East";
-                    }
-                    else
-                    {
-                        int aux = Random.Range(0, 2);
-                        if (aux == 0)
-                        {
-                            nextSideOrientation = "North";
-                        }
-                        else
-                        {
-                            nextSideOrientation = "South";
-                        }
-                    }
+                    nextSideOrientation = "East";
                     break;
             }
 
-            // Creamos el siguiente trozo
-            switch (nextSideOrientation)
+            if (newStartSideOrientation == "North" || newStartSideOrientation == "South")
             {
-                case "North":
-                    if (map[newIdX - 1, newIdZ] != -1)
-                    {
-                        newIdX--;
-                        map[newIdX, newIdZ] = -1;
-                    }
-                    break;
-                case "East":
-                    if (map[newIdX, newIdZ + 1] != -1)
-                    {
-                        newIdZ++;
-                        map[newIdX, newIdZ] = -1;
-                    }
-                    break;
-                case "South":
-                    if (map[newIdX + 1, newIdZ] != -1)
-                    {
-                        newIdX++;
-                        map[newIdX, newIdZ] = -1;
-                    }
-                    break;
-                case "West":
-                    if (map[newIdX, newIdZ - 1] != -1)
-                    {
-                        newIdZ--;
-                        map[newIdX, newIdZ] = -1;
-                    }
-                    break;
-            }
-
-            iter++;
-        }
-
-        // Creamos los caminos extras
-        if (ways == 1)
-        {
-            GenerateOneWay(newStartSideOrientation, nextSideOrientation, newOffsetStart, newMapPos, saveIdX, saveIdZ);
-        }
-        if (ways == 2)
-        {
-            GenerateTwoWays(newStartSideOrientation, nextSideOrientation, newOffsetStart, newMapPos, saveIdX, saveIdZ);
-        }
-
-        GameObject grassAux1;
-        GameObject grassAux2;
-
-        // Ponemos césped donde no hay camino
-        for (int i = 0; i < sizeX; i++)
-        {
-            for (int j = 0; j < sizeZ; j++)
-            {
-                if (map[i, j] != -1)
+                if (newIdX == 0)
                 {
-                    int specialTile = Random.Range(0, 101);
-                    specialTile *= 12;
-                    if (specialTile < probabilitySpecialTiles)
+                    newIdX = sizeX - 1;
+                }
+                else
+                {
+                    newIdX = 0;
+                }
+            }
+            if (newStartSideOrientation == "East" || newStartSideOrientation == "West")
+            {
+                if (newIdZ == 0)
+                {
+                    newIdZ = sizeZ - 1;
+                }
+                else
+                {
+                    newIdZ = 0;
+                }
+            }
+
+            PrepareNextMap(newStartSide, newStartSideOrientation, newOffsetStart, newMapPos, newIdX, newIdZ, nextSideOrientation, false);
+        }
+        else
+        {
+            // Creamos las 2 primeras posiciones del camino
+            switch (newStartSide)
+            {
+                case 0:
+                    map[newIdX, newIdZ] = -1;
+                    newIdX++;
+                    map[newIdX, newIdZ] = -1;
+
+                    newStartSideOrientation = "North";
+                    break;
+                case 1:
+                    map[newIdX, newIdZ] = -1;
+                    newIdZ--;
+                    map[newIdX, newIdZ] = -1;
+
+                    newStartSideOrientation = "East";
+                    break;
+                case 2:
+                    map[newIdX, newIdZ] = -1;
+                    newIdX--;
+                    map[newIdX, newIdZ] = -1;
+
+                    newStartSideOrientation = "South";
+                    break;
+                case 3:
+                    map[newIdX, newIdZ] = -1;
+                    newIdZ++;
+                    map[newIdX, newIdZ] = -1;
+
+                    newStartSideOrientation = "West";
+                    break;
+            }
+
+            int iter = 0;
+            int ways = -1;
+            int saveIdX = -1;
+            int saveIdZ = -1;
+
+            // Creamos trozos de camino hasta que llegue al borde
+            while (newIdX > 0 && newIdX < sizeX - 1 && newIdZ > 0 && newIdZ < sizeZ - 1)
+            {
+                // En el trozo 4 vemos si creamos 1 o 2 caminos extras
+                if (iter == 4)
+                {
+                    int probabilityNewWaysAux = ((probabilityNewWays * 50) / 100) + 25;
+                    int waysAux = Random.Range(probabilityNewWaysAux - 25, probabilityNewWaysAux + 25);
+
+                    if (waysAux <= 50)
                     {
-                        grassAux1 = Instantiate(specialGrassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1) + newOffsetStart, Quaternion.identity);
+                        ways = 0;
                     }
                     else
                     {
-                        int burnTile = Random.Range(0, 101);
-                        if (burnTile < probabilityFireTile)
+                        int aux = Random.Range(0, 3);
+                        if (aux == 0)
                         {
-                            grassAux1 = Instantiate(fireTile, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1) + newOffsetStart, Quaternion.identity);
+                            ways = 1;
                         }
                         else
                         {
-                            grassAux1 = Instantiate(grassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1) + newOffsetStart, Quaternion.identity);
+                            ways = 2;
                         }
                     }
 
-                    map[i, j] = 1;
+                    saveIdX = newIdX;
+                    saveIdZ = newIdZ;
+                }
 
-                    int newLayer1 = Random.Range(0, 101);
-                    if (newLayer1 < 20)
-                    {
-                        if (specialTile < probabilitySpecialTiles)
+                // Elegimos la dirección
+                int probabilityStraightAux = ((probabilityStraight * 50) / 100) + 25;
+                nextSide = Random.Range(probabilityStraightAux - 25, probabilityStraightAux + 25);
+                nextSideOrientation = "";
+
+                switch (newStartSideOrientation)
+                {
+                    case "North":
+                        if (nextSide >= 50)
                         {
-                            grassAux2 = Instantiate(specialGrassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 1.25f, 1) + newOffsetStart, Quaternion.identity);
+                            nextSideOrientation = "South";
                         }
                         else
                         {
-                            grassAux2 = Instantiate(grassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 1.25f, 1) + newOffsetStart, Quaternion.identity);
-                        }
-
-                        grassAux1.layer = 0;
-
-                        map[i, j] = 2;
-
-                        int newLayer2 = Random.Range(0, 101);
-                        if (newLayer2 < 20 && i != 0 && i != sizeX - 1 && j != 0 && j != sizeZ - 1)
-                        {
-                            if (specialTile < probabilitySpecialTiles)
+                            int aux = Random.Range(0, 2);
+                            if (aux == 0)
                             {
-                                Instantiate(specialGrassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 1.75f, 1) + newOffsetStart, Quaternion.identity);
+                                nextSideOrientation = "East";
                             }
                             else
                             {
-                                Instantiate(grassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 1.75f, 1) + newOffsetStart, Quaternion.identity);
+                                nextSideOrientation = "West";
+                            }
+                        }
+                        break;
+                    case "East":
+                        if (nextSide >= 50)
+                        {
+                            nextSideOrientation = "West";
+                        }
+                        else
+                        {
+                            int aux = Random.Range(0, 2);
+                            if (aux == 0)
+                            {
+                                nextSideOrientation = "North";
+                            }
+                            else
+                            {
+                                nextSideOrientation = "South";
+                            }
+                        }
+                        break;
+                    case "South":
+                        if (nextSide >= 50)
+                        {
+                            nextSideOrientation = "North";
+                        }
+                        else
+                        {
+                            int aux = Random.Range(0, 2);
+                            if (aux == 0)
+                            {
+                                nextSideOrientation = "East";
+                            }
+                            else
+                            {
+                                nextSideOrientation = "West";
+                            }
+                        }
+                        break;
+                    case "West":
+                        if (nextSide >= 50)
+                        {
+                            nextSideOrientation = "East";
+                        }
+                        else
+                        {
+                            int aux = Random.Range(0, 2);
+                            if (aux == 0)
+                            {
+                                nextSideOrientation = "North";
+                            }
+                            else
+                            {
+                                nextSideOrientation = "South";
+                            }
+                        }
+                        break;
+                }
+
+                // Creamos el siguiente trozo
+                switch (nextSideOrientation)
+                {
+                    case "North":
+                        if (map[newIdX - 1, newIdZ] != -1)
+                        {
+                            newIdX--;
+                            map[newIdX, newIdZ] = -1;
+                        }
+                        break;
+                    case "East":
+                        if (map[newIdX, newIdZ + 1] != -1)
+                        {
+                            newIdZ++;
+                            map[newIdX, newIdZ] = -1;
+                        }
+                        break;
+                    case "South":
+                        if (map[newIdX + 1, newIdZ] != -1)
+                        {
+                            newIdX++;
+                            map[newIdX, newIdZ] = -1;
+                        }
+                        break;
+                    case "West":
+                        if (map[newIdX, newIdZ - 1] != -1)
+                        {
+                            newIdZ--;
+                            map[newIdX, newIdZ] = -1;
+                        }
+                        break;
+                }
+
+                iter++;
+            }
+
+            // Creamos los caminos extras
+            if (ways == 1)
+            {
+                GenerateOneWay(newStartSideOrientation, nextSideOrientation, newOffsetStart, newMapPos, saveIdX, saveIdZ);
+            }
+            if (ways == 2)
+            {
+                GenerateTwoWays(newStartSideOrientation, nextSideOrientation, newOffsetStart, newMapPos, saveIdX, saveIdZ);
+            }
+
+            GameObject grassAux1;
+            GameObject grassAux2;
+
+            // Ponemos césped donde no hay camino
+            for (int i = 0; i < sizeX; i++)
+            {
+                for (int j = 0; j < sizeZ; j++)
+                {
+                    if (map[i, j] != -1)
+                    {
+                        int specialTile = Random.Range(0, 101);
+                        specialTile *= 12;
+                        if (specialTile < probabilitySpecialTiles)
+                        {
+                            grassAux1 = Instantiate(specialGrassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1) + newOffsetStart, Quaternion.identity);
+                        }
+                        else
+                        {
+                            int burnTile = Random.Range(0, 101);
+                            if (burnTile < probabilityFireTile)
+                            {
+                                grassAux1 = Instantiate(fireTile, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1) + newOffsetStart, Quaternion.identity);
+                            }
+                            else
+                            {
+                                grassAux1 = Instantiate(grassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1) + newOffsetStart, Quaternion.identity);
+                            }
+                        }
+
+                        map[i, j] = 1;
+
+                        int newLayer1 = Random.Range(0, 101);
+                        if (newLayer1 < 20)
+                        {
+                            if (specialTile < probabilitySpecialTiles)
+                            {
+                                grassAux2 = Instantiate(specialGrassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 1.25f, 1) + newOffsetStart, Quaternion.identity);
+                            }
+                            else
+                            {
+                                grassAux2 = Instantiate(grassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 1.25f, 1) + newOffsetStart, Quaternion.identity);
                             }
 
-                            grassAux2.layer = 0;
+                            grassAux1.layer = 0;
 
-                            map[i, j] = 3;
+                            map[i, j] = 2;
+
+                            int newLayer2 = Random.Range(0, 101);
+                            if (newLayer2 < 20 && i != 0 && i != sizeX - 1 && j != 0 && j != sizeZ - 1)
+                            {
+                                if (specialTile < probabilitySpecialTiles)
+                                {
+                                    Instantiate(specialGrassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 1.75f, 1) + newOffsetStart, Quaternion.identity);
+                                }
+                                else
+                                {
+                                    Instantiate(grassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 1.75f, 1) + newOffsetStart, Quaternion.identity);
+                                }
+
+                                grassAux2.layer = 0;
+
+                                map[i, j] = 3;
+                            }
                         }
-                    }
-                    else
-                    {
-                        int newObstacle = Random.Range(0, 101);
-                        newObstacle *= 12;
-                        if (newObstacle < probabilityObstacles)
+                        else
                         {
-                            Instantiate(obstacleBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 3, 1) + newOffsetStart, Quaternion.identity);
+                            int newObstacle = Random.Range(0, 101);
+                            newObstacle *= 12;
+                            if (newObstacle < probabilityObstacles)
+                            {
+                                Instantiate(obstacleBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 3, 1) + newOffsetStart, Quaternion.identity);
+                            }
                         }
                     }
                 }
             }
+
+            colocatedMap.Add(newMapPos);
+
+            // Preparamos las variables para la siguiente iteración
+            PrepareNextMap(newStartSide, newStartSideOrientation, newOffsetStart, newMapPos, newIdX, newIdZ, nextSideOrientation, false);
         }
 
-        colocatedMap.Add(newMapPos);
-
-        // Preparamos las variables para la siguiente iteración
-        PrepareNextMap(newStartSide, newStartSideOrientation, newOffsetStart, newMapPos, newIdX, newIdZ, nextSideOrientation, false);
-
-        if (activateRounds)
+        numNewMapNodes--;
+        if (activateRounds && (numNewMapNodes - repiteNewMapNode) == 0)
         {
+            Invoke("CalculateNewMapNodes", 0.2f);
+
             gameFlow.StartRound();
+
+            miniMainTowerColocate = false;
         }
     }
+
+    void CalculateNewMapNodes()
+    {
+        int numNewMapNodesAux = 0;
+
+        foreach (var newMapNode in newMapNodes)
+        {
+            if (newMapNode != null)
+            {
+                numNewMapNodesAux++;
+            }
+        }
+
+        numNewMapNodes = numNewMapNodesAux;
+        //numNewMapNodes = numNewMapNodesAux - repiteNewMapNode;
+        repiteNewMapNode = 0;
+    }
+
 
     void GenerateOneWay(string myStartSideOrientation, string myNextSideOrientation, Vector3 myOffsetStart, Vector2 myMapPos, int myIdX, int myIdZ)
     {
@@ -595,6 +710,7 @@ public class Generator : MonoBehaviour
                 if (!colocatedMap.Contains(newMapPos) && !openMap.Contains(newMapPos) && !deleteWay)
                 {
                     GameObject newMap1 = Instantiate(nextMap, new Vector3(7f, 1, 7f) + newOffsetStart, Quaternion.identity);
+                    newMap1.SetActive(false);
                     newMapNodes.Add(newMap1);
                     NewMapNode newMapScript1 = newMap1.GetComponent<NewMapNode>();
                     newMapScript1.startSide = newStartSide;
@@ -683,6 +799,7 @@ public class Generator : MonoBehaviour
                 if (!colocatedMap.Contains(newMapPos) && !openMap.Contains(newMapPos) && !deleteWay)
                 {
                     GameObject newMap2 = Instantiate(nextMap, new Vector3(7f, 1, 7f) + newOffsetStart, Quaternion.identity);
+                    newMap2.SetActive(false);
                     newMapNodes.Add(newMap2);
                     NewMapNode newMapScript2 = newMap2.GetComponent<NewMapNode>();
                     newMapScript2.startSide = newStartSide;
@@ -771,6 +888,7 @@ public class Generator : MonoBehaviour
                 if (!colocatedMap.Contains(newMapPos) && !openMap.Contains(newMapPos) && !deleteWay)
                 {
                     GameObject newMap3 = Instantiate(nextMap, new Vector3(7, 1, 7) + newOffsetStart, Quaternion.identity);
+                    newMap3.SetActive(false);
                     newMapNodes.Add(newMap3);
                     NewMapNode newMapScript3 = newMap3.GetComponent<NewMapNode>();
                     newMapScript3.startSide = newStartSide;
@@ -859,6 +977,7 @@ public class Generator : MonoBehaviour
                 if (!colocatedMap.Contains(newMapPos) && !openMap.Contains(newMapPos) && !deleteWay)
                 {
                     GameObject newMap4 = Instantiate(nextMap, new Vector3(7, 1, 7) + newOffsetStart, Quaternion.identity);
+                    newMap4.SetActive(false);
                     newMapNodes.Add(newMap4);
                     NewMapNode newMapScript4 = newMap4.GetComponent<NewMapNode>();
                     newMapScript4.startSide = newStartSide;

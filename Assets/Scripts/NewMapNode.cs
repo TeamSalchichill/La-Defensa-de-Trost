@@ -40,6 +40,10 @@ public class NewMapNode : MonoBehaviour
         }
         else
         {
+            generator.repiteNewMapNode++;
+
+            generator.newMapNodes.Remove(gameObject);
+
             Destroy(gameObject);
             Destroy(spawn);
             Destroy(auxGrass);
@@ -52,13 +56,15 @@ public class NewMapNode : MonoBehaviour
     {
         if (gameFlow.cardSelected)
         {
+            generator.newMapNodes.Remove(gameObject);
+
             gameFlow.lastNodePosition = transform.position;
 
             MainTower.instance.restRounds--;
             if (Hero.instance != null)
             {
                 Hero.instance.nextRound = true;
-                Hero.instance.GetComponentInParent<Tower>().health = 100;
+                Hero.instance.GetComponentInParent<Tower>().health = Hero.instance.GetComponentInParent<Tower>().health;
             }
 
             generator.Generate(startSide, startSideOrientation, offsetStart, mapPos, idX, idZ);
