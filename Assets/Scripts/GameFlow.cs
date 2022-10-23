@@ -9,14 +9,16 @@ public class GameFlow : MonoBehaviour
 
     Generator generator;
     GameManager gameManager;
+    HUD_Manager hudManager;
 
-    public int round = 0;
-    public int coins = 250;
-    public int specialCoins = 50;
-    public int newSpecialCoinsPerRound = 5;
-
+    [Header("Basic")]
     public int totalRounds;
-
+    public int round = 0;
+    [Space]
+    public int coins = 650;
+    public int specialCoins = 20;
+    public int newSpecialCoinsPerRound = 5;
+    [Space]
     public bool roundFinished = true;
     public bool nextRound = false;
 
@@ -29,6 +31,14 @@ public class GameFlow : MonoBehaviour
     bool isActiveSandStorm = true;
     int startSandStormRound = -1;
     ParticleSystem instSandStorm;
+
+    [Header("Zona Agua")]
+    public GameObject waterFlag;
+    public Material healthBarGreen;
+    public Material healthBarYellow;
+    public Material healthBarRed;
+    int changeWaterRate = 3;
+    public float newSpeed = 1;
 
     [Header("Enemy waves")]
     public float spawnRate;
@@ -67,6 +77,7 @@ public class GameFlow : MonoBehaviour
     {
         generator = Generator.instance;
         gameManager = GameManager.instance;
+        hudManager = HUD_Manager.instance;
 
         cardsScripts = new Card[cardsPos.Length];
         for (int i = 0; i < cardsPos.Length; i++)
@@ -102,6 +113,8 @@ public class GameFlow : MonoBehaviour
         if (enemiesLeft1 <= 0 && enemiesLeft2 <= 0  && enemiesLeft3 <= 0 && !roundFinished)
         {
             roundFinished = true;
+            specialCoins += newSpecialCoinsPerRound;
+            gameManager.doSpawnEnemies = false;
 
             if (activateDados && showCards)
             {
@@ -113,12 +126,8 @@ public class GameFlow : MonoBehaviour
                 int towerCardAmount = Random.Range(1, 7);
                 int towerCardRarity = Random.Range(0, 3);
 
-                //print("Cantidad: " + towerCardAmount);
-                //print("Rareza: " + towerCardRarity);
-
                 foreach (var cardPos in cardsPos)
                 {
-                    //cardPos.enabled = true;
                     cardPos.gameObject.SetActive(true);
                 }
                 foreach (var cardScript in cardsScripts)
@@ -130,45 +139,31 @@ public class GameFlow : MonoBehaviour
 
             }
 
-            specialCoins += newSpecialCoinsPerRound;
-
-            gameManager.doSpawnEnemies = false;
-
-            foreach (var newNode in generator.newMapNodes)
+            if (round % generator.expandRate == 0)
             {
-                if (newNode != null)
+                foreach (var newNode in generator.newMapNodes)
                 {
-                    newNode.SetActive(true);
+                    if (newNode != null)
+                    {
+                        newNode.SetActive(true);
+                    }
                 }
+            }
+            else
+            {
+                hudManager.nextRoundButton.gameObject.SetActive(true);
             }
         }
     }
 
     public void StartRound()
     {
-        if (round == (startSandStormRound + sandStormDuration))
-        {
-            Destroy(instSandStorm);
-            isActiveSandStorm = false;
-        }
-
-        if (!isActiveSandStorm)
-        {
-            int spawnSandStorm = Random.Range(0, 100);
-
-            if (spawnSandStorm < sandStormProbavility && !isActiveSandStorm)
-            {
-                startSandStormRound = round;
-                isActiveSandStorm = true;
-                instSandStorm = Instantiate(sandStorm, lastNodePosition, Quaternion.identity);
-                instSandStorm.transform.rotation = Quaternion.AngleAxis(90, Vector3.right);
-            }
-        }
-
         roundFinished = false;
         nextRound = true;
         Invoke("StopNextRound", 0.2f);
+        gameManager.doSpawnEnemies = true;
 
+        hudManager.nextRoundButton.gameObject.SetActive(false);
         foreach (GameObject newNode in generator.newMapNodes)
         {
             if (newNode != null)
@@ -184,14 +179,81 @@ public class GameFlow : MonoBehaviour
         enemiesToSpawn3 = enemiesPerRound3[round];
         enemiesLeft3 = enemiesPerRound3[round];
 
-        round++;
+        if (round == 4)
+        {
+            generator.expandRate = 2;
+        }
+        if (round == 10)
+        {
+            generator.expandRate = 3;
+        }
+        if (round == 15)
+        {
+            generator.expandRate = 4;
+        }
+        if (round == 20)
+        {
+            generator.expandRate = 5;
+        }
 
-        gameManager.doSpawnEnemies = true;
-
+        
         if (round % cardsRate == 0)
         {
             showCards = true;
         }
+
+        if (generator.zone == Generator.Zone.Hielo)
+        {
+
+        }
+        
+        if (generator.zone == Generator.Zone.Desierto)
+        {
+            if (!isActiveSandStorm)
+            {
+                int spawnSandStorm = Random.Range(0, 100);
+
+                if (spawnSandStorm < sandStormProbavility && !isActiveSandStorm)
+                {
+                    startSandStormRound = round;
+                    isActiveSandStorm = true;
+                    instSandStorm = Instantiate(sandStorm, lastNodePosition, Quaternion.identity);
+                    instSandStorm.transform.rotation = Quaternion.AngleAxis(90, Vector3.right);
+                }
+            }
+
+            if (round == (startSandStormRound + sandStormDuration))
+            {
+                Destroy(instSandStorm);
+                isActiveSandStorm = false;
+            }
+        }
+
+        if (generator.zone == Generator.Zone.Atlantis)
+        {
+            if (round % changeWaterRate == 0)
+            {
+                int newSpeedRandom = Random.Range(0, 3);
+
+                switch (newSpeedRandom)
+                {
+                    case 0:
+                        newSpeed = 0.5f;
+                        waterFlag.GetComponent<MeshRenderer>().material = healthBarGreen;
+                        break;
+                    case 1:
+                        newSpeed = 1;
+                        waterFlag.GetComponent<MeshRenderer>().material = healthBarYellow;
+                        break;
+                    case 2:
+                        newSpeed = 2;
+                        waterFlag.GetComponent<MeshRenderer>().material = healthBarRed;
+                        break;
+                }
+            }
+        }
+
+        round++;
     }
 
     void StopNextRound()

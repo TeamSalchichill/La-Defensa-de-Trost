@@ -1813,7 +1813,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8150222141066179525}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1857,45 +1857,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetType: 0
   attackType: 0
-  canTarget: 0
   canColocate: 0
   bulletType: 0
   zone: 2
   specialStat: 5
-  towerName: Anubis
-  icon: {fileID: 0}
+  targetPreference: 0
+  anim: {fileID: 9068576239581187734}
   level5Light: {fileID: 0}
   rangeArea: {fileID: 4654265142820233893}
-  rangeAreaOriginalScale: 0
-  anim: {fileID: 9068576239581187734}
-  particles: {fileID: 0}
-  target: {fileID: 0}
-  bullet: {fileID: 0}
-  bulletPos: {fileID: 0}
   partToRotate: {fileID: 8813746195118008703}
-  fullRotate: 0
-  offsetY: 0
-  isHero: 0
+  towerName: Anubis
+  icon: {fileID: 0}
+  price: 500
+  acumulateGold: 0
   specialTile: 0
   burnTile: 0
+  spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
+  healthDamage: 100
+  armorDamage: 0
+  range: 7
+  rangeAreaOriginalScale: 0
+  fireRate: 0.5
+  turnSpeed: 3
+  health: 700
+  healthMax: 0
+  armor: 0
+  armorMax: 0
+  sirenitaBoost: 0
+  target: {fileID: 0}
+  numTargets: 1
+  bullet: {fileID: 0}
+  bulletPos: {fileID: 0}
+  particles: {fileID: 0}
+  fullRotate: 0
   level: 1
   levelMultiplier: 1.1
   levelMultiplierSpecialStat: 1.2
   levelUpPrice: 100
   level5Price: 100
   priceLogo: "\u20AC"
-  acumulateGold: 0
-  health: 700
-  healthMax: 0
-  armor: 0
-  armorMax: 0
-  range: 7
-  fireRate: 0.5
-  turnSpeed: 3
-  price: 500
-  isDie: 0
-  healthDamage: 100
-  armorDamage: 0
   iceDamage: 0
   igniteDamage: 1
   waterDamage: 0
@@ -1907,15 +1907,12 @@ MonoBehaviour:
   burnEffectPerShoot: 2
   timeInOverHeat: 10
   smokeOverHeat: {fileID: 8550112519114524154, guid: 0e92832738859c442a7291bfea6e6f75, type: 3}
+  isHero: 0
   iceWall: {fileID: 0}
   exploteIceWall: 0
   frezzeIceWall: 0
-  spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
   curation: 50
-  RaParticles: []
-  numRays: 0
-  partToRotateGO: {fileID: 0}
-  allEnemiesInRange: []
+  singParticles: {fileID: 0}
 --- !u!65 &9068576239581187723
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1927,8 +1924,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8, y: 1.903817, z: 8}
-  m_Center: {x: 0, y: 0.4519085, z: 0}
+  m_Size: {x: 7, y: 12, z: 7}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8430193011817460963
 GameObject:
   m_ObjectHideFlags: 0

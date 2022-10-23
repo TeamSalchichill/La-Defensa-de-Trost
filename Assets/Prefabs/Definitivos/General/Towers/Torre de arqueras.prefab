@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2221021801335453860}
   - component: {fileID: 3335537708928088966}
   - component: {fileID: 2492292545866723273}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PiernaIzq-local
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 2173786810249272047}
   - component: {fileID: 7865450038900980263}
   - component: {fileID: 621299077058966502}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cuerpo-local
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 1699043499095087077}
   - component: {fileID: 5303721719860295418}
   - component: {fileID: 8402696681996315085}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PieIzq-local
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6898364877265782218}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PieIzq-global
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -290,7 +290,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5496391970562086024}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PieDer-global
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 8886848557360951707}
   - component: {fileID: 8591154238048816857}
   - component: {fileID: 15835914383241009}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 'Node '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -408,9 +408,9 @@ GameObject:
   - component: {fileID: 3395211749599809946}
   - component: {fileID: 3395211749599809947}
   - component: {fileID: 1209624331256980349}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Torre de arqueras
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -424,7 +424,7 @@ Transform:
   m_GameObject: {fileID: 2584888926791640036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6188050100766881612}
@@ -466,47 +466,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c0977a1e22fe4a4a9636c32c8574147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetType: 0
+  targetType: 1
   attackType: 1
-  canTarget: 0
   canColocate: 0
   bulletType: 0
   zone: 0
   specialStat: 3
-  towerName: Torre de arqueras
-  icon: {fileID: 0}
+  targetPreference: 0
+  anim: {fileID: 3395211749599809946}
   level5Light: {fileID: 0}
   rangeArea: {fileID: 4417269779872820031}
-  rangeAreaOriginalScale: 0
-  anim: {fileID: 3395211749599809946}
-  particles: {fileID: 3568809832730762549, guid: fca769d222550cb44b1e919330393b2d, type: 3}
-  target: {fileID: 0}
-  bullet: {fileID: 6537389260430315145, guid: eb9059e701488974f80a838c11d28736, type: 3}
-  bulletPos: {fileID: 8556126816978311925}
   partToRotate: {fileID: 6188050100766881612}
-  fullRotate: 0
-  offsetY: 0
-  isHero: 0
+  towerName: Torre de arqueras
+  icon: {fileID: 0}
+  price: 200
+  acumulateGold: 0
   specialTile: 0
   burnTile: 0
+  spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
+  healthDamage: 200
+  armorDamage: 0
+  range: 10
+  rangeAreaOriginalScale: 0
+  fireRate: 1.25
+  turnSpeed: 10
+  health: 700
+  healthMax: 0
+  armor: 0
+  armorMax: 0
+  target: {fileID: 0}
+  numTargets: 5
+  bullet: {fileID: 6537389260430315145, guid: eb9059e701488974f80a838c11d28736, type: 3}
+  bulletPos: {fileID: 8556126816978311925}
+  particles: {fileID: 3568809832730762549, guid: fca769d222550cb44b1e919330393b2d, type: 3}
+  fullRotate: 0
   level: 1
   levelMultiplier: 1.1
   levelMultiplierSpecialStat: 1.25
   levelUpPrice: 120
   level5Price: 70
   priceLogo: "\u20AC"
-  acumulateGold: 0
-  health: 700
-  healthMax: 0
-  armor: 0
-  armorMax: 0
-  range: 10
-  fireRate: 1.25
-  turnSpeed: 10
-  price: 200
-  isDie: 0
-  healthDamage: 200
-  armorDamage: 0
   iceDamage: 0
   igniteDamage: 0
   waterDamage: 0
@@ -518,15 +517,12 @@ MonoBehaviour:
   burnEffectPerShoot: 2
   timeInOverHeat: 10
   smokeOverHeat: {fileID: 8550112519114524154, guid: 0e92832738859c442a7291bfea6e6f75, type: 3}
+  isHero: 0
   iceWall: {fileID: 0}
   exploteIceWall: 0
   frezzeIceWall: 0
-  spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
   curation: 50
-  RaParticles: []
-  numRays: 0
-  partToRotateGO: {fileID: 0}
-  allEnemiesInRange: []
+  singParticles: {fileID: 0}
 --- !u!65 &1209624331256980349
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -538,8 +534,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.0284498, y: 4.28561, z: 2.2433615}
-  m_Center: {x: 0, y: 2.1552935, z: 0}
+  m_Size: {x: 2.4, y: 4, z: 2.4}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3058122571272670153
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,7 +545,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 399919755840761333}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Node-global
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -581,7 +577,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4857826984785945346}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cabeza-global
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -613,7 +609,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 342823124323433046}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cuerpo-global
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -650,7 +646,7 @@ GameObject:
   - component: {fileID: 6070846482422098923}
   - component: {fileID: 6801408913794363203}
   - component: {fileID: 6379097437948534660}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Node-local
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -733,7 +729,7 @@ GameObject:
   - component: {fileID: 9174968199445313537}
   - component: {fileID: 1885830227652939340}
   - component: {fileID: 6171071255800790871}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: brazoDer-local
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -816,7 +812,7 @@ GameObject:
   - component: {fileID: 2280584053322742738}
   - component: {fileID: 8520266103753797872}
   - component: {fileID: 1966080662137284145}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PieDer-local
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -897,7 +893,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5172748712311184619}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PiernaDer-global
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -930,7 +926,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2613366441325834319}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 'Node '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -964,7 +960,7 @@ GameObject:
   - component: {fileID: 2364755876552352745}
   - component: {fileID: 6537467107353659479}
   - component: {fileID: 2862827178857411143}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BrazoIzq-local
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1045,7 +1041,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4018201842989070597}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BrazoIzq-global
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1172,7 +1168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 279859404818265271}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: brazoDer-global
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1206,7 +1202,7 @@ GameObject:
   - component: {fileID: 5100055369818322383}
   - component: {fileID: 649822157755181410}
   - component: {fileID: 6203190741016484041}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cabeza-local
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1289,7 +1285,7 @@ GameObject:
   - component: {fileID: 2967018585895297232}
   - component: {fileID: 7154714880255563511}
   - component: {fileID: 1918658652773515729}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PiernaDer-local
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1370,7 +1366,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6188050100766881612}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body-global
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1404,7 +1400,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3062167823657093123}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PiernaIzq-global
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1494,6 +1490,18 @@ PrefabInstance:
     - target: {fileID: 4417269780429767691, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}
       propertyPath: m_Name
       value: rango
+      objectReference: {fileID: 0}
+    - target: {fileID: 4417269780429767691, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724566107546707850, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814231855809447847, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}

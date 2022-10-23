@@ -419,7 +419,7 @@ MonoBehaviour:
   turnSpeed: 10
   price: 1000
   isDie: 0
-  healthDamage: 50
+  healthDamage: 150
   armorDamage: 0
   iceDamage: 1
   igniteDamage: 0
@@ -467,8 +467,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.1341627, y: 6.7591457, z: 1.4644471}
-  m_Center: {x: 1.8612397e-15, y: 3.251131, z: -0.23222357}
+  m_Size: {x: 2.2, y: 8, z: 2.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &912101733
 Animator:
   serializedVersion: 4

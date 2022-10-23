@@ -13,6 +13,7 @@ public class HUD_Manager : MonoBehaviour
     CameraController cameraController;
     ColocatorManager colocatorManager;
     GameFlow gameFlow;
+    MainTower mainTower;
 
     [Header("Sliders")]
     public Slider[] sliders = new Slider[6];
@@ -21,11 +22,14 @@ public class HUD_Manager : MonoBehaviour
 
     [Header("CanActivate")]
     public TextMeshProUGUI[] canActivate = new TextMeshProUGUI[3];
+    public Button nextRoundButton;
 
     [Header("Temporal messages")]
     public TextMeshProUGUI coinsText;
     public TextMeshProUGUI specialCoinsText;
     public TextMeshProUGUI roundText;
+    public TextMeshProUGUI healthText;
+    public TextMeshProUGUI enemiesText;
 
     [Header("Tower Info")]
     public bool isShowInfo = false;
@@ -37,6 +41,9 @@ public class HUD_Manager : MonoBehaviour
     public TextMeshProUGUI towerDescription;
     public TextMeshProUGUI levelUpButton;
     public TextMeshProUGUI sellButton;
+
+    [Header("Tower Buttons")]
+    public TextMeshProUGUI[] towersButton;
 
     void Awake()
     {
@@ -50,6 +57,12 @@ public class HUD_Manager : MonoBehaviour
         cameraController = CameraController.instance;
         colocatorManager = ColocatorManager.instance;
         gameFlow = GameFlow.instance;
+        mainTower = MainTower.instance;
+
+        for (int i = 0; i < towersButton.Length; i++)
+        {
+            towersButton[i].text = colocatorManager.towers[i].GetComponent<Tower>().towerName + "\n" + "(" + colocatorManager.towers[i].GetComponent<Tower>().price + "€)";
+        }
     }
 
     void Update()
@@ -71,6 +84,15 @@ public class HUD_Manager : MonoBehaviour
         coinsText.text = "Monedas: " + gameFlow.coins.ToString() + "€";
         specialCoinsText.text = "Monedas: " + gameFlow.specialCoins.ToString() + "$";
         roundText.text = "Ronda: " + gameFlow.round.ToString();
+        if (mainTower == null)
+        {
+            mainTower = MainTower.instance;
+        }
+        healthText.text = "Vida: " + mainTower.health;
+        enemiesText.text = 
+            "Enemigos pequeños x" + gameFlow.enemiesLeft1 + "\n" + 
+            "Enemigos medianos x" + gameFlow.enemiesLeft2 + "\n" + 
+            "Enemigos grandes x" + gameFlow.enemiesLeft3;
 
         if (isShowInfo && (Input.GetButtonDown("Fire2") || Input.GetButton("Fire2")))
         {
@@ -109,8 +131,13 @@ public class HUD_Manager : MonoBehaviour
                 levelUpButton.gameObject.SetActive(true);
             }
 
+            float actualHealth = activeTower.health;
+            float actualHealthMax = activeTower.healthMax;
+
+            float healthPercent = actualHealth / actualHealthMax;
+
             levelUpButton.text = "Mejorar" + "\n" + "(" + activeTower.levelUpPrice + activeTower.priceLogo + ")";
-            sellButton.text = "Vender" + "\n" + "(" + (int)(activeTower.acumulateGold * 0.7f) + ")";
+            sellButton.text = "Vender" + "\n" + "(" + (int)(activeTower.acumulateGold * 0.7f * healthPercent) + ")";
         }
     }
 
@@ -137,6 +164,15 @@ public class HUD_Manager : MonoBehaviour
     }
     public void ChangeTower(int id)
     {
+        isShowInfo = false;
+
+        if (activeTower != null)
+        {
+            activeTower.rangeArea.SetActive(false);
+        }
+
+        fichaTecnica.SetActive(false);
+
         if (colocatorManager.towerID == id)
         {
             colocatorManager.canBuild = false;
@@ -310,11 +346,46 @@ public class HUD_Manager : MonoBehaviour
     }
     public void SellTower()
     {
-        gameFlow.coins += (int)(activeTower.acumulateGold * 0.7f);
+        float actualHealth = activeTower.health;
+        float actualHealthMax = activeTower.healthMax;
+
+        float healthPercent = actualHealth / actualHealthMax;
+
+        gameFlow.coins += (int)(activeTower.acumulateGold * 0.7f * healthPercent);
 
         Destroy(activeTower.gameObject);
 
         activeTower = null;
         fichaTecnica.SetActive(false);
+    }
+
+    public void DisableInfo()
+    {
+        if (isShowInfo)
+        {
+            isShowInfo = false;
+
+            if (activeTower != null)
+            {
+                activeTower.rangeArea.SetActive(false);
+            }
+
+            fichaTecnica.SetActive(false);
+        }
+    }
+
+    public void ChangeScene(int id)
+    {
+        SceneManager.LoadScene(id);
+    }
+
+    public void ChangeSpeed(int speed)
+    {
+        Time.timeScale = speed;
+    }
+
+    public void StartRoundButtom()
+    {
+        gameFlow.StartRound();
     }
 }

@@ -427,6 +427,7 @@ GameObject:
   - component: {fileID: 2348272514291980162}
   - component: {fileID: 2156880055321248450}
   - component: {fileID: 7617415812565308208}
+  - component: {fileID: 5408895410964400}
   m_Layer: 6
   m_Name: Yeti
   m_TagString: Enemy
@@ -449,6 +450,7 @@ Transform:
   - {fileID: 1687997236427193872}
   - {fileID: 721779457575085248}
   - {fileID: 3057322129601671558}
+  - {fileID: 4173632673815894269}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -477,7 +479,7 @@ BoxCollider:
   m_GameObject: {fileID: 3195256352182299345}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1.3, y: 7.5, z: 1.3}
   m_Center: {x: -0, y: 5, z: 0}
@@ -523,7 +525,7 @@ MonoBehaviour:
   deadParticle: {fileID: 5107351696323173831, guid: cbb13d85c1d0b8e47a172c4a048ff446, type: 3}
   enemyName: 
   damage: 5
-  gold: 50
+  gold: 40
   speed: 0
   range: 3
   normalSpeed: 2
@@ -560,6 +562,7 @@ MonoBehaviour:
   healthBarYellow: {fileID: 2100000, guid: 6db1dac8f7c5c1d48908fa418aba0c55, type: 2}
   healthBarRed: {fileID: 2100000, guid: 4a43ecf05c7fbcb4b84d7c8daa908c97, type: 2}
   miniTowerFound: 0
+  waterParticles: {fileID: 7341238106738537608}
 --- !u!195 &7617415812565308208
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -582,6 +585,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &5408895410964400
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3195256352182299345}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 8
+  m_Direction: 1
+  m_Center: {x: 0, y: 4, z: 0}
 --- !u!1 &3405627493350142734
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,3 +1343,70 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &8668601575838873855
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2818131957292118123}
+    m_Modifications:
+    - target: {fileID: 2138187405515181175, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+      propertyPath: m_Name
+      value: Cone Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730670741534990338, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730670741534990338, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730670741534990338, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730670741534990338, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730670741534990338, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730670741534990338, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730670741534990338, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730670741534990338, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730670741534990338, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730670741534990338, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730670741534990338, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+--- !u!4 &4173632673815894269 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4730670741534990338, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+  m_PrefabInstance: {fileID: 8668601575838873855}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7341238106738537608 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2138187405515181175, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+  m_PrefabInstance: {fileID: 8668601575838873855}
+  m_PrefabAsset: {fileID: 0}

@@ -131,12 +131,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zone: 1
-  health: 10
+  health: 25
   activateTower: 0
   roundsToReset: 3
   restRounds: 0
   blizzard: {fileID: 3522392810799222791, guid: 37fcd8999a7cced47b32782c958235fc, type: 3}
   blizzadTime: 5
+  infection: {fileID: 0}
+  infectationDuration: 0
 --- !u!114 &-5126445362107006203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,6 +154,7 @@ MonoBehaviour:
   offsetPos: {x: 0, y: -3, z: 0}
   offsetRot: {x: 0, y: -0.70710677, z: 0, w: 0.70710677}
   isSpawn: 0
+  oritateToPath: 0
 --- !u!65 &2822921971810820214
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -163,8 +166,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 14, z: 14}
-  m_Center: {x: 0, y: 7, z: -0}
+  m_Size: {x: 14, y: 7, z: 14}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4558818910069832264
 GameObject:
   m_ObjectHideFlags: 0

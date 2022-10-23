@@ -1146,8 +1146,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.9800425, y: 4.8728127, z: 2.4029818}
-  m_Center: {x: 5.0815666e-16, y: 2.3894534, z: 0.16075832}
+  m_Size: {x: 2.2, y: 4, z: 2.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &5693955152681507291
 Animator:
   serializedVersion: 4
@@ -1158,7 +1158,7 @@ Animator:
   m_GameObject: {fileID: 4883476335695343857}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2c099e85a32d403498b5e7e74fae62d1, type: 2}
+  m_Controller: {fileID: 9100000, guid: 613b7f9f460bc6741b5349921b71c961, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1182,45 +1182,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetType: 0
   attackType: 0
-  canTarget: 0
   canColocate: 1
   bulletType: 0
   zone: 1
   specialStat: 5
-  towerName: Snow Keeper
-  icon: {fileID: 0}
+  targetPreference: 0
+  anim: {fileID: 5693955152681507291}
   level5Light: {fileID: 0}
   rangeArea: {fileID: 4417269779985242303}
-  rangeAreaOriginalScale: 0
-  anim: {fileID: 5693955152681507291}
-  particles: {fileID: 0}
-  target: {fileID: 0}
-  bullet: {fileID: 0}
-  bulletPos: {fileID: 0}
   partToRotate: {fileID: 5228194789967915595}
-  fullRotate: 0
-  offsetY: 0
-  isHero: 0
+  towerName: Snow Keeper
+  icon: {fileID: 0}
+  price: 550
+  acumulateGold: 0
   specialTile: 0
   burnTile: 0
+  spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
+  healthDamage: 15
+  armorDamage: 0
+  range: 5
+  rangeAreaOriginalScale: 0
+  fireRate: 1
+  turnSpeed: 10
+  health: 4000
+  healthMax: 0
+  armor: 0
+  armorMax: 0
+  target: {fileID: 0}
+  numTargets: 1
+  bullet: {fileID: 0}
+  bulletPos: {fileID: 0}
+  particles: {fileID: 0}
+  fullRotate: 0
   level: 1
   levelMultiplier: 1.1
   levelMultiplierSpecialStat: 1.25
   levelUpPrice: 350
   level5Price: 100
   priceLogo: "\u20AC"
-  acumulateGold: 0
-  health: 1500
-  healthMax: 0
-  armor: 0
-  armorMax: 0
-  range: 5
-  fireRate: 1
-  turnSpeed: 10
-  price: 550
-  isDie: 0
-  healthDamage: 15
-  armorDamage: 0
   iceDamage: 0
   igniteDamage: 0
   waterDamage: 0
@@ -1232,15 +1231,12 @@ MonoBehaviour:
   burnEffectPerShoot: 2
   timeInOverHeat: 10
   smokeOverHeat: {fileID: 8550112519114524154, guid: 0e92832738859c442a7291bfea6e6f75, type: 3}
+  isHero: 0
   iceWall: {fileID: 0}
   exploteIceWall: 0
   frezzeIceWall: 0
-  spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
   curation: 50
-  RaParticles: []
-  numRays: 0
-  partToRotateGO: {fileID: 0}
-  allEnemiesInRange: []
+  singParticles: {fileID: 0}
 --- !u!1 &5898034240380468880
 GameObject:
   m_ObjectHideFlags: 0

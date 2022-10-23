@@ -1020,6 +1020,7 @@ GameObject:
   - component: {fileID: 8315093864869241559}
   - component: {fileID: 8315093864869241556}
   - component: {fileID: 8315093864869241557}
+  - component: {fileID: 1808763357974529937}
   m_Layer: 6
   m_Name: Mamut
   m_TagString: Enemy
@@ -1045,6 +1046,7 @@ Transform:
   - {fileID: 5914610182863952138}
   - {fileID: 6482894485512491409}
   - {fileID: 2209408569790537867}
+  - {fileID: 3737544236485470103}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1073,7 +1075,7 @@ BoxCollider:
   m_GameObject: {fileID: 9197559908281786240}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 2, y: 6, z: 2}
   m_Center: {x: 0, y: 4, z: 0}
@@ -1119,7 +1121,7 @@ MonoBehaviour:
   deadParticle: {fileID: 5107351696323173831, guid: cbb13d85c1d0b8e47a172c4a048ff446, type: 3}
   enemyName: 
   damage: 5
-  gold: 50
+  gold: 40
   speed: 0
   range: 3
   normalSpeed: 2
@@ -1156,6 +1158,7 @@ MonoBehaviour:
   healthBarYellow: {fileID: 2100000, guid: 6db1dac8f7c5c1d48908fa418aba0c55, type: 2}
   healthBarRed: {fileID: 2100000, guid: 4a43ecf05c7fbcb4b84d7c8daa908c97, type: 2}
   miniTowerFound: 0
+  waterParticles: {fileID: 8058212186389138402}
 --- !u!195 &8315093864869241557
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1178,3 +1181,84 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &1808763357974529937
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9197559908281786240}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 6
+  m_Direction: 1
+  m_Center: {x: -0, y: 3, z: -0}
+--- !u!1001 &8248583888239101845
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8426125698555626810}
+    m_Modifications:
+    - target: {fileID: 2138187405515181175, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+      propertyPath: m_Name
+      value: Cone Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730670741534990338, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730670741534990338, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730670741534990338, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730670741534990338, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730670741534990338, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730670741534990338, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730670741534990338, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730670741534990338, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730670741534990338, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730670741534990338, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730670741534990338, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+--- !u!4 &3737544236485470103 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4730670741534990338, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+  m_PrefabInstance: {fileID: 8248583888239101845}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8058212186389138402 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2138187405515181175, guid: c5cc7cfcdd8e21e4c9b4fb84a900cbc6, type: 3}
+  m_PrefabInstance: {fileID: 8248583888239101845}
+  m_PrefabAsset: {fileID: 0}

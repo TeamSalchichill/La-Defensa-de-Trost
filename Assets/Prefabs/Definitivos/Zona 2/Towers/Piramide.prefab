@@ -380,8 +380,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 18.389803, y: 7.3307905, z: 18.092468}
-  m_Center: {x: 0, y: 3.6653953, z: 0.037893295}
+  m_Size: {x: 18.65, y: 8, z: 18.65}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &1959979757982691978
 Animator:
   serializedVersion: 4
@@ -414,9 +414,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3fbfe8f8037ed54285c9166d87b7002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetPos: {x: 0, y: -3, z: 0}
+  offsetPos: {x: 0, y: -3.25, z: 0}
   offsetRot: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
   isSpawn: 0
+  oritateToPath: 0
 --- !u!114 &1959979757982691981
 MonoBehaviour:
   m_ObjectHideFlags: 0

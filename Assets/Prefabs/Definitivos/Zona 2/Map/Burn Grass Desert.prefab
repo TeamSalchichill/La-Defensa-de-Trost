@@ -147,6 +147,7 @@ MonoBehaviour:
   offsetPos: {x: 0, y: -0.25, z: 0}
   offsetRot: {x: 0, y: 0, z: 0, w: 0}
   isSpawn: 0
+  oritateToPath: 0
 --- !u!208 &1964394520259382998
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -157,7 +158,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 1, y: 0.25, z: 1}
+  m_Extents: {x: 0.75, y: 0.25, z: 0.75}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1

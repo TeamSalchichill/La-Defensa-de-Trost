@@ -300,7 +300,7 @@ Transform:
   m_GameObject: {fileID: 2049334802879713680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.17, y: 0.17, z: 0.17}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4189228411789549441}
@@ -382,7 +382,7 @@ MonoBehaviour:
   turnSpeed: 10
   price: 300
   isDie: 0
-  healthDamage: 110
+  healthDamage: 85
   armorDamage: 0
   iceDamage: 0
   igniteDamage: 3
@@ -415,8 +415,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 11.456585, y: 2.6440353, z: 12.5696335}
-  m_Center: {x: 0, y: 1.3055577, z: 0}
+  m_Size: {x: 12.5, y: 6, z: 12.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2600428286906170997
 MonoBehaviour:
   m_ObjectHideFlags: 0

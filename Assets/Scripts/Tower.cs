@@ -5,14 +5,11 @@ using UnityEngine.UI;
 
 public class Tower : MonoBehaviour
 {
-    public enum TargetType { SingleTarget, MultiTarget, Resources }
+    public enum TargetType { SingleTarget, MultiTarget, AoE }
     public TargetType targetType;
 
-    public enum AttackType { Melee, Range }
+    public enum AttackType { Melee, Range, Resources }
     public AttackType attackType;
-
-    public enum CanTarget { Ground, Air, Both }
-    public CanTarget canTarget;
 
     public enum CanColocate { Ground, Path }
     public CanColocate canColocate;
@@ -26,57 +23,71 @@ public class Tower : MonoBehaviour
     public enum SpecialStat { None, Health, Range, ShootSpeed, TurnSpeed, HealthDamage, IceEffect, IgniteEffect, WaterEffect, AscensionEffect, BloodEffect, CrazyEffect}
     public SpecialStat specialStat;
 
-    MainTower mainTower;
+    public enum TargetPreference { Near, Far, MoreHealh, LessHealth, MoreFast, LessFast, MoreDamage, LessDamage, SmallEnemies, MediumEnemies, Boss,  }
+    public TargetPreference targetPreference;
+
     GameFlow gameFlow;
     HUD_Manager hudManager;
-
-    public string towerName;
-    public Image icon;
-    public Light level5Light;
-    public GameObject rangeArea;
-    public float rangeAreaOriginalScale;
+    Generator generator;
 
     [Header("Components")]
     public Animator anim;
-    public GameObject particles;
 
-    [Header("Resources")]
-    public Transform target;
-    public GameObject bullet;
-    public GameObject bulletPos;
+    [Header("External GameObjects")]
+    public Light level5Light;
+    public GameObject rangeArea;
     public Transform partToRotate;
-    public bool fullRotate = false;
-    public float offsetY = 0;
 
-    [Header("General Stats")]
-    public bool isHero;
+    [Header("General")]
+    public string towerName;
+    public Image icon;
+    [Space]
+    public int price;
+    public int acumulateGold = 0;
+    [Space]
     public bool specialTile;
     public bool burnTile;
     [Space]
+    public ParticleSystem spawnParticles;
+
+    [Header("Stats")]
+    public int healthDamage = 100;
+    public int armorDamage = 0;
+    [Space]
+    public float range;
+    public float rangeAreaOriginalScale;
+    public float fireRate = 1f;
+    float fireCountdown = 0f;
+    public float turnSpeed = 10f;
+    [Space]
+    public int health;
+    public int healthMax;
+    public int armor;
+    public int armorMax;
+    [Space]
+    public bool sirenitaBoost = false;
+
+    [Header("Attack Resources")]
+    public Transform target;
+    public int numTargets = 1;
+    [Space]
+    public GameObject bullet;
+    public GameObject bulletPos;
+    [Space]
+    public GameObject particles;
+    public bool fullRotate = false;
+    [Space]
+    GameObject[] enemies;
+
+    [Header("Level")]
     public int level = 1;
     public float levelMultiplier = 1.2f;
     public float levelMultiplierSpecialStat = 1.3f;
     public int levelUpPrice = 100;
     public int level5Price = 100;
     public string priceLogo = "€";
-    public int acumulateGold = 0;
-    public int health;
-    public int healthMax;
-    public int armor;
-    public int armorMax;
-    [Space]
-    public float range;
-    public float fireRate = 1f;
-    float fireCountdown = 0f;
-    public float turnSpeed = 10f;
-    [Space]
-    public int price;
-    public bool isDie = false;
-
-    [Header("Damages")]
-    public int healthDamage = 100;
-    public int armorDamage = 0;
-    [Space]
+    
+    [Header("States Stats")]
     [Range(0, 100)]
     public int iceDamage = 0;
     [Range(0, 100)]
@@ -89,8 +100,8 @@ public class Tower : MonoBehaviour
     public int bloodDamage = 0;
     [Range(0, 100)]
     public int transformationDamage = 0;
-    [Space]
-    [Range(0, 100)]
+    
+    [Header("Overheat")]
     public bool isBurn = false;
     public float burnEffect = 0;
     public float burnEffectPerShoot = 2;
@@ -98,36 +109,34 @@ public class Tower : MonoBehaviour
     public ParticleSystem smokeOverHeat;
     ParticleSystem instSmoke;
 
-    [Header("Hero")]
+    [Header("Hero - General")]
+    public bool isHero;
+
+    [Header("Hero - Hielo")]
     public GameObject iceWall;
     public bool exploteIceWall = false;
     public bool frezzeIceWall = false;
-    
-    public ParticleSystem spawnParticles;
 
-    [Space]
+    [Header("Hero - Desierto")]
     public int curation = 50;
-    public GameObject[] RaParticles;
-    public int numRays;
-    public GameObject partToRotateGO;
-    public List<GameObject> allEnemiesInRange;
-    
+
+    [Header("Hero - Agua")]
+    public GameObject singParticles;
+
     void Start()
     {
-        if (isHero && zone == Zone.Desierto)
-        {
-            RaParticles = new GameObject[numRays];
+        gameFlow = GameFlow.instance;
+        hudManager = HUD_Manager.instance;
+        generator = Generator.instance;
 
-            for (int i = 0; i < numRays; i++)
-            {
-                RaParticles[i] = Instantiate(partToRotateGO, partToRotate.transform.position, partToRotate.transform.rotation);
-                RaParticles[i].transform.SetParent(transform);
-            }
-        }
+        level5Light = GetComponentInChildren<Light>();
+
+        healthMax = health;
+        armorMax = armor;
+        acumulateGold = price;
 
         ParticleSystem instParticle = Instantiate(spawnParticles, transform.position, transform.rotation);
         instParticle.transform.rotation = Quaternion.AngleAxis(270, Vector3.right);
-        //instParticle.transform.rotation = new Quaternion(-90, 0, 0, 0);
 
         if (burnTile)
         {
@@ -141,36 +150,26 @@ public class Tower : MonoBehaviour
             rangeArea.SetActive(false);
         }
 
-        level5Light = GetComponentInChildren<Light>();
-
-        mainTower = MainTower.instance;
-        gameFlow = GameFlow.instance;
-        hudManager = HUD_Manager.instance;
-
-        healthMax = health;
-        armorMax = armor;
-        acumulateGold = price;
-
         if (specialTile)
         {
-            switch (mainTower.zone)
+            switch (generator.zone)
             {
-                case MainTower.Zone.Hielo:
+                case Generator.Zone.Hielo:
                     iceDamage *= 3;
                     break;
-                case MainTower.Zone.Desierto:
+                case Generator.Zone.Desierto:
                     igniteDamage *= 3;
                     break;
-                case MainTower.Zone.Atlantis:
+                case Generator.Zone.Atlantis:
+                    waterDamage *= 3;
+                    break;
+                case Generator.Zone.Valhalla:
 
                     break;
-                case MainTower.Zone.Vikingos:
+                case Generator.Zone.Fantasia:
 
                     break;
-                case MainTower.Zone.Fantasia:
-
-                    break;
-                case MainTower.Zone.Infierno:
+                case Generator.Zone.Infierno:
 
                     break;
             }
@@ -181,13 +180,13 @@ public class Tower : MonoBehaviour
             switch (zone)
             {
                 case Zone.Hielo:
-                    InvokeRepeating("InvokeIceWall", 1, 20);
+                    InvokeRepeating("Hero1SpecialAttack", 1, 20);
                     break;
                 case Zone.Desierto:
-                    InvokeRepeating("HealthTowers", 1, 15);
+                    InvokeRepeating("Hero2SpecialAttack", 1, 15);
                     break;
                 case Zone.Atlantis:
-
+                    InvokeRepeating("Hero3SpecialAttack", 1, 15);
                     break;
                 case Zone.Vikingos:
 
@@ -201,14 +200,18 @@ public class Tower : MonoBehaviour
             }
         }
 
-        InvokeRepeating("UpdateTarget", 0f, 0.5f);
+        InvokeRepeating("UpdateTarget", 0, 0.5f);
     }
 
     void UpdateTarget()
     {
-        allEnemiesInRange = new List<GameObject>();
+        if (attackType == AttackType.Resources)
+        {
+            target = MainTower.instance.transform;
+            return;
+        }
 
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
         foreach (GameObject enemy in enemies)
@@ -218,126 +221,38 @@ public class Tower : MonoBehaviour
             {
                 shortestDistance = distanceToEnemy;
                 nearestEnemy = enemy;
-
-                allEnemiesInRange.Add(enemy);
             }
         }
 
         if (nearestEnemy != null && shortestDistance <= range)
         {
             target = nearestEnemy.transform;
+            anim.SetBool("isShoot", true);
         }
         else
         {
             target = null;
+            anim.SetBool("isShoot", false);
         }
     }
 
     void Update()
     {
-        if (gameFlow.nextRound)
+        // Comprobar vida
+        if (health <= 0)
         {
-            health = healthMax;
-            armor = armorMax;
+            Destroy(gameObject);
         }
 
-        if (health <= 0 && !isDie)
-        {
-            isDie = true;
-
-            if (anim != null)
-            {
-                anim.SetTrigger("doDie");
-            }
-
-            Destroy(gameObject, 2);
-        }
-
-        if (targetType == TargetType.Resources && !gameFlow.roundFinished)
-        {
-            if (fireCountdown <= 0f && !isBurn)
-            {
-                if (burnTile)
-                {
-                    burnEffect += burnEffectPerShoot;
-                }
-
-                hudManager.AddCoins(healthDamage);
-
-                fireCountdown = 1f / fireRate;
-            }
-        }
-
+        // Bajar tiempo para volver a disparar
         fireCountdown -= Time.deltaTime;
 
-        if (target == null)
+        // Girar torre hacia el objetivo
+        if (target != null)
         {
-            if (particles != null)
-            {
-                if (isHero && zone == Zone.Desierto)
-                {
-                    foreach (var particle in RaParticles)
-                    {
-                        particle.SetActive(false);
-                    }
-                }
-
-                particles.SetActive(false);
-
-                if (isHero)
-                {
-                    anim.SetBool("isShoot", false);
-                }
-            }
-            if (isHero && zone == Zone.Hielo)
-            {
-                anim.SetBool("isShoot", false);
-            }
-
-            return;
-        }
-        else
-        {
-            if (isHero && zone == Zone.Hielo)
-            {
-                anim.SetBool("isShoot", true);
-            }
-        }
-
-        Vector3 dir = target.position - (transform.position + new Vector3(0, offsetY, 0));
-        Quaternion lookRotation = Quaternion.LookRotation(dir);
-        Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-        if (isHero && bulletType == BulletType.Particles)
-        {
-            partToRotate.rotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
-
-            foreach (var particle in RaParticles)
-            {
-                if (allEnemiesInRange.Count > 0)
-                {
-                    int enemyChoose = Random.Range(0, allEnemiesInRange.Count);
-
-                    if (allEnemiesInRange[enemyChoose] != null)
-                    {
-                        Vector3 localDir = allEnemiesInRange[enemyChoose].transform.position - (transform.position + new Vector3(0, offsetY, 0));
-                        Quaternion localLookRotation = Quaternion.LookRotation(localDir);
-                        Vector3 localRotation = Quaternion.Lerp(particle.transform.rotation, localLookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-
-                        particle.transform.rotation = Quaternion.Euler(localRotation.x, localRotation.y, localRotation.z);
-                    }
-                    else
-                    {
-                        particle.transform.rotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
-                    }
-                }
-                else
-                {
-                    particle.transform.rotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
-                }
-            }
-        }
-        else
-        {
+            Vector3 dir = target.position - transform.position;
+            Quaternion lookRotation = Quaternion.LookRotation(dir);
+            Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
             if (fullRotate)
             {
                 partToRotate.rotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
@@ -348,6 +263,7 @@ public class Tower : MonoBehaviour
             }
         }
 
+        // Activar modo sobrecalentado
         if (burnEffect >= 100)
         {
             instSmoke = Instantiate(smokeOverHeat, transform.position, transform.rotation);
@@ -358,90 +274,89 @@ public class Tower : MonoBehaviour
 
             if (particles != null)
             {
-                if (isHero && zone == Zone.Desierto)
-                {
-                    foreach (var particle in RaParticles)
-                    {
-                        particle.SetActive(false);
-                    }
-                }
-
                 particles.SetActive(false);
-
-                if (isHero)
-                {
-                    anim.SetBool("isShoot", false);
-                }
             }
+
+            anim.SetBool("isShoot", false);
 
             Invoke("NoBurn", timeInOverHeat);
         }
 
-        if (!isBurn)
+        // Disparar
+        if (!isBurn && fireCountdown <= 0 && target != null)
         {
             switch (attackType)
             {
                 case AttackType.Melee:
-                    if (fireCountdown <= 0f)
-                    {
-                        if (burnTile)
-                        {
-                            burnEffect += burnEffectPerShoot;
-                        }
-
-                        if (anim != null)
-                        {
-                            anim.SetTrigger("doShoot");
-                        }
-
-                        fireCountdown = 1f / fireRate;
-                    }
+                    anim.SetTrigger("doShoot");
                     break;
                 case AttackType.Range:
-                    if (fireCountdown <= 0f)
+                    switch (targetType)
                     {
-                        switch (bulletType)
-                        {
-                            case BulletType.Prefab:
-                                if (burnTile)
-                                {
-                                    burnEffect += burnEffectPerShoot;
-                                }
-
-                                if (anim != null)
-                                {
+                        case TargetType.SingleTarget:
+                            switch (bulletType)
+                            {
+                                case BulletType.Prefab:
                                     anim.SetTrigger("doShoot");
-                                }
-
-                                Shoot();
-                                fireCountdown = 1f / fireRate;
-                                break;
-                            case BulletType.Particles:
-                                if (burnTile)
+                                    Shoot();
+                                    break;
+                                case BulletType.Particles:
+                                    particles.SetActive(true);
+                                    break;
+                            }
+                            break;
+                        case TargetType.MultiTarget:
+                            anim.SetTrigger("doShoot");
+                            for (int i = 0; i < numTargets; i++)
+                            {
+                                if (i < enemies.Length)
                                 {
-                                    burnEffect += Time.deltaTime;
+                                    MultiShoot(enemies[i].transform);
                                 }
-
-                                if (isHero && zone == Zone.Desierto)
+                            }
+                            break;
+                        case TargetType.AoE:
+                            anim.SetTrigger("doShoot");
+                            RaycastHit[] towerInrange = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Enemy"));
+                            if (towerInrange.Length > 0)
+                            {
+                                foreach (var tower in towerInrange)
                                 {
-                                    foreach (var particle in RaParticles)
+                                    if (tower.collider.gameObject.GetComponent<Enemy>())
                                     {
-                                        particle.SetActive(true);
+                                        tower.collider.gameObject.GetComponent<Enemy>().health -= healthDamage;
                                     }
                                 }
-
-                                particles.SetActive(true);
-
-                                if (isHero)
-                                {
-                                    anim.SetBool("isShoot", true);
-                                }
-                                break;
-                            default:
-                                break;
-                        }
+                            }
+                            break;
                     }
                     break;
+                case AttackType.Resources:
+                    if (!gameFlow.roundFinished)
+                    {
+                        hudManager.AddCoins(healthDamage);
+                    }
+                    break;
+            }
+
+            fireCountdown = 1f / fireRate;
+            if (burnTile)
+            {
+                if (particles != null)
+                {
+                    burnEffect += Time.deltaTime;
+                }
+                else
+                {
+                    burnEffect += burnEffectPerShoot;
+                }
+            }
+        }
+        else
+        {
+            if (particles != null && target == null)
+            {
+                particles.SetActive(false);
             }
         }
     }
@@ -473,7 +388,27 @@ public class Tower : MonoBehaviour
         }
     }
 
-    void InvokeIceWall()
+    void MultiShoot(Transform targetPos)
+    {
+        GameObject bulletGO = Instantiate(bullet, bulletPos.transform.position, transform.rotation);
+        Bullet newBullet = bulletGO.GetComponent<Bullet>();
+        newBullet.healthDamage = healthDamage;
+        newBullet.armorDamage = armorDamage;
+
+        newBullet.iceDamage = iceDamage;
+        newBullet.igniteDamage = igniteDamage;
+        newBullet.waterDamage = waterDamage;
+        newBullet.ascentDamage = ascentDamage;
+        newBullet.bloodDamage = bloodDamage;
+        newBullet.transformationDamage = transformationDamage;
+
+        if (newBullet != null)
+        {
+            newBullet.Seek(targetPos);
+        }
+    }
+
+    void Hero1SpecialAttack()
     {
         List<GameObject> groundsInRange = new List<GameObject>();
 
@@ -507,7 +442,7 @@ public class Tower : MonoBehaviour
         }
     }
 
-    void HealthTowers()
+    void Hero2SpecialAttack()
     {
         anim.SetTrigger("doHit");
 
@@ -520,6 +455,27 @@ public class Tower : MonoBehaviour
                 {
                     tower.collider.gameObject.GetComponent<Tower>().health += curation;
                     tower.collider.gameObject.GetComponent<Tower>().health = Mathf.Min(tower.collider.gameObject.GetComponent<Tower>().health, tower.collider.gameObject.GetComponent<Tower>().healthMax);
+                }
+            }
+        }
+    }
+
+    void Hero3SpecialAttack()
+    {
+        RaycastHit[] towersInRange = Physics.SphereCastAll(transform.position, range, transform.forward, 1, LayerMask.GetMask("Tower"));
+        if (towersInRange.Length > 0)
+        {
+            anim.SetTrigger("doHit");
+
+            foreach (var tower in towersInRange)
+            {
+                if (tower.collider.gameObject.GetComponent<Tower>())
+                {
+                    if (!tower.collider.gameObject.GetComponent<Tower>().sirenitaBoost)
+                    {
+                        tower.collider.gameObject.GetComponent<Tower>().fireRate *= 1.25f;
+                        tower.collider.gameObject.GetComponent<Tower>().sirenitaBoost = true;
+                    }
                 }
             }
         }

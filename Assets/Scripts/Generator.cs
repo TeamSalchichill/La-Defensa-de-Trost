@@ -25,6 +25,7 @@ public class Generator : MonoBehaviour
     public Zone zone;
 
     public bool activateRounds;
+    public int expandRate = 1;
 
     [Header("Map")]
     public int sizeX;
@@ -76,6 +77,7 @@ public class Generator : MonoBehaviour
     public List<GameObject> newMapNodes = new List<GameObject>();
 
     public int numNewMapNodes = 1;
+    public int numNewMapNodesLimit = 1;
     public int repiteNewMapNode = 0;
 
     [Header("Probabilities")]
@@ -91,8 +93,6 @@ public class Generator : MonoBehaviour
     public int probabilityObstacles = 50;
     [Range(0, 100)]
     public int probabilityConectWays = 50;
-    [Range(0, 100)]
-    public int probabilityMixEnemies = 50;
     [Range(0, 100)]
     public int probabilityFireTile = 50;
 
@@ -132,24 +132,46 @@ public class Generator : MonoBehaviour
                 }
             }
         }
-
+        
         for (int i = 0; i < sizeX; i++)
         {
             for (int j = 0; j < sizeZ; j++)
             {
-                Instantiate(groundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1), Quaternion.identity);
+                //Instantiate(groundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1), Quaternion.identity);
 
                 if (!((i == sizeX - 1 || i == sizeX - 2 || i == sizeX - 3) && j == 3))
                 {
                     Instantiate(grassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1), Quaternion.identity);
                 }
+                else
+                {
+                    Instantiate(groundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1), Quaternion.identity);
+                }
             }
         }
-
+        
         Instantiate(mainTower, new Vector3(7, 4, 7), Quaternion.identity);
 
         colocatedMap.Add(mapPos);
         openMap.Add(Vector3.zero);
+
+        colocatedMap.Add(new Vector3(0, 1, 0));
+        openMap.Add(new Vector3(0, 1, 0));
+        colocatedMap.Add(new Vector3(0, 2, 0));
+        openMap.Add(new Vector3(0, 2, 0));
+        colocatedMap.Add(new Vector3(1, 1, 0));
+        openMap.Add(new Vector3(1, 1, 0));
+        colocatedMap.Add(new Vector3(-1, 2, 0));
+        openMap.Add(new Vector3(-1, 2, 0));
+        colocatedMap.Add(new Vector3(2, 1, 0));
+        openMap.Add(new Vector3(2, 1, 0));
+        colocatedMap.Add(new Vector3(-2, 2, 0));
+        openMap.Add(new Vector3(-2, 2, 0));
+
+        colocatedMap.Add(new Vector3(1, 0, 0));
+        openMap.Add(new Vector3(1, 0, 0));
+        colocatedMap.Add(new Vector3(-1, 0, 0));
+        openMap.Add(new Vector3(-1, 0, 0));
 
         idX = 0;
         idZ = 3;
@@ -179,6 +201,7 @@ public class Generator : MonoBehaviour
 
     public void Generate(int newStartSide, string newStartSideOrientation, Vector3 newOffsetStart, Vector2 newMapPos, int newIdX, int newIdZ)
     {
+        /*
         // Colocamos la base de tierra
         for (int i = 0; i < sizeX; i++)
         {
@@ -197,6 +220,15 @@ public class Generator : MonoBehaviour
                 map[i, j] = 1;
             }
         }
+        */
+
+        for (int i = 0; i < sizeX; i++)
+        {
+            for (int j = 0; j < sizeZ; j++)
+            {
+                map[i, j] = 1;
+            }
+        }
 
         if (gameFlow.round % 3 == 0 && !miniMainTowerColocate && gameFlow.round > 1)
         {
@@ -205,30 +237,55 @@ public class Generator : MonoBehaviour
             map[1, 1] = -1;
             map[2, 1] = -1;
             map[1, 2] = -1;
+            map[2, 2] = -1;
 
             map[5, 5] = -1;
             map[5, 4] = -1;
             map[4, 5] = -1;
+            map[4, 4] = -1;
 
             map[1, 5] = -1;
             map[2, 5] = -1;
             map[1, 4] = -1;
+            map[2, 4] = -1;
 
             map[5, 1] = -1;
             map[5, 2] = -1;
             map[4, 1] = -1;
+            map[4, 2] = -1;
+
             /*
             map[3, 3] = -1;
             map[3, 2] = -1;
             map[3, 4] = -1;
             map[2, 3] = -1;
             map[4, 3] = -1;
-
-            map[2, 2] = -1;
-            map[4, 4] = -1;
-            map[2, 4] = -1;
-            map[4, 2] = -1;
             */
+
+            int closeWays = Random.Range(0, 3);
+
+            for (int i = 0; i < closeWays; i++)
+            {
+                if (i < closeWays)
+                {
+                    switch (i)
+                    {
+                        case 0:
+                            map[3, 2] = -1;
+                            map[3, 1] = -1;
+                            break;
+                        case 1:
+                            map[2, 3] = -1;
+                            map[1, 3] = -1;
+                            break;
+                        case 2:
+                            map[5, 3] = -1;
+                            map[6, 3] = -1;
+                            break;
+                    }
+                }
+            }
+
             // Ponemos césped donde no hay camino
             for (int i = 0; i < sizeX; i++)
             {
@@ -237,6 +294,20 @@ public class Generator : MonoBehaviour
                     if (map[i, j] == -1)
                     {
                         Instantiate(grassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1) + newOffsetStart, Quaternion.identity);
+                    }
+                    else
+                    {
+                        int specialTile = Random.Range(0, 101);
+                        if (specialTile < probabilitySpecialTiles)
+                        {
+                            Instantiate(specialGroundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
+                        }
+                        else
+                        {
+                            Instantiate(groundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
+                        }
+
+                        map[i, j] = 1;
                     }
                 }
             }
@@ -482,7 +553,7 @@ public class Generator : MonoBehaviour
             }
 
             GameObject grassAux1;
-            GameObject grassAux2;
+            //GameObject grassAux2;
 
             // Ponemos césped donde no hay camino
             for (int i = 0; i < sizeX; i++)
@@ -511,10 +582,11 @@ public class Generator : MonoBehaviour
                         }
 
                         map[i, j] = 1;
-
-                        int newLayer1 = Random.Range(0, 101);
+                        
+                        int newLayer1 = Random.Range(30, 101);
                         if (newLayer1 < 20)
                         {
+                            /*
                             if (specialTile < probabilitySpecialTiles)
                             {
                                 grassAux2 = Instantiate(specialGrassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 1.25f, 1) + newOffsetStart, Quaternion.identity);
@@ -544,6 +616,7 @@ public class Generator : MonoBehaviour
 
                                 map[i, j] = 3;
                             }
+                            */
                         }
                         else
                         {
@@ -554,6 +627,21 @@ public class Generator : MonoBehaviour
                                 Instantiate(obstacleBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 3, 1) + newOffsetStart, Quaternion.identity);
                             }
                         }
+                        
+                    }
+                    else
+                    {
+                        int specialTile = Random.Range(0, 101);
+                        if (specialTile < probabilitySpecialTiles)
+                        {
+                            Instantiate(specialGroundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
+                        }
+                        else
+                        {
+                            Instantiate(groundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
+                        }
+
+                        map[i, j] = 1;
                     }
                 }
             }
@@ -564,14 +652,17 @@ public class Generator : MonoBehaviour
             PrepareNextMap(newStartSide, newStartSideOrientation, newOffsetStart, newMapPos, newIdX, newIdZ, nextSideOrientation, false);
         }
 
-        numNewMapNodes--;
-        if (activateRounds && (numNewMapNodes - repiteNewMapNode) == 0)
+        if (gameFlow.round % expandRate == 0)
         {
-            Invoke("CalculateNewMapNodes", 0.2f);
+            numNewMapNodes--;
+            if (activateRounds && ((numNewMapNodes - repiteNewMapNode) == 0 || (numNewMapNodesLimit - numNewMapNodes == 3)))
+            {
+                Invoke("CalculateNewMapNodes", 0.2f);
 
-            gameFlow.StartRound();
+                gameFlow.StartRound();
 
-            miniMainTowerColocate = false;
+                miniMainTowerColocate = false;
+            }
         }
     }
 
@@ -588,6 +679,7 @@ public class Generator : MonoBehaviour
         }
 
         numNewMapNodes = numNewMapNodesAux;
+        numNewMapNodesLimit = numNewMapNodesAux;
         //numNewMapNodes = numNewMapNodesAux - repiteNewMapNode;
         repiteNewMapNode = 0;
     }
@@ -748,15 +840,40 @@ public class Generator : MonoBehaviour
                             RaycastHit hit;
                             if (Physics.Raycast(pos, transform.TransformDirection(-Vector3.up), out hit, 1000, LayerMask.GetMask("Grass")))
                             {
+                                if (hit.collider.gameObject.transform.position.y == 0.5f)
+                                {
+                                    Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.5f, 0), Quaternion.identity);
+                                }
+
                                 Destroy(hit.collider.gameObject);
 
                                 if (Physics.Raycast(pos, transform.TransformDirection(-Vector3.up), out hit, 1000, LayerMask.GetMask("Grass")))
                                 {
+                                    if (hit.collider.gameObject.transform.position.y == 0.5f)
+                                    {
+                                        Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.5f, 0), Quaternion.identity);
+                                    }
+
                                     Destroy(hit.collider.gameObject);
 
                                     if (Physics.Raycast(pos, transform.TransformDirection(-Vector3.up), out hit, 1000, LayerMask.GetMask("Grass")))
                                     {
+                                        if (hit.collider.gameObject.transform.position.y == 0.5f)
+                                        {
+                                            Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.5f, 0), Quaternion.identity);
+                                        }
+
                                         Destroy(hit.collider.gameObject);
+
+                                        if (Physics.Raycast(pos, transform.TransformDirection(-Vector3.up), out hit, 1000, LayerMask.GetMask("Grass")))
+                                        {
+                                            if (hit.collider.gameObject.transform.position.y == 0.5f)
+                                            {
+                                                Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.5f, 0), Quaternion.identity);
+                                            }
+
+                                            Destroy(hit.collider.gameObject);
+                                        }
                                     }
                                 }
 
@@ -845,7 +962,22 @@ public class Generator : MonoBehaviour
 
                                     if (Physics.Raycast(pos, transform.TransformDirection(-Vector3.up), out hit, 1000, LayerMask.GetMask("Grass")))
                                     {
+                                        if (hit.collider.gameObject.transform.position.y == 0.5f)
+                                        {
+                                            Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.5f, 0), Quaternion.identity);
+                                        }
+
                                         Destroy(hit.collider.gameObject);
+
+                                        if (Physics.Raycast(pos, transform.TransformDirection(-Vector3.up), out hit, 1000, LayerMask.GetMask("Grass")))
+                                        {
+                                            if (hit.collider.gameObject.transform.position.y == 0.5f)
+                                            {
+                                                Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.5f, 0), Quaternion.identity);
+                                            }
+
+                                            Destroy(hit.collider.gameObject);
+                                        }
                                     }
                                 }
 
@@ -934,7 +1066,22 @@ public class Generator : MonoBehaviour
 
                                     if (Physics.Raycast(pos, transform.TransformDirection(-Vector3.up), out hit, 1000, LayerMask.GetMask("Grass")))
                                     {
+                                        if (hit.collider.gameObject.transform.position.y == 0.5f)
+                                        {
+                                            Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.5f, 0), Quaternion.identity);
+                                        }
+
                                         Destroy(hit.collider.gameObject);
+
+                                        if (Physics.Raycast(pos, transform.TransformDirection(-Vector3.up), out hit, 1000, LayerMask.GetMask("Grass")))
+                                        {
+                                            if (hit.collider.gameObject.transform.position.y == 0.5f)
+                                            {
+                                                Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.5f, 0), Quaternion.identity);
+                                            }
+
+                                            Destroy(hit.collider.gameObject);
+                                        }
                                     }
                                 }
 
@@ -1023,7 +1170,22 @@ public class Generator : MonoBehaviour
 
                                     if (Physics.Raycast(pos, transform.TransformDirection(-Vector3.up), out hit, 1000, LayerMask.GetMask("Grass")))
                                     {
+                                        if (hit.collider.gameObject.transform.position.y == 0.5f)
+                                        {
+                                            Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.5f, 0), Quaternion.identity);
+                                        }
+
                                         Destroy(hit.collider.gameObject);
+
+                                        if (Physics.Raycast(pos, transform.TransformDirection(-Vector3.up), out hit, 1000, LayerMask.GetMask("Grass")))
+                                        {
+                                            if (hit.collider.gameObject.transform.position.y == 0.5f)
+                                            {
+                                                Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.5f, 0), Quaternion.identity);
+                                            }
+
+                                            Destroy(hit.collider.gameObject);
+                                        }
                                     }
                                 }
 

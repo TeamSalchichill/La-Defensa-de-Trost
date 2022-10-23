@@ -86,6 +86,7 @@ public class CameraController : MonoBehaviour
         else if (Input.GetMouseButton(0) && doMovement && !colocatorManager.canBuild && !hudManager.isShowInfo && cameraIsMove)
         {
             Vector3 direction = touchStart - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            direction = new Vector3(direction.x, 0, direction.z);
             Camera.main.transform.position += direction;
         }
 

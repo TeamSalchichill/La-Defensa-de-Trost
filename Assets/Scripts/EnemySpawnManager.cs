@@ -57,7 +57,7 @@ public class EnemySpawnManager : MonoBehaviour
             if (gameFlow.enemiesToSpawn3 > 0)
             {
                 gameFlow.enemiesToSpawn3--;
-                Instantiate(enemies3[chooseEnemy3], transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+                Instantiate(enemies3[chooseEnemy3], transform.position + new Vector3(0, 0, 0), Quaternion.identity);
                 Instantiate(spawnParticles, transform.position, transform.rotation);
             }
             else if(gameFlow.enemiesToSpawn1 > 0 || gameFlow.enemiesToSpawn2 > 0)

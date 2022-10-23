@@ -12,7 +12,7 @@ public class Loot : MonoBehaviour
     {
         hudManager = HUD_Manager.instance;
 
-        coins = Random.Range(10, 101);
+        coins = Random.Range(200, 701);
     }
 
     private void OnMouseUpAsButton()

@@ -20,22 +20,27 @@ public class Enemy : MonoBehaviour
 
     [Header("Components")]
     public Animator anim;
-    public Transform target;
     public NavMeshAgent nav;
-    [Space]
+
+    [Header("Target")]
+    public Transform target;
+    public bool miniTowerFound = false;
+    GameObject miniMainTowerFound;
+
+    [Header("General")]
+    public string enemyName;
     public GameObject skull;
     public ParticleSystem deadParticle;
-    
-    [Header("States")]
-    public string enemyName;
+
+    [Header("Stats")]
     public int damage;//
-    public int gold;//
     public float speed;
-    public int range;//
     public float normalSpeed;//
+    public int range;//
     public float health = 100;
     public float healthMax = 0;//
     public int armor = 0;
+    public int gold;//
     [Space]
     public float iceEffect = 0;
     public float igniteEffect = 0;
@@ -43,10 +48,10 @@ public class Enemy : MonoBehaviour
     public float ascentEffect = 0;
     public float bloodEffect = 0;
     public float transformationEffect = 0;
-
+    [Space]
     public bool infectationMode = false;
 
-    [Header("States multiplier")]
+    [Header("Stats multiplier")]
     [Range(0, 1)]
     public float healthResistence = 0;
     [Range(0, 1)]
@@ -64,23 +69,9 @@ public class Enemy : MonoBehaviour
     public float bloodResistence = 0;
     [Range(0, 1)]
     public float transformationResistence = 0;
-
-    [Header("Boss")]
-    public bool isBoss;
-
-    public GameObject bullet;
-    public GameObject bulletPos;
-
-    public GameObject goblins;
-    public GameObject mamut;
-
-    public float attackRate = 5;
-    public float invokeGloblinsRate = 10;
-    public float invokeMamutRate = 20;
-    [Space]
-    public float healthRate = 10;
-    public float areaAtacckRate = 10;
-
+    public bool poseidonBoost = false;
+    [Space(30)]
+    [Header("External GameObjects")]
     [Header("Health Bar")]
     public GameObject HealthBar;
     float initialScaleX;
@@ -88,25 +79,52 @@ public class Enemy : MonoBehaviour
     public Material healthBarGreen;
     public Material healthBarYellow;
     public Material healthBarRed;
+    
+    [Header("Water Effect")]
+    public GameObject waterParticles;
+    bool isWaterEffect = false;
+    int waterEffectTime = 2;
 
-    [Header("Others")]
-    public bool miniTowerFound = false;
+    [Space(30)]
+    [Header("Boss - General")]
+    public bool isBoss;
+    bool isAttack = false;
 
+    [Header("Boss - Hielo")]
+    public GameObject bullet;
+    public GameObject bulletPos;
+    [Space]
+    public GameObject goblins;
+    public GameObject mamut;
+    [Space]
+    public float attackRate = 5;
+    public float invokeGloblinsRate = 10;
+    public float invokeMamutRate = 20;
+
+    [Header("Boss - Desierto")]
+    public float healthRate = 10;
+    public float areaAtacckRate = 10;
+
+    [Header("Boss - Agua")]
+    public float spearAttackRate = 5;
+    public float speedBoostRate = 10;
+    
     void Start()
     {
-        healthMax = health;
-        initialScaleX = HealthBar.transform.localScale.x;
-
         gameFlow = GameFlow.instance;
         mainTower = MainTower.instance;
         generator = Generator.instance;
 
         nav = GetComponent<NavMeshAgent>();
         nav.destination = target.position;
-
         nav.speed = normalSpeed;
 
-        Destroy(gameObject, 120);
+        waterParticles.SetActive(false);
+
+        healthMax = health;
+        initialScaleX = HealthBar.transform.localScale.x;
+
+        Invoke("AutoDestroy", 300);
 
         if (type == Type.Grande)
         {
@@ -122,7 +140,8 @@ public class Enemy : MonoBehaviour
                     InvokeRepeating("Zone2Attack2", 6, areaAtacckRate);
                     break;
                 case Zone.Atlantis:
-
+                    InvokeRepeating("Zone3Attack1", 1, speedBoostRate);
+                    InvokeRepeating("Zone3Attack2", 3, spearAttackRate);
                     break;
                 case Zone.Vikingos:
 
@@ -138,7 +157,7 @@ public class Enemy : MonoBehaviour
 
         if (targetPreference == TargetPreference.OtherTowers)
         {
-            InvokeRepeating("UpdateTarget", 0f, 0.5f);
+            InvokeRepeating("UpdateTarget", 1, 5);
         }
     }
 
@@ -146,65 +165,72 @@ public class Enemy : MonoBehaviour
     {
         if (!infectationMode)
         {
-            miniTowerFound = false;
-
-            RaycastHit[] miniMainTowerInRange = Physics.SphereCastAll(transform.position, 40, transform.forward, 1.0f, LayerMask.GetMask("Tower"));
-            if (miniMainTowerInRange.Length > 0)
+            if (!miniTowerFound)
             {
-                foreach (var miniMainTower in miniMainTowerInRange)
+                miniTowerFound = false;
+
+                RaycastHit[] miniMainTowerInRange = Physics.SphereCastAll(transform.position, 25, transform.forward, 1.0f, LayerMask.GetMask("Tower"));
+                if (miniMainTowerInRange.Length > 0)
                 {
-                    if (miniMainTower.collider.gameObject.tag == "MiniMainTower")
+                    foreach (var miniMainTower in miniMainTowerInRange)
                     {
-                        miniTowerFound = true;
-
-                        nav.destination = miniMainTower.collider.gameObject.transform.position;
-
-                        if (Vector3.Distance(transform.position, miniMainTower.collider.gameObject.transform.position) < 5)
+                        if (miniMainTower.collider.gameObject.tag == "MiniMainTower")
                         {
-                            switch (type)
-                            {
-                                case (Type.Pequeño):
-                                    gameFlow.enemiesLeft1--;
-                                    break;
-                                case (Type.Mediano):
-                                    gameFlow.enemiesLeft2--;
-                                    break;
-                                case (Type.Grande):
-                                    gameFlow.enemiesLeft3--;
-                                    break;
-                            }
+                            miniTowerFound = true;
 
-                            miniMainTower.collider.gameObject.GetComponent<MiniMainTower>().health--;
+                            nav.destination = miniMainTower.collider.gameObject.transform.position;
 
-                            Destroy(gameObject);
+                            miniMainTowerFound = miniMainTower.collider.gameObject;
+
+                            break;
                         }
+                    }
+                }
 
-                        break;
+                if (!miniTowerFound)
+                {
+                    RaycastHit[] towerInRange = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Tower"));
+                    if (towerInRange.Length > 0)
+                    {
+                        if (towerInRange[0].collider.GetComponent<Tower>())
+                        {
+                            if (towerInRange[0].collider.GetComponent<Tower>().health > 0)
+                            {
+                                if (!towerInRange[0].collider.GetComponent<Tower>().isHero)
+                                {
+                                    nav.destination = towerInRange[0].transform.position;
+                                    towerInRange[0].collider.GetComponent<Tower>().health -= (damage * 3);
+                                    anim.SetTrigger("doHit");
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        nav.destination = target.position;
                     }
                 }
             }
-
-            if (!miniTowerFound)
+            else
             {
-                RaycastHit[] towerInRange = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Tower"));
-                if (towerInRange.Length > 0)
+                if (Vector3.Distance(transform.position, miniMainTowerFound.transform.position) < 5)
                 {
-                    if (towerInRange[0].collider.GetComponent<Tower>())
+                    switch (type)
                     {
-                        if (towerInRange[0].collider.GetComponent<Tower>().health > 0)
-                        {
-                            if (!towerInRange[0].collider.GetComponent<Tower>().isHero)
-                            {
-                                nav.destination = towerInRange[0].transform.position;
-                                towerInRange[0].collider.GetComponent<Tower>().health -= (damage * 3);
-                                anim.SetTrigger("doHit");
-                            }
-                        }
+                        case (Type.Pequeño):
+                            gameFlow.enemiesLeft1--;
+                            break;
+                        case (Type.Mediano):
+                            gameFlow.enemiesLeft2--;
+                            break;
+                        case (Type.Grande):
+                            gameFlow.enemiesLeft3--;
+                            break;
                     }
-                }
-                else
-                {
-                    nav.destination = target.position;
+
+                    miniMainTowerFound.GetComponent<MiniMainTower>().health--;
+
+                    Destroy(gameObject);
                 }
             }
         }
@@ -256,13 +282,11 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
 
-        iceEffect -= (Time.deltaTime * 5);
+        iceEffect -= (Time.deltaTime * 3);
         iceEffect = Mathf.Max(iceEffect, 0);
         iceEffect = Mathf.Min(iceEffect, 50);
-        speed = (normalSpeed * ((100 - iceEffect) / 100));
-        nav.speed = speed;
-
-        igniteEffect -= (Time.deltaTime * 5);
+        
+        igniteEffect -= (Time.deltaTime * 3);
         igniteEffect = Mathf.Max(igniteEffect, 0);
         health -= (igniteEffect * 0.01f);
         if (igniteEffect >= 100)
@@ -271,47 +295,35 @@ public class Enemy : MonoBehaviour
             igniteEffect = 0;
         }
 
-        if (infectationMode)
+        waterEffect -= (Time.deltaTime * 3);
+        waterEffect = Mathf.Max(waterEffect, 0);
+        if (waterEffect >= 100)
         {
-            RaycastHit[] enemiesInRange = Physics.SphereCastAll(transform.position, 50, transform.forward, 1.0f, LayerMask.GetMask("Enemy"));
-            if (enemiesInRange.Length > 0)
+            waterParticles.SetActive(true);
+            speed = 0;
+            isWaterEffect = true;
+            Invoke("DisableWaterEffect", waterEffectTime);
+        }
+
+        if (!isWaterEffect)
+        {
+            if (isBoss)
             {
-                int enemyID = -1;
-
-                for (int i = 0; i < enemiesInRange.Length; i++)
+                if (!isAttack)
                 {
-                    if (enemiesInRange[i].collider.gameObject != gameObject)
-                    {
-                        enemyID = i;
-                        break;
-                    }
-                }
-
-                if (enemyID != -1)
-                {
-                    if (nav.isActiveAndEnabled)
-                    {
-                        nav.destination = enemiesInRange[0].transform.position;
-                    }
-
-                    if (Vector3.Distance(transform.position, enemiesInRange[0].transform.position) < range)
-                    {
-                        enemiesInRange[0].collider.GetComponent<Enemy>().health -= (damage * 3);
-                        anim.SetTrigger("doHit");
-                    }
-                }
-                else
-                {
-                    if (gameObject != null)
-                    {
-                        nav.destination = target.position;
-                    }
+                    speed = (normalSpeed * ((100 - iceEffect) / 100));
                 }
             }
             else
             {
-                nav.destination = target.position;
+                speed = (normalSpeed * ((100 - iceEffect) / 100));
             }
+        }
+        nav.speed = speed * gameFlow.newSpeed;
+
+        if (infectationMode)
+        {
+            InfectationMode();
         }
         else if (targetPreference == TargetPreference.MainTower)
         {
@@ -319,8 +331,59 @@ public class Enemy : MonoBehaviour
             {
                 nav.destination = target.position;
             }
-            //nav.destination = target.position;
         }
+    }
+
+    void InfectationMode()
+    {
+        RaycastHit[] enemiesInRange = Physics.SphereCastAll(transform.position, 50, transform.forward, 1.0f, LayerMask.GetMask("Enemy"));
+        if (enemiesInRange.Length > 0)
+        {
+            int enemyID = -1;
+
+            for (int i = 0; i < enemiesInRange.Length; i++)
+            {
+                if (enemiesInRange[i].collider.gameObject != gameObject)
+                {
+                    enemyID = i;
+                    break;
+                }
+            }
+
+            if (enemyID != -1)
+            {
+                if (nav.isActiveAndEnabled)
+                {
+                    nav.destination = enemiesInRange[0].transform.position;
+                }
+
+                if (Vector3.Distance(transform.position, enemiesInRange[0].transform.position) < range)
+                {
+                    enemiesInRange[0].collider.GetComponent<Enemy>().health -= (damage * 10);
+                    anim.SetTrigger("doHit");
+                }
+            }
+            else
+            {
+                if (gameObject != null)
+                {
+                    nav.destination = target.position;
+                }
+            }
+        }
+        else
+        {
+            nav.destination = target.position;
+        }
+    }
+
+    void DisableWaterEffect()
+    {
+        waterParticles.SetActive(false);
+        waterEffect = 0;
+        speed = normalSpeed;
+        isWaterEffect = false;
+        waterEffectTime = 2;
     }
 
     void Zone1Attack1()
@@ -346,6 +409,9 @@ public class Enemy : MonoBehaviour
     IEnumerator SpawnGoblins()
     {
         anim.SetTrigger("doHit");
+        speed = 0;
+
+        isAttack = true;
 
         for (int i = 0; i < 4; i++)
         {
@@ -353,14 +419,21 @@ public class Enemy : MonoBehaviour
             gameFlow.enemiesLeft1++;
             yield return new WaitForSeconds(0.1f);
         }
+
+        canMove();
     }
 
     void Zone1Attack3()
     {
         anim.SetTrigger("doHit");
+        speed = 0;
+
+        isAttack = true;
 
         Instantiate(mamut, transform.position + (transform.forward * 3), transform.rotation);
         gameFlow.enemiesLeft2++;
+
+        Invoke("canMove", 1.15f);
     }
 
     void Zone2Attack1()
@@ -371,17 +444,18 @@ public class Enemy : MonoBehaviour
         health += 200;
         health = Mathf.Min(health, healthMax);
 
+        isAttack = true;
         Invoke("canMove", 1.15f);
     }
 
     void Zone2Attack2()
     {
-        anim.SetTrigger("doHit");
-        speed = 0;
-
-        RaycastHit[] towerInrange = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Tower"));
+        RaycastHit[] towerInrange = Physics.SphereCastAll(transform.position, 5, transform.forward, range, LayerMask.GetMask("Tower"));
         if (towerInrange.Length > 0)
         {
+            anim.SetTrigger("doHit");
+            speed = 0;
+
             foreach (var tower in towerInrange)
             {
                 if (tower.collider.gameObject.GetComponent<Tower>())
@@ -389,14 +463,73 @@ public class Enemy : MonoBehaviour
                     tower.collider.gameObject.GetComponent<Tower>().health -= damage;
                 }
             }
-        }
 
-        Invoke("canMove", 1.15f);
+            isAttack = true;
+            Invoke("canMove", 1.15f);
+        }
+    }
+
+    void Zone3Attack1()
+    {
+        RaycastHit[] enemiesInrange = Physics.SphereCastAll(transform.position, range, transform.forward, 1, LayerMask.GetMask("Enemy"));
+        if (enemiesInrange.Length > 0)
+        {
+            anim.SetTrigger("doInvoke");
+            speed = 0;
+
+            foreach (var enemy in enemiesInrange)
+            {
+                if (!enemy.collider.gameObject.GetComponent<Enemy>().poseidonBoost)
+                {
+                    enemy.collider.gameObject.GetComponent<Enemy>().normalSpeed *= 1.25f;
+                    enemy.collider.gameObject.GetComponent<Enemy>().poseidonBoost = true;
+                }
+            }
+
+            isAttack = true;
+            Invoke("canMove", 1.15f);
+        }
+    }
+
+    void Zone3Attack2()
+    {
+        RaycastHit[] towerInrange = Physics.SphereCastAll(transform.position, 5, transform.forward, range, LayerMask.GetMask("Tower"));
+        if (towerInrange.Length > 0)
+        {
+            anim.SetTrigger("doHit");
+            speed = 0;
+
+            foreach (var tower in towerInrange)
+            {
+                if (tower.collider.gameObject.GetComponent<Tower>())
+                {
+                    tower.collider.gameObject.GetComponent<Tower>().health -= damage;
+                }
+            }
+
+            isAttack = true;
+            Invoke("canMove", 1.15f);
+        }
     }
 
     void canMove()
     {
+        isAttack = false;
         speed = normalSpeed;
+    }
+
+    void OnCollisionStay(Collision collision)
+    {
+        if (collision.collider.tag == "Tower")
+        {
+            if (collision.collider.GetComponent<Tower>())
+            {
+                if (collision.collider.GetComponent<Tower>().canColocate == Tower.CanColocate.Path)
+                {
+                    collision.collider.gameObject.GetComponentInParent<Tower>().health -= damage;
+                }
+            }
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -420,21 +553,21 @@ public class Enemy : MonoBehaviour
             MainTower.instance.health--;
             Destroy(gameObject);
         }
+
+        if (other.tag == "Wave")
+        {
+            waterEffect = 120;
+            waterEffectTime = 3;
+        }
     }
 
     void OnTriggerStay(Collider other)
     {
-        if (other.tag == "TowerPath")
-        {
-            //other.gameObject.GetComponentInParent<Tower>().health -= damage;
-        }
         if (other.tag == "Damage")
         {
             health -= (other.gameObject.GetComponentInParent<Tower>().healthDamage * 0.1f);
             iceEffect += ((other.gameObject.GetComponentInParent<Tower>().iceDamage * 0.1f) * iceResistence);
             iceEffect = Mathf.Min(iceEffect, 50);
-
-            other.gameObject.GetComponentInParent<Tower>().health -= damage;
 
             if (anim != null && !isBoss)
             {
@@ -454,11 +587,10 @@ public class Enemy : MonoBehaviour
             switch (generator.zone)
             {
                 case Generator.Zone.Hielo:
-                    float speedAux = speed;
-                    nav.speed = speedAux * 0.5f;
+                    nav.speed = speed * 0.5f;
                     break;
                 case Generator.Zone.Desierto:
-
+                    igniteResistence *= 2;
                     break;
                 case Generator.Zone.Atlantis:
 
@@ -480,7 +612,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.tag == "Damage")
         {
-            health -= 2;
+            health -= 5;
             iceEffect += (1 * iceResistence);
             iceEffect = Mathf.Min(iceEffect, 50);
         }
@@ -495,18 +627,27 @@ public class Enemy : MonoBehaviour
             Invoke("NoInfectationMode", mainTower.infectationDuration);
         }
     }
-    /*
-    void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            Physics.IgnoreCollision(collision.collider.gameObject.GetComponent<Collider>(), GetComponent<Collider>(), true);
-        }
-    }
-    */
 
     void NoInfectationMode()
     {
         infectationMode = false;
+    }
+
+    void AutoDestroy()
+    {
+        switch (type)
+        {
+            case (Type.Pequeño):
+                gameFlow.enemiesLeft1--;
+                break;
+            case (Type.Mediano):
+                gameFlow.enemiesLeft2--;
+                break;
+            case (Type.Grande):
+                gameFlow.enemiesLeft3--;
+                break;
+        }
+
+        Destroy(gameObject);
     }
 }

@@ -103,7 +103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 415632214765682846}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body-global
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2781458247267740967}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -137,7 +137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2235177328278976204}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Node  1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9153789969851638688}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 'Node '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 8052286474681832294}
   - component: {fileID: 5381949445601922110}
   - component: {fileID: 2092869070512108383}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 'Node '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 8838905056537542866}
   - component: {fileID: 6523188306314820067}
   - component: {fileID: 7166995487299640696}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 'Node '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,7 +367,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8181909349525240099}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Node  2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -403,9 +403,9 @@ GameObject:
   - component: {fileID: 9167911101958514820}
   - component: {fileID: -2740585283258192185}
   - component: {fileID: 4256899352908770905}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Recursos
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -461,47 +461,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c0977a1e22fe4a4a9636c32c8574147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetType: 2
-  attackType: 0
-  canTarget: 0
+  targetType: 0
+  attackType: 2
   canColocate: 0
   bulletType: 0
   zone: 0
   specialStat: 3
-  towerName: Mina de oro
-  icon: {fileID: 0}
+  targetPreference: 0
+  anim: {fileID: 9167911101958514819}
   level5Light: {fileID: 0}
   rangeArea: {fileID: 4417269780756781421}
-  rangeAreaOriginalScale: 0
-  anim: {fileID: 9167911101958514819}
-  particles: {fileID: 3568809832730762549, guid: fca769d222550cb44b1e919330393b2d, type: 3}
-  target: {fileID: 0}
-  bullet: {fileID: 0}
-  bulletPos: {fileID: 0}
   partToRotate: {fileID: 9167911101740927899}
-  fullRotate: 0
-  offsetY: 0
-  isHero: 0
+  towerName: Mina de oro
+  icon: {fileID: 0}
+  price: 1250
+  acumulateGold: 0
   specialTile: 0
   burnTile: 0
+  spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
+  healthDamage: 10
+  armorDamage: 0
+  range: 15
+  rangeAreaOriginalScale: 0
+  fireRate: 0.2
+  turnSpeed: 10
+  health: 500
+  healthMax: 0
+  armor: 0
+  armorMax: 0
+  target: {fileID: 0}
+  numTargets: 1
+  bullet: {fileID: 0}
+  bulletPos: {fileID: 0}
+  particles: {fileID: 3568809832730762549, guid: fca769d222550cb44b1e919330393b2d, type: 3}
+  fullRotate: 0
   level: 1
   levelMultiplier: 1.1
   levelMultiplierSpecialStat: 1.25
   levelUpPrice: 600
   level5Price: 70
   priceLogo: "\u20AC"
-  acumulateGold: 0
-  health: 500
-  healthMax: 0
-  armor: 0
-  armorMax: 0
-  range: 15
-  fireRate: 0.2
-  turnSpeed: 10
-  price: 1000
-  isDie: 0
-  healthDamage: 200
-  armorDamage: 0
   iceDamage: 0
   igniteDamage: 0
   waterDamage: 0
@@ -513,15 +512,12 @@ MonoBehaviour:
   burnEffectPerShoot: 2
   timeInOverHeat: 10
   smokeOverHeat: {fileID: 8550112519114524154, guid: 0e92832738859c442a7291bfea6e6f75, type: 3}
+  isHero: 0
   iceWall: {fileID: 0}
   exploteIceWall: 0
   frezzeIceWall: 0
-  spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
   curation: 50
-  RaParticles: []
-  numRays: 0
-  partToRotateGO: {fileID: 0}
-  allEnemiesInRange: []
+  singParticles: {fileID: 0}
 --- !u!114 &-2740585283258192185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534,7 +530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3fbfe8f8037ed54285c9166d87b7002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetPos: {x: 0, y: -1.25, z: 0}
+  offsetPos: {x: 0, y: -1.375, z: 0}
   offsetRot: {x: 0, y: 1, z: 0, w: -0.00000004371139}
   isSpawn: 0
   oritateToPath: 0
@@ -549,8 +545,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.9826162, y: 2.0743697, z: 2.7056906}
-  m_Center: {x: -0, y: 2.9628053, z: -0.6424022}
+  m_Size: {x: 3, y: 2, z: 3}
+  m_Center: {x: -0, y: 2, z: -0.35}
 --- !u!1 &8943606919853885110
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,7 +558,7 @@ GameObject:
   - component: {fileID: 7009514446144770307}
   - component: {fileID: 7375481772011803669}
   - component: {fileID: 525359701542360596}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 'Node '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -643,7 +639,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9167911101740927899}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Turn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -731,6 +727,30 @@ PrefabInstance:
     - target: {fileID: 4417269780429767691, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}
       propertyPath: m_Name
       value: rango
+      objectReference: {fileID: 0}
+    - target: {fileID: 4417269780429767691, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5905945989674233771, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5905945989674233771, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5905945989674233771, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724566107546707850, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814231855809447847, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}

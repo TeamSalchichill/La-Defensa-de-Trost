@@ -19,6 +19,9 @@ public class ColocatorManager : MonoBehaviour
     public bool canBuild = false;
     public bool heroBuild = false;
 
+    int minesBuilt = 0;
+    int limitMines = 5;
+
     void Awake()
     {
         instance = this;
@@ -124,6 +127,10 @@ public class ColocatorManager : MonoBehaviour
             {
                 return;
             }
+            if (towerID == 7 && minesBuilt >= limitMines)
+            {
+                return;
+            }
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit rayHit;
@@ -141,16 +148,25 @@ public class ColocatorManager : MonoBehaviour
 
                 if (rayHit.collider.gameObject.layer == 7 && towerScript.canColocate == Tower.CanColocate.Ground)
                 {
-                    if (towerID == 0)
-                    {
-                        heroBuild = true;
-                    }
                     if (gameFlow.coins >= towerScript.price)
                     {
+                        if (towerID == 0)
+                        {
+                            heroBuild = true;
+                        }
+
                         gameFlow.coins -= towerScript.price;
 
-                        rayHit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
-                        rayHit.collider.gameObject.layer = 0;
+                        //rayHit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
+                        //rayHit.collider.gameObject.layer = 0;
+
+                        if (towerID == 7)
+                        {
+                            if (minesBuilt < limitMines)
+                            {
+                                minesBuilt++;
+                            }
+                        }
 
                         GameObject instTower = Instantiate(towers[towerID], rayHit.collider.gameObject.transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
                         instTower.GetComponent<Tower>().enabled = true;
@@ -190,6 +206,10 @@ public class ColocatorManager : MonoBehaviour
                             instTowerScript.specialTile = false;
                             instTowerScript.burnTile = false;
                         }
+
+                        canBuild = false;
+                        towerID = -1;
+
                         //Instantiate(towers[towerID], rayHit.collider.gameObject.transform.position + new Vector3(0, 1.25f, 0), Quaternion.identity);
                     }
                 }
@@ -203,8 +223,8 @@ public class ColocatorManager : MonoBehaviour
                     {
                         gameFlow.coins -= towerScript.price;
 
-                        rayHit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
-                        rayHit.collider.gameObject.layer = 0;
+                        //rayHit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
+                        //rayHit.collider.gameObject.layer = 0;
 
                         GameObject instTower = Instantiate(towers[towerID], rayHit.collider.gameObject.transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
                         instTower.GetComponent<Tower>().enabled = true;
@@ -227,6 +247,11 @@ public class ColocatorManager : MonoBehaviour
                             instTowerScript.specialTile = false;
                         }
                     }
+                }
+                else
+                {
+                    canBuild = false;
+                    towerID = -1;
                 }
             }
         }
