@@ -263,6 +263,8 @@ public class HUD_Manager : MonoBehaviour
             else
             {
                 gameFlow.specialCoins -= activeTower.levelUpPrice;
+
+                activeTower.gameObject.AddComponent<RecolocateManual>();
             }
             
             activeTower.level++;

@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 4331694923266465360}
   - component: {fileID: 8667143677291105916}
   - component: {fileID: 8276384371293607848}
+  - component: {fileID: 337266526531491151}
   m_Layer: 8
   m_Name: Normal Ground Ice
   m_TagString: Ground
@@ -145,6 +146,24 @@ MonoBehaviour:
   offsetPos: {x: 0, y: -0.25, z: 0}
   offsetRot: {x: 0, y: 0, z: 0, w: 0}
   isSpawn: 0
+  oritateToPath: 0
+--- !u!114 &337266526531491151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3987538594311521514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 355f4ca920a0a8448be68f9e530b2aeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapInfo: 0
+  id: 1000000
+  tileCambiado: 0
+  numTilesEncontradas: 0
+  sumaTilesEncontradas: 0
 --- !u!1 &4537774337458384071
 GameObject:
   m_ObjectHideFlags: 0

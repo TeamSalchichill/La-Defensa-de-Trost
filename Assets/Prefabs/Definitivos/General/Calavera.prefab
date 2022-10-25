@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 1916787805708579831}
   - component: {fileID: 9135169537628940755}
   - component: {fileID: 8660254825632648811}
+  - component: {fileID: -1938886459217927091}
   m_Layer: 11
   m_Name: Calavera
   m_TagString: Untagged
@@ -146,6 +147,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-1938886459217927091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284120687039949133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccb440437baedea448ba610dde5be551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToDestroy: 180
 --- !u!1 &1764813435716059488
 GameObject:
   m_ObjectHideFlags: 0

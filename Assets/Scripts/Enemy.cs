@@ -25,7 +25,16 @@ public class Enemy : MonoBehaviour
     [Header("Target")]
     public Transform target;
     public bool miniTowerFound = false;
+    public bool towerFound = false;
     GameObject miniMainTowerFound;
+    GameObject normaltowerFound;
+    public Vector3 targetPos;
+    public float targetSpeed;
+    public int mapPosId;
+    public Vector3 tileTargetPos = Vector3.zero;
+    public float tileTargetDist = 0;
+    public int bugCount = 0;
+    public GameObject targetGO = null;
 
     [Header("General")]
     public string enemyName;
@@ -115,15 +124,65 @@ public class Enemy : MonoBehaviour
         mainTower = MainTower.instance;
         generator = Generator.instance;
 
-        nav = GetComponent<NavMeshAgent>();
-        nav.destination = target.position;
-        nav.speed = normalSpeed;
+        mapPosId = 1000000;
 
+        nav = GetComponent<NavMeshAgent>();
+        if (nav.isOnNavMesh)
+        {
+            RaycastHit[] tilesInRange = Physics.SphereCastAll(transform.position, 15, transform.forward, 1.0f, LayerMask.GetMask("Ground"));
+            foreach (var tileInRange in tilesInRange)
+            {
+                if (tileInRange.collider.gameObject.GetComponent<MapInfo>().id < mapPosId)
+                {
+                    mapPosId = tileInRange.collider.gameObject.GetComponent<MapInfo>().id;
+                    nav.destination = tileInRange.collider.gameObject.transform.position;
+                    tileTargetPos = tileInRange.collider.gameObject.transform.position;
+                    tileTargetDist = Vector3.Distance(transform.position, tileTargetPos);
+                    targetGO = tileInRange.collider.gameObject;
+
+                    break;
+                }
+            }
+        }
+        else
+        {
+            switch (type)
+            {
+                case (Type.Pequeño):
+                    gameFlow.enemiesLeft1--;
+                    break;
+                case (Type.Mediano):
+                    gameFlow.enemiesLeft2--;
+                    break;
+                case (Type.Grande):
+                    gameFlow.enemiesLeft3--;
+                    break;
+            }
+
+            Destroy(gameObject);
+        }
+        nav.speed = normalSpeed;
         waterParticles.SetActive(false);
 
         healthMax = health;
         initialScaleX = HealthBar.transform.localScale.x;
-
+        
+        switch (type)
+        {
+            case Type.Pequeño:
+                gold = 10;
+                normalSpeed = 2;
+                break;
+            case Type.Mediano:
+                gold = 30;
+                normalSpeed = 1.5f;
+                break;
+            case Type.Grande:
+                gold = 2500;
+                normalSpeed = 1;
+                break;
+        }
+        
         Invoke("AutoDestroy", 300);
 
         if (type == Type.Grande)
@@ -157,19 +216,26 @@ public class Enemy : MonoBehaviour
 
         if (targetPreference == TargetPreference.OtherTowers)
         {
-            InvokeRepeating("UpdateTarget", 1, 5);
+            //InvokeRepeating("UpdateTarget", 0.1f, 0.15f);
         }
+
+        float timeToRefresh = Random.Range(50, 100);
+        timeToRefresh /= 100;
+
+        InvokeRepeating("UpdateTargetTile", 0.1f, 0.15f);
     }
 
-    void UpdateTarget()
+    void UpdateTargetTile()
     {
+        tileTargetDist = Vector3.Distance(transform.position, tileTargetPos);
+
         if (!infectationMode)
         {
-            if (!miniTowerFound)
+            if (!miniTowerFound && type == Type.Mediano)
             {
                 miniTowerFound = false;
 
-                RaycastHit[] miniMainTowerInRange = Physics.SphereCastAll(transform.position, 25, transform.forward, 1.0f, LayerMask.GetMask("Tower"));
+                RaycastHit[] miniMainTowerInRange = Physics.SphereCastAll(transform.position, 20, transform.forward, 1.0f, LayerMask.GetMask("Tower"));
                 if (miniMainTowerInRange.Length > 0)
                 {
                     foreach (var miniMainTower in miniMainTowerInRange)
@@ -178,11 +244,13 @@ public class Enemy : MonoBehaviour
                         {
                             miniTowerFound = true;
 
-                            nav.destination = miniMainTower.collider.gameObject.transform.position;
+                            float distanceToMiniMainTower = Mathf.Infinity;
 
-                            miniMainTowerFound = miniMainTower.collider.gameObject;
-
-                            break;
+                            if (Vector3.Distance(transform.position, miniMainTower.collider.gameObject.transform.position) < distanceToMiniMainTower)
+                            {
+                                nav.destination = miniMainTower.collider.gameObject.transform.position;
+                                miniMainTowerFound = miniMainTower.collider.gameObject;
+                            }
                         }
                     }
                 }
@@ -199,20 +267,34 @@ public class Enemy : MonoBehaviour
                                 if (!towerInRange[0].collider.GetComponent<Tower>().isHero)
                                 {
                                     nav.destination = towerInRange[0].transform.position;
+                                    normaltowerFound = towerInRange[0].collider.gameObject;
                                     towerInRange[0].collider.GetComponent<Tower>().health -= (damage * 3);
                                     anim.SetTrigger("doHit");
+
+                                    towerFound = true;
                                 }
                             }
+                        }
+                        else
+                        {
+                            nav.destination = tileTargetPos;
+                            towerFound = false;
+                            //nav.destination = target.position;
                         }
                     }
                     else
                     {
-                        nav.destination = target.position;
+                        nav.destination = tileTargetPos;
+                        towerFound = false;
+                        //nav.destination = target.position;
                     }
                 }
             }
-            else
+            else if (miniTowerFound)
             {
+                //nav.destination = miniMainTowerFound.transform.position;
+                nav.destination = new Vector3(miniMainTowerFound.transform.position.x, 0.5f, miniMainTowerFound.transform.position.z);
+
                 if (Vector3.Distance(transform.position, miniMainTowerFound.transform.position) < 5)
                 {
                     switch (type)
@@ -231,6 +313,42 @@ public class Enemy : MonoBehaviour
                     miniMainTowerFound.GetComponent<MiniMainTower>().health--;
 
                     Destroy(gameObject);
+                }
+            }
+
+            if (!miniTowerFound && !towerFound)
+            {
+                RaycastHit[] tilesInRange = Physics.SphereCastAll(transform.position, 20 + bugCount, transform.forward, 0, LayerMask.GetMask("Ground"));
+                if (tilesInRange.Length > 0)
+                {
+                    for (int i = 0; i < tilesInRange.Length; i++)
+                    {
+                        int randomTile = Random.Range(0, tilesInRange.Length);
+
+                        if (tilesInRange[randomTile].collider.gameObject.GetComponent<MapInfo>().id < mapPosId && !miniTowerFound)
+                        {
+                            GameObject localTile = tilesInRange[randomTile].collider.gameObject;
+
+                            mapPosId = localTile.GetComponent<MapInfo>().id;
+                            nav.destination = localTile.transform.position;
+                            tileTargetPos = localTile.gameObject.transform.position;
+                            tileTargetDist = Vector3.Distance(transform.position, tileTargetPos);
+                            targetGO = localTile;
+
+                            bugCount = 0;
+
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    bugCount += 5;
+                }
+
+                if (mapPosId == -1 && nav.isActiveAndEnabled && !miniTowerFound)
+                {
+                    nav.destination = target.position;
                 }
             }
         }
@@ -320,11 +438,12 @@ public class Enemy : MonoBehaviour
             }
         }
         nav.speed = speed * gameFlow.newSpeed;
-
+        
         if (infectationMode)
         {
             InfectationMode();
         }
+        /*
         else if (targetPreference == TargetPreference.MainTower)
         {
             if (isActiveAndEnabled)
@@ -332,6 +451,7 @@ public class Enemy : MonoBehaviour
                 nav.destination = target.position;
             }
         }
+        */
     }
 
     void InfectationMode()
@@ -631,6 +751,7 @@ public class Enemy : MonoBehaviour
     void NoInfectationMode()
     {
         infectationMode = false;
+        nav.destination = tileTargetPos;
     }
 
     void AutoDestroy()

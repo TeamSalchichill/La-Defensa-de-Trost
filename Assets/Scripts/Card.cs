@@ -289,92 +289,95 @@ public class Card : MonoBehaviour
                 randomUpgrade = id % 2;
                 randomUpgrade--;
 
-                switch (Hero.instance.zone)
+                if (Hero.instance)
                 {
-                    case Hero.Zone.Hielo:
-                        switch (randomUpgrade)
-                        {
-                            case 0:
-                                text.text = "Cuando desaparece la barrera de hielo de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " explota y hace daño";
-                                break;
-                            case 1:
-                                text.text = colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " inflinge un 30% más de daño a los enemigos que tengan algo congelación";
-                                break;
-                            case 2:
-                                text.text = "La barrera de hielo de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " inflinge congelación en un area alrededor suya";
-                                break;
-                        }
-                        break;
-                    case Hero.Zone.Desierto:
-                        switch (randomUpgrade)
-                        {
-                            case 0:
-                                text.text = "WIP";
-                                break;
-                            case 1:
-                                text.text = "WIP";
-                                break;
-                            case 2:
-                                text.text = "WIP";
-                                break;
-                        }
-                        break;
-                    case Hero.Zone.Atlantis:
-                        switch (randomUpgrade)
-                        {
-                            case 0:
-                                text.text = "WIP";
-                                break;
-                            case 1:
-                                text.text = "WIP";
-                                break;
-                            case 2:
-                                text.text = "WIP";
-                                break;
-                        }
-                        break;
-                    case Hero.Zone.Vikingos:
-                        switch (randomUpgrade)
-                        {
-                            case 0:
+                    switch (Hero.instance.zone)
+                    {
+                        case Hero.Zone.Hielo:
+                            switch (randomUpgrade)
+                            {
+                                case 0:
+                                    text.text = "Cuando desaparece la barrera de hielo de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " explota y hace daño";
+                                    break;
+                                case 1:
+                                    text.text = colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " inflinge un 30% más de daño a los enemigos que tengan algo congelación";
+                                    break;
+                                case 2:
+                                    text.text = "La barrera de hielo de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " inflinge congelación en un area alrededor suya";
+                                    break;
+                            }
+                            break;
+                        case Hero.Zone.Desierto:
+                            switch (randomUpgrade)
+                            {
+                                case 0:
+                                    text.text = "WIP";
+                                    break;
+                                case 1:
+                                    text.text = "WIP";
+                                    break;
+                                case 2:
+                                    text.text = "WIP";
+                                    break;
+                            }
+                            break;
+                        case Hero.Zone.Atlantis:
+                            switch (randomUpgrade)
+                            {
+                                case 0:
+                                    text.text = "WIP";
+                                    break;
+                                case 1:
+                                    text.text = "WIP";
+                                    break;
+                                case 2:
+                                    text.text = "WIP";
+                                    break;
+                            }
+                            break;
+                        case Hero.Zone.Vikingos:
+                            switch (randomUpgrade)
+                            {
+                                case 0:
 
-                                break;
-                            case 1:
+                                    break;
+                                case 1:
 
-                                break;
-                            case 2:
+                                    break;
+                                case 2:
 
-                                break;
-                        }
-                        break;
-                    case Hero.Zone.Fantasia:
-                        switch (randomUpgrade)
-                        {
-                            case 0:
+                                    break;
+                            }
+                            break;
+                        case Hero.Zone.Fantasia:
+                            switch (randomUpgrade)
+                            {
+                                case 0:
 
-                                break;
-                            case 1:
+                                    break;
+                                case 1:
 
-                                break;
-                            case 2:
+                                    break;
+                                case 2:
 
-                                break;
-                        }
-                        break;
-                    case Hero.Zone.Infierno:
-                        switch (randomUpgrade)
-                        {
-                            case 0:
+                                    break;
+                            }
+                            break;
+                        case Hero.Zone.Infierno:
+                            switch (randomUpgrade)
+                            {
+                                case 0:
 
-                                break;
-                            case 1:
+                                    break;
+                                case 1:
 
-                                break;
-                            case 2:
+                                    break;
+                                case 2:
 
-                                break;
-                        }
-                        break;
+                                    break;
+                            }
+                            break;
+                    }
                 }
                 break;
         }
@@ -703,94 +706,97 @@ public class Card : MonoBehaviour
                 }
                 break;
             case 11:
-                switch (Hero.instance.zone)
+                if (Hero.instance)
                 {
-                    case Hero.Zone.Hielo:
-                        switch (randomUpgrade)
-                        {
-                            case 0:
-                                hero.gameObject.GetComponent<Tower>().exploteIceWall = true;
-                                break;
-                            case 1:
-                                float porcetaje = 1 + (30 * 0.01f);
-                                int newHealth = (int)(hero.gameObject.GetComponent<Tower>().healthDamage * porcetaje);
-                                hero.gameObject.GetComponent<Tower>().healthDamage = newHealth;
-                                break;
-                            case 2:
-                                hero.gameObject.GetComponent<Tower>().frezzeIceWall = true;
-                                break;
-                        }
-                        break;
-                    case Hero.Zone.Desierto:
-                        switch (randomUpgrade)
-                        {
-                            case 0:
+                    switch (Hero.instance.zone)
+                    {
+                        case Hero.Zone.Hielo:
+                            switch (randomUpgrade)
+                            {
+                                case 0:
+                                    hero.gameObject.GetComponent<Tower>().exploteIceWall = true;
+                                    break;
+                                case 1:
+                                    float porcetaje = 1 + (30 * 0.01f);
+                                    int newHealth = (int)(hero.gameObject.GetComponent<Tower>().healthDamage * porcetaje);
+                                    hero.gameObject.GetComponent<Tower>().healthDamage = newHealth;
+                                    break;
+                                case 2:
+                                    hero.gameObject.GetComponent<Tower>().frezzeIceWall = true;
+                                    break;
+                            }
+                            break;
+                        case Hero.Zone.Desierto:
+                            switch (randomUpgrade)
+                            {
+                                case 0:
 
-                                break;
-                            case 1:
+                                    break;
+                                case 1:
 
-                                break;
-                            case 2:
+                                    break;
+                                case 2:
 
-                                break;
-                        }
-                        break;
-                    case Hero.Zone.Atlantis:
-                        switch (randomUpgrade)
-                        {
-                            case 0:
+                                    break;
+                            }
+                            break;
+                        case Hero.Zone.Atlantis:
+                            switch (randomUpgrade)
+                            {
+                                case 0:
 
-                                break;
-                            case 1:
+                                    break;
+                                case 1:
 
-                                break;
-                            case 2:
+                                    break;
+                                case 2:
 
-                                break;
-                        }
-                        break;
-                    case Hero.Zone.Vikingos:
-                        switch (randomUpgrade)
-                        {
-                            case 0:
+                                    break;
+                            }
+                            break;
+                        case Hero.Zone.Vikingos:
+                            switch (randomUpgrade)
+                            {
+                                case 0:
 
-                                break;
-                            case 1:
+                                    break;
+                                case 1:
 
-                                break;
-                            case 2:
+                                    break;
+                                case 2:
 
-                                break;
-                        }
-                        break;
-                    case Hero.Zone.Fantasia:
-                        switch (randomUpgrade)
-                        {
-                            case 0:
+                                    break;
+                            }
+                            break;
+                        case Hero.Zone.Fantasia:
+                            switch (randomUpgrade)
+                            {
+                                case 0:
 
-                                break;
-                            case 1:
+                                    break;
+                                case 1:
 
-                                break;
-                            case 2:
+                                    break;
+                                case 2:
 
-                                break;
-                        }
-                        break;
-                    case Hero.Zone.Infierno:
-                        switch (randomUpgrade)
-                        {
-                            case 0:
+                                    break;
+                            }
+                            break;
+                        case Hero.Zone.Infierno:
+                            switch (randomUpgrade)
+                            {
+                                case 0:
 
-                                break;
-                            case 1:
+                                    break;
+                                case 1:
 
-                                break;
-                            case 2:
+                                    break;
+                                case 2:
 
-                                break;
-                        }
-                        break;
+                                    break;
+                            }
+                            break;
+                    }
                 }
                 break;
         }

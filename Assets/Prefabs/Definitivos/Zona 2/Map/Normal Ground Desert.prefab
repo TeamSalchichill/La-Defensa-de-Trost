@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 8618675778772668070}
   - component: {fileID: 8075260382282737999}
   - component: {fileID: 8075260382282737998}
+  - component: {fileID: -4556408196860761332}
   m_Layer: 8
   m_Name: Normal Ground Desert
   m_TagString: Ground
@@ -178,3 +179,20 @@ MonoBehaviour:
   offsetRot: {x: 0, y: 0, z: 0, w: 0}
   isSpawn: 0
   oritateToPath: 0
+--- !u!114 &-4556408196860761332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8993828478750184476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 355f4ca920a0a8448be68f9e530b2aeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapInfo: 0
+  id: 1000000
+  tileCambiado: 0
+  numTilesEncontradas: 0
+  sumaTilesEncontradas: 0

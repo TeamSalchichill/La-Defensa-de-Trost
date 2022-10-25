@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 6524492650864135230}
   - component: {fileID: 6524492650864135216}
   - component: {fileID: 6524492650864135217}
+  - component: {fileID: 62176987938127966}
   m_Layer: 8
   m_Name: Special Ground Desert
   m_TagString: SpecialGround
@@ -160,6 +161,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 1, z: 2}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &62176987938127966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6218009484647362925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 355f4ca920a0a8448be68f9e530b2aeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapInfo: 0
+  id: 1000000
+  tileCambiado: 0
+  numTilesEncontradas: 0
+  sumaTilesEncontradas: 0
 --- !u!1 &6909984319299918144
 GameObject:
   m_ObjectHideFlags: 0

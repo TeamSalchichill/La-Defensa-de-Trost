@@ -1909,7 +1909,7 @@ RectTransform:
   - {fileID: 1784076940}
   - {fileID: 1685797553}
   m_Father: {fileID: 1380288384}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3001,7 +3001,7 @@ RectTransform:
   m_Children:
   - {fileID: 28338749}
   m_Father: {fileID: 1380288384}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3269,7 +3269,7 @@ RectTransform:
   - {fileID: 962894019}
   - {fileID: 1742733917}
   m_Father: {fileID: 1380288384}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4101,7 +4101,7 @@ RectTransform:
   - {fileID: 527771130}
   - {fileID: 860611384}
   m_Father: {fileID: 1380288384}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5416,7 +5416,7 @@ RectTransform:
   - {fileID: 1800969623}
   - {fileID: 820682255}
   m_Father: {fileID: 1380288384}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5619,7 +5619,7 @@ RectTransform:
   - {fileID: 409654454}
   - {fileID: 1188084516}
   m_Father: {fileID: 1380288384}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7217,7 +7217,7 @@ RectTransform:
   - {fileID: 1936353375}
   - {fileID: 328961496}
   m_Father: {fileID: 1380288384}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10361,6 +10361,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1651963295}
   - {fileID: 254936075}
   - {fileID: 1008876150}
   - {fileID: 405805051}
@@ -10369,7 +10370,6 @@ RectTransform:
   - {fileID: 1771733590}
   - {fileID: 798022042}
   - {fileID: 554376379}
-  - {fileID: 1651963295}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11815,7 +11815,7 @@ RectTransform:
   - {fileID: 1205327170}
   - {fileID: 2104799509}
   m_Father: {fileID: 1380288384}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13216,8 +13216,8 @@ MonoBehaviour:
   doMovement: 1
   panSpeed: 30
   panBorderThickness: 10
-  zoomMin: 4
-  zoomMax: 34
+  zoomMin: 5
+  zoomMax: 50
 --- !u!81 &1768033815
 AudioListener:
   m_ObjectHideFlags: 0
@@ -13253,7 +13253,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 14
+  orthographic size: 25
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -13277,7 +13277,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1768033813}
   m_LocalRotation: {x: 0.35355338, y: -0.35355338, z: 0.1464466, w: 0.8535535}
-  m_LocalPosition: {x: 21, y: 25, z: -7}
+  m_LocalPosition: {x: 42, y: 50, z: -28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13588,7 +13588,7 @@ RectTransform:
   - {fileID: 1444840017}
   - {fileID: 1139961975}
   m_Father: {fileID: 1380288384}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -15332,6 +15332,7 @@ MonoBehaviour:
   newSpecialCoinsPerRound: 10
   roundFinished: 1
   nextRound: 0
+  idTile: 1
   sandStorm: {fileID: 7254551664679931533, guid: 70b5ebebbc1e73448875f37c350205c7, type: 3}
   sandStormProbavility: 100
   sandStormDuration: 3
@@ -15341,7 +15342,7 @@ MonoBehaviour:
   healthBarYellow: {fileID: 2100000, guid: 6db1dac8f7c5c1d48908fa418aba0c55, type: 2}
   healthBarRed: {fileID: 2100000, guid: 4a43ecf05c7fbcb4b84d7c8daa908c97, type: 2}
   newSpeed: 1
-  spawnRate: 0.5
+  spawnRate: 0.6
   enemies:
   - {fileID: 2301449868554025013, guid: 558029e95636d0b4d9a6931bef9aea2d, type: 3}
   - {fileID: 3588400179637885654, guid: eb0014d705a981c41a63032325f79368, type: 3}
@@ -15349,9 +15350,9 @@ MonoBehaviour:
   - {fileID: 9047365862930758477, guid: 1e57446c36a42c44babeea6d99888f57, type: 3}
   - {fileID: 5544180128130104990, guid: f2acaf3a22dd3a34ba06356190a0000a, type: 3}
   - {fileID: 4343674489577715100, guid: 661d59997280ba84a8eb7beb74c6012f, type: 3}
-  enemiesPerRound1: 050000000a0000000f00000014000000190000001e00000023000000280000002d000000320000003c00000046000000500000005a000000640000006e00000078000000820000008c00000096000000aa000000be000000d2000000e6000000fa0000000e01000022010000360100004a0100005e010000
+  enemiesPerRound1: 010000000a0000000f00000014000000190000001e00000023000000280000002d000000320000003c00000046000000500000005a000000640000006e00000078000000820000008c00000096000000aa000000be000000d2000000e6000000fa0000000e01000022010000360100004a0100005e010000
   enemiesPerRound2: 0000000000000000010000000200000003000000040000000500000006000000080000000a0000000c0000000e00000010000000120000001400000016000000180000001a0000001c0000001e00000020000000220000002400000026000000280000002a0000002c0000002e0000003000000032000000
-  enemiesPerRound3: 000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000001000000
+  enemiesPerRound3: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   enemiesToSpawn1: 0
   enemiesLeft1: 0
   enemiesToSpawn2: 0
@@ -15395,7 +15396,7 @@ MonoBehaviour:
   actualID: -1
   towerID: -1
   towers:
-  - {fileID: 7741173153852372454, guid: 5acc2f92e3af81f46a5951de4270c231, type: 3}
+  - {fileID: 4947983256652114866, guid: dabf67d368cb42d4eb5dcfaa7be073ef, type: 3}
   - {fileID: 2049334802879713680, guid: b42fd978c7a2b604aae174f371d1d72c, type: 3}
   - {fileID: 8150222141066179525, guid: e36e3edb1c9c3bd4d95ba44b3cce8658, type: 3}
   - {fileID: 7748236197705513451, guid: f72912f13b069b043b837d69eae65336, type: 3}
@@ -16257,7 +16258,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

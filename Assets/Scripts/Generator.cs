@@ -132,7 +132,7 @@ public class Generator : MonoBehaviour
                 }
             }
         }
-        
+
         for (int i = 0; i < sizeX; i++)
         {
             for (int j = 0; j < sizeZ; j++)
@@ -145,13 +145,14 @@ public class Generator : MonoBehaviour
                 }
                 else
                 {
-                    Instantiate(groundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1), Quaternion.identity);
+                    GameObject instTile = Instantiate(groundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1), Quaternion.identity);
+                    instTile.GetComponent<MapInfo>().id = -1;
                 }
             }
         }
-        
-        Instantiate(mainTower, new Vector3(7, 4, 7), Quaternion.identity);
 
+        Instantiate(mainTower, new Vector3(7, 4, 7), Quaternion.identity);
+        
         colocatedMap.Add(mapPos);
         openMap.Add(Vector3.zero);
 
@@ -172,7 +173,7 @@ public class Generator : MonoBehaviour
         openMap.Add(new Vector3(1, 0, 0));
         colocatedMap.Add(new Vector3(-1, 0, 0));
         openMap.Add(new Vector3(-1, 0, 0));
-
+        
         idX = 0;
         idZ = 3;
         startSide = 0;
@@ -300,11 +301,15 @@ public class Generator : MonoBehaviour
                         int specialTile = Random.Range(0, 101);
                         if (specialTile < probabilitySpecialTiles)
                         {
-                            Instantiate(specialGroundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
+                            GameObject instTile = Instantiate(specialGroundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
+                            instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                            gameFlow.idTile++;
                         }
                         else
                         {
-                            Instantiate(groundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
+                            GameObject instTile = Instantiate(groundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
+                            instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                            gameFlow.idTile++;
                         }
 
                         map[i, j] = 1;
@@ -634,11 +639,15 @@ public class Generator : MonoBehaviour
                         int specialTile = Random.Range(0, 101);
                         if (specialTile < probabilitySpecialTiles)
                         {
-                            Instantiate(specialGroundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
+                            GameObject instTile = Instantiate(specialGroundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
+                            instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                            gameFlow.idTile++;
                         }
                         else
                         {
-                            Instantiate(groundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
+                            GameObject instTile = Instantiate(groundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
+                            instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                            gameFlow.idTile++;
                         }
 
                         map[i, j] = 1;
@@ -842,7 +851,9 @@ public class Generator : MonoBehaviour
                             {
                                 if (hit.collider.gameObject.transform.position.y == 0.5f)
                                 {
-                                    Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.5f, 0), Quaternion.identity);
+                                    GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
+                                    instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                                    gameFlow.idTile++;
                                 }
 
                                 Destroy(hit.collider.gameObject);
@@ -851,7 +862,9 @@ public class Generator : MonoBehaviour
                                 {
                                     if (hit.collider.gameObject.transform.position.y == 0.5f)
                                     {
-                                        Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.5f, 0), Quaternion.identity);
+                                        GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
+                                        instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                                        gameFlow.idTile++;
                                     }
 
                                     Destroy(hit.collider.gameObject);
@@ -860,7 +873,9 @@ public class Generator : MonoBehaviour
                                     {
                                         if (hit.collider.gameObject.transform.position.y == 0.5f)
                                         {
-                                            Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.5f, 0), Quaternion.identity);
+                                            GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
+                                            instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                                            gameFlow.idTile++;
                                         }
 
                                         Destroy(hit.collider.gameObject);
@@ -869,7 +884,9 @@ public class Generator : MonoBehaviour
                                         {
                                             if (hit.collider.gameObject.transform.position.y == 0.5f)
                                             {
-                                                Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.5f, 0), Quaternion.identity);
+                                                GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
+                                                instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                                                gameFlow.idTile++;
                                             }
 
                                             Destroy(hit.collider.gameObject);
@@ -964,7 +981,9 @@ public class Generator : MonoBehaviour
                                     {
                                         if (hit.collider.gameObject.transform.position.y == 0.5f)
                                         {
-                                            Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.5f, 0), Quaternion.identity);
+                                            GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
+                                            instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                                            gameFlow.idTile++;
                                         }
 
                                         Destroy(hit.collider.gameObject);
@@ -973,7 +992,9 @@ public class Generator : MonoBehaviour
                                         {
                                             if (hit.collider.gameObject.transform.position.y == 0.5f)
                                             {
-                                                Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.5f, 0), Quaternion.identity);
+                                                GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
+                                                instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                                                gameFlow.idTile++;
                                             }
 
                                             Destroy(hit.collider.gameObject);
@@ -1068,7 +1089,9 @@ public class Generator : MonoBehaviour
                                     {
                                         if (hit.collider.gameObject.transform.position.y == 0.5f)
                                         {
-                                            Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.5f, 0), Quaternion.identity);
+                                            GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
+                                            instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                                            gameFlow.idTile++;
                                         }
 
                                         Destroy(hit.collider.gameObject);
@@ -1077,7 +1100,9 @@ public class Generator : MonoBehaviour
                                         {
                                             if (hit.collider.gameObject.transform.position.y == 0.5f)
                                             {
-                                                Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.5f, 0), Quaternion.identity);
+                                                GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
+                                                instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                                                gameFlow.idTile++;
                                             }
 
                                             Destroy(hit.collider.gameObject);
@@ -1172,7 +1197,9 @@ public class Generator : MonoBehaviour
                                     {
                                         if (hit.collider.gameObject.transform.position.y == 0.5f)
                                         {
-                                            Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.5f, 0), Quaternion.identity);
+                                            GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
+                                            instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                                            gameFlow.idTile++;
                                         }
 
                                         Destroy(hit.collider.gameObject);
@@ -1181,7 +1208,9 @@ public class Generator : MonoBehaviour
                                         {
                                             if (hit.collider.gameObject.transform.position.y == 0.5f)
                                             {
-                                                Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.5f, 0), Quaternion.identity);
+                                                GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
+                                                instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                                                gameFlow.idTile++;
                                             }
 
                                             Destroy(hit.collider.gameObject);

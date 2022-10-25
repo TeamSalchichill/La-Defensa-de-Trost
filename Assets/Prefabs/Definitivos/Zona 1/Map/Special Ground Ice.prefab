@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 1484594065954244057}
   - component: {fileID: 86171007634880421}
   - component: {fileID: -6517470203783343299}
+  - component: {fileID: 713624385363612758}
   m_Layer: 8
   m_Name: Special Ground Ice
   m_TagString: SpecialGround
@@ -108,6 +109,24 @@ MonoBehaviour:
   offsetPos: {x: 0, y: -0.25, z: 0}
   offsetRot: {x: 0, y: 0, z: 0, w: 0}
   isSpawn: 0
+  oritateToPath: 0
+--- !u!114 &713624385363612758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5359473346394995442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 355f4ca920a0a8448be68f9e530b2aeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapInfo: 0
+  id: 1000000
+  tileCambiado: 0
+  numTilesEncontradas: 0
+  sumaTilesEncontradas: 0
 --- !u!1 &6263598450154318624
 GameObject:
   m_ObjectHideFlags: 0

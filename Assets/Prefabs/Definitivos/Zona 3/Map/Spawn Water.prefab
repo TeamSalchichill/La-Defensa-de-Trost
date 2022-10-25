@@ -125,6 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3963027604191656828}
   - component: {fileID: 3771517668419076990}
+  - component: {fileID: 7908530375548667146}
   m_Layer: 10
   m_Name: Spawn Water
   m_TagString: Untagged
@@ -164,3 +165,20 @@ MonoBehaviour:
   offsetRot: {x: 0, y: 0, z: 0, w: 0}
   isSpawn: 0
   oritateToPath: 0
+--- !u!114 &7908530375548667146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4446266931361178054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08c8e2bee899af14586768607e341ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies: []
+  enemies1: []
+  enemies2: []
+  enemies3: []
+  spawnParticles: {fileID: 7155696377857145867, guid: d373f08140367d644b636fbbd7d809fc, type: 3}

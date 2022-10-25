@@ -21,6 +21,8 @@ public class GameFlow : MonoBehaviour
     [Space]
     public bool roundFinished = true;
     public bool nextRound = false;
+    [Space]
+    public int idTile = 1;
 
     [Header("Zona Desierto")]
     public ParticleSystem sandStorm;
@@ -153,6 +155,11 @@ public class GameFlow : MonoBehaviour
             {
                 hudManager.nextRoundButton.gameObject.SetActive(true);
             }
+
+            if (generator.newMapNodes.Count == 0)
+            {
+                hudManager.nextRoundButton.gameObject.SetActive(true);
+            }
         }
     }
 
@@ -234,6 +241,7 @@ public class GameFlow : MonoBehaviour
             if (round % changeWaterRate == 0)
             {
                 int newSpeedRandom = Random.Range(0, 3);
+                //newSpeedRandom = 2;
 
                 switch (newSpeedRandom)
                 {
