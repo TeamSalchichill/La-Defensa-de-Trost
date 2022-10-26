@@ -45,7 +45,7 @@ public class MainTower : MonoBehaviour
     {
         if (health <= 0)
         {
-            hudManager.ResetGame();
+            hudManager.ActivateGameOver();
         }
 
         if (Input.GetButtonDown("Fire2"))

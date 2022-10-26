@@ -25,20 +25,6 @@ public class MapInfo : MonoBehaviour
     {
         if (id == 1000000)
         {
-            /*
-            RaycastHit[] tilesInRange = Physics.SphereCastAll(transform.position, 3, transform.forward, 0, LayerMask.GetMask("Ground"));
-            foreach (var tileInRange in tilesInRange)
-            {
-                if (tileInRange.collider.gameObject.GetComponent<MapInfo>().id != 1000000)
-                {
-                    numTilesEncontradas++;
-                    sumaTilesEncontradas += tileInRange.collider.gameObject.GetComponent<MapInfo>().id;
-                }
-            }
-
-            id = (int)(sumaTilesEncontradas / numTilesEncontradas);
-            */
-            //print("Nueva id: " + id);
             id = gameFlow.round;
             tileCambiado = true;
         }

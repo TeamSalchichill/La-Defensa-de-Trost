@@ -1049,10 +1049,12 @@ MonoBehaviour:
   bulletType: 0
   zone: 2
   specialStat: 7
+  targetPreference: 0
   anim: {fileID: 6986007683173944881}
   level5Light: {fileID: 7032925671250798076}
   rangeArea: {fileID: 956256231441838653}
-  towerName: Ra
+  partToRotate: {fileID: 8372852016417541427}
+  towerName: Rey Axiryus
   icon: {fileID: 0}
   price: 1000
   acumulateGold: 0
@@ -1069,11 +1071,12 @@ MonoBehaviour:
   healthMax: 0
   armor: 0
   armorMax: 0
+  sirenitaBoost: 0
   target: {fileID: 0}
+  numTargets: 1
   bullet: {fileID: 8058975441479462529, guid: 13525fa7958d5cf4d90f2d0ec7f23f69, type: 3}
   bulletPos: {fileID: 5078637050509453214}
   particles: {fileID: 0}
-  partToRotate: {fileID: 8372852016417541427}
   fullRotate: 0
   level: 1
   levelMultiplier: 1.2
@@ -1097,10 +1100,6 @@ MonoBehaviour:
   exploteIceWall: 0
   frezzeIceWall: 0
   curation: 50
-  RaParticles: []
-  numRays: 5
-  partToRotateGO: {fileID: 5078637050509453214}
-  allEnemiesInRange: []
   singParticles: {fileID: 0}
 --- !u!114 &1685704814836824901
 MonoBehaviour:

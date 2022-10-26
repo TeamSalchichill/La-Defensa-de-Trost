@@ -40,7 +40,7 @@ public class Tower : MonoBehaviour
 
     [Header("General")]
     public string towerName;
-    public Image icon;
+    public Sprite icon;
     [Space]
     public int price;
     public int acumulateGold = 0;

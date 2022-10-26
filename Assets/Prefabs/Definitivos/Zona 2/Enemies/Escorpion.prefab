@@ -923,19 +923,28 @@ MonoBehaviour:
   zone: 0
   targetPreference: 1
   anim: {fileID: 2121355047466359954}
-  target: {fileID: 7508660107958944948, guid: b773a4ca56193e54883f01e48738731c, type: 3}
   nav: {fileID: 0}
+  target: {fileID: 7508660107958944948, guid: b773a4ca56193e54883f01e48738731c, type: 3}
+  miniTowerFound: 0
+  towerFound: 0
+  targetPos: {x: 0, y: 0, z: 0}
+  targetSpeed: 0
+  mapPosId: 0
+  tileTargetPos: {x: 0, y: 0, z: 0}
+  tileTargetDist: 0
+  bugCount: 0
+  targetGO: {fileID: 0}
+  enemyName: Escorpy
   skull: {fileID: 1284120687039949133, guid: 1ac12f2712a02d741a31b9414da25769, type: 3}
   deadParticle: {fileID: 5107351696323173831, guid: cbb13d85c1d0b8e47a172c4a048ff446, type: 3}
-  enemyName: 
   damage: 2
-  gold: 40
   speed: 0
-  range: 2
   normalSpeed: 1
+  range: 2
   health: 2800
   healthMax: 0
   armor: 0
+  gold: 40
   iceEffect: 0
   igniteEffect: 0
   waterEffect: 0
@@ -951,6 +960,12 @@ MonoBehaviour:
   ascentResistence: 0
   bloodResistence: 0
   transformationResistence: 0
+  poseidonBoost: 0
+  HealthBar: {fileID: 2121355046959523185}
+  healthBarGreen: {fileID: 2100000, guid: 78f5d8b4de1f2b345bc3dd00a5025bc2, type: 2}
+  healthBarYellow: {fileID: 2100000, guid: 6db1dac8f7c5c1d48908fa418aba0c55, type: 2}
+  healthBarRed: {fileID: 2100000, guid: 4a43ecf05c7fbcb4b84d7c8daa908c97, type: 2}
+  waterParticles: {fileID: 7007556178404131781}
   isBoss: 0
   bullet: {fileID: 0}
   bulletPos: {fileID: 0}
@@ -961,12 +976,8 @@ MonoBehaviour:
   invokeMamutRate: 20
   healthRate: 10
   areaAtacckRate: 10
-  HealthBar: {fileID: 2121355046959523185}
-  healthBarGreen: {fileID: 2100000, guid: 78f5d8b4de1f2b345bc3dd00a5025bc2, type: 2}
-  healthBarYellow: {fileID: 2100000, guid: 6db1dac8f7c5c1d48908fa418aba0c55, type: 2}
-  healthBarRed: {fileID: 2100000, guid: 4a43ecf05c7fbcb4b84d7c8daa908c97, type: 2}
-  miniTowerFound: 0
-  waterParticles: {fileID: 7007556178404131781}
+  spearAttackRate: 5
+  speedBoostRate: 10
 --- !u!195 &2121355047466359953
 NavMeshAgent:
   m_ObjectHideFlags: 0

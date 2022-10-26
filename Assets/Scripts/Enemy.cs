@@ -170,15 +170,15 @@ public class Enemy : MonoBehaviour
         switch (type)
         {
             case Type.Pequeño:
-                gold = 10;
+                gold = 12;
                 normalSpeed = 2;
                 break;
             case Type.Mediano:
-                gold = 30;
+                gold = 36;
                 normalSpeed = 1.5f;
                 break;
             case Type.Grande:
-                gold = 2500;
+                gold = 3000;
                 normalSpeed = 1;
                 break;
         }
@@ -229,8 +229,15 @@ public class Enemy : MonoBehaviour
     {
         tileTargetDist = Vector3.Distance(transform.position, tileTargetPos);
 
+        if (nav.speed == 0)
+        {
+            nav.speed = normalSpeed;
+            print("F");
+        }
+
         if (!infectationMode)
         {
+            /*
             if (!miniTowerFound && type == Type.Mediano)
             {
                 miniTowerFound = false;
@@ -315,7 +322,7 @@ public class Enemy : MonoBehaviour
                     Destroy(gameObject);
                 }
             }
-
+            */
             if (!miniTowerFound && !towerFound)
             {
                 RaycastHit[] tilesInRange = Physics.SphereCastAll(transform.position, 20 + bugCount, transform.forward, 0, LayerMask.GetMask("Ground"));

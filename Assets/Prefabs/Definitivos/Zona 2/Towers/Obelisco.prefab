@@ -262,45 +262,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetType: 0
   attackType: 1
-  canTarget: 0
   canColocate: 0
   bulletType: 0
   zone: 2
   specialStat: 2
-  towerName: Obelisco
-  icon: {fileID: 0}
+  targetPreference: 0
+  anim: {fileID: 529317122}
   level5Light: {fileID: 0}
   rangeArea: {fileID: 4417269780651086121}
-  rangeAreaOriginalScale: 0
-  anim: {fileID: 529317122}
-  particles: {fileID: 0}
-  target: {fileID: 0}
-  bullet: {fileID: 8058975441479462529, guid: 13525fa7958d5cf4d90f2d0ec7f23f69, type: 3}
-  bulletPos: {fileID: 1578840397}
   partToRotate: {fileID: 399853784}
-  fullRotate: 1
-  offsetY: 1.65
-  isHero: 0
+  towerName: Test-Lah
+  icon: {fileID: 0}
+  price: 200
+  acumulateGold: 0
   specialTile: 0
   burnTile: 0
+  spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
+  healthDamage: 3
+  armorDamage: 0
+  range: 9
+  rangeAreaOriginalScale: 0
+  fireRate: 500
+  turnSpeed: 10
+  health: 500
+  healthMax: 0
+  armor: 0
+  armorMax: 0
+  sirenitaBoost: 0
+  target: {fileID: 0}
+  numTargets: 1
+  bullet: {fileID: 8058975441479462529, guid: 13525fa7958d5cf4d90f2d0ec7f23f69, type: 3}
+  bulletPos: {fileID: 1578840397}
+  particles: {fileID: 0}
+  fullRotate: 1
   level: 1
   levelMultiplier: 1.1
   levelMultiplierSpecialStat: 1.2
   levelUpPrice: 150
   level5Price: 100
   priceLogo: "\u20AC"
-  acumulateGold: 0
-  health: 500
-  healthMax: 0
-  armor: 0
-  armorMax: 0
-  range: 9
-  fireRate: 500
-  turnSpeed: 10
-  price: 200
-  isDie: 0
-  healthDamage: 3
-  armorDamage: 0
   iceDamage: 0
   igniteDamage: 1
   waterDamage: 0
@@ -312,15 +312,12 @@ MonoBehaviour:
   burnEffectPerShoot: 2
   timeInOverHeat: 10
   smokeOverHeat: {fileID: 8550112519114524154, guid: 0e92832738859c442a7291bfea6e6f75, type: 3}
+  isHero: 0
   iceWall: {fileID: 0}
   exploteIceWall: 0
   frezzeIceWall: 0
-  spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
   curation: 50
-  RaParticles: []
-  numRays: 0
-  partToRotateGO: {fileID: 0}
-  allEnemiesInRange: []
+  singParticles: {fileID: 0}
 --- !u!65 &529317125
 BoxCollider:
   m_ObjectHideFlags: 0

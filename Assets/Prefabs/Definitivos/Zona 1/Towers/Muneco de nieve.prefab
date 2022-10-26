@@ -677,45 +677,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetType: 0
   attackType: 1
-  canTarget: 0
   canColocate: 0
   bulletType: 0
   zone: 1
   specialStat: 6
-  towerName: Snow Man
-  icon: {fileID: 0}
+  targetPreference: 0
+  anim: {fileID: 2006356614451189371}
   level5Light: {fileID: 0}
   rangeArea: {fileID: 4362785512181250307}
-  rangeAreaOriginalScale: 0
-  anim: {fileID: 2006356614451189371}
-  particles: {fileID: 0}
-  target: {fileID: 0}
-  bullet: {fileID: 983131356506886144, guid: 4f39d614e775b1542bc72d3396e33fb5, type: 3}
-  bulletPos: {fileID: 1546471722073418272}
   partToRotate: {fileID: 5429601550631614790}
-  fullRotate: 0
-  offsetY: 0
-  isHero: 0
+  towerName: Snow Man
+  icon: {fileID: 21300000, guid: e1a4c89401ade0447b5720a5936a7085, type: 3}
+  price: 200
+  acumulateGold: 0
   specialTile: 0
   burnTile: 0
+  spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
+  healthDamage: 100
+  armorDamage: 0
+  range: 15
+  rangeAreaOriginalScale: 0
+  fireRate: 3
+  turnSpeed: 10
+  health: 500
+  healthMax: 0
+  armor: 0
+  armorMax: 0
+  sirenitaBoost: 0
+  target: {fileID: 0}
+  numTargets: 1
+  bullet: {fileID: 983131356506886144, guid: 4f39d614e775b1542bc72d3396e33fb5, type: 3}
+  bulletPos: {fileID: 1546471722073418272}
+  particles: {fileID: 0}
+  fullRotate: 0
   level: 1
   levelMultiplier: 1.1
   levelMultiplierSpecialStat: 1.25
   levelUpPrice: 200
   level5Price: 100
   priceLogo: "\u20AC"
-  acumulateGold: 0
-  health: 500
-  healthMax: 0
-  armor: 0
-  armorMax: 0
-  range: 15
-  fireRate: 3
-  turnSpeed: 10
-  price: 200
-  isDie: 0
-  healthDamage: 100
-  armorDamage: 0
   iceDamage: 1
   igniteDamage: 0
   waterDamage: 0
@@ -727,15 +727,12 @@ MonoBehaviour:
   burnEffectPerShoot: 2
   timeInOverHeat: 10
   smokeOverHeat: {fileID: 8550112519114524154, guid: 0e92832738859c442a7291bfea6e6f75, type: 3}
+  isHero: 0
   iceWall: {fileID: 0}
   exploteIceWall: 0
   frezzeIceWall: 0
-  spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
   curation: 50
-  RaParticles: []
-  numRays: 0
-  partToRotateGO: {fileID: 0}
-  allEnemiesInRange: []
+  singParticles: {fileID: 0}
 --- !u!65 &8989138212871072241
 BoxCollider:
   m_ObjectHideFlags: 0

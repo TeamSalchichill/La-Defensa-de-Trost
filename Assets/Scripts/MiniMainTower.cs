@@ -17,7 +17,7 @@ public class MiniMainTower : MonoBehaviour
     {
         if (health <= 0)
         {
-            mainTower.health -= 5;
+            mainTower.health -= 7;
 
             Destroy(gameObject);
         }

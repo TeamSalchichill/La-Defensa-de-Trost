@@ -29,7 +29,9 @@ public class HUD_Manager : MonoBehaviour
     public TextMeshProUGUI specialCoinsText;
     public TextMeshProUGUI roundText;
     public TextMeshProUGUI healthText;
-    public TextMeshProUGUI enemiesText;
+    public TextMeshProUGUI enemiesText1;
+    public TextMeshProUGUI enemiesText2;
+    public TextMeshProUGUI enemiesText3;
 
     [Header("Tower Info")]
     public bool isShowInfo = false;
@@ -38,12 +40,26 @@ public class HUD_Manager : MonoBehaviour
     public GameObject fichaTecnica;
     public TextMeshProUGUI towerName;
     public Image icon;
-    public TextMeshProUGUI towerDescription;
+    public TextMeshProUGUI towerDescription1;
+    public TextMeshProUGUI towerDescription2;
     public TextMeshProUGUI levelUpButton;
     public TextMeshProUGUI sellButton;
 
     [Header("Tower Buttons")]
     public TextMeshProUGUI[] towersButton;
+
+    [Header("Screens")]
+    public GameObject pauseScreen;
+    public GameObject noTocar;
+
+    [Header("Tower Banner")]
+    public GameObject towerBanner;
+    public bool showTowerBanner = true;
+    public GameObject towerBannerButton;
+    public TextMeshProUGUI towerBannerText;
+
+    [Header("Game Over")]
+    public GameObject gameOverScreen;
 
     void Awake()
     {
@@ -81,18 +97,17 @@ public class HUD_Manager : MonoBehaviour
         porcentajes[4].text = ((int)(sliders[4].value * 100)).ToString() + "%";
         porcentajes[5].text = ((int)(sliders[5].value * 100)).ToString() + "%";
 
-        coinsText.text = "Monedas: " + gameFlow.coins.ToString() + "€";
-        specialCoinsText.text = "Monedas: " + gameFlow.specialCoins.ToString() + "$";
+        coinsText.text = gameFlow.coins.ToString();
+        specialCoinsText.text = gameFlow.specialCoins.ToString();
         roundText.text = "Ronda: " + gameFlow.round.ToString();
         if (mainTower == null)
         {
             mainTower = MainTower.instance;
         }
-        healthText.text = "Vida: " + mainTower.health;
-        enemiesText.text = 
-            "Enemigos pequeños x" + gameFlow.enemiesLeft1 + "\n" + 
-            "Enemigos medianos x" + gameFlow.enemiesLeft2 + "\n" + 
-            "Enemigos grandes x" + gameFlow.enemiesLeft3;
+        healthText.text = mainTower.health.ToString();
+        enemiesText1.text = "" + gameFlow.enemiesLeft1;
+        enemiesText2.text = "" + gameFlow.enemiesLeft2;
+        enemiesText3.text = "" + gameFlow.enemiesLeft3;
 
         if (isShowInfo && (Input.GetButtonDown("Fire2") || Input.GetButton("Fire2")))
         {
@@ -105,15 +120,21 @@ public class HUD_Manager : MonoBehaviour
 
         if (activeTower != null)
         {
-            towerDescription.text =
-            " ----- STATS -----\n" +
-            "Nivel: " + activeTower.level + "\n" +
-            "Vida: " + activeTower.health + "\n" +
+            towerName.text = activeTower.towerName + " - Nivel: " + activeTower.level;
+            if (activeTower.icon != null)
+            {
+                icon.sprite = activeTower.icon;
+            }
+            towerDescription1.text =
+            " ---- STATS ----\n" +
+            "Daño: " + activeTower.healthDamage + "\n" +
             "Rango: " + activeTower.range + "\n" +
-            "Velocidad de disparo: " + activeTower.fireRate + "\n" +
-            "Velocidad de giro: " + activeTower.turnSpeed + "\n" +
-            " ----- DAÑOS -----\n" +
-            "Vida: " + activeTower.healthDamage + "\n" +
+            "Vel. disparo: " + activeTower.fireRate + "\n" +
+            "Vida: " + activeTower.health + "\n"
+            //"Velocidad de giro: " + activeTower.turnSpeed + "\n" +
+            ;
+            towerDescription2.text =
+            "--- EFFECTS ---\n" +
             "Hielo: " + activeTower.iceDamage + "%" + "\n" +
             "Fuego: " + activeTower.igniteDamage + "%" + "\n" +
             "Agua: " + activeTower.waterDamage + "%" + "\n" +
@@ -137,7 +158,29 @@ public class HUD_Manager : MonoBehaviour
             float healthPercent = actualHealth / actualHealthMax;
 
             levelUpButton.text = "Mejorar" + "\n" + "(" + activeTower.levelUpPrice + activeTower.priceLogo + ")";
-            sellButton.text = "Vender" + "\n" + "(" + (int)(activeTower.acumulateGold * 0.7f * healthPercent) + ")";
+            sellButton.text = "Vender" + "\n" + "(" + (int)(activeTower.acumulateGold * 0.7f * healthPercent) + "€)";
+        }
+
+        if (Time.timeScale == 0)
+        {
+            pauseScreen.SetActive(true);
+        }
+        else
+        {
+            pauseScreen.SetActive(false);
+        }
+
+        if (showTowerBanner)
+        {
+            towerBanner.SetActive(true);
+            towerBannerText.text = "Ocultar";
+            towerBannerButton.GetComponent<RectTransform>().position = new Vector2(Screen.width / 2, Screen.height / 2);
+        }
+        else
+        {
+            towerBanner.SetActive(false);
+            towerBannerText.text = "Mostrar";
+            towerBannerButton.GetComponent<RectTransform>().position = new Vector2(Screen.width / 2, (Screen.height / 9) * 2.5f);
         }
     }
 
@@ -149,6 +192,10 @@ public class HUD_Manager : MonoBehaviour
     public void ResetGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void ExitGame()
+    {
+        Application.Quit();
     }
     public void AbleSpawn()
     {
@@ -211,9 +258,10 @@ public class HUD_Manager : MonoBehaviour
         activeTower = tower;
 
         tower.rangeArea.SetActive(true);
-
+        /*
         towerName.text = tower.towerName;
         //icon = tower.icon;
+        
         towerDescription.text =
             " ----- STATS -----\n" +
             "Nivel: " + tower.level + "\n" +
@@ -230,7 +278,7 @@ public class HUD_Manager : MonoBehaviour
             "Sangrado: " + tower.bloodDamage + "%" + "\n" +
             "Locura: " + tower.transformationDamage + "%" + "\n"
             ;
-
+        
         if (tower.level == 5)
         {
             levelUpButton.gameObject.SetActive(false);
@@ -239,10 +287,10 @@ public class HUD_Manager : MonoBehaviour
         {
             levelUpButton.gameObject.SetActive(true);
         }
-
+        
         levelUpButton.text = "Mejorar" + "\n" + "(" + tower.levelUpPrice + ")";
         sellButton.text = "Vender" + "\n" + "(" + (int)(tower.acumulateGold * 0.7f) + ")";
-
+        */
         Invoke("CanDisableFichaTecnica", 0.2f);
         fichaTecnica.SetActive(true);
     }
@@ -389,5 +437,25 @@ public class HUD_Manager : MonoBehaviour
     public void StartRoundButtom()
     {
         gameFlow.StartRound();
+    }
+
+    public void NoTocar()
+    {
+        noTocar.SetActive(true);
+        Invoke("QuitarNoTocar", 5);
+    }
+    void QuitarNoTocar()
+    {
+        noTocar.SetActive(false);
+    }
+
+    public void HideTowerBanner()
+    {
+        showTowerBanner = !showTowerBanner;
+    }
+
+    public void ActivateGameOver()
+    {
+        gameOverScreen.SetActive(true);
     }
 }
