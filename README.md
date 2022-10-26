@@ -200,7 +200,7 @@ El Valhalla es el hogar de los dioses de Trost, en su edificio principal vienen 
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen8.jpg" alt="JuveR" width="300px">
 
-_Ilustración 5. Referencia Torre principal Valhalla _
+_Ilustración 5. Referencia Torre principal Valhalla_
 
   ## 4.5. Selva mágica
 La torre principal de la selva mágica es el gran árbol de Trost, este árbol alberga en su interior el quinto fragmento del corazón de Trost. Gracias a ser el árbol más longevo de la selva posee la capacidad curar y proteger a sus habitantes. 
@@ -208,7 +208,7 @@ La torre principal de la selva mágica es el gran árbol de Trost, este árbol a
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen9.jpg" alt="JuveR" width="300px">
 
-_Ilustración 6. Referencia Torre principal Valhalla _
+_Ilustración 6. Referencia Torre principal Selva Mágica_
 
   ## 4.6. Trost sumido en el infierno
 La torre principal del infierno es la sede central del gobierno de Trost, donde se encuentra el ultimo fragmento del corazón de Trost. Esta sede es el lugar donde el protagonista es teletransportado al inicio de la historia y donde ve Trost destruida. En ella se encuentran grandes aliados de Trost capaces de invocar ataques de fuego. 
@@ -771,19 +771,19 @@ o	Konj: Es un sireno
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen48.png" width="300px">
 
-_Ilustración 1. Dados _
+_Ilustración 45. Konj_
 
 o	Axu: Es un ajolote capaz de disparar a las torretas del exterior, y utilizando el veneno que escupe por su boca.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen49.png" width="300px">
 
-_Ilustración 1. Dados _
+_Ilustración 46. Axu_
 
 o	Ginrelk: cangrejo con una pinza gigante desproporcionada a su tamaño.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen50.png" width="300px">
 
-_Ilustración 1. Dados _
+_Ilustración 47. Ginrelk_
 
   ## 6.4. Valhalla
 **Enemigo Final**
@@ -794,19 +794,19 @@ o	Firulais: basado en Fenrir de la mitología nórdica. Firulais es capaz de inv
 
 _Ilustración 1. Dados _
 
-**Enemigos Medianos**
+**Ilustración 48. Referencia Firulais**
 
 o	Eyra: es una valkyria caída capaz de volar, de manera que puede sobrepasar solo el resto de los enemigos. 
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen52.png" width="300px">
 
-_Ilustración 1. Dados _
+_Ilustración 49. Referencia Eyra_
 
 o	Aren: es un gigante azul lento pero una gran capacidad de destrucción.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen53.png" width="300px">
 
-_Ilustración 1. Dados _
+_Ilustración 50. Referencia Aren_
 
 **Enemigos pequeños**
 
@@ -814,19 +814,19 @@ o	Borj: es un no muerto vikingo
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen54.jpg" width="300px">
 
-_Ilustración 1. Dados _
+_Ilustración 51. Referencia Borj_
 
 o	Alf: Es un elfo oscuro, capaz de disparar a las torretas exteriores con su arco oscuro 
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen55.png" width="300px">
 
-_Ilustración 1. Dados _
+_Ilustración 52. Referencia Alf_
 
 o	Berquist: vikingo tradicional
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen56.png" width="300px">
 
-_Ilustración 1. Dados _
+_Ilustración 53. Berquist_
 
   ## 6.5. Selva mágica
 **Enemigo Final**
@@ -835,7 +835,7 @@ o	Svinja: Es el rey de los animales de la Selva Mágica, basado en un ogro gigan
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen57.png" width="300px">
 
-_Ilustración 1. Dados _
+_Ilustración 54. Referencia Svinja_
 
 **Enemigos Medianos**
 
@@ -843,13 +843,13 @@ o	VodaRider: son Goblins capaces de montar vodas, especies de lobos únicos de l
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen58.png" width="300px">
 
-_Ilustración 1. Dados _
+_Ilustración 55. Referencia VodaRider_
 
 o	Nakaka: son orcos gigantes lentos pero fuertes que atacan a las torretas empleando poderosos golpes con sus puños.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen59.png" width="300px">
 
-_Ilustración 1. Dados _
+_Ilustración 56. Referencia Nakaka_
 
 **Enemigos pequeños**
 
@@ -857,19 +857,19 @@ o	Magic Go Blin: Es un goblin con una maza en su mano que tira a las torretas en
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen60.png" width="300px">
 
-_Ilustración 1. Dados _
+_Ilustración 57. Referencia Magic Go Blin_
 
 o	Warfy: goblins pequeños con el único objetivo de correr hasta las torres y explotar contra ellas.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen61.png" width="300px">
 
-_Ilustración 1. Dados _
+_Ilustración 58. Referencia Warfy_
 
 o	Voda: especies de lobos únicos de la selva mágica, caracterizados por su alta velocidad.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen62.png" width="300px">
 
-_Ilustración 1. Dados _
+_Ilustración 59. Referencia Voda_
 
   ## 6.6. Trost sumido en el infierno
 **Enemigo Final**
@@ -878,7 +878,7 @@ o	Pyerno: Basado en satanás, lucifer y referencias en general de los reyes del 
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen63.png" width="300px">
 
-_Ilustración 1. Dados _
+_Ilustración 60. Referencia Pyerno_
 
 **Enemigos Medianos**
 
@@ -886,13 +886,13 @@ o	Keryon: Es un golem de fuego con la capacidad de erupcionar para atacar a las 
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen64.png" width="300px">
 
-_Ilustración 1. Dados _
+_Ilustración 61. Referencia Keryon_
 
 o	Toby: basado en Cerbero, poderoso perro de tres cabezas que habita en el infierno 
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen65.png" width="300px">
 
-_Ilustración 1. Dados _
+_Ilustración 62. Referencia Toby_
 
 **Enemigos pequeños**
 
@@ -900,19 +900,19 @@ o	Sunog: Es un pequeño diablo con alas, lo que le permite volar sobrepasando a 
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen66.png" width="300px">
 
-_Ilustración 1. Dados _
+_Ilustración 63. Referencia Sunog_
 
 o	Toby do fogo: Es un perro en llamas que busca apagar el fuego de su cuerpo por lo que corre a gran velocidad para lograr su objetivo..
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen67.png" width="300px">
 
-_Ilustración 1. Dados _
+_Ilustración 64. Referencia Toby do fogo_
 
 o	Fire Blin: es un pequeño espíritu de fuego que corre hasta las torres para prenderlas fuego.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen68.png" width="300px">
 
-_Ilustración 1. Dados _
+_Ilustración 65. Referencia Fire Blin_
 
  ## 6.7. Enemigo final del juego
 Mago Oscuro: El enemigo final del juego es un mago oscuro que posee la habilidad de viajar por el tiempo y que posee 5 de los fragmentos del corazón de Trost. Su tamaño es mucho mayor al de los enemigos finales, así como sus estadísticas. Este enemigo final cuenta con la capacidad de invocar a enemigos finales de otros territorios, además de 3 habilidades especificas más:  
@@ -922,7 +922,7 @@ Mago Oscuro: El enemigo final del juego es un mago oscuro que posee la habilidad
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen69.png" width="300px">
 
-_Ilustración 1. Dados _
+_Ilustración 66. Referencia Mago Oscuro_
 
 &nbsp;  
 
@@ -936,7 +936,7 @@ Activa: crear muros de hielo en el camino para impedir que los enemigos puedan a
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen70.png" alt="JuveR" width="300px">
 
-_Ilustración 1. Dados _
+_Ilustración 67. Rey Fannar_
 
   ## 7.2. Farafra
 Rey Axiryus: El rey Axiryus, está basado en el dios Ra de la mitología griega, como es un rey muy mayor no tiene casi fuerzas para mantenerse en pie por lo que está siempre sentado en su trono. Para atacar a los enemigos emplea su cetro el cual genera un rayo continuo que daña a los enemigos en el área que golpea quemando a estos. Además, cuenta con la habilidad de invocar dos obeliscos a su alrededor que curan a las torretas aliadas cercanas, esta habilidad la realiza cada mucho tiempo ya que para invocarlos necesita levantarse de su trono. 
@@ -947,7 +947,7 @@ Activa: Invoca dos obeliscos a su alrededor que curan a las torretas aliadas cer
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen71.jpg" alt="JuveR" width="300px">
 
-_Ilustración 1. Dados _
+_Ilustración 68. Rey Axiryus_
 
   ## 7.3. Atlantis
 Reina Maribel: Maribel es la reina de Atlantis, como buena reina de su país no le gusta ver a sus habitantes en guerra por lo que emplea su canto para motivarlos y así acabar con la guerra lo antes posible. Maribel posee pésimas habilidades de canto por lo que los enemigos al escucharlas se ven dañados, pero en cambio los habitantes de Atlantis como idolatran a su reina se ven motivados. Maribel es un fan de cantar el himno de su nación por lo que cuando lo canta sus aliados se extra motivan provocando que aumenten sus ganas de defender su país.
@@ -958,7 +958,7 @@ Activa: Canta el himno de su población provocando que las torretas aliadas cerc
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen72.png" alt="JuveR" width="300px">
 
-_Ilustración 1. Dados _
+_Ilustración 69. Reina Maribel_
 
   ## 7.4. Valhalla
 Rey Lothbrock: El rey LothBrock es el mejor dios de Trost, por lo que reina en el Valhalla. LothBrock es un fanático de las tormentas de rayos por lo que motivado por su afición logró fabricar un martillo capaz de invocar rayos. LothBrock emplea este martillo para atacar a los enemigos, lanzándoles rayos que rebotan entre los enemigos, a su vez posee una gran habilidad para invocar tormentas de rayos que dañan al enemigo cuanto más cerca este de ellas.
@@ -969,7 +969,7 @@ Activa: Invocación de tormenta que crea un ataque en un área que hace más da�
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen73.png" alt="JuveR" width="300px">
 
-_Ilustración 1. Dados _
+_Ilustración 70. Referencia Rey Lothbrock_
 
   ## 7.5. Selva mágica
 Reina Tatinia: La Reina Tatinia es una reina que sobrepone la belleza y salud de ella y de su reino por encima de todo, debido a su delicadeza sus ataques no son muy potentes en uno contra uno, por lo que prioriza golpear al máximo número de enemigos. La belleza debe resaltar ante todo, así que esta reina buscará curar a todos sus aliados para que estén en perfecto estado. Como ella siempre dice, antes muerta que sencilla.
@@ -980,14 +980,14 @@ Activa: Cura a todas las torres aliadas (rango global) y aumenta su velocidad de
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen74.png" alt="JuveR" width="300px">
 
-_Ilustración 1. Dados _
+_Ilustración 71. Referencia Reina Tatinia_
 
   ## 7.6. Trost sumido en el infierno
 Rey Bubuyog: El rey Bubuyog se destaca, como cualquier mosca, por ser sucio y su modo juego no iba a ser menos, su táctica consiste atacar de lejos mediante un báculo y en crear moscas que ataquen a los enemigos, provocándoles picazones y la rabia, volviéndoles más agresivos y perdiendo el control, haciendo que se peguen entre ellos, después de hacer que se maten entre ellos, las moscas harán un buen uso de su cadáver.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen75.png" alt="JuveR" width="300px">
 
-_Ilustración 1. Dados _
+_Ilustración 72. Referencia Rey Bubuyog_
 
 &nbsp;  
 
@@ -1070,13 +1070,13 @@ Finalmente tenemos dos últimas relaciones que nos sirven para vender y promocio
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen76.png" alt="JuveR" width="700px">
 
-_Ilustración 1. Dados _
+_Ilustración 73. Caja de herramientas_
 
  ## 11.2. Bussines model canvas
  
  <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen77.png" alt="JuveR" width="700px">
 
-_Ilustración 1. Dados _
+_Ilustración 74. Business model canvas_
 
 &nbsp;
 
