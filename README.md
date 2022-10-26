@@ -118,6 +118,8 @@ Las principales variables que influyen en la generación del mapa son las probab
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen4.png" alt="JuveR" width="300px">
 
+_Ilustración 1. Dados_
+
   ## 2.3. Controles
 Los controles se basan en el uso del teclado y del ratón:
 -	Colocación de torretas: clicar sobre la torreta a colocar y arrástrala a la casilla donde se quiere colocar.
@@ -174,11 +176,15 @@ La torre principal de WinterFall es un castillo helado donde se encuentra el pri
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen5.png" alt="JuveR" width="300px">
 
+_Ilustración 2. Torre principal WinterFall_
+
   ## 4.2. Farafra
 Farafra es un templo situado en el gran Desierto de Trost, en este templo se encuentra el segundo fragmento del corazón de Trost. Farafra es una gran pirámide con la habilidad de corromper a quien osa atacarla.
 -	Poder Torre principal: Hechizo que hace que los enemigos se peguen entre ellos
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen6.jpg" alt="JuveR" width="300px">
+
+_Ilustración 3. Torre principal Farafra_
 
   ## 4.3. Atlantis
 El castillo de Maribel es la torre principal de Atlantis, en él se encuentra la orquesta real del reino que es capaz de invocar grandes olas cuando su reino se ve amenazado, por lo que son los protectores del tercer fragmento del corazón de Trost.
@@ -186,11 +192,15 @@ El castillo de Maribel es la torre principal de Atlantis, en él se encuentra la
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen7.png" alt="JuveR" width="300px">
 
+_Ilustración 4. Torre principal Atlantis_
+
   ## 4.4. Valhalla
 El Valhalla es el hogar de los dioses de Trost, en su edificio principal vienen los dioses más fuertes de Trost cuya misión es defender el cuarto fragmento del corazón de Trost, capaces de invocar una gran lanza para atacar a sus enemigos empleando sus diferentes habilidades.
 -	Poder Torre principal: Cae una gran lanza el camino que llegue a la torre principal provocando mucho daño a los enemigos que estén en él.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen8.jpg" alt="JuveR" width="300px">
+
+_Ilustración 5. Referencia Torre principal Valhalla _
 
   ## 4.5. Selva mágica
 La torre principal de la selva mágica es el gran árbol de Trost, este árbol alberga en su interior el quinto fragmento del corazón de Trost. Gracias a ser el árbol más longevo de la selva posee la capacidad curar y proteger a sus habitantes. 
@@ -198,11 +208,15 @@ La torre principal de la selva mágica es el gran árbol de Trost, este árbol a
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen9.jpg" alt="JuveR" width="300px">
 
+_Ilustración 6. Referencia Torre principal Valhalla _
+
   ## 4.6. Trost sumido en el infierno
 La torre principal del infierno es la sede central del gobierno de Trost, donde se encuentra el ultimo fragmento del corazón de Trost. Esta sede es el lugar donde el protagonista es teletransportado al inicio de la historia y donde ve Trost destruida. En ella se encuentran grandes aliados de Trost capaces de invocar ataques de fuego. 
 -	Poder Torre principal: De la torre principal sale una bola de fuego gigante hacia delante y hace daño.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen10.jpg" alt="JuveR" width="300px">
+
+_Ilustración 7. Referencia Torre principal Infierno_
 
 &nbsp;  
 # 5.**Torretas**
@@ -225,6 +239,8 @@ Unidad inicial que genera dinero y recursos de forma periódica durante las rond
    
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen11.png" width="300px">
 
+_Ilustración 8. Mina_
+
 **Cañón**
 
 Torre básica que dispara bolas de cañón y atacan a varios enemigos con gran poder de ataque.
@@ -241,6 +257,8 @@ Torre básica que dispara bolas de cañón y atacan a varios enemigos con gran p
    *	Coste: 500
    
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen12.png" width="300px">
+
+_Ilustración 9. Cañón_
 
 **Barricada**
 
@@ -259,6 +277,8 @@ Una torre inicial que tiene como función parar a los enemigos para que no avanc
    
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen13.png" width="300px">
 
+_Ilustración 10. Barricada_
+
 **Torre de arqueras**
 
 Una torre básica que ataca a varios enemigos a la vez con gran velocidad.
@@ -275,6 +295,8 @@ Una torre básica que ataca a varios enemigos a la vez con gran velocidad.
    *	Coste: 200
    
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen14.png" width="300px">
+
+_Ilustración 11. Torre de arqueras_
 
   ## 5.2. Winterfall
 **Snow Man**
@@ -294,6 +316,8 @@ Muñeco de nieve que dispara bolas de nieve que congelan a los enemigos
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen15.png" width="300px">
 
+_Ilustración 12. Snow Man_
+
 **Spray Nieve**
 
 Cañón de nieve con alto nivel de congelación y velocidad de ataque
@@ -311,6 +335,8 @@ Cañón de nieve con alto nivel de congelación y velocidad de ataque
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen16.png" width="300px">
 
+_Ilustración 13. Spray nieve_
+
 **Snow Keeper**
 
 Guardián de nieve que para a los enemigos y les ataca con su lanza helada
@@ -327,6 +353,8 @@ Guardián de nieve que para a los enemigos y les ataca con su lanza helada
    *	Mejora especial: Más tanque y efecto congelamiento o más daño y más rango
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen17.png" width="300px">
+
+_Ilustración 14. Snow Keeper_
 
   ## 5.3. Farafra
 **PeRigie**
@@ -346,6 +374,8 @@ Monumento egipcio que ataca con un ataque elemental discontinuo
    
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen18.jpg" width="300px">
 
+_Ilustración 15. PeRigie_
+
 **Syrius Purple**
 
 Monumento egipcio en honor al dios Anubis que ataca dando un bastonazo en el suelo
@@ -363,6 +393,8 @@ Monumento egipcio en honor al dios Anubis que ataca dando un bastonazo en el sue
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen19.jpg" width="300px">
 
+_Ilustración 16. Syrius Purple_
+
 **Test-Lah**
 
 Torre del mundo del desierto que ataca con rayos elementales continuado a los enemigos
@@ -379,6 +411,8 @@ Torre del mundo del desierto que ataca con rayos elementales continuado a los en
    *	Mejora especial: rabia con el ataque o más rayos
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen20.jpg" width="300px">
+
+_Ilustración 17. Test-Lah_
 
   ## 5.4. Atlantis
 **Suw Balony**
@@ -398,6 +432,8 @@ Tirachinas gigante de globos de agua que ataca en área
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen21.png" width="300px">
 
+_Ilustración 18. Suw Balony_
+
 **Tuex**
 
 Ballesta que lanza arpones a los enemigos
@@ -415,6 +451,8 @@ Ballesta que lanza arpones a los enemigos
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen22.png" width="300px">
 
+_Ilustración 19. Referencia Tuex_
+
 **Pium**
 
 Cañón de agua que ataca a un único objetivo
@@ -431,6 +469,8 @@ Cañón de agua que ataca a un único objetivo
    *	Mejora especial: daño en área o mucha velocidad de ataque
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen23.png" width="300px">
+
+_Ilustración 20. Pium_
 
   ## 5.5. Valhalla
 **Altar de Odín**
@@ -450,6 +490,8 @@ Torre que lanza ataques en áreas circulares
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen24.jpg" width="300px">
 
+_Ilustración 21. Referencia Altar de Odín_
+
 **Kyria**
 
 Torre de soporte que cura a los aliados y ataca a los enemigos.
@@ -467,6 +509,8 @@ Torre de soporte que cura a los aliados y ataca a los enemigos.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen25.png" width="300px">
 
+_Ilustración 22. Referencia Kyria_
+
 **Beowulf**
 
 Torre especial que invoca grupos de aliados para atacar a los enemigos.
@@ -483,6 +527,8 @@ Torre especial que invoca grupos de aliados para atacar a los enemigos.
    *	Mejora especial: Invoca Más guerreros vikingos o genera oro pasivamente
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen26.png" width="300px">
+
+_Ilustración 23. Referencia Salón de Beowulf_
 
   ## 5.6. Selva mágica
 **ThornGun**
@@ -502,6 +548,8 @@ Torre planta que lanza espinas a los enemigos.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen27.jpg" width="300px">
 
+_Ilustración 24. Referencia ThornGun_
+
 **Antium**
 
 Torre de protección que ataca y se defiende e de los enemigos.
@@ -519,6 +567,8 @@ Torre de protección que ataca y se defiende e de los enemigos.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen28.jpg" width="300px">
 
+_Ilustración 25. Referencia Antium_
+
 **Viva Porub**
 
 Torre soporte que cura a las torres aliadas en área
@@ -535,6 +585,8 @@ Torre soporte que cura a las torres aliadas en área
    *	Mejora especial: Aumenta la velocidad de ataque de las torres curadas en 1.25 o añade un escudo a la vida de las torres curadas de un 10 % de la vida máxima si se cura a una torre con el máximo de vida.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen29.png" width="300px">
+
+_Ilustración 26. Referencia Viva Porub_
 
   ## 5.7. Trost sumido en el infierno
 **Charmando**
@@ -554,6 +606,8 @@ Torre de fuego que lanza bolas ígneas que explotan en área.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen30.png" width="300px">
 
+_Ilustración 27. Charmando_
+
 **Eklypsion**
 
 Torre especial que genera oro y recurso extra por los enemigos que mueran en su área.
@@ -570,6 +624,8 @@ Torre especial que genera oro y recurso extra por los enemigos que mueran en su 
 *	Mejora especial: Duplica la generación de recursos y la generación de oro o aumenta el ataque de las torres en su radio en un 1.25.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen31.png" width="300px">
+
+_Ilustración 28. Referencia Eklypsion_
 
 **Hihell**
 
@@ -588,7 +644,10 @@ Torre especial que invoca demonios aleatorios entre 3, que atacan a los enemigos
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen32.png" width="300px">
 
+_Ilustración 29. Referencia Hihell_
+
 &nbsp;  
+
 # 6.**Enemigos**
 Existen tres tipos diferentes de enemigos, enemigos finales, medianos y pequeños
 -	Enemigo Final: Caracterizados por tener un tamaño mucho mayor al resto de enemigos y contar con habilidades únicas, además, son capaces de atacar a cualquier tipo de estructura, ya sean torretas situadas en el camino, en el exterior o a los héroes. Este tipo de enemigos tienen una vida muy superior al resto de enemigos. En cada zona solo existe un único enemigo final.
@@ -604,15 +663,21 @@ o	Hahandra: Hahandra es una bruja de hielo, cuya habilidad es invocar nuevos ene
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen33.png" width="300px">
 
+_Ilustración 30. Hahandra_
+
 **Enemigos Medianos**
 
 o	Mamut: Mamut gigante que camina protegiendo al resto de enemigos y embistiendo a las torres cercanas.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen34.png" width="300px">
- 
+
+_Ilustración 31. Mamut_
+
 o	Yety: Gigante de hielo que camina despacio y ataca a las torres con sus enormes brazos.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen35.png" width="300px">
+
+_Ilustración 32. Yeti_
 
 **Enemigos pequeños**
 
@@ -620,13 +685,19 @@ o	Chup: Es un cuenco de cristal con cubitos de hielo, capaz de disparar a las to
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen36.png" width="300px">
 
+_Ilustración 33. Chup_
+
 o	Go BlinBlin: Es un goblin de hielo con un cuchillo en la mano.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen37.png" width="300px">
 
+_Ilustración 34. Go Blinblin_
+
 o	Frederick: Es un pingüino aparentemente mono, pero que no te engañe, es peligroso y ataca a todo lo que tiene por delante.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen38.png" width="300px">
+
+_Ilustración 35. Frederick_
 
   ## 6.2. Farafra
 **Enemigo Final**
@@ -635,15 +706,21 @@ o	Baraka Irwin: Basado en el dios Sobek de la mitología egipcia. Este jefe fina
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen39.jpg" width="300px">
 
+_Ilustración 36. Baraka Irwin_
+
 **Enemigos Medianos**
 
 o	Escorpy: Escorpión que ataca a unidades y torres con su aguijón.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen40.jpg" width="300px">
- 
+
+_Ilustración 37. Escorpy_
+
 o	Oba: soldado egipcio de arena que se puede proteger gracias a su escudo y atacar con su espada.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen41.jpg" width="300px">
+
+_Ilustración 38. Oba_
 
 **Enemigos pequeños**
 
@@ -651,13 +728,19 @@ o	DirtyPaper: momia que ataca a las torres con las manos
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen42.jpg" width="300px">
 
+_Ilustración 39. DirtyPaper_
+
 o	Mokri: soldado egipcio que lleva una poderosa espada para atacar.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen43.jpg" width="300px">
 
+_Ilustración 40. Mokri_
+
 o	LizSand: pequeño lagarto de arena que escupe su veneno a las torretas situadas en los extremos del terreno. 
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen44.jpg" width="300px">
+
+_Ilustración 41. LizSand_
 
   ## 6.3. Atlantis
 **Enemigo Final**
@@ -666,15 +749,21 @@ o	Boze Vode: Basado en Poseidón de la mitología griega. Este jefe final posee 
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen45.png" width="300px">
 
+_Ilustración 42. Boze Vode_
+
 **Enemigos Medianos**
 
 o	Salo: morsa marina con una minigun en la espalda que ataca a las torres desde la distancia.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen46.png" width="300px">
- 
+
+_Ilustración 43. Salo_
+
 o	Morski: sirenas montadas en caballos de mar que guían al resto de enemigos hasta su destino.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen47.png" width="300px">
+
+_Ilustración 44. Morski_
 
 **Enemigos pequeños**
 
@@ -682,13 +771,19 @@ o	Konj: Es un sireno
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen48.png" width="300px">
 
+_Ilustración 1. Dados _
+
 o	Axu: Es un ajolote capaz de disparar a las torretas del exterior, y utilizando el veneno que escupe por su boca.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen49.png" width="300px">
 
+_Ilustración 1. Dados _
+
 o	Ginrelk: cangrejo con una pinza gigante desproporcionada a su tamaño.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen50.png" width="300px">
+
+_Ilustración 1. Dados _
 
   ## 6.4. Valhalla
 **Enemigo Final**
@@ -697,15 +792,21 @@ o	Firulais: basado en Fenrir de la mitología nórdica. Firulais es capaz de inv
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen51.png" width="300px">
 
+_Ilustración 1. Dados _
+
 **Enemigos Medianos**
 
 o	Eyra: es una valkyria caída capaz de volar, de manera que puede sobrepasar solo el resto de los enemigos. 
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen52.png" width="300px">
- 
+
+_Ilustración 1. Dados _
+
 o	Aren: es un gigante azul lento pero una gran capacidad de destrucción.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen53.png" width="300px">
+
+_Ilustración 1. Dados _
 
 **Enemigos pequeños**
 
@@ -713,13 +814,19 @@ o	Borj: es un no muerto vikingo
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen54.jpg" width="300px">
 
+_Ilustración 1. Dados _
+
 o	Alf: Es un elfo oscuro, capaz de disparar a las torretas exteriores con su arco oscuro 
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen55.png" width="300px">
 
+_Ilustración 1. Dados _
+
 o	Berquist: vikingo tradicional
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen56.png" width="300px">
+
+_Ilustración 1. Dados _
 
   ## 6.5. Selva mágica
 **Enemigo Final**
@@ -728,15 +835,21 @@ o	Svinja: Es el rey de los animales de la Selva Mágica, basado en un ogro gigan
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen57.png" width="300px">
 
+_Ilustración 1. Dados _
+
 **Enemigos Medianos**
 
 o	VodaRider: son Goblins capaces de montar vodas, especies de lobos únicos de la selva mágica, caracterizados por su alta velocidad.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen58.png" width="300px">
- 
+
+_Ilustración 1. Dados _
+
 o	Nakaka: son orcos gigantes lentos pero fuertes que atacan a las torretas empleando poderosos golpes con sus puños.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen59.png" width="300px">
+
+_Ilustración 1. Dados _
 
 **Enemigos pequeños**
 
@@ -744,13 +857,19 @@ o	Magic Go Blin: Es un goblin con una maza en su mano que tira a las torretas en
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen60.png" width="300px">
 
+_Ilustración 1. Dados _
+
 o	Warfy: goblins pequeños con el único objetivo de correr hasta las torres y explotar contra ellas.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen61.png" width="300px">
 
+_Ilustración 1. Dados _
+
 o	Voda: especies de lobos únicos de la selva mágica, caracterizados por su alta velocidad.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen62.png" width="300px">
+
+_Ilustración 1. Dados _
 
   ## 6.6. Trost sumido en el infierno
 **Enemigo Final**
@@ -759,15 +878,21 @@ o	Pyerno: Basado en satanás, lucifer y referencias en general de los reyes del 
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen63.png" width="300px">
 
+_Ilustración 1. Dados _
+
 **Enemigos Medianos**
 
 o	Keryon: Es un golem de fuego con la capacidad de erupcionar para atacar a las torres.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen64.png" width="300px">
- 
+
+_Ilustración 1. Dados _
+
 o	Toby: basado en Cerbero, poderoso perro de tres cabezas que habita en el infierno 
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen65.png" width="300px">
+
+_Ilustración 1. Dados _
 
 **Enemigos pequeños**
 
@@ -775,13 +900,19 @@ o	Sunog: Es un pequeño diablo con alas, lo que le permite volar sobrepasando a 
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen66.png" width="300px">
 
+_Ilustración 1. Dados _
+
 o	Toby do fogo: Es un perro en llamas que busca apagar el fuego de su cuerpo por lo que corre a gran velocidad para lograr su objetivo..
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen67.png" width="300px">
 
+_Ilustración 1. Dados _
+
 o	Fire Blin: es un pequeño espíritu de fuego que corre hasta las torres para prenderlas fuego.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen68.png" width="300px">
+
+_Ilustración 1. Dados _
 
  ## 6.7. Enemigo final del juego
 Mago Oscuro: El enemigo final del juego es un mago oscuro que posee la habilidad de viajar por el tiempo y que posee 5 de los fragmentos del corazón de Trost. Su tamaño es mucho mayor al de los enemigos finales, así como sus estadísticas. Este enemigo final cuenta con la capacidad de invocar a enemigos finales de otros territorios, además de 3 habilidades especificas más:  
@@ -790,6 +921,8 @@ Mago Oscuro: El enemigo final del juego es un mago oscuro que posee la habilidad
 -Lanza un rayo de energía a un área haciendo daño a todas las unidades
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen69.png" width="300px">
+
+_Ilustración 1. Dados _
 
 &nbsp;  
 
@@ -803,6 +936,8 @@ Activa: crear muros de hielo en el camino para impedir que los enemigos puedan a
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen70.png" alt="JuveR" width="300px">
 
+_Ilustración 1. Dados _
+
   ## 7.2. Farafra
 Rey Axiryus: El rey Axiryus, está basado en el dios Ra de la mitología griega, como es un rey muy mayor no tiene casi fuerzas para mantenerse en pie por lo que está siempre sentado en su trono. Para atacar a los enemigos emplea su cetro el cual genera un rayo continuo que daña a los enemigos en el área que golpea quemando a estos. Además, cuenta con la habilidad de invocar dos obeliscos a su alrededor que curan a las torretas aliadas cercanas, esta habilidad la realiza cada mucho tiempo ya que para invocarlos necesita levantarse de su trono. 
 
@@ -811,6 +946,8 @@ Ataque normal: Emplea su centro generando un rayo continuo que daña a los enemi
 Activa: Invoca dos obeliscos a su alrededor que curan a las torretas aliadas cercanas.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen71.jpg" alt="JuveR" width="300px">
+
+_Ilustración 1. Dados _
 
   ## 7.3. Atlantis
 Reina Maribel: Maribel es la reina de Atlantis, como buena reina de su país no le gusta ver a sus habitantes en guerra por lo que emplea su canto para motivarlos y así acabar con la guerra lo antes posible. Maribel posee pésimas habilidades de canto por lo que los enemigos al escucharlas se ven dañados, pero en cambio los habitantes de Atlantis como idolatran a su reina se ven motivados. Maribel es un fan de cantar el himno de su nación por lo que cuando lo canta sus aliados se extra motivan provocando que aumenten sus ganas de defender su país.
@@ -821,6 +958,8 @@ Activa: Canta el himno de su población provocando que las torretas aliadas cerc
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen72.png" alt="JuveR" width="300px">
 
+_Ilustración 1. Dados _
+
   ## 7.4. Valhalla
 Rey Lothbrock: El rey LothBrock es el mejor dios de Trost, por lo que reina en el Valhalla. LothBrock es un fanático de las tormentas de rayos por lo que motivado por su afición logró fabricar un martillo capaz de invocar rayos. LothBrock emplea este martillo para atacar a los enemigos, lanzándoles rayos que rebotan entre los enemigos, a su vez posee una gran habilidad para invocar tormentas de rayos que dañan al enemigo cuanto más cerca este de ellas.
 
@@ -829,6 +968,8 @@ Ataque normal: lanza rayos que rebotan en los enemigos
 Activa: Invocación de tormenta que crea un ataque en un área que hace más daño cuanto más cerca del centro estés
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen73.png" alt="JuveR" width="300px">
+
+_Ilustración 1. Dados _
 
   ## 7.5. Selva mágica
 Reina Tatinia: La Reina Tatinia es una reina que sobrepone la belleza y salud de ella y de su reino por encima de todo, debido a su delicadeza sus ataques no son muy potentes en uno contra uno, por lo que prioriza golpear al máximo número de enemigos. La belleza debe resaltar ante todo, así que esta reina buscará curar a todos sus aliados para que estén en perfecto estado. Como ella siempre dice, antes muerta que sencilla.
@@ -839,10 +980,14 @@ Activa: Cura a todas las torres aliadas (rango global) y aumenta su velocidad de
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen74.png" alt="JuveR" width="300px">
 
+_Ilustración 1. Dados _
+
   ## 7.6. Trost sumido en el infierno
 Rey Bubuyog: El rey Bubuyog se destaca, como cualquier mosca, por ser sucio y su modo juego no iba a ser menos, su táctica consiste atacar de lejos mediante un báculo y en crear moscas que ataquen a los enemigos, provocándoles picazones y la rabia, volviéndoles más agresivos y perdiendo el control, haciendo que se peguen entre ellos, después de hacer que se maten entre ellos, las moscas harán un buen uso de su cadáver.
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen75.png" alt="JuveR" width="300px">
+
+_Ilustración 1. Dados _
 
 &nbsp;  
 
@@ -907,7 +1052,7 @@ En ordenador, el juego tendrá 2 versiones:
 -	La otra versión sería una versión de pago, que costaría 6.99€, la cual incluye todo el contenido que puede ofrecer el juego, actualmente tiene 6 mundos distintos con sus correspondientes torretas, enemigos y héroes, además de poder tener acceso a héroes o torretas adicionales que no corresponden a ningún mundo. Estos usuarios tendrán acceso al modo ilimitado sin ningún tipo de restricción del número de rondas.
 -	Hay dos monedas dentro del juego:
 
-o	monedas normales que se consiguen jugando.
+o	Monedas normales que se consiguen jugando.
 
 o	Monedas premium que se consiguen poco a poco jugando, mediante un login diario o mediante su compra.
 
@@ -925,10 +1070,14 @@ Finalmente tenemos dos últimas relaciones que nos sirven para vender y promocio
 
 <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen76.png" alt="JuveR" width="700px">
 
+_Ilustración 1. Dados _
+
  ## 11.2. Bussines model canvas
  
  <img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/Imagen77.png" alt="JuveR" width="700px">
- 
+
+_Ilustración 1. Dados _
+
 &nbsp;
 
 # 12.**Propósito, público objetivo y plataformas** 
