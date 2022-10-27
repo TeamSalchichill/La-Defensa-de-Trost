@@ -1179,17 +1179,17 @@ MonoBehaviour:
   rangeArea: {fileID: 1339771278924808429}
   partToRotate: {fileID: 9163272986689670850}
   towerName: Tuex
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 9aee4a91b7ff68a48b9306bc45b0797c, type: 3}
   price: 350
   acumulateGold: 0
   specialTile: 0
   burnTile: 0
   spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
-  healthDamage: 75
+  healthDamage: 200
   armorDamage: 0
   range: 12
   rangeAreaOriginalScale: 0
-  fireRate: 1
+  fireRate: 0.75
   turnSpeed: 10
   health: 500
   healthMax: 0
@@ -1205,7 +1205,7 @@ MonoBehaviour:
   level: 1
   levelMultiplier: 1.1
   levelMultiplierSpecialStat: 1.25
-  levelUpPrice: 200
+  levelUpPrice: 350
   level5Price: 100
   priceLogo: "\u20AC"
   iceDamage: 0

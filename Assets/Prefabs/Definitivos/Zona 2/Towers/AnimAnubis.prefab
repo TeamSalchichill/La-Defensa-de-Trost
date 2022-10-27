@@ -1389,7 +1389,7 @@ GameObject:
   - component: {fileID: 9068576239581187722}
   m_Layer: 9
   m_Name: 'Node '
-  m_TagString: Damage
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1468,7 +1468,7 @@ BoxCollider:
   m_GameObject: {fileID: 5766016282265072330}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 15, y: 2, z: 15}
   m_Center: {x: 0, y: -11, z: 0}
@@ -1855,10 +1855,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c0977a1e22fe4a4a9636c32c8574147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetType: 0
-  attackType: 0
+  targetType: 2
+  attackType: 1
   canColocate: 0
-  bulletType: 0
+  bulletType: 1
   zone: 2
   specialStat: 5
   targetPreference: 0
@@ -1867,19 +1867,19 @@ MonoBehaviour:
   rangeArea: {fileID: 4654265142820233893}
   partToRotate: {fileID: 8813746195118008703}
   towerName: Syrius Purple
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: ad06f39d428b98c4d87c2f1393f714d3, type: 3}
   price: 500
   acumulateGold: 0
   specialTile: 0
   burnTile: 0
   spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
-  healthDamage: 100
+  healthDamage: 250
   armorDamage: 0
-  range: 7
+  range: 4
   rangeAreaOriginalScale: 0
   fireRate: 0.5
   turnSpeed: 3
-  health: 700
+  health: 900
   healthMax: 0
   armor: 0
   armorMax: 0
@@ -1893,7 +1893,7 @@ MonoBehaviour:
   level: 1
   levelMultiplier: 1.1
   levelMultiplierSpecialStat: 1.2
-  levelUpPrice: 100
+  levelUpPrice: 500
   level5Price: 100
   priceLogo: "\u20AC"
   iceDamage: 0

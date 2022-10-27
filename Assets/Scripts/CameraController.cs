@@ -98,7 +98,7 @@ public class CameraController : MonoBehaviour
         Zoom(scroll, size);
     }
 
-    void Zoom(float increment, float size)
+    public void Zoom(float increment, float size)
     {
         if (increment < 0)
         {

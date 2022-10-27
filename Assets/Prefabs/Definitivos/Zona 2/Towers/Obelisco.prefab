@@ -272,17 +272,17 @@ MonoBehaviour:
   rangeArea: {fileID: 4417269780651086121}
   partToRotate: {fileID: 399853784}
   towerName: Test-Lah
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 7fb3b822c591574479f2fbdd9721cdfa, type: 3}
   price: 200
   acumulateGold: 0
   specialTile: 0
   burnTile: 0
   spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
-  healthDamage: 3
+  healthDamage: 4
   armorDamage: 0
   range: 9
   rangeAreaOriginalScale: 0
-  fireRate: 500
+  fireRate: 150
   turnSpeed: 10
   health: 500
   healthMax: 0
@@ -298,7 +298,7 @@ MonoBehaviour:
   level: 1
   levelMultiplier: 1.1
   levelMultiplierSpecialStat: 1.2
-  levelUpPrice: 150
+  levelUpPrice: 200
   level5Price: 100
   priceLogo: "\u20AC"
   iceDamage: 0

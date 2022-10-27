@@ -61,6 +61,12 @@ public class HUD_Manager : MonoBehaviour
     [Header("Game Over")]
     public GameObject gameOverScreen;
 
+    [Header("Utility Buttons")]
+    public GameObject towerPotionButton;
+    public GameObject towerPotionIcon;
+    public Color towerPotionButtonColorHover;
+    public Color towerPotionIconColorHover;
+
     void Awake()
     {
         instance = this;
@@ -182,6 +188,23 @@ public class HUD_Manager : MonoBehaviour
             towerBannerText.text = "Mostrar";
             towerBannerButton.GetComponent<RectTransform>().position = new Vector2(Screen.width / 2, (Screen.height / 9) * 2.5f);
         }
+
+        if (mainTower.activateTower)
+        {
+            towerPotionIcon.GetComponent<Image>().color = towerPotionIconColorHover;
+        }
+        else
+        {
+            towerPotionIcon.GetComponent<Image>().color = Color.white;
+        }
+        if (mainTower.restRounds <= 0)
+        {
+            towerPotionButton.GetComponent<Image>().color = Color.white;
+        }
+        else
+        {
+            towerPotionButton.GetComponent<Image>().color = towerPotionButtonColorHover;
+        }
     }
 
     public void AddCoins(int newCoins)
@@ -207,7 +230,7 @@ public class HUD_Manager : MonoBehaviour
     }
     public void BuildTower()
     {
-        colocatorManager.canBuild = !colocatorManager.canBuild;
+        //colocatorManager.canBuild = !colocatorManager.canBuild;
     }
     public void ChangeTower(int id)
     {
@@ -219,7 +242,7 @@ public class HUD_Manager : MonoBehaviour
         }
 
         fichaTecnica.SetActive(false);
-
+        /*
         if (colocatorManager.towerID == id)
         {
             colocatorManager.canBuild = false;
@@ -229,6 +252,11 @@ public class HUD_Manager : MonoBehaviour
             colocatorManager.towerID = id;
             colocatorManager.canBuild = true;
         }
+        */
+        colocatorManager.towerID = id;
+        colocatorManager.canBuild = true;
+
+        colocatorManager.canDisableColocatotMode = 1;
     }
 
     public void MoveCameraW()
@@ -334,7 +362,7 @@ public class HUD_Manager : MonoBehaviour
             activeTower.armorMax = (int)(activeTower.armorMax * activeTower.levelMultiplier);
             activeTower.armor = (int)(activeTower.armor * activeTower.levelMultiplier);
             activeTower.range = (int)(activeTower.range * activeTower.levelMultiplier);
-            activeTower.fireRate = (int)(activeTower.fireRate * activeTower.levelMultiplier);
+            activeTower.fireRate = (activeTower.fireRate * activeTower.levelMultiplier);
             activeTower.turnSpeed = (int)(activeTower.turnSpeed * activeTower.levelMultiplier);
 
             activeTower.healthDamage = (int)(activeTower.healthDamage * activeTower.levelMultiplier);
@@ -457,5 +485,27 @@ public class HUD_Manager : MonoBehaviour
     public void ActivateGameOver()
     {
         gameOverScreen.SetActive(true);
+    }
+
+    public void ActivatePotion()
+    {
+        if (mainTower.restRounds <= 0)
+        {
+            mainTower.activateTower = true;
+        }
+    }
+
+    public void Zoom(int zoom)
+    {
+        cameraController.Zoom(zoom, Camera.main.orthographicSize);
+    }
+
+    public void ExitInfo()
+    {
+        isShowInfo = false;
+
+        activeTower.rangeArea.SetActive(false);
+
+        fichaTecnica.SetActive(false);
     }
 }

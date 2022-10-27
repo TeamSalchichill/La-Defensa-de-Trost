@@ -124,7 +124,7 @@ public class MainTower : MonoBehaviour
                 break;
         }
     }
-
+    /*
     private void OnMouseUpAsButton()
     {
         if (restRounds <= 0)
@@ -132,4 +132,5 @@ public class MainTower : MonoBehaviour
             activateTower = true;
         }
     }
+    */
 }

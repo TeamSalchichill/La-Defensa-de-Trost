@@ -231,7 +231,7 @@ public class Generator : MonoBehaviour
             }
         }
 
-        if (gameFlow.round % 3 == 0 && !miniMainTowerColocate && gameFlow.round > 1)
+        if (gameFlow.round % 3 == 0 && !miniMainTowerColocate && gameFlow.round > 4)
         {
             miniMainTowerColocate = true;
             

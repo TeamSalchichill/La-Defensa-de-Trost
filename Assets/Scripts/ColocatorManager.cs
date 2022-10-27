@@ -22,6 +22,8 @@ public class ColocatorManager : MonoBehaviour
     int minesBuilt = 0;
     int limitMines = 5;
 
+    public float canDisableColocatotMode = 0;
+
     void Awake()
     {
         instance = this;
@@ -49,16 +51,19 @@ public class ColocatorManager : MonoBehaviour
 
     void Update()
     {
+        canDisableColocatotMode -= Time.deltaTime;
+
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            canBuild = !canBuild;
+            //canBuild = !canBuild;
         }
+        /*
         if (Input.GetButtonDown("Fire2"))
         {
             canBuild = false;
             towerID = -1;
         }
-
+        */
         if (actualID != towerID && towerID != -1)
         {
             actualID = towerID;
@@ -246,12 +251,18 @@ public class ColocatorManager : MonoBehaviour
                         {
                             instTowerScript.specialTile = false;
                         }
+
+                        canBuild = false;
+                        towerID = -1;
                     }
                 }
                 else
                 {
-                    canBuild = false;
-                    towerID = -1;
+                    if (canDisableColocatotMode <= 0)
+                    {
+                        canBuild = false;
+                        towerID = -1;
+                    }
                 }
             }
         }

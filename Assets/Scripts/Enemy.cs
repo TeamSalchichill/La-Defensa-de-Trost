@@ -170,15 +170,15 @@ public class Enemy : MonoBehaviour
         switch (type)
         {
             case Type.Pequeño:
-                gold = 12;
+                gold = 15;
                 normalSpeed = 2;
                 break;
             case Type.Mediano:
-                gold = 36;
+                gold = 40;
                 normalSpeed = 1.5f;
                 break;
             case Type.Grande:
-                gold = 3000;
+                gold = 1000;
                 normalSpeed = 1;
                 break;
         }
@@ -237,10 +237,10 @@ public class Enemy : MonoBehaviour
 
         if (!infectationMode)
         {
-            /*
+            
             if (!miniTowerFound && type == Type.Mediano)
             {
-                miniTowerFound = false;
+                float distanceToMiniMainTower = Mathf.Infinity;
 
                 RaycastHit[] miniMainTowerInRange = Physics.SphereCastAll(transform.position, 20, transform.forward, 1.0f, LayerMask.GetMask("Tower"));
                 if (miniMainTowerInRange.Length > 0)
@@ -251,12 +251,12 @@ public class Enemy : MonoBehaviour
                         {
                             miniTowerFound = true;
 
-                            float distanceToMiniMainTower = Mathf.Infinity;
-
                             if (Vector3.Distance(transform.position, miniMainTower.collider.gameObject.transform.position) < distanceToMiniMainTower)
                             {
                                 nav.destination = miniMainTower.collider.gameObject.transform.position;
                                 miniMainTowerFound = miniMainTower.collider.gameObject;
+
+                                distanceToMiniMainTower = Vector3.Distance(transform.position, miniMainTower.collider.gameObject.transform.position);
                             }
                         }
                     }
@@ -264,36 +264,71 @@ public class Enemy : MonoBehaviour
 
                 if (!miniTowerFound)
                 {
-                    RaycastHit[] towerInRange = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Tower"));
-                    if (towerInRange.Length > 0)
+                    if (!towerFound)
                     {
-                        if (towerInRange[0].collider.GetComponent<Tower>())
-                        {
-                            if (towerInRange[0].collider.GetComponent<Tower>().health > 0)
-                            {
-                                if (!towerInRange[0].collider.GetComponent<Tower>().isHero)
-                                {
-                                    nav.destination = towerInRange[0].transform.position;
-                                    normaltowerFound = towerInRange[0].collider.gameObject;
-                                    towerInRange[0].collider.GetComponent<Tower>().health -= (damage * 3);
-                                    anim.SetTrigger("doHit");
+                        towerFound = false;
 
-                                    towerFound = true;
+                        RaycastHit[] towerInRange = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Tower"));
+                        if (towerInRange.Length > 0)
+                        {
+                            foreach (var towerTarget in towerInRange)
+                            {
+                                if (towerTarget.collider.GetComponent<Tower>())
+                                {
+                                    if (towerTarget.collider.GetComponent<Tower>().health > 0)
+                                    {
+                                        if (!towerTarget.collider.GetComponent<Tower>().isHero)
+                                        {
+                                            nav.destination = towerTarget.transform.position;
+                                            normaltowerFound = towerTarget.collider.gameObject;
+                                            
+                                            towerFound = true;
+
+                                            break;
+                                        }
+                                    }
                                 }
                             }
-                        }
-                        else
-                        {
-                            nav.destination = tileTargetPos;
-                            towerFound = false;
-                            //nav.destination = target.position;
                         }
                     }
                     else
                     {
-                        nav.destination = tileTargetPos;
-                        towerFound = false;
-                        //nav.destination = target.position;
+                        if (normaltowerFound != null)
+                        {
+                            if (normaltowerFound.GetComponent<Tower>().health < 0)
+                            {
+                                towerFound = false;
+                                normaltowerFound = null;
+                                nav.destination = tileTargetPos;
+                            }
+                            else
+                            {
+                                nav.destination = new Vector3(normaltowerFound.transform.position.x, 0.5f, normaltowerFound.transform.position.z);
+                                normaltowerFound.GetComponent<Tower>().health -= (damage * 3);
+                                anim.SetTrigger("doHit");
+                            }
+                        }
+                        else
+                        {
+                            towerFound = false;
+                            normaltowerFound = null;
+                            nav.destination = tileTargetPos;
+                        }
+
+                        /*
+                        if (normaltowerFound.GetComponent<Tower>().health < 0)
+                        {
+                            towerFound = false;
+                            normaltowerFound = null;
+                            nav.destination = tileTargetPos;
+                        }
+                        else if (normaltowerFound != null && normaltowerFound.GetComponent<Tower>().health > 0)
+                        {
+                            nav.destination = new Vector3(normaltowerFound.transform.position.x, 0.5f, normaltowerFound.transform.position.z);
+                            normaltowerFound.GetComponent<Tower>().health -= (damage * 3);
+                            anim.SetTrigger("doHit");
+                        }
+                        */
                     }
                 }
             }
@@ -322,7 +357,7 @@ public class Enemy : MonoBehaviour
                     Destroy(gameObject);
                 }
             }
-            */
+            
             if (!miniTowerFound && !towerFound)
             {
                 RaycastHit[] tilesInRange = Physics.SphereCastAll(transform.position, 20 + bugCount, transform.forward, 0, LayerMask.GetMask("Ground"));

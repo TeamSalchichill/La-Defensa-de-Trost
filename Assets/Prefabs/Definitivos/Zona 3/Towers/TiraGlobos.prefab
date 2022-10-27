@@ -187,17 +187,17 @@ MonoBehaviour:
   rangeArea: {fileID: 3948827861534618597}
   partToRotate: {fileID: 7188744020801765335}
   towerName: Suw Balony
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 2bdb6ebca3667bc459a041f59df10d9f, type: 3}
   price: 500
   acumulateGold: 0
   specialTile: 0
   burnTile: 0
   spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
-  healthDamage: 100
+  healthDamage: 170
   armorDamage: 0
   range: 10
   rangeAreaOriginalScale: 0
-  fireRate: 0.5
+  fireRate: 0.6
   turnSpeed: 10
   health: 700
   healthMax: 0
@@ -213,7 +213,7 @@ MonoBehaviour:
   level: 1
   levelMultiplier: 1.1
   levelMultiplierSpecialStat: 1.25
-  levelUpPrice: 200
+  levelUpPrice: 500
   level5Price: 100
   priceLogo: "\u20AC"
   iceDamage: 0

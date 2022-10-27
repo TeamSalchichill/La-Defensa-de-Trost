@@ -62,19 +62,19 @@ MonoBehaviour:
   rangeArea: {fileID: 2065597811422338498}
   partToRotate: {fileID: 2769019191401542446}
   towerName: Pium
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: b1d800cee125b9e458fe7752d7263c15, type: 3}
   price: 250
   acumulateGold: 0
   specialTile: 0
   burnTile: 0
   spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
-  healthDamage: 20
+  healthDamage: 45
   armorDamage: 0
   range: 20
   rangeAreaOriginalScale: 0
   fireRate: 3
   turnSpeed: 10
-  health: 250
+  health: 500
   healthMax: 0
   armor: 0
   armorMax: 0
@@ -88,12 +88,12 @@ MonoBehaviour:
   level: 1
   levelMultiplier: 1.1
   levelMultiplierSpecialStat: 1.25
-  levelUpPrice: 200
+  levelUpPrice: 250
   level5Price: 100
   priceLogo: "\u20AC"
   iceDamage: 0
   igniteDamage: 0
-  waterDamage: 2
+  waterDamage: 1
   ascentDamage: 0
   bloodDamage: 0
   transformationDamage: 0
@@ -239,7 +239,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2442975429768110301}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.171, z: 1.023}
+  m_LocalPosition: {x: 0, y: 1.171, z: -0.727}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

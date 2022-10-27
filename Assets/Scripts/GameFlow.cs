@@ -15,7 +15,7 @@ public class GameFlow : MonoBehaviour
     public int totalRounds;
     public int round = 0;
     [Space]
-    public int coins = 650;
+    public int coins = 1000;
     public int specialCoins = 20;
     public int newSpecialCoinsPerRound = 5;
     [Space]
@@ -160,6 +160,11 @@ public class GameFlow : MonoBehaviour
             {
                 hudManager.nextRoundButton.gameObject.SetActive(true);
             }
+
+            if (round >= 30)
+            {
+                hudManager.ActivateGameOver();
+            }
         }
     }
 
@@ -231,6 +236,7 @@ public class GameFlow : MonoBehaviour
 
             if (round == (startSandStormRound + sandStormDuration))
             {
+                //instSandStorm.GetComponent<BoxCollider>().enabled = false;
                 Destroy(instSandStorm);
                 isActiveSandStorm = false;
             }
