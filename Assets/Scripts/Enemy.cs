@@ -14,6 +14,9 @@ public class Enemy : MonoBehaviour
     public enum TargetPreference { MainTower, OtherTowers }
     public TargetPreference targetPreference;
 
+    public enum Terrain { Ground, Air }
+    public Terrain terrain;
+
     GameFlow gameFlow;
     MainTower mainTower;
     Generator generator;
@@ -117,7 +120,11 @@ public class Enemy : MonoBehaviour
     [Header("Boss - Agua")]
     public float spearAttackRate = 5;
     public float speedBoostRate = 10;
-    
+
+    [Header("Boss - Valhalla")]
+    public float invokeEnemiesRate = 5;
+    public float biteAttackRate = 7;
+
     void Start()
     {
         gameFlow = GameFlow.instance;
@@ -126,42 +133,50 @@ public class Enemy : MonoBehaviour
 
         mapPosId = 1000000;
 
-        nav = GetComponent<NavMeshAgent>();
-        if (nav.isOnNavMesh)
+        if (terrain == Terrain.Ground)
         {
-            RaycastHit[] tilesInRange = Physics.SphereCastAll(transform.position, 15, transform.forward, 1.0f, LayerMask.GetMask("Ground"));
-            foreach (var tileInRange in tilesInRange)
+            nav = GetComponent<NavMeshAgent>();
+            if (nav.isOnNavMesh)
             {
-                if (tileInRange.collider.gameObject.GetComponent<MapInfo>().id < mapPosId)
+                RaycastHit[] tilesInRange = Physics.SphereCastAll(transform.position, 15, transform.forward, 1.0f, LayerMask.GetMask("Ground"));
+                foreach (var tileInRange in tilesInRange)
                 {
-                    mapPosId = tileInRange.collider.gameObject.GetComponent<MapInfo>().id;
-                    nav.destination = tileInRange.collider.gameObject.transform.position;
-                    tileTargetPos = tileInRange.collider.gameObject.transform.position;
-                    tileTargetDist = Vector3.Distance(transform.position, tileTargetPos);
-                    targetGO = tileInRange.collider.gameObject;
+                    if (tileInRange.collider.gameObject.GetComponent<MapInfo>().id < mapPosId)
+                    {
+                        mapPosId = tileInRange.collider.gameObject.GetComponent<MapInfo>().id;
+                        nav.destination = tileInRange.collider.gameObject.transform.position;
+                        tileTargetPos = tileInRange.collider.gameObject.transform.position;
+                        tileTargetDist = Vector3.Distance(transform.position, tileTargetPos);
+                        targetGO = tileInRange.collider.gameObject;
 
-                    break;
+                        break;
+                    }
                 }
             }
+            else
+            {
+                switch (type)
+                {
+                    case (Type.Pequeño):
+                        gameFlow.enemiesLeft1--;
+                        break;
+                    case (Type.Mediano):
+                        gameFlow.enemiesLeft2--;
+                        break;
+                    case (Type.Grande):
+                        gameFlow.enemiesLeft3--;
+                        break;
+                }
+
+                Destroy(gameObject);
+            }
+            nav.speed = normalSpeed;
         }
         else
         {
-            switch (type)
-            {
-                case (Type.Pequeño):
-                    gameFlow.enemiesLeft1--;
-                    break;
-                case (Type.Mediano):
-                    gameFlow.enemiesLeft2--;
-                    break;
-                case (Type.Grande):
-                    gameFlow.enemiesLeft3--;
-                    break;
-            }
 
-            Destroy(gameObject);
         }
-        nav.speed = normalSpeed;
+        
         waterParticles.SetActive(false);
 
         healthMax = health;
@@ -203,7 +218,8 @@ public class Enemy : MonoBehaviour
                     InvokeRepeating("Zone3Attack2", 3, spearAttackRate);
                     break;
                 case Zone.Vikingos:
-
+                    InvokeRepeating("Zone4Attack1", 1, biteAttackRate);
+                    InvokeRepeating("Zone4Attack2", 5, invokeEnemiesRate);
                     break;
                 case Zone.Fantasia:
 
@@ -214,15 +230,17 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        if (targetPreference == TargetPreference.OtherTowers)
+        if (terrain == Terrain.Ground)
         {
-            //InvokeRepeating("UpdateTarget", 0.1f, 0.15f);
+            InvokeRepeating("UpdateTargetTile", 0.1f, 0.15f);
         }
-
-        float timeToRefresh = Random.Range(50, 100);
-        timeToRefresh /= 100;
-
-        InvokeRepeating("UpdateTargetTile", 0.1f, 0.15f);
+        else
+        {
+            transform.position += new Vector3(0, 10, 0);
+            Vector3 moveVec = new Vector3(target.position.x - transform.position.x, 0, target.position.z - transform.position.z).normalized;
+            transform.LookAt(transform.position + moveVec);
+            transform.position += moveVec * speed * Time.deltaTime;
+        }
     }
 
     void UpdateTargetTile()
@@ -232,12 +250,10 @@ public class Enemy : MonoBehaviour
         if (nav.speed == 0)
         {
             nav.speed = normalSpeed;
-            print("F");
         }
 
         if (!infectationMode)
         {
-            
             if (!miniTowerFound && type == Type.Mediano)
             {
                 float distanceToMiniMainTower = Mathf.Infinity;
@@ -314,21 +330,6 @@ public class Enemy : MonoBehaviour
                             normaltowerFound = null;
                             nav.destination = tileTargetPos;
                         }
-
-                        /*
-                        if (normaltowerFound.GetComponent<Tower>().health < 0)
-                        {
-                            towerFound = false;
-                            normaltowerFound = null;
-                            nav.destination = tileTargetPos;
-                        }
-                        else if (normaltowerFound != null && normaltowerFound.GetComponent<Tower>().health > 0)
-                        {
-                            nav.destination = new Vector3(normaltowerFound.transform.position.x, 0.5f, normaltowerFound.transform.position.z);
-                            normaltowerFound.GetComponent<Tower>().health -= (damage * 3);
-                            anim.SetTrigger("doHit");
-                        }
-                        */
                     }
                 }
             }
@@ -419,6 +420,24 @@ public class Enemy : MonoBehaviour
 
         if (health < 0)
         {
+            GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
+            if (towers.Length > 0)
+            {
+                foreach (var tower in towers)
+                {
+                    if (tower.GetComponent<Tower>())
+                    {
+                        if (tower.GetComponent<Tower>().attackType == Tower.AttackType.ResourcesVariable)
+                        {
+                            if (Vector3.Distance(transform.position, tower.gameObject.transform.position) <= tower.GetComponent<Tower>().range)
+                            {
+                                tower.GetComponent<Tower>().healthDamage++;
+                            }
+                        }
+                    }
+                }
+            }
+
             gameFlow.coins += gold;
 
             switch (type)
@@ -479,21 +498,22 @@ public class Enemy : MonoBehaviour
                 speed = (normalSpeed * ((100 - iceEffect) / 100));
             }
         }
-        nav.speed = speed * gameFlow.newSpeed;
-        
-        if (infectationMode)
+
+        if (terrain == Terrain.Ground)
+        {
+            nav.speed = speed * gameFlow.newSpeed;
+        }
+        else
+        {
+            Vector3 moveVec = new Vector3(target.position.x - transform.position.x, 0, target.position.z - transform.position.z).normalized;
+            transform.LookAt(transform.position + moveVec);
+            transform.position += moveVec * speed * gameFlow.newSpeed * Time.deltaTime;
+        }
+
+        if (infectationMode && terrain == Terrain.Ground)
         {
             InfectationMode();
         }
-        /*
-        else if (targetPreference == TargetPreference.MainTower)
-        {
-            if (isActiveAndEnabled)
-            {
-                nav.destination = target.position;
-            }
-        }
-        */
     }
 
     void InfectationMode()
@@ -674,6 +694,49 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    void Zone4Attack1()
+    {
+        RaycastHit[] towerInrange = Physics.SphereCastAll(transform.position, 5, transform.forward, range, LayerMask.GetMask("Tower"));
+        if (towerInrange.Length > 0)
+        {
+            anim.SetTrigger("doHit");
+            speed = 0;
+
+            foreach (var tower in towerInrange)
+            {
+                if (tower.collider.gameObject.GetComponent<Tower>())
+                {
+                    tower.collider.gameObject.GetComponent<Tower>().health -= damage;
+                }
+            }
+
+            isAttack = true;
+            Invoke("canMove", 1.15f);
+        }
+    }
+
+    void Zone4Attack2()
+    {
+        StartCoroutine(SpawnEnemies());
+    }
+
+    IEnumerator SpawnEnemies()
+    {
+        anim.SetTrigger("doHit");
+        speed = 0;
+
+        isAttack = true;
+
+        for (int i = 0; i < 4; i++)
+        {
+            Instantiate(goblins, transform.position + (transform.forward * 2), transform.rotation);
+            gameFlow.enemiesLeft1++;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        canMove();
+    }
+
     void canMove()
     {
         isAttack = false;
@@ -721,6 +784,60 @@ public class Enemy : MonoBehaviour
             waterEffect = 120;
             waterEffectTime = 3;
         }
+
+        if (other.tag == "SpecialGround")
+        {
+            switch (generator.zone)
+            {
+                case Generator.Zone.Hielo:
+
+                    break;
+                case Generator.Zone.Desierto:
+                    igniteResistence *= 2;
+                    break;
+                case Generator.Zone.Atlantis:
+                    damage *= 2;
+                    speed *= 2;
+                    normalSpeed *= 2;
+                    range *= 2;
+                    health *= 2;
+                    healthMax *= 2;
+                    iceEffect *= 2;
+                    igniteEffect = 0;
+                    waterEffect = 0;
+                    ascentEffect = 0;
+                    bloodEffect = 0;
+                    transformationEffect = 0;
+                    iceResistence = 100;
+                    igniteResistence = 100;
+                    waterResistence = 100;
+                    ascentResistence = 100;
+                    bloodResistence = 100;
+                    transformationResistence = 100;
+                    BoxCollider[] boxcollidersTile = other.GetComponents<BoxCollider>();
+                    foreach (var boxcolliderTile in boxcollidersTile)
+                    {
+                        if (boxcolliderTile.isTrigger)
+                        {
+                            boxcolliderTile.enabled = false;
+                        }
+                    }
+                    break;
+                case Generator.Zone.Valhalla:
+
+                    break;
+                case Generator.Zone.Fantasia:
+
+                    break;
+                case Generator.Zone.Infierno:
+
+                    break;
+            }
+        }
+        if (other.tag == "ImpactDamage")
+        {
+            health -= 1000;
+        }
     }
 
     void OnTriggerStay(Collider other)
@@ -752,7 +869,7 @@ public class Enemy : MonoBehaviour
                     nav.speed = speed * 0.5f;
                     break;
                 case Generator.Zone.Desierto:
-                    igniteResistence *= 2;
+
                     break;
                 case Generator.Zone.Atlantis:
 
@@ -767,6 +884,11 @@ public class Enemy : MonoBehaviour
 
                     break;
             }
+        }
+
+        if (other.tag == "ImpactDamage")
+        {
+            health -= Time.deltaTime * 10;
         }
     }
 

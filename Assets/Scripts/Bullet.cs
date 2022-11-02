@@ -14,6 +14,11 @@ public class Bullet : MonoBehaviour
 
     public GameObject impactEffect;
 
+    [Header("Rebotes")]
+    public bool canRebote = false;
+    public int rebotes = 0;
+    public int rebotesMax = 10;
+
     public float speed = 70f;
     public float range = 3f;
     [Header("Damages")]
@@ -122,6 +127,32 @@ public class Bullet : MonoBehaviour
                 break;
         }
 
-        Destroy(gameObject);
+        if (!canRebote)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            if (rebotes >= rebotesMax)
+            {
+                Destroy(gameObject);
+            }
+
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject enemy in enemies)
+            {
+                if (enemies.Length > 0)
+                {
+                    if (enemy.transform != target)
+                    {
+                        target = enemy.transform;
+
+                        break;
+                    }
+                }
+            }
+
+            rebotes++;
+        }
     }
 }

@@ -8,7 +8,7 @@ public class Tower : MonoBehaviour
     public enum TargetType { SingleTarget, MultiTarget, AoE }
     public TargetType targetType;
 
-    public enum AttackType { Melee, Range, Resources }
+    public enum AttackType { Melee, Range, Resources, ResourcesVariable, Health, HealthDamage, Invoke }
     public AttackType attackType;
 
     public enum CanColocate { Ground, Path }
@@ -20,10 +20,10 @@ public class Tower : MonoBehaviour
     public enum Zone { None, Hielo, Desierto, Atlantis, Vikingos, Fantasia, Infierno }
     public Zone zone;
 
-    public enum SpecialStat { None, Health, Range, ShootSpeed, TurnSpeed, HealthDamage, IceEffect, IgniteEffect, WaterEffect, AscensionEffect, BloodEffect, CrazyEffect}
+    public enum SpecialStat { None, Health, Range, ShootSpeed, TurnSpeed, HealthDamage, IceEffect, IgniteEffect, WaterEffect, AscensionEffect, BloodEffect, CrazyEffect }
     public SpecialStat specialStat;
 
-    public enum TargetPreference { Near, Far, MoreHealh, LessHealth, MoreFast, LessFast, MoreDamage, LessDamage, SmallEnemies, MediumEnemies, Boss,  }
+    public enum TargetPreference { Near, Far, MoreHealh, LessHealth, MoreFast, LessFast, MoreDamage, LessDamage, SmallEnemies, MediumEnemies, Boss, }
     public TargetPreference targetPreference;
 
     GameFlow gameFlow;
@@ -78,6 +78,8 @@ public class Tower : MonoBehaviour
     public bool fullRotate = false;
     [Space]
     GameObject[] enemies;
+    [Space]
+    GameObject ally;
 
     [Header("Level")]
     public int level = 1;
@@ -86,7 +88,7 @@ public class Tower : MonoBehaviour
     public int levelUpPrice = 100;
     public int level5Price = 100;
     public string priceLogo = "€";
-    
+
     [Header("States Stats")]
     [Range(0, 100)]
     public int iceDamage = 0;
@@ -100,7 +102,7 @@ public class Tower : MonoBehaviour
     public int bloodDamage = 0;
     [Range(0, 100)]
     public int transformationDamage = 0;
-    
+
     [Header("Overheat")]
     public bool isBurn = false;
     public float burnEffect = 0;
@@ -122,6 +124,9 @@ public class Tower : MonoBehaviour
 
     [Header("Hero - Agua")]
     public GameObject singParticles;
+
+    [Header("Hero - Valhalla")]
+    public GameObject thunder;
 
     void Start()
     {
@@ -164,7 +169,19 @@ public class Tower : MonoBehaviour
                     waterDamage *= 3;
                     break;
                 case Generator.Zone.Valhalla:
-
+                    healthDamage *= 2;
+                    range *= 2;
+                    fireRate *= 2;
+                    turnSpeed *= 2;
+                    health *= 2;
+                    healthMax *= 2;
+                    levelMultiplier += 0.1f;
+                    levelMultiplierSpecialStat += 0.2f;
+                    iceDamage += 3;
+                    igniteDamage += 3;
+                    waterDamage += 3;
+                    bloodDamage += 3;
+                    transformationDamage += 3;
                     break;
                 case Generator.Zone.Fantasia:
 
@@ -189,7 +206,7 @@ public class Tower : MonoBehaviour
                     InvokeRepeating("Hero3SpecialAttack", 1, 15);
                     break;
                 case Zone.Vikingos:
-
+                    InvokeRepeating("Hero4SpecialAttack", 1, 15);
                     break;
                 case Zone.Fantasia:
 
@@ -243,6 +260,8 @@ public class Tower : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        health = Mathf.Min(health, healthMax);
 
         // Bajar tiempo para volver a disparar
         fireCountdown -= Time.deltaTime;
@@ -317,14 +336,14 @@ public class Tower : MonoBehaviour
                             break;
                         case TargetType.AoE:
                             anim.SetTrigger("doShoot");
-                            RaycastHit[] towerInrange = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Enemy"));
-                            if (towerInrange.Length > 0)
+                            RaycastHit[] enemiesInRange1 = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Enemy"));
+                            if (enemiesInRange1.Length > 0)
                             {
-                                foreach (var tower in towerInrange)
+                                foreach (var enemy in enemiesInRange1)
                                 {
-                                    if (tower.collider.gameObject.GetComponent<Enemy>())
+                                    if (enemy.collider.gameObject.GetComponent<Enemy>())
                                     {
-                                        tower.collider.gameObject.GetComponent<Enemy>().health -= healthDamage;
+                                        enemy.collider.gameObject.GetComponent<Enemy>().health -= healthDamage;
                                     }
                                 }
                             }
@@ -335,6 +354,50 @@ public class Tower : MonoBehaviour
                     if (!gameFlow.roundFinished)
                     {
                         hudManager.AddCoins(healthDamage);
+                    }
+                    break;
+                case AttackType.ResourcesVariable:
+                    hudManager.AddCoins(healthDamage);
+                    healthDamage = 0;
+                    break;
+                case AttackType.Health:
+                    anim.SetTrigger("doShoot");
+                    RaycastHit[] towerInrange1 = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Tower"));
+                    if (towerInrange1.Length > 0)
+                    {
+                        foreach (var tower in towerInrange1)
+                        {
+                            tower.collider.gameObject.GetComponent<Tower>().health += healthDamage;
+                        }
+                    }
+                    break;
+                case AttackType.HealthDamage:
+                    anim.SetTrigger("doShoot");
+                    RaycastHit[] towerInrange2 = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Tower"));
+                    if (towerInrange2.Length > 0)
+                    {
+                        foreach (var tower in towerInrange2)
+                        {
+                            tower.collider.gameObject.GetComponent<Tower>().health += healthDamage;
+                        }
+                    }
+                    RaycastHit[] enemiesInrange2 = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Enemy"));
+                    if (enemiesInrange2.Length > 0)
+                    {
+                        foreach (var enemy in enemiesInrange2)
+                        {
+                            if (enemy.collider.gameObject.GetComponent<Enemy>())
+                            {
+                                enemy.collider.gameObject.GetComponent<Enemy>().health -= (int)(healthDamage / 2);
+                            }
+                        }
+                    }
+                    break;
+                case AttackType.Invoke:
+                    RaycastHit[] tilesInRange = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Ground"));
+                    if (tilesInRange.Length > 0)
+                    {
+                        Instantiate(ally, tilesInRange[0].transform.position, tilesInRange[0].transform.rotation);
                     }
                     break;
             }
@@ -412,9 +475,9 @@ public class Tower : MonoBehaviour
     {
         List<GameObject> groundsInRange = new List<GameObject>();
 
-        for (int i = -10; i < 10; i+=2)
+        for (int i = -10; i < 10; i += 2)
         {
-            for (int j = -10; j < 10; j+=2)
+            for (int j = -10; j < 10; j += 2)
             {
                 RaycastHit hit1;
                 RaycastHit hit2;
@@ -478,6 +541,16 @@ public class Tower : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    void Hero4SpecialAttack()
+    {
+        RaycastHit[] tilesInRange = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Ground"));
+        if (tilesInRange.Length > 0)
+        {
+            GameObject instThunder = Instantiate(thunder, tilesInRange[0].transform.position, tilesInRange[0].transform.rotation);
+            Destroy(instThunder, 3);
         }
     }
 

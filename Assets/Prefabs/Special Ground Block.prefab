@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8334693654348447652}
   - component: {fileID: 7302021829032653291}
   - component: {fileID: 6573341543953145942}
+  - component: {fileID: 2779383074854997873}
   m_Layer: 8
   m_Name: Special Ground Block
   m_TagString: SpecialGround
@@ -111,3 +112,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &2779383074854997873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723674981817254988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 355f4ca920a0a8448be68f9e530b2aeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapInfo: 0
+  id: 1000000
+  tileCambiado: 0
+  numTilesEncontradas: 0
+  sumaTilesEncontradas: 0

@@ -31,6 +31,10 @@ public class MainTower : MonoBehaviour
     [Header("Zona de agua")]
     public GameObject wave;
 
+    [Header("Zona de dioses")]
+    public GameObject lanza;
+    public float lanzaTime = 4;
+
     void Awake()
     {
         instance = this;
@@ -114,7 +118,20 @@ public class MainTower : MonoBehaviour
                 }
                 break;
             case Zone.Vikingos:
+                if (Input.GetButtonDown("Fire1") && timeToWait > 0.2f && activateTower)
+                {
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    RaycastHit rayHit;
+                    if (Physics.Raycast(ray, out rayHit, 1000))
+                    {
+                        GameObject instLanza = Instantiate(lanza, rayHit.point, Quaternion.identity);
+                        Destroy(instLanza, lanzaTime);
+                        activateTower = false;
+                        restRounds = roundsToReset;
+                    }
 
+                    timeToWait = 0;
+                }
                 break;
             case Zone.Fantasia:
 

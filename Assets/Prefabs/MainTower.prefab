@@ -110,8 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dddfb3e699abb64393b5c84cb50ebf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zone: 3
-  health: 25
+  zone: 4
+  health: 5000
   activateTower: 0
   roundsToReset: 3
   restRounds: 0
@@ -120,3 +120,5 @@ MonoBehaviour:
   infection: {fileID: 3522392810799222791, guid: 1b09d6e959bc3074fa7a4eb6143aa5dc, type: 3}
   infectationDuration: 4
   wave: {fileID: 180749510467813654, guid: 150c3388596d6b24f9c0251596003e60, type: 3}
+  lanza: {fileID: 471775853638913419, guid: 53bda2a00e8693f4f9a63d23bc936e3d, type: 3}
+  lanzaTime: 4
