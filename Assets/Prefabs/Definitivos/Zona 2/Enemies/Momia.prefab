@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6868350025523587292, guid: a477ae435ac619242b8e21529a28898b, type: 3}
+  - {fileID: 2100000, guid: 3e1f2d5a63d26424c9a1a7e5aa7a1b66, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -178,7 +178,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6868350025523587292, guid: a477ae435ac619242b8e21529a28898b, type: 3}
+  - {fileID: 2100000, guid: ea5b5ea5f4e9cbd448bf7cc10e0e3c2d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -261,7 +261,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6868350025523587292, guid: a477ae435ac619242b8e21529a28898b, type: 3}
+  - {fileID: 2100000, guid: 856a97921ed3c5148a5e083ee0215806, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -450,6 +450,7 @@ MonoBehaviour:
   type: 0
   zone: 0
   targetPreference: 0
+  terrain: 0
   anim: {fileID: 4091771647610082714}
   nav: {fileID: 0}
   target: {fileID: 7508660107958944948, guid: b773a4ca56193e54883f01e48738731c, type: 3}
@@ -506,6 +507,8 @@ MonoBehaviour:
   areaAtacckRate: 10
   spearAttackRate: 5
   speedBoostRate: 10
+  invokeEnemiesRate: 5
+  biteAttackRate: 7
 --- !u!195 &4091771647610082711
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1134,7 +1137,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7816324940044139596, guid: a477ae435ac619242b8e21529a28898b, type: 3}
+  - {fileID: 2100000, guid: bde2169843cb3ef4c9f3fbb43863e8a8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

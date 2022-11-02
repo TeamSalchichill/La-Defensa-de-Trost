@@ -144,7 +144,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6868350025523587292, guid: c3fe091eaba07584ab945fbd59652503, type: 3}
+  - {fileID: 2100000, guid: 20a491eb138b47c4490a92dc36062cfe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -306,6 +306,7 @@ MonoBehaviour:
   frezzeIceWall: 0
   curation: 50
   singParticles: {fileID: 0}
+  thunder: {fileID: 0}
 --- !u!65 &2969877446583160812
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -643,7 +644,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7816324940044139596, guid: c3fe091eaba07584ab945fbd59652503, type: 3}
+  - {fileID: 2100000, guid: a363a51176596f14bac59e5e26f60dd1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

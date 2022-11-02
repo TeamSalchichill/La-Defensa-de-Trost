@@ -265,6 +265,7 @@ MonoBehaviour:
   frezzeIceWall: 0
   curation: 50
   singParticles: {fileID: 0}
+  thunder: {fileID: 0}
 --- !u!1 &2908925682697002440
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,7 +360,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7816324940044139596, guid: c6d1ba529ffa47546870087dc2c6e12c, type: 3}
+  - {fileID: 2100000, guid: a02fdee5ddcdaa44ebd576c4e7265a86, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
