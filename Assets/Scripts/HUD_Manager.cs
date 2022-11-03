@@ -140,7 +140,7 @@ public class HUD_Manager : MonoBehaviour
             //"Velocidad de giro: " + activeTower.turnSpeed + "\n" +
             ;
             towerDescription2.text =
-            "--- EFFECTS ---\n" +
+            "-- EFFECTS --\n" +
             "Hielo: " + activeTower.iceDamage + "%" + "\n" +
             "Fuego: " + activeTower.igniteDamage + "%" + "\n" +
             "Agua: " + activeTower.waterDamage + "%" + "\n" +

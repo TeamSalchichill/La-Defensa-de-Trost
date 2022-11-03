@@ -66,6 +66,7 @@ public class Tower : MonoBehaviour
     public int armorMax;
     [Space]
     public bool sirenitaBoost = false;
+    public bool shieldBoost = false;
 
     [Header("Attack Resources")]
     public Transform target;
@@ -128,6 +129,9 @@ public class Tower : MonoBehaviour
     [Header("Hero - Valhalla")]
     public GameObject thunder;
 
+    [Header("Hero - Forest")]
+    public int areaCuration = 50;
+
     void Start()
     {
         gameFlow = GameFlow.instance;
@@ -182,6 +186,7 @@ public class Tower : MonoBehaviour
                     waterDamage += 3;
                     bloodDamage += 3;
                     transformationDamage += 3;
+                    rangeArea.transform.localScale = new Vector3(range * rangeAreaOriginalScale, rangeAreaOriginalScale, range * rangeAreaOriginalScale);
                     break;
                 case Generator.Zone.Fantasia:
 
@@ -209,10 +214,10 @@ public class Tower : MonoBehaviour
                     InvokeRepeating("Hero4SpecialAttack", 1, 15);
                     break;
                 case Zone.Fantasia:
-
+                    InvokeRepeating("Hero5SpecialAttack", 1, 15);
                     break;
                 case Zone.Infierno:
-
+                    InvokeRepeating("Hero6SpecialAttack", 1, 30);
                     break;
             }
         }
@@ -554,6 +559,49 @@ public class Tower : MonoBehaviour
         }
     }
 
+    void Hero5SpecialAttack()
+    {
+        GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
+        if (towers.Length > 0)
+        {
+            foreach (GameObject tower in towers)
+            {
+                if (tower.GetComponent<Tower>())
+                {
+                    tower.GetComponent<Tower>().health += areaCuration;
+                    tower.GetComponent<Tower>().FairyEffectOn();
+                }
+            }
+        }
+    }
+
+    void FairyEffectOn()
+    {
+        fireRate *= 1.25f;
+
+        Invoke("FairyEffectOff", 10);
+    }
+    void FairyEffectOff()
+    {
+        fireRate /= 1.25f;
+    }
+
+    void Hero6SpecialAttack()
+    {
+        StartCoroutine(SpawnEnemies());
+    }
+
+    IEnumerator SpawnEnemies()
+    {
+        anim.SetTrigger("doShoot");
+
+        for (int i = 0; i < 4; i++)
+        {
+            Instantiate(bullet, bulletPos.transform.position, transform.rotation);
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
     private void OnMouseDown()
     {
         if (gameObject.GetComponent<Tower>())
@@ -564,6 +612,32 @@ public class Tower : MonoBehaviour
         {
             hudManager.ShowTowerInfo(gameObject.GetComponentInChildren<Tower>());
         }
+    }
+
+    void OnParticleCollision(GameObject other)
+    {
+        if (other.tag == "Shield")
+        {
+            if (!shieldBoost)
+            {
+                shieldBoost = true;
+
+                fireRate *= 1.5f;
+                health = (int)(health * 1.5f);
+                healthMax = (int)(healthMax * 1.5f);
+
+                Invoke("ShieldBoostOff", MainTower.instance.shieldTime);
+            }
+        }
+    }
+
+    void ShieldBoostOff()
+    {
+        shieldBoost = false;
+
+        fireRate /= 1.5f;
+        health = (int)(health / 1.5f);
+        healthMax = (int)(healthMax / 1.5f);
     }
 
     private void OnDrawGizmosSelected()

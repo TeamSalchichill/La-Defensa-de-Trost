@@ -35,6 +35,13 @@ public class MainTower : MonoBehaviour
     public GameObject lanza;
     public float lanzaTime = 4;
 
+    [Header("Zona de dioses")]
+    public GameObject shieldMagic;
+    public float shieldTime = 10;
+
+    [Header("Zona de agua")]
+    public GameObject fireBall;
+
     void Awake()
     {
         instance = this;
@@ -134,10 +141,44 @@ public class MainTower : MonoBehaviour
                 }
                 break;
             case Zone.Fantasia:
+                if (Input.GetButtonDown("Fire1") && timeToWait > 0.2f && activateTower)
+                {
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    RaycastHit rayHit;
+                    if (Physics.Raycast(ray, out rayHit, 1000))
+                    {
+                        GameObject instShield = Instantiate(shieldMagic, rayHit.point, Quaternion.identity);
+                        Destroy(instShield, shieldTime);
+                        activateTower = false;
+                        restRounds = roundsToReset;
+                    }
 
+                    timeToWait = 0;
+                }
                 break;
             case Zone.Infierno:
+                if (Input.GetButtonDown("Fire1") && timeToWait > 0.2f && activateTower)
+                {
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    RaycastHit rayHit;
+                    if (Physics.Raycast(ray, out rayHit, 1000))
+                    {
+                        GameObject instBall = Instantiate(fireBall, new Vector3(transform.position.x, 1, transform.position.z), Quaternion.identity);
 
+                        Vector3 dir = rayHit.point - transform.position;
+                        Quaternion lookRotation = Quaternion.LookRotation(dir);
+                        Vector3 rotation = Quaternion.Lerp(instBall.transform.rotation, lookRotation, Time.deltaTime * 500).eulerAngles;
+                        instBall.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+
+                        instBall.GetComponent<Rigidbody>().velocity = new Vector3(dir.normalized.x, 0, dir.normalized.z) * 10;
+
+                        Destroy(instBall, 10);
+                        activateTower = false;
+                        restRounds = roundsToReset;
+                    }
+
+                    timeToWait = 0;
+                }
                 break;
         }
     }

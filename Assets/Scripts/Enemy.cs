@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     public enum Type { Pequeño, Mediano, Grande }
     public Type type;
 
-    public enum Zone { None, Hielo, Desierto, Atlantis, Vikingos, Fantasia, Infierno }
+    public enum Zone { None, Hielo, Desierto, Atlantis, Vikingos, Fantasia, Infierno, FinalBoss }
     public Zone zone;
 
     public enum TargetPreference { MainTower, OtherTowers }
@@ -125,6 +125,13 @@ public class Enemy : MonoBehaviour
     public float invokeEnemiesRate = 5;
     public float biteAttackRate = 7;
 
+    [Header("Boss - Forest")]
+    public float hitAttackRate = 7;
+
+    [Header("Boss - Hell")]
+    public float invokeDeadEnemiesRate = 5;
+    public float fireSpearAttackRate = 7;
+
     void Start()
     {
         gameFlow = GameFlow.instance;
@@ -174,7 +181,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-
+            transform.position += new Vector3(0, 10, 0);
         }
         
         waterParticles.SetActive(false);
@@ -215,16 +222,20 @@ public class Enemy : MonoBehaviour
                     break;
                 case Zone.Atlantis:
                     InvokeRepeating("Zone3Attack1", 1, speedBoostRate);
-                    InvokeRepeating("Zone3Attack2", 3, spearAttackRate);
+                    InvokeRepeating("Zone3Attack2", 3, invokeDeadEnemiesRate);
                     break;
                 case Zone.Vikingos:
                     InvokeRepeating("Zone4Attack1", 1, biteAttackRate);
                     InvokeRepeating("Zone4Attack2", 5, invokeEnemiesRate);
                     break;
                 case Zone.Fantasia:
-
+                    InvokeRepeating("Zone5Attack1", 6, hitAttackRate);
                     break;
                 case Zone.Infierno:
+                    InvokeRepeating("Zone6Attack1", 1, fireSpearAttackRate);
+                    InvokeRepeating("Zone6Attack2", 5, invokeEnemiesRate);
+                    break;
+                case Zone.FinalBoss:
 
                     break;
             }
@@ -236,7 +247,6 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            transform.position += new Vector3(0, 10, 0);
             Vector3 moveVec = new Vector3(target.position.x - transform.position.x, 0, target.position.z - transform.position.z).normalized;
             transform.LookAt(transform.position + moveVec);
             transform.position += moveVec * speed * Time.deltaTime;
@@ -433,6 +443,21 @@ public class Enemy : MonoBehaviour
                             {
                                 tower.GetComponent<Tower>().healthDamage++;
                             }
+                        }
+                    }
+                }
+            }
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            if (enemies.Length > 0)
+            {
+                foreach (var enemy in enemies)
+                {
+                    if (enemy.GetComponent<Enemy>())
+                    {
+                        if (enemy.name == "Cerdaco(Clone)")
+                        {
+                            enemy.GetComponent<Enemy>().health += 3;
+                            enemy.GetComponent<Enemy>().healthMax += 3;
                         }
                     }
                 }
@@ -728,6 +753,70 @@ public class Enemy : MonoBehaviour
         isAttack = true;
 
         for (int i = 0; i < 4; i++)
+        {
+            Instantiate(goblins, transform.position + (transform.forward * 2), transform.rotation);
+            gameFlow.enemiesLeft1++;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        canMove();
+    }
+
+    void Zone5Attack1()
+    {
+        RaycastHit[] towerInrange = Physics.SphereCastAll(transform.position, 5, transform.forward, range, LayerMask.GetMask("Tower"));
+        if (towerInrange.Length > 0)
+        {
+            anim.SetTrigger("doHit");
+            speed = 0;
+
+            foreach (var tower in towerInrange)
+            {
+                if (tower.collider.gameObject.GetComponent<Tower>())
+                {
+                    tower.collider.gameObject.GetComponent<Tower>().health -= damage;
+                }
+            }
+
+            isAttack = true;
+            Invoke("canMove", 1.15f);
+        }
+    }
+
+    void Zone6Attack1()
+    {
+        RaycastHit[] towerInrange = Physics.SphereCastAll(transform.position, 5, transform.forward, range, LayerMask.GetMask("Tower"));
+        if (towerInrange.Length > 0)
+        {
+            anim.SetTrigger("doHit");
+            speed = 0;
+
+            foreach (var tower in towerInrange)
+            {
+                if (tower.collider.gameObject.GetComponent<Tower>())
+                {
+                    tower.collider.gameObject.GetComponent<Tower>().health -= damage;
+                }
+            }
+
+            isAttack = true;
+            Invoke("canMove", 1.15f);
+        }
+    }
+
+    void Zone6Attack2()
+    {
+        StartCoroutine(SpawnDeadEnemies());
+    }
+
+    IEnumerator SpawnDeadEnemies()
+    {
+        anim.SetTrigger("doHit");
+        speed = 0;
+
+        isAttack = true;
+
+        for (int i = 0; i < 10; i++)
         {
             Instantiate(goblins, transform.position + (transform.forward * 2), transform.rotation);
             gameFlow.enemiesLeft1++;

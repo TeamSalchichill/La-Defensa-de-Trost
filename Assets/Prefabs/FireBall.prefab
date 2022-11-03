@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1723674981817254988
+--- !u!1 &1720372042068155633
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5166625851487854785}
-  - component: {fileID: 5702454923125595462}
-  - component: {fileID: 8334693654348447652}
-  - component: {fileID: 7302021829032653291}
-  - component: {fileID: 2248981310476161999}
-  m_Layer: 9
-  m_Name: MainTower
-  m_TagString: MainTower
+  - component: {fileID: 8363770466176422346}
+  - component: {fileID: 7747476782283834176}
+  - component: {fileID: 958307818787721344}
+  - component: {fileID: 833567418299562071}
+  - component: {fileID: 6994051947629074369}
+  m_Layer: 14
+  m_Name: FireBall
+  m_TagString: ImpactDamage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5166625851487854785
+--- !u!4 &8363770466176422346
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1723674981817254988}
+  m_GameObject: {fileID: 1720372042068155633}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 12, z: 5}
+  m_LocalScale: {x: 15, y: 15, z: 15}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5702454923125595462
+--- !u!33 &7747476782283834176
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1723674981817254988}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &8334693654348447652
+  m_GameObject: {fileID: 1720372042068155633}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &958307818787721344
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1723674981817254988}
+  m_GameObject: {fileID: 1720372042068155633}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 099d87c08f8e98f44a77283728f0a559, type: 2}
+  - {fileID: 2100000, guid: 0da50b0585ee6f542bff37194602601e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,43 +85,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7302021829032653291
-BoxCollider:
+--- !u!135 &833567418299562071
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1723674981817254988}
+  m_GameObject: {fileID: 1720372042068155633}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2248981310476161999
-MonoBehaviour:
+--- !u!54 &6994051947629074369
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1723674981817254988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dddfb3e699abb64393b5c84cb50ebf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zone: 6
-  health: 5000
-  activateTower: 0
-  roundsToReset: 3
-  restRounds: 0
-  blizzard: {fileID: 3522392810799222791, guid: 37fcd8999a7cced47b32782c958235fc, type: 3}
-  blizzadTime: 5
-  infection: {fileID: 3522392810799222791, guid: 1b09d6e959bc3074fa7a4eb6143aa5dc, type: 3}
-  infectationDuration: 4
-  wave: {fileID: 180749510467813654, guid: 150c3388596d6b24f9c0251596003e60, type: 3}
-  lanza: {fileID: 471775853638913419, guid: 53bda2a00e8693f4f9a63d23bc936e3d, type: 3}
-  lanzaTime: 4
-  shieldMagic: {fileID: 3522392810799222791, guid: f71b85c0f349c2645901a5b71367cd7b, type: 3}
-  shieldTime: 10
-  fireBall: {fileID: 1720372042068155633, guid: f8333c5bb81c9bc4396eeae2c630fa7a, type: 3}
+  m_GameObject: {fileID: 1720372042068155633}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
