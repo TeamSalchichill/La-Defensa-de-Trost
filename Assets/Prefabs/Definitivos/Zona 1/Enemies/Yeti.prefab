@@ -534,7 +534,7 @@ MonoBehaviour:
   enemyName: Especialito
   skull: {fileID: 1284120687039949133, guid: 1ac12f2712a02d741a31b9414da25769, type: 3}
   deadParticle: {fileID: 5107351696323173831, guid: cbb13d85c1d0b8e47a172c4a048ff446, type: 3}
-  damage: 5
+  damage: 3
   speed: 0
   normalSpeed: 2
   range: 3
@@ -577,6 +577,9 @@ MonoBehaviour:
   speedBoostRate: 10
   invokeEnemiesRate: 5
   biteAttackRate: 7
+  hitAttackRate: 7
+  invokeDeadEnemiesRate: 5
+  fireSpearAttackRate: 7
 --- !u!195 &7617415812565308208
 NavMeshAgent:
   m_ObjectHideFlags: 0

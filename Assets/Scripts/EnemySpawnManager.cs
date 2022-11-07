@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemySpawnManager : MonoBehaviour
 {
@@ -57,10 +58,13 @@ public class EnemySpawnManager : MonoBehaviour
             if (gameFlow.enemiesToSpawn3 > 0)
             {
                 gameFlow.enemiesToSpawn3--;
-                Instantiate(enemies3[chooseEnemy3], transform.position + new Vector3(0, 0, 0), Quaternion.identity);
-                Instantiate(spawnParticles, transform.position, transform.rotation);
+                GameObject instEnemy = Instantiate(enemies3[chooseEnemy3], transform.position + new Vector3(0, 0, 0), Quaternion.identity);
+                instEnemy.SetActive(true);
+
+                ParticleSystem instParticle = Instantiate(spawnParticles, transform.position, transform.rotation);
+                instParticle.transform.rotation = Quaternion.AngleAxis(270, Vector3.right);
             }
-            else if(gameFlow.enemiesToSpawn1 > 0 || gameFlow.enemiesToSpawn2 > 0)
+            else if (gameFlow.enemiesToSpawn1 > 0 || gameFlow.enemiesToSpawn2 > 0)
             {
                 int enemyType = Random.Range(0, 2);
 
@@ -71,24 +75,28 @@ public class EnemySpawnManager : MonoBehaviour
                         {
                             gameFlow.enemiesToSpawn1--;
 
-                            Instantiate(enemies1[chooseEnemy1], transform.position + new Vector3(0, 0, 0), Quaternion.identity);
+                            GameObject instEnemy = Instantiate(enemies1[chooseEnemy1], transform.position + new Vector3(0, 0, 0), Quaternion.identity);
+                            instEnemy.SetActive(true);
                         }
                         else
                         {
                             gameFlow.enemiesToSpawn2--;
-                            Instantiate(enemies2[chooseEnemy2], transform.position + new Vector3(0, 0, 0), Quaternion.identity);
+                            GameObject instEnemy = Instantiate(enemies2[chooseEnemy2], transform.position + new Vector3(0, 0, 0), Quaternion.identity);
+                            instEnemy.SetActive(true);
                         }
                         break;
                     case 1:
                         if (gameFlow.enemiesToSpawn2 > 0)
                         {
                             gameFlow.enemiesToSpawn2--;
-                            Instantiate(enemies2[chooseEnemy2], transform.position + new Vector3(0, 0, 0), Quaternion.identity);
+                            GameObject instEnemy = Instantiate(enemies2[chooseEnemy2], transform.position + new Vector3(0, 0, 0), Quaternion.identity);
+                            instEnemy.SetActive(true);
                         }
                         else
                         {
                             gameFlow.enemiesToSpawn1--;
-                            Instantiate(enemies1[chooseEnemy1], transform.position + new Vector3(0, 0, 0), Quaternion.identity);
+                            GameObject instEnemy = Instantiate(enemies1[chooseEnemy1], transform.position + new Vector3(0, 0, 0), Quaternion.identity);
+                            instEnemy.SetActive(true);
                         }
                         break;
                 }

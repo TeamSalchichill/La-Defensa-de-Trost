@@ -44,6 +44,8 @@ public class HUD_Manager : MonoBehaviour
     public TextMeshProUGUI towerDescription2;
     public TextMeshProUGUI levelUpButton;
     public TextMeshProUGUI sellButton;
+    [Space]
+    public GameObject preferencesBoard;
 
     [Header("Tower Buttons")]
     public TextMeshProUGUI[] towersButton;
@@ -122,6 +124,8 @@ public class HUD_Manager : MonoBehaviour
             activeTower.rangeArea.SetActive(false);
 
             fichaTecnica.SetActive(false);
+
+            preferencesBoard.SetActive(false);
         }
 
         if (activeTower != null)
@@ -507,5 +511,65 @@ public class HUD_Manager : MonoBehaviour
         activeTower.rangeArea.SetActive(false);
 
         fichaTecnica.SetActive(false);
+
+        preferencesBoard.SetActive(false);
+    }
+
+    public void ChangeEnemyPreference(int newPreference)
+    {
+        switch (newPreference)
+        {
+            case 0:
+                activeTower.targetPreference = Tower.TargetPreference.Near;
+                break;
+            case 1:
+                activeTower.targetPreference = Tower.TargetPreference.Far;
+                break;
+            case 2:
+                activeTower.targetPreference = Tower.TargetPreference.MoreHealh;
+                break;
+            case 3:
+                activeTower.targetPreference = Tower.TargetPreference.LessHealth;
+                break;
+            case 4:
+                activeTower.targetPreference = Tower.TargetPreference.MoreFast;
+                break;
+            case 5:
+                activeTower.targetPreference = Tower.TargetPreference.LessFast;
+                break;
+            case 6:
+                activeTower.targetPreference = Tower.TargetPreference.MoreDamage;
+                break;
+            case 7:
+                activeTower.targetPreference = Tower.TargetPreference.LessDamage;
+                break;
+            case 8:
+                activeTower.targetPreference = Tower.TargetPreference.SmallEnemies;
+                break;
+            case 9:
+                activeTower.targetPreference = Tower.TargetPreference.MediumEnemies;
+                break;
+            case 10:
+                activeTower.targetPreference = Tower.TargetPreference.Boss;
+                break;
+            case 11:
+                activeTower.targetPreference = Tower.TargetPreference.FirstEnemy;
+                break;
+            case 12:
+                activeTower.targetPreference = Tower.TargetPreference.LastEnemy;
+                break;
+        }
+
+        preferencesBoard.SetActive(false);
+    }
+
+    public void ShowPreferenceInfo()
+    {
+        preferencesBoard.SetActive(true);
+    }
+
+    public void HidePreferenceInfo()
+    {
+        preferencesBoard.SetActive(false);
     }
 }

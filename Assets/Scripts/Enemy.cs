@@ -45,14 +45,14 @@ public class Enemy : MonoBehaviour
     public ParticleSystem deadParticle;
 
     [Header("Stats")]
-    public int damage;//
+    public int damage;
     public float speed;
-    public float normalSpeed;//
-    public int range;//
+    public float normalSpeed;
+    public int range;
     public float health = 100;
-    public float healthMax = 0;//
+    public float healthMax = 0;
     public int armor = 0;
-    public int gold;//
+    public int gold;
     [Space]
     public float iceEffect = 0;
     public float igniteEffect = 0;
@@ -181,7 +181,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            transform.position += new Vector3(0, 10, 0);
+            transform.position += new Vector3(0, 5, 0);
         }
         
         waterParticles.SetActive(false);
@@ -330,7 +330,7 @@ public class Enemy : MonoBehaviour
                             else
                             {
                                 nav.destination = new Vector3(normaltowerFound.transform.position.x, 0.5f, normaltowerFound.transform.position.z);
-                                normaltowerFound.GetComponent<Tower>().health -= (damage * 3);
+                                normaltowerFound.GetComponent<Tower>().health -= (int)(damage / 2);
                                 anim.SetTrigger("doHit");
                             }
                         }

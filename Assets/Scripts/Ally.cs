@@ -27,19 +27,22 @@ public class Ally : MonoBehaviour
 
     void Update()
     {
-        if (Vector3.Distance(transform.position, target.transform.position) < 1)
+        if (target)
         {
-            if (target != null)
+            if (Vector3.Distance(transform.position, target.transform.position) < 1)
             {
-                if (canInfect)
+                if (target != null)
                 {
-                    target.GetComponent<Enemy>().infectationMode = true;
-                }
-                else
-                {
-                    target.GetComponent<Enemy>().health -= damage;
+                    if (canInfect)
+                    {
+                        target.GetComponent<Enemy>().infectationMode = true;
+                    }
+                    else
+                    {
+                        target.GetComponent<Enemy>().health -= damage;
 
-                    Destroy(gameObject, 1);
+                        Destroy(gameObject, 1);
+                    }
                 }
             }
         }

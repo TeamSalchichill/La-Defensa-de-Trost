@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class GameFlow : MonoBehaviour
@@ -87,27 +88,15 @@ public class GameFlow : MonoBehaviour
             cardsScripts[i] = cardsPos[i].GetComponent<Card>();
             cardsScripts[i].id = i;
         }
-        /*
-        enemiesPerRound1 = new int[totalRounds];
-        for (int i = 0; i < totalRounds; i++)
-        {
-            enemiesPerRound1[i] = (i * i * 1) + 1;
-        }
 
-        enemiesPerRound2 = new int[totalRounds];
-        for (int i = 0; i < totalRounds; i++)
+        for (int i = 0; i < enemies.Length; i++)
         {
-            enemiesPerRound2[i] = (i * 1) + 1;
-            //enemiesPerRound2[i] = 0;
-        }
+            GameObject instEnemy = Instantiate(enemies[i], new Vector3(0, -1000, 0), transform.rotation);
 
-        enemiesPerRound3 = new int[totalRounds];
-        for (int i = 0; i < totalRounds; i++)
-        {
-            enemiesPerRound3[i] = (i / 2) + 1;
-            enemiesPerRound3[i] = 0;
+            instEnemy.SetActive(false);
+
+            enemies[i] = instEnemy;
         }
-        */
     }
 
     void Update()
@@ -136,9 +125,6 @@ public class GameFlow : MonoBehaviour
                 {
                     cardScript.NewTowerCard(towerCardAmount, towerCardRarity);
                 }
-
-                // Enemies cards
-
             }
 
             if (round % generator.expandRate == 0)

@@ -23,7 +23,7 @@ public class Tower : MonoBehaviour
     public enum SpecialStat { None, Health, Range, ShootSpeed, TurnSpeed, HealthDamage, IceEffect, IgniteEffect, WaterEffect, AscensionEffect, BloodEffect, CrazyEffect }
     public SpecialStat specialStat;
 
-    public enum TargetPreference { Near, Far, MoreHealh, LessHealth, MoreFast, LessFast, MoreDamage, LessDamage, SmallEnemies, MediumEnemies, Boss, }
+    public enum TargetPreference { Near, Far, MoreHealh, LessHealth, MoreFast, LessFast, MoreDamage, LessDamage, SmallEnemies, MediumEnemies, Boss, FirstEnemy, LastEnemy }
     public TargetPreference targetPreference;
 
     GameFlow gameFlow;
@@ -80,7 +80,7 @@ public class Tower : MonoBehaviour
     [Space]
     GameObject[] enemies;
     [Space]
-    GameObject ally;
+    public GameObject ally;
 
     [Header("Level")]
     public int level = 1;
@@ -211,7 +211,7 @@ public class Tower : MonoBehaviour
                     InvokeRepeating("Hero3SpecialAttack", 1, 15);
                     break;
                 case Zone.Vikingos:
-                    InvokeRepeating("Hero4SpecialAttack", 1, 15);
+                    InvokeRepeating("Hero4SpecialAttack", 1, 3);
                     break;
                 case Zone.Fantasia:
                     InvokeRepeating("Hero5SpecialAttack", 1, 15);
@@ -233,7 +233,166 @@ public class Tower : MonoBehaviour
             return;
         }
 
+
+        GameObject selectedEnemy = null;
+        RaycastHit[] enemiesInRange = Physics.SphereCastAll(transform.position, range, transform.forward, 0, LayerMask.GetMask("Enemy"));
+
+        if (enemiesInRange.Length > 0)
+        {
+            float activeEnemyStat;
+
+            switch (targetPreference)
+            {
+                case TargetPreference.Near:
+                    activeEnemyStat = Mathf.Infinity;
+                    foreach (var enemy in enemiesInRange)
+                    {
+                        if (Vector3.Distance(transform.position, enemy.transform.position) < activeEnemyStat)
+                        {
+                            activeEnemyStat = Vector3.Distance(transform.position, enemy.transform.position);
+                            selectedEnemy = enemy.collider.gameObject;
+                        }
+                    }
+                    break;
+                case TargetPreference.Far:
+                    activeEnemyStat = 0;
+                    foreach (var enemy in enemiesInRange)
+                    {
+                        if (Vector3.Distance(transform.position, enemy.transform.position) > activeEnemyStat)
+                        {
+                            activeEnemyStat = Vector3.Distance(transform.position, enemy.transform.position);
+                            selectedEnemy = enemy.collider.gameObject;
+                        }
+                    }
+                    break;
+                case TargetPreference.MoreHealh:
+                    activeEnemyStat = 0;
+                    foreach (var enemy in enemiesInRange)
+                    {
+                        if (enemy.collider.GetComponent<Enemy>().health > activeEnemyStat)
+                        {
+                            activeEnemyStat = enemy.collider.GetComponent<Enemy>().health;
+                            selectedEnemy = enemy.collider.gameObject;
+                        }
+                    }
+                    break;
+                case TargetPreference.LessHealth:
+                    activeEnemyStat = Mathf.Infinity;
+                    foreach (var enemy in enemiesInRange)
+                    {
+                        if (enemy.collider.GetComponent<Enemy>().health < activeEnemyStat)
+                        {
+                            activeEnemyStat = enemy.collider.GetComponent<Enemy>().health;
+                            selectedEnemy = enemy.collider.gameObject;
+                        }
+                    }
+                    break;
+                case TargetPreference.MoreFast:
+                    activeEnemyStat = 0;
+                    foreach (var enemy in enemiesInRange)
+                    {
+                        if (enemy.collider.GetComponent<Enemy>().normalSpeed > activeEnemyStat)
+                        {
+                            activeEnemyStat = enemy.collider.GetComponent<Enemy>().normalSpeed;
+                            selectedEnemy = enemy.collider.gameObject;
+                        }
+                    }
+                    break;
+                case TargetPreference.LessFast:
+                    activeEnemyStat = Mathf.Infinity;
+                    foreach (var enemy in enemiesInRange)
+                    {
+                        if (enemy.collider.GetComponent<Enemy>().normalSpeed < activeEnemyStat)
+                        {
+                            activeEnemyStat = enemy.collider.GetComponent<Enemy>().normalSpeed;
+                            selectedEnemy = enemy.collider.gameObject;
+                        }
+                    }
+                    break;
+                case TargetPreference.MoreDamage:
+                    activeEnemyStat = 0;
+                    foreach (var enemy in enemiesInRange)
+                    {
+                        if (enemy.collider.GetComponent<Enemy>().damage > activeEnemyStat)
+                        {
+                            activeEnemyStat = enemy.collider.GetComponent<Enemy>().damage;
+                            selectedEnemy = enemy.collider.gameObject;
+                        }
+                    }
+                    break;
+                case TargetPreference.LessDamage:
+                    activeEnemyStat = Mathf.Infinity;
+                    foreach (var enemy in enemiesInRange)
+                    {
+                        if (enemy.collider.GetComponent<Enemy>().damage < activeEnemyStat)
+                        {
+                            activeEnemyStat = enemy.collider.GetComponent<Enemy>().damage;
+                            selectedEnemy = enemy.collider.gameObject;
+                        }
+                    }
+                    break;
+                case TargetPreference.SmallEnemies:
+                    foreach (var enemy in enemiesInRange)
+                    {
+                        if (enemy.collider.GetComponent<Enemy>().type == Enemy.Type.Pequeño)
+                        {
+                            selectedEnemy = enemy.collider.gameObject;
+                            break;
+                        }
+                    }
+                    break;
+                case TargetPreference.MediumEnemies:
+                    foreach (var enemy in enemiesInRange)
+                    {
+                        if (enemy.collider.GetComponent<Enemy>().type == Enemy.Type.Mediano)
+                        {
+                            selectedEnemy = enemy.collider.gameObject;
+                            break;
+                        }
+                    }
+                    break;
+                case TargetPreference.Boss:
+                    foreach (var enemy in enemiesInRange)
+                    {
+                        if (enemy.collider.GetComponent<Enemy>().type == Enemy.Type.Grande)
+                        {
+                            selectedEnemy = enemy.collider.gameObject;
+                            break;
+                        }
+                    }
+                    break;
+                case TargetPreference.FirstEnemy:
+                    activeEnemyStat = Mathf.Infinity;
+                    float enemyID1 = Mathf.Infinity;
+                    foreach (var enemy in enemiesInRange)
+                    {
+                        if (Vector3.Distance(enemy.collider.transform.position, MainTower.instance.transform.position) < activeEnemyStat && enemy.collider.GetComponent<Enemy>().mapPosId < enemyID1)
+                        {
+                            activeEnemyStat = Vector3.Distance(enemy.collider.transform.position, MainTower.instance.transform.position);
+                            enemyID1 = enemy.collider.GetComponent<Enemy>().mapPosId;
+                            selectedEnemy = enemy.collider.gameObject;
+                        }
+                    }
+                    break;
+                case TargetPreference.LastEnemy:
+                    activeEnemyStat = 0;
+                    float enemyID2 = -5;
+                    foreach (var enemy in enemiesInRange)
+                    {
+                        if (Vector3.Distance(enemy.collider.transform.position, MainTower.instance.transform.position) > activeEnemyStat && enemy.collider.GetComponent<Enemy>().mapPosId > enemyID2)
+                        {
+                            activeEnemyStat = Vector3.Distance(enemy.collider.transform.position, MainTower.instance.transform.position);
+                            enemyID2 = enemy.collider.GetComponent<Enemy>().mapPosId;
+                            selectedEnemy = enemy.collider.gameObject;
+                        }
+                    }
+                    break;
+            }
+        }
+        
+        
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        /*
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
         foreach (GameObject enemy in enemies)
@@ -245,10 +404,10 @@ public class Tower : MonoBehaviour
                 nearestEnemy = enemy;
             }
         }
-
-        if (nearestEnemy != null && shortestDistance <= range)
+        */
+        if (selectedEnemy != null)
         {
-            target = nearestEnemy.transform;
+            target = selectedEnemy.transform;
             anim.SetBool("isShoot", true);
         }
         else
@@ -256,6 +415,7 @@ public class Tower : MonoBehaviour
             target = null;
             anim.SetBool("isShoot", false);
         }
+        
     }
 
     void Update()
@@ -333,7 +493,7 @@ public class Tower : MonoBehaviour
                             anim.SetTrigger("doShoot");
                             for (int i = 0; i < numTargets; i++)
                             {
-                                if (i < enemies.Length)
+                                if (i < enemies.Length && enemies[i] != null)
                                 {
                                     MultiShoot(enemies[i].transform);
                                 }
@@ -554,8 +714,8 @@ public class Tower : MonoBehaviour
         RaycastHit[] tilesInRange = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Ground"));
         if (tilesInRange.Length > 0)
         {
-            GameObject instThunder = Instantiate(thunder, tilesInRange[0].transform.position, tilesInRange[0].transform.rotation);
-            Destroy(instThunder, 3);
+            anim.SetTrigger("doHit");
+            Instantiate(thunder, tilesInRange[Random.Range(0, tilesInRange.Length)].transform.position + new Vector3(0, 3, 0), tilesInRange[0].transform.rotation);
         }
     }
 

@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
     public GameObject impactEffect;
 
     [Header("Rebotes")]
-    public bool canRebote = false;
+    public bool canRebote;
     public int rebotes = 0;
     public int rebotesMax = 10;
 
@@ -35,6 +35,23 @@ public class Bullet : MonoBehaviour
     public void Seek(Transform _target)
     {
         target = _target;
+    }
+
+    void Start()
+    {
+        if (target == null && canRebote)
+        {
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject enemy in enemies)
+            {
+                if (enemies.Length > 0)
+                {
+                    target = enemy.transform;
+
+                    break;
+                }
+            }
+        }
     }
 
     void Update()

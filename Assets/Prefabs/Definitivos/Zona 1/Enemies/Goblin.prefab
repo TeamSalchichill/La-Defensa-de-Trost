@@ -438,6 +438,7 @@ MonoBehaviour:
   type: 0
   zone: 0
   targetPreference: 0
+  terrain: 0
   anim: {fileID: 0}
   nav: {fileID: 0}
   target: {fileID: 7508660107958944948, guid: b773a4ca56193e54883f01e48738731c, type: 3}
@@ -494,6 +495,11 @@ MonoBehaviour:
   areaAtacckRate: 10
   spearAttackRate: 5
   speedBoostRate: 10
+  invokeEnemiesRate: 5
+  biteAttackRate: 7
+  hitAttackRate: 7
+  invokeDeadEnemiesRate: 5
+  fireSpearAttackRate: 7
 --- !u!95 &2049164050637042604
 Animator:
   serializedVersion: 4
