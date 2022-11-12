@@ -759,7 +759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zone: 3
-  health: 25
+  health: 50000
   activateTower: 0
   roundsToReset: 3
   restRounds: 0
@@ -768,6 +768,11 @@ MonoBehaviour:
   infection: {fileID: 0}
   infectationDuration: 0
   wave: {fileID: 180749510467813654, guid: 150c3388596d6b24f9c0251596003e60, type: 3}
+  lanza: {fileID: 0}
+  lanzaTime: 4
+  shieldMagic: {fileID: 0}
+  shieldTime: 10
+  fireBall: {fileID: 0}
 --- !u!114 &5369838405902995448
 MonoBehaviour:
   m_ObjectHideFlags: 0

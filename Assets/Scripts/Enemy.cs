@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -247,7 +248,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            Vector3 moveVec = new Vector3(target.position.x - transform.position.x, 0, target.position.z - transform.position.z).normalized;
+            Vector3 moveVec = new Vector3(target.position.x - transform.position.x, 0 - transform.position.y, target.position.z - transform.position.z).normalized;
             transform.LookAt(transform.position + moveVec);
             transform.position += moveVec * speed * Time.deltaTime;
         }
@@ -255,6 +256,8 @@ public class Enemy : MonoBehaviour
 
     void UpdateTargetTile()
     {
+        targetSpeed = nav.speed;
+
         tileTargetDist = Vector3.Distance(transform.position, tileTargetPos);
 
         if (nav.speed == 0)
@@ -371,7 +374,41 @@ public class Enemy : MonoBehaviour
             
             if (!miniTowerFound && !towerFound)
             {
-                RaycastHit[] tilesInRange = Physics.SphereCastAll(transform.position, 20 + bugCount, transform.forward, 0, LayerMask.GetMask("Ground"));
+                if (Vector3.Distance(transform.position, tileTargetPos) > 7)
+                {
+                    return;
+                }
+                RaycastHit[] tilesInRange = Physics.SphereCastAll(transform.position, 1 + bugCount, transform.forward, 0, LayerMask.GetMask("Ground"));
+                //print(tilesInRange.Length);
+                List<GameObject> tilesInRangeList = new List<GameObject>();
+                foreach (var tile in tilesInRange)
+                {
+                    if (tile.collider.gameObject.GetComponent<MapInfo>().id < mapPosId)
+                    {
+                        tilesInRangeList.Add(tile.collider.gameObject);
+                    }
+                }
+                tilesInRangeList = tilesInRangeList.OrderBy(tile => tile.GetComponent<MapInfo>().id).ToList();
+
+                if (tilesInRangeList.Count > 0)
+                {
+                    GameObject numTilesAux = tilesInRangeList[tilesInRangeList.Count - 1];
+
+                    mapPosId = numTilesAux.GetComponent<MapInfo>().id;
+                    nav.destination = numTilesAux.transform.position;
+                    tileTargetPos = numTilesAux.gameObject.transform.position;
+                    tileTargetDist = Vector3.Distance(transform.position, tileTargetPos);
+                    targetGO = numTilesAux;
+
+                    bugCount = 0;
+                }
+                else
+                {
+                    bugCount += 1;
+                    print("F");
+                }
+                
+                /*
                 if (tilesInRange.Length > 0)
                 {
                     for (int i = 0; i < tilesInRange.Length; i++)
@@ -396,9 +433,9 @@ public class Enemy : MonoBehaviour
                 }
                 else
                 {
-                    bugCount += 5;
+                    bugCount += 1;
                 }
-
+                */
                 if (mapPosId == -1 && nav.isActiveAndEnabled && !miniTowerFound)
                 {
                     nav.destination = target.position;
