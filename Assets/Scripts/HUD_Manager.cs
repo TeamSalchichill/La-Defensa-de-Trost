@@ -171,6 +171,11 @@ public class HUD_Manager : MonoBehaviour
             sellButton.text = "Vender" + "\n" + "(" + (int)(activeTower.acumulateGold * 0.7f * healthPercent) + "€)";
         }
 
+        if (activeTower != null && activeTower.health < 0)
+        {
+            fichaTecnica.SetActive(false);
+        }
+
         if (Time.timeScale == 0)
         {
             pauseScreen.SetActive(true);

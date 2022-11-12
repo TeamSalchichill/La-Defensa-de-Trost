@@ -189,7 +189,9 @@ public class Tower : MonoBehaviour
                     rangeArea.transform.localScale = new Vector3(range * rangeAreaOriginalScale, rangeAreaOriginalScale, range * rangeAreaOriginalScale);
                     break;
                 case Generator.Zone.Fantasia:
-
+                    fireRate *= 1.2f;
+                    health = (int)(health * 1.2f);
+                    healthMax = (int)(healthMax * 1.2f);
                     break;
                 case Generator.Zone.Infierno:
 
@@ -214,7 +216,7 @@ public class Tower : MonoBehaviour
                     InvokeRepeating("Hero4SpecialAttack", 1, 3);
                     break;
                 case Zone.Fantasia:
-                    InvokeRepeating("Hero5SpecialAttack", 1, 15);
+                    InvokeRepeating("Hero5SpecialAttack", 1, 20);
                     break;
                 case Zone.Infierno:
                     InvokeRepeating("Hero6SpecialAttack", 1, 30);
@@ -467,6 +469,22 @@ public class Tower : MonoBehaviour
         }
 
         // Disparar
+        if (attackType == AttackType.Health)
+        {
+            anim.SetTrigger("doShoot");
+            RaycastHit[] towerInrange1 = Physics.SphereCastAll(transform.position, range, transform.forward, 0, LayerMask.GetMask("Tower"));
+            if (towerInrange1.Length > 0)
+            {
+                foreach (var tower in towerInrange1)
+                {
+                    if (tower.collider.gameObject.GetComponent<Tower>())
+                    {
+                        tower.collider.gameObject.GetComponent<Tower>().health += healthDamage;
+                    }
+                }
+            }
+        }
+
         if (!isBurn && fireCountdown <= 0 && target != null)
         {
             switch (attackType)
@@ -526,6 +544,7 @@ public class Tower : MonoBehaviour
                     healthDamage = 0;
                     break;
                 case AttackType.Health:
+                    /*
                     anim.SetTrigger("doShoot");
                     RaycastHit[] towerInrange1 = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Tower"));
                     if (towerInrange1.Length > 0)
@@ -535,6 +554,7 @@ public class Tower : MonoBehaviour
                             tower.collider.gameObject.GetComponent<Tower>().health += healthDamage;
                         }
                     }
+                    */
                     break;
                 case AttackType.HealthDamage:
                     anim.SetTrigger("doShoot");

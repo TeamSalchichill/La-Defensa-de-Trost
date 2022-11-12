@@ -63,6 +63,7 @@ public class Enemy : MonoBehaviour
     public float transformationEffect = 0;
     [Space]
     public bool infectationMode = false;
+    public bool canBoom = false;
 
     [Header("Stats multiplier")]
     [Range(0, 1)]
@@ -878,6 +879,17 @@ public class Enemy : MonoBehaviour
                 if (collision.collider.GetComponent<Tower>().canColocate == Tower.CanColocate.Path)
                 {
                     collision.collider.gameObject.GetComponentInParent<Tower>().health -= damage;
+
+                    if (anim != null && !isBoss)
+                    {
+                        anim.SetBool("isHit", true);
+                    }
+
+                    if (canBoom)
+                    {
+                        collision.collider.gameObject.GetComponentInParent<Tower>().health -= damage * 10;
+                        Destroy(gameObject);
+                    }
                 }
             }
         }
@@ -972,6 +984,7 @@ public class Enemy : MonoBehaviour
         {
             health -= (other.gameObject.GetComponentInParent<Tower>().healthDamage * 0.1f);
             iceEffect += ((other.gameObject.GetComponentInParent<Tower>().iceDamage * 0.1f) * iceResistence);
+            bloodEffect += ((other.gameObject.GetComponentInParent<Tower>().bloodDamage * 0.1f) * bloodResistence);
             iceEffect = Mathf.Min(iceEffect, 50);
 
             if (anim != null && !isBoss)
@@ -1004,7 +1017,8 @@ public class Enemy : MonoBehaviour
 
                     break;
                 case Generator.Zone.Fantasia:
-
+                    bloodEffect += Time.deltaTime * 5;
+                    health -= Time.deltaTime * 50;
                     break;
                 case Generator.Zone.Infierno:
 
