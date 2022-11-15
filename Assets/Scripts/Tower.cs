@@ -67,6 +67,8 @@ public class Tower : MonoBehaviour
     [Space]
     public bool sirenitaBoost = false;
     public bool shieldBoost = false;
+    [Space]
+    public int kills = 0;
 
     [Header("Attack Resources")]
     public Transform target;
@@ -194,7 +196,7 @@ public class Tower : MonoBehaviour
                     healthMax = (int)(healthMax * 1.2f);
                     break;
                 case Generator.Zone.Infierno:
-
+                    transformationDamage += 2;
                     break;
             }
         }
@@ -563,7 +565,10 @@ public class Tower : MonoBehaviour
                     {
                         foreach (var tower in towerInrange2)
                         {
-                            tower.collider.gameObject.GetComponent<Tower>().health += healthDamage;
+                            if (tower.collider.gameObject.GetComponent<Tower>())
+                            {
+                                tower.collider.gameObject.GetComponent<Tower>().health += healthDamage;
+                            }
                         }
                     }
                     RaycastHit[] enemiesInrange2 = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Enemy"));

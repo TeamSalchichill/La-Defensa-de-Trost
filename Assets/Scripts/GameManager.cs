@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public bool doSpawnEnemies = false;
+    public bool isInfiniteLevel;
 
     void Awake()
     {

@@ -134,6 +134,9 @@ public class Enemy : MonoBehaviour
     public float invokeDeadEnemiesRate = 5;
     public float fireSpearAttackRate = 7;
 
+    [Header("Boss final")]
+    public GameObject finalBoss;
+
     void Start()
     {
         gameFlow = GameFlow.instance;
@@ -468,6 +471,11 @@ public class Enemy : MonoBehaviour
 
         if (health < 0)
         {
+            if (type == Type.Grande && finalBoss != null)
+            {
+                finalBoss.GetComponent<FinalBoss>().numBossesKilled++;
+            }
+
             GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
             if (towers.Length > 0)
             {
@@ -481,6 +489,11 @@ public class Enemy : MonoBehaviour
                             {
                                 tower.GetComponent<Tower>().healthDamage++;
                             }
+                        }
+
+                        if (Vector3.Distance(transform.position, tower.transform.position) < 10)
+                        {
+                            tower.GetComponent<Tower>().kills++;
                         }
                     }
                 }
@@ -560,6 +573,14 @@ public class Enemy : MonoBehaviour
             {
                 speed = (normalSpeed * ((100 - iceEffect) / 100));
             }
+        }
+
+        if (transformationEffect >= 100)
+        {
+            GameObject instEnemy = Instantiate(gameFlow.enemies[1], transform.position + new Vector3(0, 0, 0), Quaternion.identity);
+            instEnemy.SetActive(true);
+
+            Destroy(gameObject);
         }
 
         if (terrain == Terrain.Ground)
@@ -968,7 +989,7 @@ public class Enemy : MonoBehaviour
 
                     break;
                 case Generator.Zone.Infierno:
-
+                    transformationEffect += 10;
                     break;
             }
         }

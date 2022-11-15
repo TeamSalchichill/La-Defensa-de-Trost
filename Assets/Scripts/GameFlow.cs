@@ -74,6 +74,15 @@ public class GameFlow : MonoBehaviour
     void Awake()
     {
         instance = this;
+
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            GameObject instEnemy = Instantiate(enemies[i], new Vector3(0, -1000, 0), transform.rotation);
+
+            instEnemy.SetActive(false);
+
+            enemies[i] = instEnemy;
+        }
     }
 
     void Start()
@@ -87,15 +96,6 @@ public class GameFlow : MonoBehaviour
         {
             cardsScripts[i] = cardsPos[i].GetComponent<Card>();
             cardsScripts[i].id = i;
-        }
-
-        for (int i = 0; i < enemies.Length; i++)
-        {
-            GameObject instEnemy = Instantiate(enemies[i], new Vector3(0, -1000, 0), transform.rotation);
-
-            instEnemy.SetActive(false);
-
-            enemies[i] = instEnemy;
         }
     }
 
@@ -127,7 +127,7 @@ public class GameFlow : MonoBehaviour
                 }
             }
 
-            if (round % generator.expandRate == 0)
+            if (round % generator.expandRate == 0 && round != totalRounds - 1)
             {
                 foreach (var newNode in generator.newMapNodes)
                 {
@@ -147,15 +147,20 @@ public class GameFlow : MonoBehaviour
                 hudManager.nextRoundButton.gameObject.SetActive(true);
             }
 
-            if (round >= 30)
+            if (round >= totalRounds)
             {
-                hudManager.ActivateGameOver();
+                print("Has ganado");
             }
         }
     }
 
     public void StartRound()
     {
+        if (round == totalRounds - 1 && generator.zone == Generator.Zone.Infierno)
+        {
+            generator.GenerateFinalBossMap();
+        }
+
         roundFinished = false;
         nextRound = true;
         Invoke("StopNextRound", 0.2f);

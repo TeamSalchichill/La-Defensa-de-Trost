@@ -96,6 +96,11 @@ public class Generator : MonoBehaviour
     [Range(0, 100)]
     public int probabilityFireTile = 50;
 
+    [Header("Final boss")]
+    public Vector3 lastGroundBlockPos = new Vector3(0, 0, 7);
+    public int lastGroundBlockPosX = 0;
+    public GameObject finalBoss;
+
     void Awake()
     {
         instance = this;
@@ -147,6 +152,12 @@ public class Generator : MonoBehaviour
                 {
                     GameObject instTile = Instantiate(groundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1), Quaternion.identity);
                     instTile.GetComponent<MapInfo>().id = -1;
+
+                    if ((i*2) > lastGroundBlockPosX)
+                    {
+                        lastGroundBlockPos = instTile.transform.position; ;
+                        lastGroundBlockPosX = (i * 2);
+                    }
                 }
             }
         }
@@ -304,12 +315,24 @@ public class Generator : MonoBehaviour
                             GameObject instTile = Instantiate(specialGroundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
                             instTile.GetComponent<MapInfo>().id = gameFlow.round;
                             gameFlow.idTile++;
+
+                            if ((i * 2) > lastGroundBlockPosX)
+                            {
+                                lastGroundBlockPosX = (i * 2);
+                                lastGroundBlockPos = instTile.transform.position;
+                            }
                         }
                         else
                         {
                             GameObject instTile = Instantiate(groundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
                             instTile.GetComponent<MapInfo>().id = gameFlow.round;
                             gameFlow.idTile++;
+
+                            if ((i * 2) > lastGroundBlockPosX)
+                            {
+                                lastGroundBlockPosX = (i * 2);
+                                lastGroundBlockPos = instTile.transform.position;
+                            }
                         }
 
                         map[i, j] = 1;
@@ -642,12 +665,24 @@ public class Generator : MonoBehaviour
                             GameObject instTile = Instantiate(specialGroundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
                             instTile.GetComponent<MapInfo>().id = gameFlow.round;
                             gameFlow.idTile++;
+
+                            if ((i * 2) + 1 + (int)newOffsetStart.x > lastGroundBlockPosX)
+                            {
+                                lastGroundBlockPosX = (i * 2) + 1 + (int)newOffsetStart.x;
+                                lastGroundBlockPos = instTile.transform.position;
+                            }
                         }
                         else
                         {
                             GameObject instTile = Instantiate(groundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
                             instTile.GetComponent<MapInfo>().id = gameFlow.round;
                             gameFlow.idTile++;
+
+                            if ((i * 2) + 1 + (int)newOffsetStart.x > lastGroundBlockPosX)
+                            {
+                                lastGroundBlockPosX = (i * 2) + 1 + (int)newOffsetStart.x;
+                                lastGroundBlockPos = instTile.transform.position;
+                            }
                         }
 
                         map[i, j] = 1;
@@ -661,7 +696,7 @@ public class Generator : MonoBehaviour
             PrepareNextMap(newStartSide, newStartSideOrientation, newOffsetStart, newMapPos, newIdX, newIdZ, nextSideOrientation, false);
         }
 
-        if (gameFlow.round % expandRate == 0)
+        if (gameFlow.round % expandRate == 0 && gameFlow.round != gameFlow.totalRounds - 1)
         {
             numNewMapNodes--;
             if (activateRounds && ((numNewMapNodes - repiteNewMapNode) == 0 || (numNewMapNodesLimit - numNewMapNodes == 3)))
@@ -854,6 +889,12 @@ public class Generator : MonoBehaviour
                                     GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
                                     instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                     gameFlow.idTile++;
+
+                                    if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)
+                                    {
+                                        lastGroundBlockPosX = (int)hit.collider.gameObject.transform.position.x;
+                                        lastGroundBlockPos = instTile.transform.position;
+                                    }
                                 }
 
                                 Destroy(hit.collider.gameObject);
@@ -865,6 +906,12 @@ public class Generator : MonoBehaviour
                                         GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
                                         instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                         gameFlow.idTile++;
+
+                                        if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)
+                                        {
+                                            lastGroundBlockPosX = (int)hit.collider.gameObject.transform.position.x;
+                                            lastGroundBlockPos = instTile.transform.position;
+                                        }
                                     }
 
                                     Destroy(hit.collider.gameObject);
@@ -876,6 +923,12 @@ public class Generator : MonoBehaviour
                                             GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
                                             instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                             gameFlow.idTile++;
+
+                                            if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)
+                                            {
+                                                lastGroundBlockPosX = (int)hit.collider.gameObject.transform.position.x;
+                                                lastGroundBlockPos = instTile.transform.position;
+                                            }
                                         }
 
                                         Destroy(hit.collider.gameObject);
@@ -887,6 +940,12 @@ public class Generator : MonoBehaviour
                                                 GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
                                                 instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                                 gameFlow.idTile++;
+
+                                                if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)
+                                                {
+                                                    lastGroundBlockPosX = (int)hit.collider.gameObject.transform.position.x;
+                                                    lastGroundBlockPos = instTile.transform.position;
+                                                }
                                             }
 
                                             Destroy(hit.collider.gameObject);
@@ -984,6 +1043,12 @@ public class Generator : MonoBehaviour
                                             GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
                                             instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                             gameFlow.idTile++;
+
+                                            if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)
+                                            {
+                                                lastGroundBlockPosX = (int)hit.collider.gameObject.transform.position.x;
+                                                lastGroundBlockPos = instTile.transform.position;
+                                            }
                                         }
 
                                         Destroy(hit.collider.gameObject);
@@ -995,6 +1060,12 @@ public class Generator : MonoBehaviour
                                                 GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
                                                 instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                                 gameFlow.idTile++;
+
+                                                if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)
+                                                {
+                                                    lastGroundBlockPosX = (int)hit.collider.gameObject.transform.position.x;
+                                                    lastGroundBlockPos = instTile.transform.position;
+                                                }
                                             }
 
                                             Destroy(hit.collider.gameObject);
@@ -1092,6 +1163,12 @@ public class Generator : MonoBehaviour
                                             GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
                                             instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                             gameFlow.idTile++;
+
+                                            if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)
+                                            {
+                                                lastGroundBlockPosX = (int)hit.collider.gameObject.transform.position.x;
+                                                lastGroundBlockPos = instTile.transform.position;
+                                            }
                                         }
 
                                         Destroy(hit.collider.gameObject);
@@ -1103,6 +1180,12 @@ public class Generator : MonoBehaviour
                                                 GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
                                                 instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                                 gameFlow.idTile++;
+
+                                                if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)
+                                                {
+                                                    lastGroundBlockPosX = (int)hit.collider.gameObject.transform.position.x;
+                                                    lastGroundBlockPos = instTile.transform.position;
+                                                }
                                             }
 
                                             Destroy(hit.collider.gameObject);
@@ -1200,6 +1283,12 @@ public class Generator : MonoBehaviour
                                             GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
                                             instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                             gameFlow.idTile++;
+
+                                            if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)
+                                            {
+                                                lastGroundBlockPosX = (int)hit.collider.gameObject.transform.position.x;
+                                                lastGroundBlockPos = instTile.transform.position;
+                                            }
                                         }
 
                                         Destroy(hit.collider.gameObject);
@@ -1211,6 +1300,12 @@ public class Generator : MonoBehaviour
                                                 GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
                                                 instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                                 gameFlow.idTile++;
+
+                                                if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)
+                                                {
+                                                    lastGroundBlockPosX = (int)hit.collider.gameObject.transform.position.x;
+                                                    lastGroundBlockPos = instTile.transform.position;
+                                                }
                                             }
 
                                             Destroy(hit.collider.gameObject);
@@ -1243,6 +1338,18 @@ public class Generator : MonoBehaviour
                     }
                 }
                 break;
+        }
+    }
+
+    public void GenerateFinalBossMap()
+    {
+        GameObject finalBossInst = Instantiate(finalBoss, lastGroundBlockPos, transform.rotation);
+
+        RaycastHit[] terrainInRange = Physics.SphereCastAll(finalBossInst.transform.position, 10, transform.forward, 0, LayerMask.GetMask("Grass"));
+        foreach (var terrainTile in terrainInRange)
+        {
+            Instantiate(groundBlock, terrainTile.transform.position + new Vector3(0, -0.5f, 0), transform.rotation);
+            Destroy(terrainTile.collider.gameObject);
         }
     }
 }

@@ -15,6 +15,8 @@ public class SoundManager : MonoBehaviour
         instance = this;
 
         controlAudio = GetComponent<AudioSource>();
+
+        //SoundManager.instance.SoundSelection(0, 0.5f);
     }
 
     public void SoundSelection(int index, float volume)

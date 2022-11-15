@@ -4,6 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+public struct BlockCards
+{
+    public string Tower;
+    public int Atributte;
+}
+
 public class Card : MonoBehaviour
 {
     ColocatorManager colocatorManager;
@@ -12,6 +18,8 @@ public class Card : MonoBehaviour
 
     public enum Rarity { Normal, Rare, Legendary }
     public Rarity rarity;
+
+    List<BlockCards> blockCards = new List<BlockCards>();
 
     public int numCards = 0;
 
@@ -22,6 +30,7 @@ public class Card : MonoBehaviour
     public Button button;
     public TextMeshProUGUI text;
     public Image blockImage;
+    public Sprite[] tiersBorders;
 
     int towerSelectedId;
     int enemySelectedId;
@@ -42,10 +51,14 @@ public class Card : MonoBehaviour
         id++;
 
         gameObject.SetActive(false);
+
+        //AddBlockCards();
     }
 
     public void NewTowerCard(int _numCards, int _rarity)
     {
+        border.sprite = tiersBorders[_rarity];
+
         if (id <= _numCards)
         {
             blockImage.gameObject.SetActive(false);
@@ -1031,5 +1044,13 @@ public class Card : MonoBehaviour
     public void SelectEnemyCard()
     {
 
+    }
+
+    void AddBlockCards()
+    {
+        BlockCards block0 = new BlockCards();
+        block0.Tower = "SnowMan";
+        block0.Atributte = 1;
+        blockCards.Add(block0);
     }
 }

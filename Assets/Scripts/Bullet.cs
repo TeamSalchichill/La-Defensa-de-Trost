@@ -76,6 +76,12 @@ public class Bullet : MonoBehaviour
 
     void HitTarget()
     {
+        if (!target.gameObject.GetComponent<Enemy>())
+        {
+            target.gameObject.GetComponent<FinalBoss>().health -= healthDamage;
+            return;
+        }
+
         GameObject efffectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(efffectIns, 2f);
 

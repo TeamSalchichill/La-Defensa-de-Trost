@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4128114146202209168}
   - component: {fileID: 7472725883869028254}
+  - component: {fileID: 3062895949080421903}
   m_Layer: 14
   m_Name: LanzaOdin
   m_TagString: ImpactDamage
@@ -47,6 +48,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &3062895949080421903
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3603391374874218794}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6, y: 6.0000005, z: 12}
+  m_Center: {x: 0, y: 3, z: 0}
 --- !u!1 &5731985826665392627
 GameObject:
   m_ObjectHideFlags: 0
