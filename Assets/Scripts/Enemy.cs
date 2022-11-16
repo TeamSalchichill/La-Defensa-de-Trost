@@ -126,13 +126,16 @@ public class Enemy : MonoBehaviour
     [Header("Boss - Valhalla")]
     public float invokeEnemiesRate = 5;
     public float biteAttackRate = 7;
+    public GameObject dogs;
 
     [Header("Boss - Forest")]
     public float hitAttackRate = 7;
+    public int numEnemiesDead = 0;
 
     [Header("Boss - Hell")]
     public float invokeDeadEnemiesRate = 5;
     public float fireSpearAttackRate = 7;
+    public GameObject fireBlins;
 
     [Header("Boss final")]
     public GameObject finalBoss;
@@ -235,6 +238,7 @@ public class Enemy : MonoBehaviour
                     break;
                 case Zone.Fantasia:
                     InvokeRepeating("Zone5Attack1", 6, hitAttackRate);
+                    InvokeRepeating("Zone5Attack2", 8, hitAttackRate);
                     break;
                 case Zone.Infierno:
                     InvokeRepeating("Zone6Attack1", 1, fireSpearAttackRate);
@@ -249,6 +253,7 @@ public class Enemy : MonoBehaviour
         if (terrain == Terrain.Ground)
         {
             InvokeRepeating("UpdateTargetTile", 0.1f, 0.15f);
+            nav.destination = target.transform.position;
         }
         else
         {
@@ -487,7 +492,7 @@ public class Enemy : MonoBehaviour
                         {
                             if (Vector3.Distance(transform.position, tower.gameObject.transform.position) <= tower.GetComponent<Tower>().range)
                             {
-                                tower.GetComponent<Tower>().healthDamage++;
+                                tower.GetComponent<Tower>().healthDamage += 5;
                             }
                         }
 
@@ -505,10 +510,9 @@ public class Enemy : MonoBehaviour
                 {
                     if (enemy.GetComponent<Enemy>())
                     {
-                        if (enemy.name == "Cerdaco(Clone)")
+                        if (enemy.GetComponent<Enemy>().isBoss && enemy.GetComponent<Enemy>().zone == Enemy.Zone.Fantasia)
                         {
-                            enemy.GetComponent<Enemy>().health += 3;
-                            enemy.GetComponent<Enemy>().healthMax += 3;
+                            enemy.GetComponent<Enemy>().numEnemiesDead++;
                         }
                     }
                 }
@@ -813,7 +817,7 @@ public class Enemy : MonoBehaviour
 
         for (int i = 0; i < 4; i++)
         {
-            Instantiate(goblins, transform.position + (transform.forward * 2), transform.rotation);
+            Instantiate(dogs, transform.position + (transform.forward * 2), transform.rotation);
             gameFlow.enemiesLeft1++;
             yield return new WaitForSeconds(0.1f);
         }
@@ -840,6 +844,17 @@ public class Enemy : MonoBehaviour
             isAttack = true;
             Invoke("canMove", 1.15f);
         }
+    }
+    void Zone5Attack2()
+    {
+        anim.SetTrigger("doInvoke");
+        speed = 0;
+
+        health += (numEnemiesDead * 3);
+        numEnemiesDead = 0;
+
+        isAttack = true;
+        Invoke("canMove", 1.15f);
     }
 
     void Zone6Attack1()
@@ -877,7 +892,7 @@ public class Enemy : MonoBehaviour
 
         for (int i = 0; i < 10; i++)
         {
-            Instantiate(goblins, transform.position + (transform.forward * 2), transform.rotation);
+            Instantiate(fireBlins, transform.position + (transform.forward * 2), transform.rotation);
             gameFlow.enemiesLeft1++;
             yield return new WaitForSeconds(0.1f);
         }

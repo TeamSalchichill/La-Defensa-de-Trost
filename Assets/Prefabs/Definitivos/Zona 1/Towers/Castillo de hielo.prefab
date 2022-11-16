@@ -140,6 +140,11 @@ MonoBehaviour:
   infection: {fileID: 0}
   infectationDuration: 0
   wave: {fileID: 0}
+  lanza: {fileID: 0}
+  lanzaTime: 4
+  shieldMagic: {fileID: 0}
+  shieldTime: 10
+  fireBall: {fileID: 0}
 --- !u!114 &-5126445362107006203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,7 +172,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 7, z: 14}
+  m_Size: {x: 14, y: 12, z: 14}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4558818910069832264
 GameObject:

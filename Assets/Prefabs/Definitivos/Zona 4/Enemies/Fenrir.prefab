@@ -1337,6 +1337,7 @@ MonoBehaviour:
   bloodEffect: 0
   transformationEffect: 0
   infectationMode: 0
+  canBoom: 0
   healthResistence: 0
   armorResistence: 0
   iceResistence: 0.25
@@ -1365,9 +1366,13 @@ MonoBehaviour:
   speedBoostRate: 10
   invokeEnemiesRate: 5
   biteAttackRate: 7
+  dogs: {fileID: 4444953641169778679, guid: 30337c6bd9931f94a83e6c3a9b3ffa7f, type: 3}
   hitAttackRate: 7
+  numEnemiesDead: 0
   invokeDeadEnemiesRate: 5
   fireSpearAttackRate: 7
+  fireBlins: {fileID: 0}
+  finalBoss: {fileID: 0}
 --- !u!195 &5270108022438372209
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -29,6 +29,13 @@ public class Ally : MonoBehaviour
     {
         if (target)
         {
+            if (moveType == MoveType.Air)
+            {
+                Vector3 moveVec = (target.transform.position - transform.position).normalized;
+                transform.LookAt(transform.position + moveVec);
+                transform.position += moveVec * 5 * Time.deltaTime;
+            }
+
             if (Vector3.Distance(transform.position, target.transform.position) < 1)
             {
                 if (target != null)
@@ -36,6 +43,8 @@ public class Ally : MonoBehaviour
                     if (canInfect)
                     {
                         target.GetComponent<Enemy>().infectationMode = true;
+
+                        Destroy(gameObject, 1);
                     }
                     else
                     {

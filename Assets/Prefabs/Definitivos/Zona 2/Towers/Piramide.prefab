@@ -380,7 +380,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 18.65, y: 8, z: 18.65}
+  m_Size: {x: 18.65, y: 12, z: 18.65}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &1959979757982691978
 Animator:
@@ -440,6 +440,11 @@ MonoBehaviour:
   infection: {fileID: 3522392810799222791, guid: 1b09d6e959bc3074fa7a4eb6143aa5dc, type: 3}
   infectationDuration: 8
   wave: {fileID: 0}
+  lanza: {fileID: 0}
+  lanzaTime: 4
+  shieldMagic: {fileID: 0}
+  shieldTime: 10
+  fireBall: {fileID: 0}
 --- !u!1 &2188092371995577733
 GameObject:
   m_ObjectHideFlags: 0

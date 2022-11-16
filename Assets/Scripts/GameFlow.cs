@@ -101,7 +101,7 @@ public class GameFlow : MonoBehaviour
 
     void Update()
     {
-        if (enemiesLeft1 <= 0 && enemiesLeft2 <= 0  && enemiesLeft3 <= 0 && !roundFinished)
+        if ((enemiesLeft1 == 0 && enemiesLeft2 == 0  && enemiesLeft3 == 0 && !roundFinished) || enemiesLeft1 < 0 || enemiesLeft2 < 0 || enemiesLeft3 < 0)
         {
             roundFinished = true;
             specialCoins += newSpecialCoinsPerRound;

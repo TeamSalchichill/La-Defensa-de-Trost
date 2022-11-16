@@ -221,7 +221,7 @@ public class Tower : MonoBehaviour
                     InvokeRepeating("Hero5SpecialAttack", 1, 20);
                     break;
                 case Zone.Infierno:
-                    InvokeRepeating("Hero6SpecialAttack", 1, 30);
+                    InvokeRepeating("Hero6SpecialAttack", 1, 20);
                     break;
             }
         }
