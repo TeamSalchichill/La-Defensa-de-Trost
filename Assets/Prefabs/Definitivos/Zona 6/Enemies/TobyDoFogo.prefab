@@ -125,7 +125,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6868350025523587292, guid: b5260c6f25169f1449baa0a4866d3f2c, type: 3}
+  - {fileID: 2100000, guid: 4601dcd69ac29a643bce729dd0adf5b9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -308,7 +308,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7816324940044139596, guid: b5260c6f25169f1449baa0a4866d3f2c, type: 3}
+  - {fileID: 2100000, guid: af3dec3f796e3bb4abc971e324fea73a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -423,7 +423,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6868350025523587292, guid: b5260c6f25169f1449baa0a4866d3f2c, type: 3}
+  - {fileID: 2100000, guid: 5292df8eeb0d26c4081a0e0e4113721e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -631,9 +631,12 @@ MonoBehaviour:
   speedBoostRate: 10
   invokeEnemiesRate: 5
   biteAttackRate: 7
+  dogs: {fileID: 0}
   hitAttackRate: 7
+  numEnemiesDead: 0
   invokeDeadEnemiesRate: 5
   fireSpearAttackRate: 7
+  fireBlins: {fileID: 0}
   finalBoss: {fileID: 0}
 --- !u!1 &7705961873401624485
 GameObject:
@@ -779,7 +782,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6868350025523587292, guid: b5260c6f25169f1449baa0a4866d3f2c, type: 3}
+  - {fileID: 2100000, guid: 89e4972c2a5be244297abed340596668, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -862,7 +865,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6868350025523587292, guid: b5260c6f25169f1449baa0a4866d3f2c, type: 3}
+  - {fileID: 2100000, guid: d64d672c7afbd6041b0cf3fa993b0517, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
