@@ -19,7 +19,7 @@ public class Card : MonoBehaviour
     public enum Rarity { Normal, Rare, Legendary }
     public Rarity rarity;
 
-    List<BlockCards> blockCards = new List<BlockCards>();
+    List<BlockCards> blockedCards = new List<BlockCards>();
 
     public int numCards = 0;
 
@@ -102,7 +102,21 @@ public class Card : MonoBehaviour
         {
             towerSelectedId = Random.Range(1, colocatorManager.towers.Length);
 
-            statSelected = Random.Range(0, 11);
+            bool goodChoose = false;
+
+            while (!goodChoose)
+            {
+                statSelected = Random.Range(0, 11);
+
+                BlockCards block = new BlockCards();
+                block.Tower = colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName;
+                block.Atributte = statSelected;
+
+                if (!blockedCards.Contains(block))
+                {
+                    goodChoose = true;
+                }
+            }
         }
         
         switch (statSelected)
@@ -1051,6 +1065,6 @@ public class Card : MonoBehaviour
         BlockCards block0 = new BlockCards();
         block0.Tower = "SnowMan";
         block0.Atributte = 1;
-        blockCards.Add(block0);
+        blockedCards.Add(block0);
     }
 }
