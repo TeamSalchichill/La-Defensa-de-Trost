@@ -676,11 +676,11 @@ MonoBehaviour:
   specialTile: 0
   burnTile: 0
   spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
-  healthDamage: 250
+  healthDamage: 150
   armorDamage: 0
   range: 15
   rangeAreaOriginalScale: 0
-  fireRate: 2
+  fireRate: 1
   turnSpeed: 10
   health: 3500
   healthMax: 0
@@ -688,6 +688,7 @@ MonoBehaviour:
   armorMax: 0
   sirenitaBoost: 0
   shieldBoost: 0
+  kills: 0
   target: {fileID: 0}
   numTargets: 1
   bullet: {fileID: 7269004132365004512, guid: 52925abc579cd2d49ada39a17f85461f, type: 3}

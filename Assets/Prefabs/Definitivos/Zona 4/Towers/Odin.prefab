@@ -809,7 +809,7 @@ MonoBehaviour:
   armorDamage: 0
   range: 7
   rangeAreaOriginalScale: 0
-  fireRate: 2
+  fireRate: 0.5
   turnSpeed: 10
   health: 550
   healthMax: 0
@@ -817,6 +817,7 @@ MonoBehaviour:
   armorMax: 0
   sirenitaBoost: 0
   shieldBoost: 0
+  kills: 0
   target: {fileID: 0}
   numTargets: 1
   bullet: {fileID: 0}

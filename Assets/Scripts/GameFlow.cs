@@ -51,6 +51,8 @@ public class GameFlow : MonoBehaviour
     public int[] enemiesPerRound2;
     public int[] enemiesPerRound3;
 
+    public GameObject skeleton;
+
     public int enemiesToSpawn1 = 0;
     public int enemiesLeft1 = 0;
     public int enemiesToSpawn2 = 0;
@@ -101,7 +103,7 @@ public class GameFlow : MonoBehaviour
 
     void Update()
     {
-        if ((enemiesLeft1 == 0 && enemiesLeft2 == 0  && enemiesLeft3 == 0 && !roundFinished) || enemiesLeft1 < 0 || enemiesLeft2 < 0 || enemiesLeft3 < 0)
+        if ((enemiesLeft1 == 0 && enemiesLeft2 == 0  && enemiesLeft3 == 0 && !roundFinished))
         {
             roundFinished = true;
             specialCoins += newSpecialCoinsPerRound;
@@ -129,12 +131,19 @@ public class GameFlow : MonoBehaviour
 
             if (round % generator.expandRate == 0 && round != totalRounds - 1)
             {
-                foreach (var newNode in generator.newMapNodes)
+                if (generator.newMapNodes.Count > 0)
                 {
-                    if (newNode != null)
+                    foreach (var newNode in generator.newMapNodes)
                     {
-                        newNode.SetActive(true);
+                        if (newNode != null)
+                        {
+                            newNode.SetActive(true);
+                        }
                     }
+                }
+                else
+                {
+                    hudManager.nextRoundButton.gameObject.SetActive(true);
                 }
             }
             else

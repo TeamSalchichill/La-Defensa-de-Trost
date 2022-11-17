@@ -364,8 +364,9 @@ public class HUD_Manager : MonoBehaviour
                 activeTower.levelUpPrice = activeTower.level5Price;
                 activeTower.priceLogo = "$";
             }
-            
 
+
+            activeTower.numTargets++;
             activeTower.healthMax = (int)(activeTower.healthMax * activeTower.levelMultiplier);
             activeTower.health = (int)(activeTower.health * activeTower.levelMultiplier);
             activeTower.armorMax = (int)(activeTower.armorMax * activeTower.levelMultiplier);

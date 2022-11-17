@@ -191,6 +191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6785785616017886179}
   - component: {fileID: 6054716782015391784}
+  - component: {fileID: 8176619865907048381}
   m_Layer: 0
   m_Name: Mosquito
   m_TagString: Untagged
@@ -231,8 +232,28 @@ MonoBehaviour:
   nav: {fileID: 0}
   target: {fileID: 0}
   damage: 25
-  range: 10
+  range: 1000
   canInfect: 1
+--- !u!95 &8176619865907048381
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6151957481766768985}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 888031e1c7df5cb418f617e7aa551df5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6218075820774707104
 GameObject:
   m_ObjectHideFlags: 0

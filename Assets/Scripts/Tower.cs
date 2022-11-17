@@ -206,7 +206,7 @@ public class Tower : MonoBehaviour
             switch (zone)
             {
                 case Zone.Hielo:
-                    InvokeRepeating("Hero1SpecialAttack", 1, 20);
+                    InvokeRepeating("Hero1SpecialAttack", 1, 15);
                     break;
                 case Zone.Desierto:
                     InvokeRepeating("Hero2SpecialAttack", 1, 15);
@@ -215,13 +215,13 @@ public class Tower : MonoBehaviour
                     InvokeRepeating("Hero3SpecialAttack", 1, 15);
                     break;
                 case Zone.Vikingos:
-                    InvokeRepeating("Hero4SpecialAttack", 1, 3);
+                    InvokeRepeating("Hero4SpecialAttack", 1, 15);
                     break;
                 case Zone.Fantasia:
-                    InvokeRepeating("Hero5SpecialAttack", 1, 20);
+                    InvokeRepeating("Hero5SpecialAttack", 1, 15);
                     break;
                 case Zone.Infierno:
-                    InvokeRepeating("Hero6SpecialAttack", 1, 20);
+                    InvokeRepeating("Hero6SpecialAttack", 1, 15);
                     break;
             }
         }
@@ -584,10 +584,13 @@ public class Tower : MonoBehaviour
                     }
                     break;
                 case AttackType.Invoke:
+                    RaycastHit[] enemiesInrange3 = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Enemy"));
+
                     RaycastHit[] tilesInRange = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Ground"));
-                    if (tilesInRange.Length > 0)
+                    if (tilesInRange.Length > 0 && enemiesInrange3.Length > 0)
                     {
-                        Instantiate(ally, tilesInRange[0].transform.position, tilesInRange[0].transform.rotation);
+                        GameObject allyInst = Instantiate(ally, tilesInRange[0].transform.position, tilesInRange[0].transform.rotation);
+                        allyInst.GetComponent<Ally>().damage = healthDamage;
                     }
                     break;
             }
@@ -782,7 +785,8 @@ public class Tower : MonoBehaviour
 
         for (int i = 0; i < 4; i++)
         {
-            Instantiate(bullet, bulletPos.transform.position, transform.rotation);
+            GameObject allyInst = Instantiate(bullet, bulletPos.transform.position, transform.rotation);
+            allyInst.GetComponent<Ally>().damage = healthDamage / 10;
             yield return new WaitForSeconds(0.1f);
         }
     }
