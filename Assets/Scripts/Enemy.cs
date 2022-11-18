@@ -284,7 +284,11 @@ public class Enemy : MonoBehaviour
         if (terrain == Terrain.Ground)
         {
             InvokeRepeating("UpdateTargetTile", 0.15f, 2.0f);
-            nav.destination = target.transform.position;
+
+            if (nav.isActiveAndEnabled)
+            {
+                nav.destination = target.transform.position;
+            }
         }
         else
         {
