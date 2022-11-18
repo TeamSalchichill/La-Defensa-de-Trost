@@ -272,6 +272,7 @@ public class GameFlow : MonoBehaviour
         }
 
         round++;
+        MainTower.instance.restRounds--;
     }
 
     void StopNextRound()

@@ -11,10 +11,10 @@ public class Bullet : MonoBehaviour
     public AreaDamage areaDamage;
 
     private Transform target;
-    /*
+    
     public GameObject[] impactEffects;
     public GameObject impactEffect;
-    */
+    
     [Header("Rebotes")]
     public bool canRebote;
     public int rebotes = 0;
@@ -86,25 +86,24 @@ public class Bullet : MonoBehaviour
         if (target != null)
         {
             Enemy.Type enemyType = target.gameObject.GetComponent<Enemy>().type;
+
+            switch (enemyType)
+            {
+                case Enemy.Type.Pequeño:
+                    impactEffect = impactEffects[0];
+                    break;
+                case Enemy.Type.Mediano:
+                    impactEffect = impactEffects[1];
+                    break;
+                case Enemy.Type.Grande:
+                    impactEffect = impactEffects[2];
+                    break;
+            }
+
+            GameObject efffectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+            Destroy(efffectIns, 2f);
         }
         
-        /*
-        switch (enemyType)
-        {
-            case Enemy.Type.Pequeño:
-                impactEffect = impactEffects[0];
-                break;
-            case Enemy.Type.Mediano:
-                impactEffect = impactEffects[1];
-                break;
-            case Enemy.Type.Grande:
-                impactEffect = impactEffects[2];
-                break;
-        }
-
-        GameObject efffectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
-        Destroy(efffectIns, 2f);
-        */
         switch (type)
         {
             case Type.Tower:

@@ -454,8 +454,8 @@ public class Card : MonoBehaviour
                             break;
                         case Rarity.Rare:
                             float porcetaje = 1 + (incrementAmount * 0.01f);
-                            int newHealth = (int)(colocatorManager.towers[towerSelectedId].GetComponent<Tower>().health * porcetaje);
-
+                            //int newHealth = (int)(colocatorManager.towers[towerSelectedId].GetComponent<Tower>().health * porcetaje);
+                            int newHealth = (int)Mathf.Ceil((colocatorManager.towers[towerSelectedId].GetComponent<Tower>().health * porcetaje));
                             foreach (var towerSelected in allTowersSelected)
                             {
                                 towerSelected.health = newHealth;
@@ -482,8 +482,8 @@ public class Card : MonoBehaviour
                             break;
                         case Rarity.Rare:
                             float porcetaje = 1 + (incrementAmount * 0.01f);
-                            int newHealth = (int)(colocatorManager.towers[towerSelectedId].GetComponent<Tower>().range * porcetaje);
-
+                            //int newHealth = (int)(colocatorManager.towers[towerSelectedId].GetComponent<Tower>().range * porcetaje);
+                            int newHealth = (int)Mathf.Ceil((colocatorManager.towers[towerSelectedId].GetComponent<Tower>().range * porcetaje));
                             foreach (var towerSelected in allTowersSelected)
                             {
                                 towerSelected.range = newHealth;
@@ -509,8 +509,8 @@ public class Card : MonoBehaviour
                             break;
                         case Rarity.Rare:
                             float porcetaje = 1 + (incrementAmount * 0.01f);
-                            int newHealth = (int)(colocatorManager.towers[towerSelectedId].GetComponent<Tower>().fireRate * porcetaje);
-
+                            //int newHealth = (int)(colocatorManager.towers[towerSelectedId].GetComponent<Tower>().fireRate * porcetaje);
+                            int newHealth = (int)Mathf.Ceil((colocatorManager.towers[towerSelectedId].GetComponent<Tower>().fireRate * porcetaje));
                             foreach (var towerSelected in allTowersSelected)
                             {
                                 towerSelected.fireRate = newHealth;
@@ -536,8 +536,8 @@ public class Card : MonoBehaviour
                             break;
                         case Rarity.Rare:
                             float porcetaje = 1 + (incrementAmount * 0.01f);
-                            int newHealth = (int)(colocatorManager.towers[towerSelectedId].GetComponent<Tower>().turnSpeed * porcetaje);
-
+                            //int newHealth = (int)(colocatorManager.towers[towerSelectedId].GetComponent<Tower>().turnSpeed * porcetaje);
+                            int newHealth = (int)Mathf.Ceil((colocatorManager.towers[towerSelectedId].GetComponent<Tower>().turnSpeed * porcetaje));
                             foreach (var towerSelected in allTowersSelected)
                             {
                                 towerSelected.turnSpeed = newHealth;
@@ -563,8 +563,8 @@ public class Card : MonoBehaviour
                             break;
                         case Rarity.Rare:
                             float porcetaje = 1 + (incrementAmount * 0.01f);
-                            int newHealth = (int)(colocatorManager.towers[towerSelectedId].GetComponent<Tower>().healthDamage * porcetaje);
-
+                            //int newHealth = (int)(colocatorManager.towers[towerSelectedId].GetComponent<Tower>().healthDamage * porcetaje);
+                            int newHealth = (int)Mathf.Ceil((colocatorManager.towers[towerSelectedId].GetComponent<Tower>().turnSpeed * porcetaje));
                             foreach (var towerSelected in allTowersSelected)
                             {
                                 towerSelected.healthDamage = newHealth;
