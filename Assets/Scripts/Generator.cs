@@ -707,7 +707,7 @@ public class Generator : MonoBehaviour
         if ((gameFlow.round % expandRate == 0 || gameFlow.round == 1) && gameFlow.round != gameFlow.totalRounds - 1)
         {
             numNewMapNodes--;
-            if (activateRounds && ((numNewMapNodes - repiteNewMapNode) == 0 || (numNewMapNodesLimit - numNewMapNodes == 3)))
+            if (activateRounds && ((numNewMapNodes - repiteNewMapNode) == 0 || (numNewMapNodesLimit - numNewMapNodes == 2)))
             {
                 Invoke("CalculateNewMapNodes", 0.2f);
 
