@@ -135,8 +135,8 @@ public class Tower : MonoBehaviour
     public int areaCuration = 50;
     
     [Header("Particles")]
-    //public GameObject curationParticle;
-    //public GameObject destroyParticle;
+    public GameObject curationParticle;
+    public GameObject destroyParticle;
     public GameObject areaDamageParticle;
     
     void Start()
@@ -180,12 +180,12 @@ public class Tower : MonoBehaviour
                     waterDamage *= 3;
                     break;
                 case Generator.Zone.Valhalla:
-                    healthDamage *= (int)1.5f;
-                    range *= (int)1.5f;
-                    fireRate *= (int)1.5f;
-                    turnSpeed *= (int)1.5f;
-                    health *= (int)1.5f;
-                    healthMax *= (int)1.5f;
+                    healthDamage *= (int)2;
+                    range *= (int)2;
+                    fireRate *= (int)2;
+                    turnSpeed *= (int)2;
+                    health *= (int)2;
+                    healthMax *= (int)2;
                     levelMultiplier += 0.1f;
                     levelMultiplierSpecialStat += 0.2f;
                     iceDamage += 3;
@@ -430,10 +430,10 @@ public class Tower : MonoBehaviour
     {
         // Comprobar vida
         if (health <= 0)
-        {/*
+        {
             GameObject instParticle = Instantiate(destroyParticle, transform.position, transform.rotation);
             instParticle.transform.localScale *= range;
-            */
+            
             Destroy(gameObject);
         }
 
@@ -491,10 +491,10 @@ public class Tower : MonoBehaviour
                         tower.collider.gameObject.GetComponent<Tower>().health += healthDamage;
                     }
                 }
-                /*
+                
                 GameObject instParticle = Instantiate(curationParticle, transform.position, transform.rotation);
                 instParticle.transform.localScale *= range;
-                Destroy(instParticle, 3);*/
+                Destroy(instParticle, 3);
             }
             fireCountdown = 1f / fireRate;
         }
@@ -591,10 +591,10 @@ public class Tower : MonoBehaviour
                                 tower.collider.gameObject.GetComponent<Tower>().health += healthDamage;
                             }
                         }
-                        /*
+                        
                         GameObject instParticle = Instantiate(curationParticle, transform.position, transform.rotation);
                         instParticle.transform.localScale *= range;
-                        Destroy(instParticle, 3);*/
+                        Destroy(instParticle, 3);
                     }
                     RaycastHit[] enemiesInrange2 = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Enemy"));
                     if (enemiesInrange2.Length > 0)
@@ -606,6 +606,10 @@ public class Tower : MonoBehaviour
                                 enemy.collider.gameObject.GetComponent<Enemy>().health -= (int)(healthDamage / 2);
                             }
                         }
+
+                        GameObject instParticle = Instantiate(areaDamageParticle, transform.position, transform.rotation);
+                        instParticle.transform.localScale *= range;
+                        Destroy(instParticle, 3);
                     }
                     break;
                 case AttackType.Invoke:
@@ -738,10 +742,10 @@ public class Tower : MonoBehaviour
                     tower.collider.gameObject.GetComponent<Tower>().health = Mathf.Min(tower.collider.gameObject.GetComponent<Tower>().health, tower.collider.gameObject.GetComponent<Tower>().healthMax);
                 }
             }
-            /*
+            
             GameObject instParticle = Instantiate(curationParticle, transform.position, transform.rotation);
             instParticle.transform.localScale *= range;
-            Destroy(instParticle, 3);*/
+            Destroy(instParticle, 3);
         }
     }
 
@@ -789,10 +793,10 @@ public class Tower : MonoBehaviour
                     tower.GetComponent<Tower>().FairyEffectOn();
                 }
             }
-            /*
+            
             GameObject instParticle = Instantiate(curationParticle, transform.position, transform.rotation);
             instParticle.transform.localScale *= range;
-            Destroy(instParticle, 3);*/
+            Destroy(instParticle, 3);
         }
     }
 
