@@ -3354,6 +3354,8 @@ MonoBehaviour:
   towerPotionIcon: {fileID: 1828790988}
   towerPotionButtonColorHover: {r: 0, g: 0, b: 0, a: 0.5882353}
   towerPotionIconColorHover: {r: 0, g: 0, b: 0, a: 0.5882353}
+  levelUpParticle: {fileID: 1247311384876784, guid: 4adffb0018aeda44e9263f901167af1f, type: 3}
+  levelUpSpecialParticle: {fileID: 100000, guid: ada5d62ffe762ce4fbccc70dcdbc9022, type: 3}
 --- !u!114 &213296063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7446,6 +7448,7 @@ MonoBehaviour:
   nextRound: 0
   idTile: 1
   sandStorm: {fileID: 7254551664679931533, guid: 70b5ebebbc1e73448875f37c350205c7, type: 3}
+  sandStormGO: {fileID: 100000, guid: f89732ea99785b94c87bbba1e27f75a3, type: 3}
   sandStormProbavility: 100
   sandStormDuration: 3
   lastNodePosition: {x: 0, y: 0, z: 0}

@@ -79,12 +79,15 @@ MonoBehaviour:
   armor: 0
   armorMax: 0
   sirenitaBoost: 0
+  shieldBoost: 0
+  kills: 0
   target: {fileID: 0}
   numTargets: 1
   bullet: {fileID: 983131356506886144, guid: 4f39d614e775b1542bc72d3396e33fb5, type: 3}
   bulletPos: {fileID: 2442975429768110301}
   particles: {fileID: 0}
   fullRotate: 0
+  ally: {fileID: 0}
   level: 1
   levelMultiplier: 1.1
   levelMultiplierSpecialStat: 1.25
@@ -101,13 +104,17 @@ MonoBehaviour:
   burnEffect: 0
   burnEffectPerShoot: 2
   timeInOverHeat: 10
-  smokeOverHeat: {fileID: 8550112519114524154, guid: 0e92832738859c442a7291bfea6e6f75, type: 3}
+  smokeOverHeat: {fileID: 198159274938206214, guid: 9e4577abe56a95f4a91d29a0473cd30c, type: 3}
   isHero: 0
   iceWall: {fileID: 0}
   exploteIceWall: 0
   frezzeIceWall: 0
   curation: 50
   singParticles: {fileID: 0}
+  thunder: {fileID: 0}
+  areaCuration: 50
+  curationParticle: {fileID: 0}
+  destroyParticle: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56, type: 3}
 --- !u!65 &2442975429096872717
 BoxCollider:
   m_ObjectHideFlags: 0

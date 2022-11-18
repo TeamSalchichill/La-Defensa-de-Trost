@@ -1097,7 +1097,7 @@ MonoBehaviour:
   burnEffect: 0
   burnEffectPerShoot: 2
   timeInOverHeat: 10
-  smokeOverHeat: {fileID: 8550112519114524154, guid: 0e92832738859c442a7291bfea6e6f75, type: 3}
+  smokeOverHeat: {fileID: 198159274938206214, guid: 9e4577abe56a95f4a91d29a0473cd30c, type: 3}
   isHero: 1
   iceWall: {fileID: 2875652900901777722, guid: 81a426079a166ec4c85a9c19e739a18e, type: 3}
   exploteIceWall: 0
@@ -1106,6 +1106,8 @@ MonoBehaviour:
   singParticles: {fileID: 0}
   thunder: {fileID: 0}
   areaCuration: 50
+  curationParticle: {fileID: 100000, guid: 3d4907e6bd39f474b8fd8220920e65c4, type: 3}
+  destroyParticle: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56, type: 3}
 --- !u!114 &1685704814836824901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2037,6 +2039,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 529317124, guid: f72912f13b069b043b837d69eae65336, type: 3}
+      propertyPath: destroyParticle
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 529317124, guid: f72912f13b069b043b837d69eae65336, type: 3}
       propertyPath: levelMultiplier
       value: 1.2
       objectReference: {fileID: 0}
@@ -2155,6 +2161,10 @@ PrefabInstance:
     - target: {fileID: 529317124, guid: f72912f13b069b043b837d69eae65336, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 529317124, guid: f72912f13b069b043b837d69eae65336, type: 3}
+      propertyPath: destroyParticle
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 529317124, guid: f72912f13b069b043b837d69eae65336, type: 3}
       propertyPath: levelMultiplier

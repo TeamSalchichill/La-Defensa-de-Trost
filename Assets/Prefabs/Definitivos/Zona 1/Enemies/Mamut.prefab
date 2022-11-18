@@ -1145,6 +1145,7 @@ MonoBehaviour:
   bloodEffect: 0
   transformationEffect: 0
   infectationMode: 0
+  canBoom: 0
   healthResistence: 0
   armorResistence: 0
   iceResistence: 0.5
@@ -1173,9 +1174,17 @@ MonoBehaviour:
   speedBoostRate: 10
   invokeEnemiesRate: 5
   biteAttackRate: 7
+  dogs: {fileID: 0}
   hitAttackRate: 7
+  numEnemiesDead: 0
   invokeDeadEnemiesRate: 5
   fireSpearAttackRate: 7
+  fireBlins: {fileID: 0}
+  finalBoss: {fileID: 0}
+  sokekAttackParticle: {fileID: 0}
+  infectionParticle: {fileID: 100006, guid: 2a474af3f4c27be4e9bdce39cfe4315d, type: 3}
+  hitParticle: {fileID: 100000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
+  torbellinoParticle: {fileID: 100000, guid: 18204b98237ccb540808f2cd2d78c2c8, type: 3}
 --- !u!195 &8315093864869241557
 NavMeshAgent:
   m_ObjectHideFlags: 0

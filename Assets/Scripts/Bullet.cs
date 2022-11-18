@@ -12,6 +12,7 @@ public class Bullet : MonoBehaviour
 
     private Transform target;
 
+    public GameObject[] impactEffects;
     public GameObject impactEffect;
 
     [Header("Rebotes")]
@@ -80,6 +81,21 @@ public class Bullet : MonoBehaviour
         {
             target.gameObject.GetComponent<FinalBoss>().health -= healthDamage;
             return;
+        }
+
+        Enemy.Type enemyType = target.gameObject.GetComponent<Enemy>().type;
+
+        switch (enemyType)
+        {
+            case Enemy.Type.Pequeño:
+                impactEffect = impactEffects[0];
+                break;
+            case Enemy.Type.Mediano:
+                impactEffect = impactEffects[1];
+                break;
+            case Enemy.Type.Grande:
+                impactEffect = impactEffects[2];
+                break;
         }
 
         GameObject efffectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);

@@ -132,6 +132,7 @@ public class FinalBoss : MonoBehaviour
     void InvokeEnergyRay()
     {
         GameObject instEnergyRay = Instantiate(energyRay, transform.position, transform.rotation);
+        instEnergyRay.transform.localScale *= range;
 
         GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
         if (towers.Length > 0)

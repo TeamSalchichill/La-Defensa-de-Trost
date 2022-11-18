@@ -27,6 +27,7 @@ public class GameFlow : MonoBehaviour
 
     [Header("Zona Desierto")]
     public ParticleSystem sandStorm;
+    public GameObject sandStormGO;
     [Range(0, 100)]
     public int sandStormProbavility;
     public int sandStormDuration;
@@ -34,6 +35,7 @@ public class GameFlow : MonoBehaviour
     bool isActiveSandStorm = true;
     int startSandStormRound = -1;
     ParticleSystem instSandStorm;
+    GameObject instSandStormGO;
 
     [Header("Zona Agua")]
     public GameObject waterFlag;
@@ -231,15 +233,15 @@ public class GameFlow : MonoBehaviour
                 {
                     startSandStormRound = round;
                     isActiveSandStorm = true;
-                    instSandStorm = Instantiate(sandStorm, lastNodePosition, Quaternion.identity);
-                    instSandStorm.transform.rotation = Quaternion.AngleAxis(90, Vector3.right);
+                    instSandStormGO = Instantiate(sandStormGO, lastNodePosition, Quaternion.identity);
+                    //instSandStormGO.transform.rotation = Quaternion.AngleAxis(90, Vector3.right);
                 }
             }
 
             if (round == (startSandStormRound + sandStormDuration))
             {
                 //instSandStorm.GetComponent<BoxCollider>().enabled = false;
-                Destroy(instSandStorm);
+                Destroy(instSandStormGO);
                 isActiveSandStorm = false;
             }
         }

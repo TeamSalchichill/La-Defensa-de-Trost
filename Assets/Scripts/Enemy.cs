@@ -143,6 +143,12 @@ public class Enemy : MonoBehaviour
     [Header("Boss final")]
     public GameObject finalBoss;
 
+    [Header("Particles")]
+    public GameObject sokekAttackParticle;
+    public GameObject infectionParticle;
+    public GameObject hitParticle;
+    public GameObject torbellinoParticle;
+
     void Start()
     {
         gameFlow = GameFlow.instance;
@@ -219,19 +225,19 @@ public class Enemy : MonoBehaviour
         switch (type)
         {
             case Type.Pequeño:
-                gold = 15;
+                gold = 15 * 2;
                 normalSpeed = 2;
                 health *= healthMultiplier;
                 healthMax *= healthMultiplier;
                 break;
             case Type.Mediano:
-                gold = 40;
+                gold = 40 * 2;
                 normalSpeed = 1.5f;
                 health *= healthMultiplier;
                 healthMax *= healthMultiplier;
                 break;
             case Type.Grande:
-                gold = 1000;
+                gold = 1000 * 2;
                 normalSpeed = 1;
                 health *= healthMultiplier;
                 healthMax *= healthMultiplier;
@@ -369,6 +375,9 @@ public class Enemy : MonoBehaviour
                                 nav.destination = new Vector3(normaltowerFound.transform.position.x, 0.5f, normaltowerFound.transform.position.z);
                                 normaltowerFound.GetComponent<Tower>().health -= damage * 5;
                                 anim.SetTrigger("doHit");
+
+                                GameObject instParticle = Instantiate(hitParticle, transform.position, transform.rotation);
+                                Destroy(instParticle, 3);
                             }
                         }
                         else
@@ -465,16 +474,13 @@ public class Enemy : MonoBehaviour
                         }
                     }
 
-                    if (path.corners.Length > 0)
+                    if (path.corners.Length > 0 && nav.isActiveAndEnabled)
                     {
                         nav.SetDestination(closestTarget.position);//
                         targetGO = tileSelected;
                     }
-                    else
-                    {
 
-                    }
-                    if (mapPosId < 2)
+                    if (mapPosId < 2 && nav.isActiveAndEnabled)
                     {
                         nav.SetDestination(target.transform.position);
                     }
@@ -800,7 +806,10 @@ public class Enemy : MonoBehaviour
         waterEffect = Mathf.Max(waterEffect, 0);
         if (waterEffect >= 100)
         {
-            waterParticles.SetActive(true);
+            GameObject instParticle = Instantiate(torbellinoParticle, transform.position, transform.rotation);
+            Destroy(instParticle, waterEffectTime);
+
+            //waterParticles.SetActive(true);
             speed = 0;
             isWaterEffect = true;
             Invoke("DisableWaterEffect", waterEffectTime);
@@ -990,6 +999,10 @@ public class Enemy : MonoBehaviour
                     tower.collider.gameObject.GetComponent<Tower>().health -= damage;
                 }
             }
+
+            GameObject instParticle = Instantiate(sokekAttackParticle, transform.position + (Vector3.forward * 2), transform.rotation);
+            instParticle.transform.localScale *= range;
+            Destroy(instParticle, 3);
 
             isAttack = true;
             Invoke("canMove", 1.15f);
@@ -1189,6 +1202,9 @@ public class Enemy : MonoBehaviour
                     collision.collider.gameObject.GetComponentInParent<Tower>().health -= damage;
                     canFindNextTile = true;
 
+                    GameObject instParticle = Instantiate(hitParticle, transform.position, transform.rotation);
+                    Destroy(instParticle, 3);
+
                     if (anim != null && !isBoss)
                     {
                         anim.SetBool("isHit", true);
@@ -1290,7 +1306,10 @@ public class Enemy : MonoBehaviour
 
                     break;
                 case Generator.Zone.Infierno:
-                    transformationEffect += 10;
+                    if (type != Type.Grande)
+                    {
+                        transformationEffect += 10;
+                    }
                     break;
             }
         }
@@ -1371,6 +1390,10 @@ public class Enemy : MonoBehaviour
             infectationMode = true;
 
             Invoke("NoInfectationMode", mainTower.infectationDuration);
+
+            GameObject instParticle = Instantiate(infectionParticle, transform.position + new Vector3(0, 2, 0), transform.rotation);
+            instParticle.transform.localScale *= range;
+            Destroy(instParticle, 3);
         }
     }
 
