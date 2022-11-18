@@ -42,21 +42,29 @@ public class CameraController : MonoBehaviour
         // Mover la cámara con el teclado
         if (Input.GetKey("w"))
         {
-            transform.Translate(new Vector3(-1, 0, 1) * panSpeed * Time.deltaTime, Space.World);
+            transform.Translate(Vector3.up * panSpeed * Time.deltaTime, Space.World);
         }
         if (Input.GetKey("s"))
         {
-            transform.Translate(new Vector3(1, 0, -1) * panSpeed * Time.deltaTime, Space.World);
+            transform.Translate(Vector3.down * panSpeed * Time.deltaTime, Space.World);
         }
         if (Input.GetKey("d"))
         {
-            transform.Translate(new Vector3(1, 0, 1) * panSpeed * Time.deltaTime, Space.World);
+            transform.Translate(new Vector3(1, 0, 0) * panSpeed * Time.deltaTime, Space.World);
         }
         if (Input.GetKey("a"))
         {
-            transform.Translate(new Vector3(-1, 0, -1) * panSpeed * Time.deltaTime, Space.World);
+            transform.Translate(new Vector3(-1, 0, 0) * panSpeed * Time.deltaTime, Space.World);
         }
+        if (Input.GetKey("q"))
+        {
+            transform.RotateAround (Vector3.up, Vector3.up, 90 * Time.deltaTime);
+        }
+        if (Input.GetKey("e"))
+        {
+            transform.RotateAround(Vector3.up, -Vector3.up, 90 * Time.deltaTime);
 
+        }
         // Hacer zoom con el ratón
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         float size = Camera.main.orthographicSize;
