@@ -144,7 +144,7 @@ public class Enemy : MonoBehaviour
     public GameObject finalBoss;
     
     [Header("Particles")]
-    //public GameObject sokekAttackParticle;
+    public GameObject sokekAttackParticle;
     //public GameObject infectionParticle;
     //public GameObject hitParticle;
     public GameObject torbellinoParticle;
@@ -1003,11 +1003,11 @@ public class Enemy : MonoBehaviour
                     tower.collider.gameObject.GetComponent<Tower>().health -= damage;
                 }
             }
-            /*
+            
             GameObject instParticle = Instantiate(sokekAttackParticle, transform.position + (Vector3.forward * 2), transform.rotation);
             instParticle.transform.localScale *= range;
             Destroy(instParticle, 3);
-            */
+            
             isAttack = true;
             Invoke("canMove", 1.15f);
         }
