@@ -68,11 +68,11 @@ public class HUD_Manager : MonoBehaviour
     public GameObject towerPotionIcon;
     public Color towerPotionButtonColorHover;
     public Color towerPotionIconColorHover;
-
+    /*
     [Header("Particles")]
     public GameObject levelUpParticle;
     public GameObject levelUpSpecialParticle;
-
+    */
     void Awake()
     {
         instance = this;
@@ -351,17 +351,17 @@ public class HUD_Manager : MonoBehaviour
         if ((activeTower.level < 4 && gameFlow.coins >= activeTower.levelUpPrice) || (activeTower.level == 4 && gameFlow.specialCoins >= activeTower.levelUpPrice))
         {
             if (activeTower.level < 4)
-            {
+            {/*
                 GameObject instParticle = Instantiate(levelUpParticle, activeTower.transform.position, transform.rotation);
                 Destroy(instParticle, 3);
-
+                */
                 gameFlow.coins -= activeTower.levelUpPrice;
             }
             else
-            {
+            {/*
                 GameObject instParticle = Instantiate(levelUpSpecialParticle, activeTower.transform.position, transform.rotation);
                 Destroy(instParticle, 3);
-
+                */
                 gameFlow.specialCoins -= activeTower.levelUpPrice;
 
                 activeTower.gameObject.AddComponent<RecolocateManual>();

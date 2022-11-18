@@ -16,7 +16,7 @@ public class FinalBoss : MonoBehaviour
     public GameObject[] bosses;
     public GameObject skeletons;
     public GameObject magicBall;
-    public GameObject energyRay;
+    //public GameObject energyRay;
 
     [Header("Abilities Rate")]
     public int bossesRate;
@@ -130,10 +130,10 @@ public class FinalBoss : MonoBehaviour
     }
 
     void InvokeEnergyRay()
-    {
+    {/*
         GameObject instEnergyRay = Instantiate(energyRay, transform.position, transform.rotation);
         instEnergyRay.transform.localScale *= range;
-
+        */
         GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
         if (towers.Length > 0)
         {
@@ -149,6 +149,6 @@ public class FinalBoss : MonoBehaviour
             }
         }
 
-        Destroy(instEnergyRay, 5);
+        //Destroy(instEnergyRay, 5);
     }
 }

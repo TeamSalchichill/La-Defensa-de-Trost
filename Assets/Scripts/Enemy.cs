@@ -98,7 +98,7 @@ public class Enemy : MonoBehaviour
     public Material healthBarRed;
     
     [Header("Water Effect")]
-    public GameObject waterParticles;
+    //public GameObject waterParticles;
     bool isWaterEffect = false;
     int waterEffectTime = 2;
 
@@ -142,13 +142,13 @@ public class Enemy : MonoBehaviour
 
     [Header("Boss final")]
     public GameObject finalBoss;
-
+    /*
     [Header("Particles")]
     public GameObject sokekAttackParticle;
     public GameObject infectionParticle;
     public GameObject hitParticle;
     public GameObject torbellinoParticle;
-
+    */
     void Start()
     {
         gameFlow = GameFlow.instance;
@@ -214,7 +214,7 @@ public class Enemy : MonoBehaviour
             transform.position += new Vector3(0, 5, 0);
         }
         
-        waterParticles.SetActive(false);
+        //waterParticles.SetActive(false);
 
         healthMax = health;
         initialScaleX = HealthBar.transform.localScale.x;
@@ -375,9 +375,9 @@ public class Enemy : MonoBehaviour
                                 nav.destination = new Vector3(normaltowerFound.transform.position.x, 0.5f, normaltowerFound.transform.position.z);
                                 normaltowerFound.GetComponent<Tower>().health -= damage * 5;
                                 anim.SetTrigger("doHit");
-
+                                /*
                                 GameObject instParticle = Instantiate(hitParticle, transform.position, transform.rotation);
-                                Destroy(instParticle, 3);
+                                Destroy(instParticle, 3);*/
                             }
                         }
                         else
@@ -474,13 +474,13 @@ public class Enemy : MonoBehaviour
                         }
                     }
 
-                    if (path.corners.Length > 0 && nav.isActiveAndEnabled)
+                    if (path.corners.Length > 0)
                     {
                         nav.SetDestination(closestTarget.position);//
                         targetGO = tileSelected;
                     }
 
-                    if (mapPosId < 2 && nav.isActiveAndEnabled)
+                    if (mapPosId < 2)
                     {
                         nav.SetDestination(target.transform.position);
                     }
@@ -805,10 +805,10 @@ public class Enemy : MonoBehaviour
         waterEffect -= (Time.deltaTime * 3);
         waterEffect = Mathf.Max(waterEffect, 0);
         if (waterEffect >= 100)
-        {
+        {/*
             GameObject instParticle = Instantiate(torbellinoParticle, transform.position, transform.rotation);
             Destroy(instParticle, waterEffectTime);
-
+            */
             //waterParticles.SetActive(true);
             speed = 0;
             isWaterEffect = true;
@@ -915,7 +915,7 @@ public class Enemy : MonoBehaviour
 
     void DisableWaterEffect()
     {
-        waterParticles.SetActive(false);
+        //waterParticles.SetActive(false);
         waterEffect = 0;
         speed = normalSpeed;
         isWaterEffect = false;
@@ -999,11 +999,11 @@ public class Enemy : MonoBehaviour
                     tower.collider.gameObject.GetComponent<Tower>().health -= damage;
                 }
             }
-
+            /*
             GameObject instParticle = Instantiate(sokekAttackParticle, transform.position + (Vector3.forward * 2), transform.rotation);
             instParticle.transform.localScale *= range;
             Destroy(instParticle, 3);
-
+            */
             isAttack = true;
             Invoke("canMove", 1.15f);
         }
@@ -1201,10 +1201,10 @@ public class Enemy : MonoBehaviour
                 {
                     collision.collider.gameObject.GetComponentInParent<Tower>().health -= damage;
                     canFindNextTile = true;
-
+                    /*
                     GameObject instParticle = Instantiate(hitParticle, transform.position, transform.rotation);
                     Destroy(instParticle, 3);
-
+                    */
                     if (anim != null && !isBoss)
                     {
                         anim.SetBool("isHit", true);
@@ -1390,10 +1390,10 @@ public class Enemy : MonoBehaviour
             infectationMode = true;
 
             Invoke("NoInfectationMode", mainTower.infectationDuration);
-
+            /*
             GameObject instParticle = Instantiate(infectionParticle, transform.position + new Vector3(0, 2, 0), transform.rotation);
             instParticle.transform.localScale *= range;
-            Destroy(instParticle, 3);
+            Destroy(instParticle, 3);*/
         }
     }
 
