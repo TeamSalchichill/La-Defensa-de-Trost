@@ -42,19 +42,19 @@ public class CameraController : MonoBehaviour
         // Mover la cámara con el teclado
         if (Input.GetKey("w"))
         {
-            transform.Translate(Vector3.up * panSpeed * Time.deltaTime, Space.World);
+            transform.Translate(Vector3.up * panSpeed * Time.deltaTime);
         }
         if (Input.GetKey("s"))
         {
-            transform.Translate(Vector3.down * panSpeed * Time.deltaTime, Space.World);
+            transform.Translate(Vector3.down * panSpeed * Time.deltaTime);
         }
         if (Input.GetKey("d"))
         {
-            transform.Translate(new Vector3(1, 0, 0) * panSpeed * Time.deltaTime, Space.World);
+            transform.Translate(Vector3.right * panSpeed * Time.deltaTime);
         }
         if (Input.GetKey("a"))
         {
-            transform.Translate(new Vector3(-1, 0, 0) * panSpeed * Time.deltaTime, Space.World);
+            transform.Translate(Vector3.left * panSpeed * Time.deltaTime);
         }
         if (Input.GetKey("q"))
         {
