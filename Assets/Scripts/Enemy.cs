@@ -218,14 +218,17 @@ public class Enemy : MonoBehaviour
             case Type.Pequeño:
                 gold = 15;
                 normalSpeed = 2;
+                health *= 2;
                 break;
             case Type.Mediano:
                 gold = 40;
                 normalSpeed = 1.5f;
+                health *= 3;
                 break;
             case Type.Grande:
                 gold = 1000;
                 normalSpeed = 1;
+                health *= 2;
                 break;
         }
         
