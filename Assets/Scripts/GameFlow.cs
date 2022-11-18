@@ -129,7 +129,7 @@ public class GameFlow : MonoBehaviour
                 }
             }
 
-            if (round % generator.expandRate == 0 && round != totalRounds - 1)
+            if ((round % generator.expandRate == 0 || round == 1) && round != totalRounds - 1)
             {
                 generator.idRoundTile++;
 

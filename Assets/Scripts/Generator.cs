@@ -704,7 +704,7 @@ public class Generator : MonoBehaviour
             PrepareNextMap(newStartSide, newStartSideOrientation, newOffsetStart, newMapPos, newIdX, newIdZ, nextSideOrientation, false);
         }
 
-        if (gameFlow.round % expandRate == 0 && gameFlow.round != gameFlow.totalRounds - 1)
+        if ((gameFlow.round % expandRate == 0 || gameFlow.round == 1) && gameFlow.round != gameFlow.totalRounds - 1)
         {
             numNewMapNodes--;
             if (activateRounds && ((numNewMapNodes - repiteNewMapNode) == 0 || (numNewMapNodesLimit - numNewMapNodes == 3)))

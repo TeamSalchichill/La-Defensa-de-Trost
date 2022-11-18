@@ -212,23 +212,29 @@ public class Enemy : MonoBehaviour
 
         healthMax = health;
         initialScaleX = HealthBar.transform.localScale.x;
-        
+
+        float healthMultiplier = ((gameFlow.round + 1) / 5);
+        healthMultiplier = Mathf.Max(healthMultiplier, 1);
+
         switch (type)
         {
             case Type.Pequeño:
                 gold = 15;
                 normalSpeed = 2;
-                health *= 2;
+                health *= healthMultiplier;
+                healthMax *= healthMultiplier;
                 break;
             case Type.Mediano:
                 gold = 40;
                 normalSpeed = 1.5f;
-                health *= 3;
+                health *= healthMultiplier;
+                healthMax *= healthMultiplier;
                 break;
             case Type.Grande:
                 gold = 1000;
                 normalSpeed = 1;
-                health *= 2;
+                health *= healthMultiplier;
+                healthMax *= healthMultiplier;
                 break;
         }
         

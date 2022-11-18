@@ -40,6 +40,9 @@ public class CameraController : MonoBehaviour
         }
 
         // Mover la cámara con el teclado
+        RaycastHit HitInfo;
+        Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out HitInfo, 100.0f);
+
         if (Input.GetKey("w"))
         {
             transform.Translate(Vector3.up * panSpeed * Time.deltaTime);
@@ -58,11 +61,11 @@ public class CameraController : MonoBehaviour
         }
         if (Input.GetKey("q"))
         {
-            transform.RotateAround (Vector3.up, Vector3.up, 90 * Time.deltaTime);
+            transform.RotateAround (HitInfo.point, Vector3.up, 90 * Time.deltaTime);
         }
         if (Input.GetKey("e"))
         {
-            transform.RotateAround(Vector3.up, -Vector3.up, 90 * Time.deltaTime);
+            transform.RotateAround(HitInfo.point, -Vector3.up, 90 * Time.deltaTime);
 
         }
         // Hacer zoom con el ratón

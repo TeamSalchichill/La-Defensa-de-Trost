@@ -46,33 +46,33 @@ public class InfiteLevelManager : MonoBehaviour
 
             if (i < 20)
             {
-                enemiesMultiplier1 = 5;
+                enemiesMultiplier1 = 2;
                 enemiesMultiplier2 = 1;
             }
             else if (i < 40)
             {
-                enemiesMultiplier1 = 10;
-                enemiesMultiplier2 = 2;
+                enemiesMultiplier1 = 5;
+                enemiesMultiplier2 = 1;
             }
             else if (i < 60)
             {
-                enemiesMultiplier1 = 20;
-                enemiesMultiplier2 = 5;
+                enemiesMultiplier1 = 10;
+                enemiesMultiplier2 = 2;
             }
             else if (i < 80)
             {
-                enemiesMultiplier1 = 50;
-                enemiesMultiplier2 = 10;
+                enemiesMultiplier1 = 25;
+                enemiesMultiplier2 = 5;
             }
             else if (i < 100)
             {
-                enemiesMultiplier1 = 70;
-                enemiesMultiplier2 = 12;
+                enemiesMultiplier1 = 35;
+                enemiesMultiplier2 = 6;
             }
             else
             {
-                enemiesMultiplier1 = 100;
-                enemiesMultiplier2 = 10;
+                enemiesMultiplier1 = 50;
+                enemiesMultiplier2 = 5;
             }
 
             gameFlow.enemiesPerRound1[i] = (i * enemiesMultiplier1) + 1;
