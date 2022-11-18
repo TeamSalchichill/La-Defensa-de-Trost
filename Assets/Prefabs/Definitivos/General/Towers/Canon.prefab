@@ -266,7 +266,7 @@ MonoBehaviour:
   specialTile: 0
   burnTile: 0
   spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
-  healthDamage: 300
+  healthDamage: 200
   armorDamage: 0
   range: 5
   rangeAreaOriginalScale: 0
@@ -277,12 +277,15 @@ MonoBehaviour:
   armor: 0
   armorMax: 0
   sirenitaBoost: 0
+  shieldBoost: 0
+  kills: 0
   target: {fileID: 0}
   numTargets: 1
   bullet: {fileID: 1536177878589559329, guid: c990bfc289b7d2b4ca26a8aa761b277b, type: 3}
   bulletPos: {fileID: 1565910784535573150}
   particles: {fileID: 3568809832730762549, guid: fca769d222550cb44b1e919330393b2d, type: 3}
   fullRotate: 0
+  ally: {fileID: 0}
   level: 1
   levelMultiplier: 1.1
   levelMultiplierSpecialStat: 1.25
@@ -307,6 +310,7 @@ MonoBehaviour:
   curation: 50
   singParticles: {fileID: 0}
   thunder: {fileID: 0}
+  areaCuration: 50
 --- !u!65 &2969877446583160812
 BoxCollider:
   m_ObjectHideFlags: 0

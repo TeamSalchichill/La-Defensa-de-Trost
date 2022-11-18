@@ -76,7 +76,7 @@ public class Bullet : MonoBehaviour
 
     void HitTarget()
     {
-        if (!target.gameObject.GetComponent<Enemy>())
+        if (!target.gameObject.GetComponent<Enemy>() && target.gameObject.GetComponent<FinalBoss>())
         {
             target.gameObject.GetComponent<FinalBoss>().health -= healthDamage;
             return;

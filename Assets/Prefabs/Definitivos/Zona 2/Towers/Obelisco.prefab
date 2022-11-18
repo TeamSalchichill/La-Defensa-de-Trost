@@ -289,12 +289,15 @@ MonoBehaviour:
   armor: 0
   armorMax: 0
   sirenitaBoost: 0
+  shieldBoost: 0
+  kills: 0
   target: {fileID: 0}
   numTargets: 1
   bullet: {fileID: 8058975441479462529, guid: 13525fa7958d5cf4d90f2d0ec7f23f69, type: 3}
   bulletPos: {fileID: 1578840397}
-  particles: {fileID: 0}
+  particles: {fileID: 8151721465207108918, guid: 430e209d8bab9f445835bbbec46f9410, type: 3}
   fullRotate: 1
+  ally: {fileID: 0}
   level: 1
   levelMultiplier: 1.1
   levelMultiplierSpecialStat: 1.2
@@ -318,6 +321,8 @@ MonoBehaviour:
   frezzeIceWall: 0
   curation: 50
   singParticles: {fileID: 0}
+  thunder: {fileID: 0}
+  areaCuration: 50
 --- !u!65 &529317125
 BoxCollider:
   m_ObjectHideFlags: 0

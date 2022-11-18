@@ -52,7 +52,7 @@ public class Card : MonoBehaviour
 
         gameObject.SetActive(false);
 
-        //AddBlockCards();
+        AddBlockCards();
     }
 
     public void NewTowerCard(int _numCards, int _rarity)
@@ -89,6 +89,7 @@ public class Card : MonoBehaviour
         {
             towerSelectedId = 0;
 
+            /*
             if (id % 2 == 0)
             {
                 statSelected = Random.Range(0, 11);
@@ -97,28 +98,29 @@ public class Card : MonoBehaviour
             {
                 statSelected = 11;
             }
+            */
         }
         else
         {
             towerSelectedId = Random.Range(1, colocatorManager.towers.Length);
+        }
 
-            bool goodChoose = false;
+        bool goodChoose = false;
 
-            while (!goodChoose)
+        while (!goodChoose)
+        {
+            statSelected = Random.Range(0, 11);
+
+            BlockCards block = new BlockCards();
+            block.Tower = colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName;
+            block.Atributte = statSelected;
+
+            if (!blockedCards.Contains(block))
             {
-                statSelected = Random.Range(0, 11);
-
-                BlockCards block = new BlockCards();
-                block.Tower = colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName;
-                block.Atributte = statSelected;
-
-                if (!blockedCards.Contains(block))
-                {
-                    goodChoose = true;
-                }
+                goodChoose = true;
             }
         }
-        
+
         switch (statSelected)
         {
             case 0:
@@ -583,8 +585,8 @@ public class Card : MonoBehaviour
                             break;
                         case Rarity.Rare:
                             float porcetaje = 1 + (incrementAmount * 0.01f);
-                            int newHealth = (int)(colocatorManager.towers[towerSelectedId].GetComponent<Tower>().iceDamage * porcetaje);
-
+                            int newHealth = (int)Mathf.Ceil((colocatorManager.towers[towerSelectedId].GetComponent<Tower>().iceDamage * porcetaje));
+                            
                             foreach (var towerSelected in allTowersSelected)
                             {
                                 towerSelected.iceDamage = newHealth;
@@ -610,7 +612,7 @@ public class Card : MonoBehaviour
                             break;
                         case Rarity.Rare:
                             float porcetaje = 1 + (incrementAmount * 0.01f);
-                            int newHealth = (int)(colocatorManager.towers[towerSelectedId].GetComponent<Tower>().igniteDamage * porcetaje);
+                            int newHealth = (int)Mathf.Ceil((colocatorManager.towers[towerSelectedId].GetComponent<Tower>().igniteDamage * porcetaje));
 
                             foreach (var towerSelected in allTowersSelected)
                             {
@@ -637,7 +639,7 @@ public class Card : MonoBehaviour
                             break;
                         case Rarity.Rare:
                             float porcetaje = 1 + (incrementAmount * 0.01f);
-                            int newHealth = (int)(colocatorManager.towers[towerSelectedId].GetComponent<Tower>().waterDamage * porcetaje);
+                            int newHealth = (int)Mathf.Ceil((colocatorManager.towers[towerSelectedId].GetComponent<Tower>().waterDamage * porcetaje));
 
                             foreach (var towerSelected in allTowersSelected)
                             {
@@ -664,7 +666,7 @@ public class Card : MonoBehaviour
                             break;
                         case Rarity.Rare:
                             float porcetaje = 1 + (incrementAmount * 0.01f);
-                            int newHealth = (int)(colocatorManager.towers[towerSelectedId].GetComponent<Tower>().ascentDamage * porcetaje);
+                            int newHealth = (int)Mathf.Ceil((colocatorManager.towers[towerSelectedId].GetComponent<Tower>().ascentDamage * porcetaje));
 
                             foreach (var towerSelected in allTowersSelected)
                             {
@@ -691,7 +693,7 @@ public class Card : MonoBehaviour
                             break;
                         case Rarity.Rare:
                             float porcetaje = 1 + (incrementAmount * 0.01f);
-                            int newHealth = (int)(colocatorManager.towers[towerSelectedId].GetComponent<Tower>().bloodDamage * porcetaje);
+                            int newHealth = (int)Mathf.Ceil((colocatorManager.towers[towerSelectedId].GetComponent<Tower>().bloodDamage * porcetaje));
 
                             foreach (var towerSelected in allTowersSelected)
                             {
@@ -718,7 +720,7 @@ public class Card : MonoBehaviour
                             break;
                         case Rarity.Rare:
                             float porcetaje = 1 + (incrementAmount * 0.01f);
-                            int newHealth = (int)(colocatorManager.towers[towerSelectedId].GetComponent<Tower>().transformationDamage * porcetaje);
+                            int newHealth = (int)Mathf.Ceil((colocatorManager.towers[towerSelectedId].GetComponent<Tower>().transformationDamage * porcetaje));
 
                             foreach (var towerSelected in allTowersSelected)
                             {
@@ -1551,47 +1553,47 @@ public class Card : MonoBehaviour
 
         //Mundo 6 - Hihell
         BlockCards block95 = new BlockCards();
-        block95.Tower = "Eklypsion";
+        block95.Tower = "Hihell";
         block95.Atributte = 1;
         blockedCards.Add(block95);
 
         BlockCards block96 = new BlockCards();
-        block96.Tower = "Eklypsion";
+        block96.Tower = "Hihell";
         block96.Atributte = 3;
         blockedCards.Add(block96);
 
         BlockCards block97 = new BlockCards();
-        block97.Tower = "Eklypsion";
+        block97.Tower = "Hihell";
         block97.Atributte = 4;
         blockedCards.Add(block97);
 
         BlockCards block98 = new BlockCards();
-        block98.Tower = "Eklypsion";
+        block98.Tower = "Hihell";
         block98.Atributte = 5;
         blockedCards.Add(block98);
 
         BlockCards block99 = new BlockCards();
-        block99.Tower = "Eklypsion";
+        block99.Tower = "Hihell";
         block99.Atributte = 6;
         blockedCards.Add(block99);
 
         BlockCards block100 = new BlockCards();
-        block100.Tower = "Eklypsion";
+        block100.Tower = "Hihell";
         block100.Atributte = 7;
         blockedCards.Add(block100);
 
         BlockCards block101 = new BlockCards();
-        block101.Tower = "Eklypsion";
+        block101.Tower = "Hihell";
         block101.Atributte = 8;
         blockedCards.Add(block92);
 
         BlockCards block102 = new BlockCards();
-        block102.Tower = "Eklypsion";
+        block102.Tower = "Hihell";
         block102.Atributte = 9;
         blockedCards.Add(block102);
 
         BlockCards blockblock103 = new BlockCards();
-        blockblock103.Tower = "Eklypsion";
+        blockblock103.Tower = "Hihell";
         blockblock103.Atributte = 10;
         blockedCards.Add(blockblock103);
     }

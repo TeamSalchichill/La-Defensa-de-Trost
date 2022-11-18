@@ -268,7 +268,7 @@ public class Enemy : MonoBehaviour
 
         if (terrain == Terrain.Ground)
         {
-            InvokeRepeating("UpdateTargetTile", 0.1f, 0.5f);
+            InvokeRepeating("UpdateTargetTile", 0.1f, 2.0f);
             nav.destination = target.transform.position;
         }
         else
@@ -358,7 +358,7 @@ public class Enemy : MonoBehaviour
                             else
                             {
                                 nav.destination = new Vector3(normaltowerFound.transform.position.x, 0.5f, normaltowerFound.transform.position.z);
-                                normaltowerFound.GetComponent<Tower>().health -= (int)(damage / 2);
+                                normaltowerFound.GetComponent<Tower>().health -= damage * 5;
                                 anim.SetTrigger("doHit");
                             }
                         }
@@ -405,6 +405,95 @@ public class Enemy : MonoBehaviour
             
             if (!miniTowerFound && !towerFound)
             {
+
+                if (canFindNextTile)
+                {
+                    //Cada x tiempo comprobar que la casilla que tengo debajo tiene un id menor que el mio
+
+                    canFindNextTile = false;
+
+                    Transform closestTarget = null;
+                    float closestTargetDistance = float.MaxValue;
+                    NavMeshPath path = new NavMeshPath();
+
+                    GameObject[] groundTiles = GameObject.FindGameObjectsWithTag("Ground");
+                    List<GameObject> groundTilesSelected = new List<GameObject>();
+                    GameObject tileSelected = targetGO;
+
+                    foreach (var groundTile in groundTiles)
+                    {
+                        if (groundTile.GetComponent<MapInfo>().id == mapPosId - 1)
+                        {
+                            groundTilesSelected.Add(groundTile);
+                        }
+                    }
+
+                    for (int i = 0; i < groundTilesSelected.Count; i++)
+                    {
+                        if (NavMesh.CalculatePath(transform.position, groundTilesSelected[i].transform.position, nav.areaMask, path))
+                        {
+                            float distance = Vector3.Distance(transform.position, path.corners[0]);//
+
+                            for (int j = 1; j < path.corners.Length; j++)
+                            {
+                                distance += Vector3.Distance(path.corners[j - 1], path.corners[j]);
+                            }
+
+                            if (distance < closestTargetDistance)
+                            {
+                                closestTargetDistance = distance;
+                                closestTarget = groundTilesSelected[i].transform;
+                                tileSelected = groundTilesSelected[i];
+                                mapPosId = groundTilesSelected[i].GetComponent<MapInfo>().id;
+                            }
+                        }
+                    }
+
+                    if (path.corners.Length > 0)
+                    {
+                        nav.SetDestination(closestTarget.position);//
+                        targetGO = tileSelected;
+                    }
+                    else
+                    {
+
+                    }
+                    if (mapPosId < 2)
+                    {
+                        nav.SetDestination(target.transform.position);
+                    }
+                }
+
+                /*
+                RaycastHit[] tilesInRange = Physics.SphereCastAll(transform.position, 20 + bugCount, transform.forward, 0, LayerMask.GetMask("Ground"));
+                if (tilesInRange.Length > 0)
+                {
+                    for (int i = 0; i < tilesInRange.Length; i++)
+                    {
+                        int randomTile = Random.Range(0, tilesInRange.Length);
+
+                        if (tilesInRange[i].collider.gameObject.GetComponent<MapInfo>().id == mapPosId - 1)
+                        {
+                            GameObject localTile = tilesInRange[i].collider.gameObject;
+
+                            mapPosId = localTile.GetComponent<MapInfo>().id;
+                            nav.destination = localTile.transform.position;
+                            tileTargetPos = localTile.gameObject.transform.position;
+                            tileTargetDist = Vector3.Distance(transform.position, tileTargetPos);
+                            targetGO = localTile;
+
+                            bugCount = 0;
+
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    bugCount += 5;
+                }
+                */
+                /*
                 if (canFindNextTile)
                 {
                     //Cada x tiempo comprobar que la casilla que tengo debajo tiene un id menor que el mio
@@ -443,6 +532,7 @@ public class Enemy : MonoBehaviour
                                 closestTargetDistance = distance;
                                 closestTarget = groundTilesSelected[i].transform;
                                 tileSelected = groundTilesSelected[i];
+                                mapPosId = groundTilesSelected[i].GetComponent<MapInfo>().id;
                             }
                         }
                     }
@@ -450,9 +540,18 @@ public class Enemy : MonoBehaviour
                     if (path.corners.Length > 0)
                     {
                         nav.SetDestination(closestTarget.position);//
+                        targetGO = tileSelected;
+                    }
+                    else
+                    {
+
+                    }
+                    if (mapPosId < 2)
+                    {
+                        nav.SetDestination(target.transform.position);
                     }
                 }
-
+                */
                 /*
                 if (!canFindNextTile)
                 {
@@ -1053,6 +1152,7 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject == targetGO)
         {
             canFindNextTile = true;
+            print("1");
         }
     }
 
@@ -1061,6 +1161,7 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject == targetGO)
         {
             canFindNextTile = true;
+            print("2");
         }
 
         if (collision.collider.tag == "Tower")
@@ -1070,6 +1171,7 @@ public class Enemy : MonoBehaviour
                 if (collision.collider.GetComponent<Tower>().canColocate == Tower.CanColocate.Path)
                 {
                     collision.collider.gameObject.GetComponentInParent<Tower>().health -= damage;
+                    canFindNextTile = true;
 
                     if (anim != null && !isBoss)
                     {
@@ -1078,7 +1180,20 @@ public class Enemy : MonoBehaviour
 
                     if (canBoom)
                     {
-                        collision.collider.gameObject.GetComponentInParent<Tower>().health -= damage * 10;
+                        switch (type)
+                        {
+                            case (Type.Pequeño):
+                                gameFlow.enemiesLeft1--;
+                                break;
+                            case (Type.Mediano):
+                                gameFlow.enemiesLeft2--;
+                                break;
+                            case (Type.Grande):
+                                gameFlow.enemiesLeft3--;
+                                break;
+                        }
+
+                        collision.collider.gameObject.GetComponentInParent<Tower>().health -= 250;
                         Destroy(gameObject);
                     }
                 }
@@ -1208,8 +1323,8 @@ public class Enemy : MonoBehaviour
 
                     break;
                 case Generator.Zone.Fantasia:
-                    bloodEffect += Time.deltaTime * 5;
-                    health -= Time.deltaTime * 50;
+                    bloodEffect += Time.deltaTime * 3;
+                    health -= Time.deltaTime * 25;
                     break;
                 case Generator.Zone.Infierno:
 

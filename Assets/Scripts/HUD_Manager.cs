@@ -91,6 +91,11 @@ public class HUD_Manager : MonoBehaviour
 
     void Update()
     {
+        if (activeTower == null)
+        {
+            fichaTecnica.SetActive(false);
+        }
+
         generator.probabilityStraight = (int)(sliders[0].value * 100);
         generator.probabilityNewWays = (int)(sliders[1].value * 100);
         generator.probabilityDeleteWay = (int)(sliders[2].value * 100);
@@ -434,17 +439,20 @@ public class HUD_Manager : MonoBehaviour
     }
     public void SellTower()
     {
-        float actualHealth = activeTower.health;
-        float actualHealthMax = activeTower.healthMax;
+        if (!activeTower.isHero)
+        {
+            float actualHealth = activeTower.health;
+            float actualHealthMax = activeTower.healthMax;
 
-        float healthPercent = actualHealth / actualHealthMax;
+            float healthPercent = actualHealth / actualHealthMax;
 
-        gameFlow.coins += (int)(activeTower.acumulateGold * 0.7f * healthPercent);
+            gameFlow.coins += (int)(activeTower.acumulateGold * 0.7f * healthPercent);
 
-        Destroy(activeTower.gameObject);
+            Destroy(activeTower.gameObject);
 
-        activeTower = null;
-        fichaTecnica.SetActive(false);
+            activeTower = null;
+            fichaTecnica.SetActive(false);
+        }
     }
 
     public void DisableInfo()

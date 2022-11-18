@@ -175,12 +175,12 @@ public class Tower : MonoBehaviour
                     waterDamage *= 3;
                     break;
                 case Generator.Zone.Valhalla:
-                    healthDamage *= 2;
-                    range *= 2;
-                    fireRate *= 2;
-                    turnSpeed *= 2;
-                    health *= 2;
-                    healthMax *= 2;
+                    healthDamage *= (int)1.5f;
+                    range *= (int)1.5f;
+                    fireRate *= (int)1.5f;
+                    turnSpeed *= (int)1.5f;
+                    health *= (int)1.5f;
+                    healthMax *= (int)1.5f;
                     levelMultiplier += 0.1f;
                     levelMultiplierSpecialStat += 0.2f;
                     iceDamage += 3;
@@ -471,7 +471,7 @@ public class Tower : MonoBehaviour
         }
 
         // Disparar
-        if (attackType == AttackType.Health)
+        if (attackType == AttackType.Health && fireCountdown <= 0)
         {
             anim.SetTrigger("doShoot");
             RaycastHit[] towerInrange1 = Physics.SphereCastAll(transform.position, range, transform.forward, 0, LayerMask.GetMask("Tower"));
@@ -485,6 +485,7 @@ public class Tower : MonoBehaviour
                     }
                 }
             }
+            fireCountdown = 1f / fireRate;
         }
 
         if (!isBurn && fireCountdown <= 0 && target != null)
@@ -513,7 +514,7 @@ public class Tower : MonoBehaviour
                             anim.SetTrigger("doShoot");
                             for (int i = 0; i < numTargets; i++)
                             {
-                                if (i < enemies.Length && enemies[i] != null)
+                                if (i < enemies.Length && enemies[i] != null && Vector3.Distance(transform.position, enemies[i].transform.position) < range)
                                 {
                                     MultiShoot(enemies[i].transform);
                                 }
@@ -542,7 +543,8 @@ public class Tower : MonoBehaviour
                     }
                     break;
                 case AttackType.ResourcesVariable:
-                    hudManager.AddCoins(healthDamage);
+                    anim.SetTrigger("doShoot");
+                    hudManager.AddCoins(healthDamage * 3);
                     healthDamage = 0;
                     break;
                 case AttackType.Health:
@@ -586,7 +588,7 @@ public class Tower : MonoBehaviour
                 case AttackType.Invoke:
                     RaycastHit[] enemiesInrange3 = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Enemy"));
 
-                    RaycastHit[] tilesInRange = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Ground"));
+                    RaycastHit[] tilesInRange = Physics.SphereCastAll(transform.position, 5, transform.forward, 1.0f, LayerMask.GetMask("Ground"));
                     if (tilesInRange.Length > 0 && enemiesInrange3.Length > 0)
                     {
                         GameObject allyInst = Instantiate(ally, tilesInRange[0].transform.position, tilesInRange[0].transform.rotation);

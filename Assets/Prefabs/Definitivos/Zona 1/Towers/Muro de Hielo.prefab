@@ -230,45 +230,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetType: 0
   attackType: 0
-  canTarget: 0
   canColocate: 1
   bulletType: 0
   zone: 1
   specialStat: 0
-  towerName: Muro de hielo
-  icon: {fileID: 0}
+  targetPreference: 0
+  anim: {fileID: -5736283115773286770}
   level5Light: {fileID: 0}
   rangeArea: {fileID: 4260207834167409682}
-  rangeAreaOriginalScale: 0
-  anim: {fileID: -5736283115773286770}
-  particles: {fileID: 0}
-  target: {fileID: 0}
-  bullet: {fileID: 0}
-  bulletPos: {fileID: 0}
   partToRotate: {fileID: 6612087324589178208}
-  fullRotate: 0
-  offsetY: 0
-  isHero: 0
+  towerName: Muro de hielo
+  icon: {fileID: 0}
+  price: 50
+  acumulateGold: 0
   specialTile: 0
   burnTile: 0
+  spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
+  healthDamage: 0
+  armorDamage: 0
+  range: 5
+  rangeAreaOriginalScale: 0
+  fireRate: 1
+  turnSpeed: 10
+  health: 100
+  healthMax: 0
+  armor: 0
+  armorMax: 0
+  sirenitaBoost: 0
+  shieldBoost: 0
+  kills: 0
+  target: {fileID: 0}
+  numTargets: 1
+  bullet: {fileID: 0}
+  bulletPos: {fileID: 0}
+  particles: {fileID: 0}
+  fullRotate: 0
+  ally: {fileID: 0}
   level: 1
   levelMultiplier: 1.1
   levelMultiplierSpecialStat: 1.25
   levelUpPrice: 100
   level5Price: 100
   priceLogo: "\u20AC"
-  acumulateGold: 0
-  health: 100
-  healthMax: 0
-  armor: 0
-  armorMax: 0
-  range: 5
-  fireRate: 1
-  turnSpeed: 10
-  price: 50
-  isDie: 0
-  healthDamage: 0
-  armorDamage: 0
   iceDamage: 0
   igniteDamage: 0
   waterDamage: 0
@@ -280,15 +283,14 @@ MonoBehaviour:
   burnEffectPerShoot: 2
   timeInOverHeat: 10
   smokeOverHeat: {fileID: 8550112519114524154, guid: 0e92832738859c442a7291bfea6e6f75, type: 3}
+  isHero: 0
   iceWall: {fileID: 0}
   exploteIceWall: 0
   frezzeIceWall: 0
-  spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
   curation: 50
-  RaParticles: []
-  numRays: 0
-  partToRotateGO: {fileID: 0}
-  allEnemiesInRange: []
+  singParticles: {fileID: 0}
+  thunder: {fileID: 0}
+  areaCuration: 50
 --- !u!114 &915475380494032893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,7 +481,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6868350025523587292, guid: 12dc0cb83d4e404429cca4663447cf45, type: 3}
+  - {fileID: 2100000, guid: d9a59c3c2e74ecf4ca64e98e3ffbc169, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -594,7 +596,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6868350025523587292, guid: 12dc0cb83d4e404429cca4663447cf45, type: 3}
+  - {fileID: 2100000, guid: f0916e6c73fc5514a9a41dd86896e271, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -677,7 +679,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6868350025523587292, guid: 12dc0cb83d4e404429cca4663447cf45, type: 3}
+  - {fileID: 2100000, guid: 5ab8c29d13f94834d82e19fd018e6cb8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -760,7 +762,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6868350025523587292, guid: 12dc0cb83d4e404429cca4663447cf45, type: 3}
+  - {fileID: 2100000, guid: 5a5a2184b9eb12444a5f93bdf460b178, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -875,7 +877,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6868350025523587292, guid: 12dc0cb83d4e404429cca4663447cf45, type: 3}
+  - {fileID: 2100000, guid: 9606183004a47af4d9d002fcf5ae9bae, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1022,7 +1024,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6868350025523587292, guid: 12dc0cb83d4e404429cca4663447cf45, type: 3}
+  - {fileID: 2100000, guid: 12905bac56071a44cbe8cf8f36b59c5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

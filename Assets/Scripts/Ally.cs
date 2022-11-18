@@ -44,13 +44,13 @@ public class Ally : MonoBehaviour
                     {
                         target.GetComponent<Enemy>().infectationMode = true;
 
-                        Destroy(gameObject, 1);
+                        Destroy(gameObject);
                     }
                     else
                     {
                         target.GetComponent<Enemy>().health -= damage;
 
-                        Destroy(gameObject, 1);
+                        Destroy(gameObject);
                     }
                 }
             }
@@ -59,6 +59,11 @@ public class Ally : MonoBehaviour
 
     void UpdateTarget()
     {
+        if (target)
+        {
+            return;
+        }
+
         RaycastHit[] enemiesInRange = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Enemy"));
         if (enemiesInRange.Length > 0)
         {
