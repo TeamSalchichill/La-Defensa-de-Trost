@@ -83,7 +83,11 @@ public class Bullet : MonoBehaviour
             return;
         }
 
-        Enemy.Type enemyType = target.gameObject.GetComponent<Enemy>().type;
+        if (target != null)
+        {
+            Enemy.Type enemyType = target.gameObject.GetComponent<Enemy>().type;
+        }
+        
         /*
         switch (enemyType)
         {
@@ -112,7 +116,7 @@ public class Bullet : MonoBehaviour
                 target.gameObject.GetComponent<Enemy>().waterEffect += waterDamage;
                 target.gameObject.GetComponent<Enemy>().ascentEffect += ascentDamage;
                 target.gameObject.GetComponent<Enemy>().bloodEffect += bloodDamage;
-                target.gameObject.GetComponent<Enemy>().transformationEffect += transformationDamage;
+                target.gameObject.GetComponent<Enemy>().transformationEffect -= transformationDamage;
 
                 break;
             case Type.Enemy:
