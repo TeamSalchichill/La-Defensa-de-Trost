@@ -101,6 +101,8 @@ public class Generator : MonoBehaviour
     public int lastGroundBlockPosX = 0;
     public GameObject finalBoss;
 
+    public int idRoundTile = 0;
+
     void Awake()
     {
         instance = this;
@@ -109,6 +111,8 @@ public class Generator : MonoBehaviour
     void Start()
     {
         gameFlow = GameFlow.instance;
+
+        expandRate = 3;
 
         InicializeMap();
     }
@@ -242,7 +246,7 @@ public class Generator : MonoBehaviour
             }
         }
 
-        if (gameFlow.round % 3 == 0 && !miniMainTowerColocate && gameFlow.round > 4)
+        if (gameFlow.round % 6 == 0 && !miniMainTowerColocate && gameFlow.round > 4)
         {
             miniMainTowerColocate = true;
             
@@ -313,7 +317,8 @@ public class Generator : MonoBehaviour
                         if (specialTile < probabilitySpecialTiles)
                         {
                             GameObject instTile = Instantiate(specialGroundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
-                            instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                            instTile.GetComponent<MapInfo>().id = idRoundTile;
+                            //instTile.GetComponent<MapInfo>().id = gameFlow.round;
                             gameFlow.idTile++;
 
                             if ((i * 2) > lastGroundBlockPosX)
@@ -325,7 +330,8 @@ public class Generator : MonoBehaviour
                         else
                         {
                             GameObject instTile = Instantiate(groundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
-                            instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                            instTile.GetComponent<MapInfo>().id = idRoundTile;
+                            //instTile.GetComponent<MapInfo>().id = gameFlow.round;
                             gameFlow.idTile++;
 
                             if ((i * 2) > lastGroundBlockPosX)
@@ -663,7 +669,8 @@ public class Generator : MonoBehaviour
                         if (specialTile < probabilitySpecialTiles)
                         {
                             GameObject instTile = Instantiate(specialGroundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
-                            instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                            instTile.GetComponent<MapInfo>().id = idRoundTile;
+                            //instTile.GetComponent<MapInfo>().id = gameFlow.round;
                             gameFlow.idTile++;
 
                             if ((i * 2) + 1 + (int)newOffsetStart.x > lastGroundBlockPosX)
@@ -675,7 +682,8 @@ public class Generator : MonoBehaviour
                         else
                         {
                             GameObject instTile = Instantiate(groundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
-                            instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                            instTile.GetComponent<MapInfo>().id = idRoundTile;
+                            //instTile.GetComponent<MapInfo>().id = gameFlow.round;
                             gameFlow.idTile++;
 
                             if ((i * 2) + 1 + (int)newOffsetStart.x > lastGroundBlockPosX)
@@ -887,7 +895,8 @@ public class Generator : MonoBehaviour
                                 if (hit.collider.gameObject.transform.position.y == 0.5f)
                                 {
                                     GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
-                                    instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                                    instTile.GetComponent<MapInfo>().id = idRoundTile;
+                                    //instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                     gameFlow.idTile++;
 
                                     if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)
@@ -904,7 +913,8 @@ public class Generator : MonoBehaviour
                                     if (hit.collider.gameObject.transform.position.y == 0.5f)
                                     {
                                         GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
-                                        instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                                        instTile.GetComponent<MapInfo>().id = idRoundTile;
+                                        //instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                         gameFlow.idTile++;
 
                                         if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)
@@ -921,7 +931,8 @@ public class Generator : MonoBehaviour
                                         if (hit.collider.gameObject.transform.position.y == 0.5f)
                                         {
                                             GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
-                                            instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                                            instTile.GetComponent<MapInfo>().id = idRoundTile;
+                                            //instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                             gameFlow.idTile++;
 
                                             if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)
@@ -938,7 +949,8 @@ public class Generator : MonoBehaviour
                                             if (hit.collider.gameObject.transform.position.y == 0.5f)
                                             {
                                                 GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
-                                                instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                                                instTile.GetComponent<MapInfo>().id = idRoundTile;
+                                                //instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                                 gameFlow.idTile++;
 
                                                 if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)
@@ -1041,7 +1053,8 @@ public class Generator : MonoBehaviour
                                         if (hit.collider.gameObject.transform.position.y == 0.5f)
                                         {
                                             GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
-                                            instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                                            instTile.GetComponent<MapInfo>().id = idRoundTile;
+                                            //instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                             gameFlow.idTile++;
 
                                             if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)
@@ -1058,7 +1071,8 @@ public class Generator : MonoBehaviour
                                             if (hit.collider.gameObject.transform.position.y == 0.5f)
                                             {
                                                 GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
-                                                instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                                                instTile.GetComponent<MapInfo>().id = idRoundTile;
+                                                //instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                                 gameFlow.idTile++;
 
                                                 if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)
@@ -1161,7 +1175,8 @@ public class Generator : MonoBehaviour
                                         if (hit.collider.gameObject.transform.position.y == 0.5f)
                                         {
                                             GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
-                                            instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                                            instTile.GetComponent<MapInfo>().id = idRoundTile;
+                                            //instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                             gameFlow.idTile++;
 
                                             if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)
@@ -1178,7 +1193,8 @@ public class Generator : MonoBehaviour
                                             if (hit.collider.gameObject.transform.position.y == 0.5f)
                                             {
                                                 GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
-                                                instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                                                instTile.GetComponent<MapInfo>().id = idRoundTile;
+                                                //instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                                 gameFlow.idTile++;
 
                                                 if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)
@@ -1281,7 +1297,8 @@ public class Generator : MonoBehaviour
                                         if (hit.collider.gameObject.transform.position.y == 0.5f)
                                         {
                                             GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
-                                            instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                                            instTile.GetComponent<MapInfo>().id = idRoundTile;
+                                            //instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                             gameFlow.idTile++;
 
                                             if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)
@@ -1298,7 +1315,8 @@ public class Generator : MonoBehaviour
                                             if (hit.collider.gameObject.transform.position.y == 0.5f)
                                             {
                                                 GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
-                                                instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                                                instTile.GetComponent<MapInfo>().id = idRoundTile;
+                                                //instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                                 gameFlow.idTile++;
 
                                                 if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)

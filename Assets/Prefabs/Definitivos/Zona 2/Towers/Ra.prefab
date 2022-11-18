@@ -1072,12 +1072,15 @@ MonoBehaviour:
   armor: 0
   armorMax: 0
   sirenitaBoost: 0
+  shieldBoost: 0
+  kills: 0
   target: {fileID: 0}
   numTargets: 1
   bullet: {fileID: 8058975441479462529, guid: 13525fa7958d5cf4d90f2d0ec7f23f69, type: 3}
   bulletPos: {fileID: 5078637050509453214}
   particles: {fileID: 0}
   fullRotate: 0
+  ally: {fileID: 0}
   level: 1
   levelMultiplier: 1.2
   levelMultiplierSpecialStat: 1.4
@@ -1101,6 +1104,8 @@ MonoBehaviour:
   frezzeIceWall: 0
   curation: 50
   singParticles: {fileID: 0}
+  thunder: {fileID: 0}
+  areaCuration: 50
 --- !u!114 &1685704814836824901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2028,6 +2033,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 5755903939143020808}
     m_Modifications:
     - target: {fileID: 529317124, guid: f72912f13b069b043b837d69eae65336, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 529317124, guid: f72912f13b069b043b837d69eae65336, type: 3}
       propertyPath: levelMultiplier
       value: 1.2
       objectReference: {fileID: 0}
@@ -2143,6 +2152,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5755903939143020808}
     m_Modifications:
+    - target: {fileID: 529317124, guid: f72912f13b069b043b837d69eae65336, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 529317124, guid: f72912f13b069b043b837d69eae65336, type: 3}
       propertyPath: levelMultiplier
       value: 1.2

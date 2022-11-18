@@ -226,7 +226,7 @@ public class Tower : MonoBehaviour
             }
         }
 
-        InvokeRepeating("UpdateTarget", 0, 0.5f);
+        InvokeRepeating("UpdateTarget", 0, 1.0f);
     }
 
     void UpdateTarget()
@@ -236,7 +236,6 @@ public class Tower : MonoBehaviour
             target = MainTower.instance.transform;
             return;
         }
-
 
         GameObject selectedEnemy = null;
         RaycastHit[] enemiesInRange = Physics.SphereCastAll(transform.position, range, transform.forward, 0, LayerMask.GetMask("Enemy"));

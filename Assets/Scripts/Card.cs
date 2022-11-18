@@ -117,7 +117,12 @@ public class Card : MonoBehaviour
 
             if (!blockedCards.Contains(block))
             {
+                print("1");
                 goodChoose = true;
+            }
+            else
+            {
+                print("2");
             }
         }
 
@@ -1110,6 +1115,11 @@ public class Card : MonoBehaviour
         block6.Atributte = 10;
         blockedCards.Add(block6);
 
+        BlockCards blockblock104 = new BlockCards();
+        blockblock104.Tower = "Barricada";
+        blockblock104.Atributte = 2;
+        blockedCards.Add(blockblock104);
+
         //Mundo 0 - Mina de oro
         BlockCards block18 = new BlockCards();
         block18.Tower = "Mina de oro";
@@ -1257,7 +1267,7 @@ public class Card : MonoBehaviour
         BlockCards block39 = new BlockCards();
         block37.Tower = "PeRigie";
         block37.Atributte = 3;
-        blockedCards.Add(block37);
+        blockedCards.Add(block39);
 
         BlockCards block40 = new BlockCards();
         block40.Tower = "PeRigie";

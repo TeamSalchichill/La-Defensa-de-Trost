@@ -176,6 +176,14 @@ public class ColocatorManager : MonoBehaviour
                         GameObject instTower = Instantiate(towers[towerID], rayHit.collider.gameObject.transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
                         instTower.GetComponent<Tower>().enabled = true;
 
+                        if (instTower.GetComponentsInChildren<Tower>().Length > 0)
+                        {
+                            foreach (var tower in instTower.GetComponentsInChildren<Tower>())
+                            {
+                                tower.enabled = true;
+                            }
+                        }
+
                         if (heroBuild && towerID == 0)
                         {
                             foreach (var cardScript in gameFlow.cardsScripts)

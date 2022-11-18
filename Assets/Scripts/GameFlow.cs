@@ -131,6 +131,8 @@ public class GameFlow : MonoBehaviour
 
             if (round % generator.expandRate == 0 && round != totalRounds - 1)
             {
+                generator.idRoundTile++;
+
                 if (generator.newMapNodes.Count > 0)
                 {
                     foreach (var newNode in generator.newMapNodes)
@@ -190,7 +192,7 @@ public class GameFlow : MonoBehaviour
         enemiesLeft2 = enemiesPerRound2[round];
         enemiesToSpawn3 = enemiesPerRound3[round];
         enemiesLeft3 = enemiesPerRound3[round];
-
+        /*
         if (round == 4)
         {
             generator.expandRate = 2;
@@ -207,7 +209,7 @@ public class GameFlow : MonoBehaviour
         {
             generator.expandRate = 5;
         }
-
+        */
         
         if (round % cardsRate == 0)
         {

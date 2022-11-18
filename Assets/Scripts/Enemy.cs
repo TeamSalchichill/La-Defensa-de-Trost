@@ -268,7 +268,7 @@ public class Enemy : MonoBehaviour
 
         if (terrain == Terrain.Ground)
         {
-            InvokeRepeating("UpdateTargetTile", 0.1f, 2.0f);
+            InvokeRepeating("UpdateTargetTile", 0.15f, 2.0f);
             nav.destination = target.transform.position;
         }
         else
@@ -405,10 +405,17 @@ public class Enemy : MonoBehaviour
             
             if (!miniTowerFound && !towerFound)
             {
+                int auxID = 0;
 
                 if (canFindNextTile)
                 {
-                    //Cada x tiempo comprobar que la casilla que tengo debajo tiene un id menor que el mio
+                    auxID = 1;
+                }
+
+                //if (canFindNextTile || timerToFoundNewTile > 5)
+                if (true)
+                {
+                    timerToFoundNewTile = 0;
 
                     canFindNextTile = false;
 
@@ -422,7 +429,7 @@ public class Enemy : MonoBehaviour
 
                     foreach (var groundTile in groundTiles)
                     {
-                        if (groundTile.GetComponent<MapInfo>().id == mapPosId - 1)
+                        if (groundTile.GetComponent<MapInfo>().id == mapPosId - auxID)
                         {
                             groundTilesSelected.Add(groundTile);
                         }
@@ -1231,7 +1238,7 @@ public class Enemy : MonoBehaviour
 
         if (other.tag == "SpecialGround")
         {
-            switch (generator.zone)
+            switch (Generator.instance.zone)
             {
                 case Generator.Zone.Hielo:
 
@@ -1308,7 +1315,7 @@ public class Enemy : MonoBehaviour
 
         if (other.tag == "SpecialGround")
         {
-            switch (generator.zone)
+            switch (Generator.instance.zone)
             {
                 case Generator.Zone.Hielo:
                     nav.speed = speed * 0.5f;
