@@ -133,11 +133,12 @@ public class Tower : MonoBehaviour
 
     [Header("Hero - Forest")]
     public int areaCuration = 50;
-    /*
+    
     [Header("Particles")]
-    public GameObject curationParticle;
-    public GameObject destroyParticle;
-    */
+    //public GameObject curationParticle;
+    //public GameObject destroyParticle;
+    public GameObject areaDamageParticle;
+    
     void Start()
     {
         gameFlow = GameFlow.instance;
@@ -546,6 +547,10 @@ public class Tower : MonoBehaviour
                                         enemy.collider.gameObject.GetComponent<Enemy>().health -= healthDamage;
                                     }
                                 }
+
+                                GameObject instParticle = Instantiate(areaDamageParticle, transform.position, transform.rotation);
+                                instParticle.transform.localScale *= range;
+                                Destroy(instParticle, 3);
                             }
                             break;
                     }

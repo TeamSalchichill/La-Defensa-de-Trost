@@ -804,7 +804,6 @@ MonoBehaviour:
   acumulateGold: 0
   specialTile: 0
   burnTile: 0
-  spawnParticles: {fileID: 198159274938206214, guid: 9e4577abe56a95f4a91d29a0473cd30c, type: 3}
   healthDamage: 200
   armorDamage: 0
   range: 7
@@ -850,8 +849,7 @@ MonoBehaviour:
   singParticles: {fileID: 0}
   thunder: {fileID: 0}
   areaCuration: 50
-  curationParticle: {fileID: 0}
-  destroyParticle: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56, type: 3}
+  areaDamageParticle: {fileID: 100002, guid: 574f83e21e4c31c4a81bc1fb4f7c4b72, type: 3}
 --- !u!1 &9111850543465116006
 GameObject:
   m_ObjectHideFlags: 0
