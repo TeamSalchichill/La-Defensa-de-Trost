@@ -98,7 +98,7 @@ public class Enemy : MonoBehaviour
     public Material healthBarRed;
     
     [Header("Water Effect")]
-    //public GameObject waterParticles;
+    public GameObject waterParticles;
     bool isWaterEffect = false;
     int waterEffectTime = 2;
 
@@ -142,13 +142,13 @@ public class Enemy : MonoBehaviour
 
     [Header("Boss final")]
     public GameObject finalBoss;
-    /*
+    
     [Header("Particles")]
-    public GameObject sokekAttackParticle;
-    public GameObject infectionParticle;
-    public GameObject hitParticle;
+    //public GameObject sokekAttackParticle;
+    //public GameObject infectionParticle;
+    //public GameObject hitParticle;
     public GameObject torbellinoParticle;
-    */
+    
     void Start()
     {
         gameFlow = GameFlow.instance;
@@ -214,7 +214,7 @@ public class Enemy : MonoBehaviour
             transform.position += new Vector3(0, 5, 0);
         }
         
-        //waterParticles.SetActive(false);
+        waterParticles.SetActive(false);
 
         healthMax = health;
         initialScaleX = HealthBar.transform.localScale.x;
@@ -805,10 +805,10 @@ public class Enemy : MonoBehaviour
         waterEffect -= (Time.deltaTime * 3);
         waterEffect = Mathf.Max(waterEffect, 0);
         if (waterEffect >= 100)
-        {/*
+        {
             GameObject instParticle = Instantiate(torbellinoParticle, transform.position, transform.rotation);
             Destroy(instParticle, waterEffectTime);
-            */
+            
             //waterParticles.SetActive(true);
             speed = 0;
             isWaterEffect = true;
