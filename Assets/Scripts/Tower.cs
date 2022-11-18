@@ -151,7 +151,7 @@ public class Tower : MonoBehaviour
         armorMax = armor;
         acumulateGold = price;
 
-        ParticleSystem instParticle = Instantiate(spawnParticles, transform.position + new Vector3(0, 2, 1), transform.rotation);
+        ParticleSystem instParticle = Instantiate(spawnParticles, transform.position, transform.rotation);
         instParticle.transform.rotation = Quaternion.AngleAxis(270, Vector3.right);
         
         if (burnTile)

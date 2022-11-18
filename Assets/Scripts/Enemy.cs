@@ -145,8 +145,8 @@ public class Enemy : MonoBehaviour
     
     [Header("Particles")]
     public GameObject sokekAttackParticle;
-    //public GameObject infectionParticle;
-    //public GameObject hitParticle;
+    public GameObject infectionParticle;
+    public GameObject hitParticle;
     public GameObject torbellinoParticle;
     
     void Start()
@@ -379,9 +379,9 @@ public class Enemy : MonoBehaviour
                                 nav.destination = new Vector3(normaltowerFound.transform.position.x, 0.5f, normaltowerFound.transform.position.z);
                                 normaltowerFound.GetComponent<Tower>().health -= damage * 15;
                                 anim.SetTrigger("doHit");
-                                /*
+                                
                                 GameObject instParticle = Instantiate(hitParticle, transform.position, transform.rotation);
-                                Destroy(instParticle, 3);*/
+                                Destroy(instParticle, 3);
                             }
                         }
                         else
@@ -1205,10 +1205,10 @@ public class Enemy : MonoBehaviour
                 {
                     collision.collider.gameObject.GetComponentInParent<Tower>().health -= damage;
                     canFindNextTile = true;
-                    /*
+                    
                     GameObject instParticle = Instantiate(hitParticle, transform.position, transform.rotation);
                     Destroy(instParticle, 3);
-                    */
+                    
                     if (anim != null && !isBoss)
                     {
                         anim.SetBool("isHit", true);
@@ -1394,10 +1394,10 @@ public class Enemy : MonoBehaviour
             infectationMode = true;
 
             Invoke("NoInfectationMode", mainTower.infectationDuration);
-            /*
+            
             GameObject instParticle = Instantiate(infectionParticle, transform.position + new Vector3(0, 2, 0), transform.rotation);
             instParticle.transform.localScale *= range;
-            Destroy(instParticle, 3);*/
+            Destroy(instParticle, 3);
         }
     }
 
