@@ -48,7 +48,7 @@ public class Tower : MonoBehaviour
     public bool specialTile;
     public bool burnTile;
     [Space]
-    //public ParticleSystem spawnParticles;
+    public ParticleSystem spawnParticles;
 
     [Header("Stats")]
     public int healthDamage = 100;
@@ -150,10 +150,10 @@ public class Tower : MonoBehaviour
         healthMax = health;
         armorMax = armor;
         acumulateGold = price;
-        /*
+        
         ParticleSystem instParticle = Instantiate(spawnParticles, transform.position, transform.rotation);
         instParticle.transform.rotation = Quaternion.AngleAxis(270, Vector3.right);
-        */
+        
         if (burnTile)
         {
             fireRate *= 1.2f;
@@ -547,7 +547,7 @@ public class Tower : MonoBehaviour
                                         enemy.collider.gameObject.GetComponent<Enemy>().health -= healthDamage;
                                     }
                                 }
-
+                                
                                 GameObject instParticle = Instantiate(areaDamageParticle, transform.position, transform.rotation);
                                 instParticle.transform.localScale *= range;
                                 Destroy(instParticle, 3);
@@ -606,10 +606,11 @@ public class Tower : MonoBehaviour
                                 enemy.collider.gameObject.GetComponent<Enemy>().health -= (int)(healthDamage / 2);
                             }
                         }
-
+                        
                         GameObject instParticle = Instantiate(areaDamageParticle, transform.position, transform.rotation);
                         instParticle.transform.localScale *= range;
                         Destroy(instParticle, 3);
+                        
                     }
                     break;
                 case AttackType.Invoke:

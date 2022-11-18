@@ -377,7 +377,7 @@ public class Enemy : MonoBehaviour
                             else
                             {
                                 nav.destination = new Vector3(normaltowerFound.transform.position.x, 0.5f, normaltowerFound.transform.position.z);
-                                normaltowerFound.GetComponent<Tower>().health -= damage * 5;
+                                normaltowerFound.GetComponent<Tower>().health -= damage * 15;
                                 anim.SetTrigger("doHit");
                                 /*
                                 GameObject instParticle = Instantiate(hitParticle, transform.position, transform.rotation);

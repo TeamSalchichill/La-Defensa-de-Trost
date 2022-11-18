@@ -1108,6 +1108,7 @@ MonoBehaviour:
   areaCuration: 50
   curationParticle: {fileID: 100000, guid: 3d4907e6bd39f474b8fd8220920e65c4, type: 3}
   destroyParticle: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56, type: 3}
+  areaDamageParticle: {fileID: 0}
 --- !u!114 &1685704814836824901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2039,6 +2040,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 529317124, guid: f72912f13b069b043b837d69eae65336, type: 3}
+      propertyPath: spawnParticles
+      value: 
+      objectReference: {fileID: 198159274938206214, guid: 9e4577abe56a95f4a91d29a0473cd30c, type: 3}
+    - target: {fileID: 529317124, guid: f72912f13b069b043b837d69eae65336, type: 3}
       propertyPath: destroyParticle
       value: 
       objectReference: {fileID: 0}
@@ -2162,6 +2167,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 529317124, guid: f72912f13b069b043b837d69eae65336, type: 3}
+      propertyPath: spawnParticles
+      value: 
+      objectReference: {fileID: 198159274938206214, guid: 9e4577abe56a95f4a91d29a0473cd30c, type: 3}
     - target: {fileID: 529317124, guid: f72912f13b069b043b837d69eae65336, type: 3}
       propertyPath: destroyParticle
       value: 
