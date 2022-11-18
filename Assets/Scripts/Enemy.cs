@@ -474,13 +474,13 @@ public class Enemy : MonoBehaviour
                         }
                     }
 
-                    if (path.corners.Length > 0)
+                    if (path.corners.Length > 0 && nav.isActiveAndEnabled)
                     {
                         nav.SetDestination(closestTarget.position);//
                         targetGO = tileSelected;
                     }
 
-                    if (mapPosId < 2)
+                    if (mapPosId < 2 && nav.isActiveAndEnabled)
                     {
                         nav.SetDestination(target.transform.position);
                     }
