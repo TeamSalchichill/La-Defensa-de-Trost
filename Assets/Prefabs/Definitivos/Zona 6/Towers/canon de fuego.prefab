@@ -106,7 +106,7 @@ MonoBehaviour:
   rangeArea: {fileID: 4898991935256509718}
   partToRotate: {fileID: 4857916697258447141}
   towerName: Charmando
-  icon: {fileID: 21300000, guid: d9cf1c54cd12df447950b98b142dc6af, type: 3}
+  icon: {fileID: 21300000, guid: c807889c4a10b6244bf275725142b6c4, type: 3}
   price: 400
   acumulateGold: 0
   specialTile: 0
@@ -144,6 +144,7 @@ MonoBehaviour:
   ascentDamage: 0
   bloodDamage: 0
   transformationDamage: 1
+  isAscent: 0
   isBurn: 0
   burnEffect: 0
   burnEffectPerShoot: 2
@@ -161,7 +162,9 @@ MonoBehaviour:
   destroyParticle: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56, type: 3}
   areaDamageParticle: {fileID: 0}
   shootAudio: {fileID: 8300000, guid: a4f7bdd8e51bd56459a4c8e40a53cc78, type: 3}
+  shootAudioVolume: 0.5
   abilityAudio: {fileID: 0}
+  abilityAudioVolume: 0.5
 --- !u!1 &9128768732035251301
 GameObject:
   m_ObjectHideFlags: 0

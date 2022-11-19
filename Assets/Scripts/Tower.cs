@@ -105,6 +105,7 @@ public class Tower : MonoBehaviour
     public int bloodDamage = 0;
     [Range(0, 100)]
     public int transformationDamage = 0;
+    public bool isAscent = false;
 
     [Header("Overheat")]
     public bool isBurn = false;
@@ -200,6 +201,8 @@ public class Tower : MonoBehaviour
                     bloodDamage += 3;
                     transformationDamage += 3;
                     rangeArea.transform.localScale = new Vector3(range * rangeAreaOriginalScale, rangeAreaOriginalScale, range * rangeAreaOriginalScale);
+
+                    isAscent = true;
                     break;
                 case Generator.Zone.Fantasia:
                     fireRate *= 1.2f;

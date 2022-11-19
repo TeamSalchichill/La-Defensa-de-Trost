@@ -278,7 +278,7 @@ MonoBehaviour:
   rangeArea: {fileID: 4576108986328184084}
   partToRotate: {fileID: 201766528148367477}
   towerName: Viva Porub
-  icon: {fileID: 21300000, guid: d9cf1c54cd12df447950b98b142dc6af, type: 3}
+  icon: {fileID: 21300000, guid: 97b9284a3d7a26145bab0d1d49252454, type: 3}
   price: 350
   acumulateGold: 0
   specialTile: 0
@@ -316,6 +316,7 @@ MonoBehaviour:
   ascentDamage: 0
   bloodDamage: 0
   transformationDamage: 0
+  isAscent: 0
   isBurn: 0
   burnEffect: 0
   burnEffectPerShoot: 2
@@ -333,7 +334,9 @@ MonoBehaviour:
   destroyParticle: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56, type: 3}
   areaDamageParticle: {fileID: 0}
   shootAudio: {fileID: 8300000, guid: b8d81e2d83f31fc42a9bcad977d1060b, type: 3}
+  shootAudioVolume: 0.5
   abilityAudio: {fileID: 0}
+  abilityAudioVolume: 0.5
 --- !u!65 &201766528866847352
 BoxCollider:
   m_ObjectHideFlags: 0

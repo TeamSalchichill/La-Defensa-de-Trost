@@ -46,9 +46,16 @@ public class HUD_Manager : MonoBehaviour
     public TextMeshProUGUI sellButton;
     [Space]
     public GameObject preferencesBoard;
+    [Space]
+    public TextMeshProUGUI[] statsTexts;
+    public TextMeshProUGUI[] effectsTexts;
+    [Space]
+    public Image coin;
+    public Sprite[] coins;
 
     [Header("Tower Buttons")]
     public TextMeshProUGUI[] towersButton;
+    public Image[] towersButtonIcon;
 
     [Header("Screens")]
     public GameObject pauseScreen;
@@ -72,7 +79,18 @@ public class HUD_Manager : MonoBehaviour
     [Header("Particles")]
     public GameObject levelUpParticle;
     public GameObject levelUpSpecialParticle;
-    
+
+    [Header("Icons")]
+    public Sprite[] enemyIcons;
+
+    [Header("Cards")]
+    public GameObject dadosBackGround;
+
+    [Header("Tutorial")]
+    public Image tutorialSprite;
+    public int tutorialSpriteId;
+    public Sprite[] tutorialImages;
+
     void Awake()
     {
         instance = this;
@@ -89,8 +107,12 @@ public class HUD_Manager : MonoBehaviour
 
         for (int i = 0; i < towersButton.Length; i++)
         {
-            towersButton[i].text = colocatorManager.towers[i].GetComponent<Tower>().towerName + "\n" + "(" + colocatorManager.towers[i].GetComponent<Tower>().price + "€)";
+            //towersButton[i].text = colocatorManager.towers[i].GetComponent<Tower>().towerName + "\n" + "(" + colocatorManager.towers[i].GetComponent<Tower>().price + "€)";
+            towersButton[i].text = "" + colocatorManager.towers[i].GetComponent<Tower>().price;
+            towersButtonIcon[i].sprite = colocatorManager.towers[i].GetComponent<Tower>().icon;
         }
+
+        dadosBackGround.SetActive(false);
     }
 
     void Update()
@@ -144,31 +166,58 @@ public class HUD_Manager : MonoBehaviour
             {
                 icon.sprite = activeTower.icon;
             }
+
+            statsTexts[0].text = activeTower.healthDamage.ToString("F1");
+            statsTexts[1].text = activeTower.health.ToString("F1");
+            statsTexts[2].text = activeTower.range.ToString("F1");
+            statsTexts[3].text = activeTower.fireRate.ToString("F1");
+
+            effectsTexts[0].text = activeTower.iceDamage.ToString("F1");
+            effectsTexts[1].text = activeTower.igniteDamage.ToString("F1");
+            effectsTexts[2].text = activeTower.waterDamage.ToString("F1");
+            effectsTexts[3].text = activeTower.ascentDamage.ToString("F1");
+            effectsTexts[4].text = activeTower.bloodDamage.ToString("F1");
+            effectsTexts[5].text = activeTower.transformationDamage.ToString("F1");
+
+            if (activeTower.level < 4)
+            {
+                coin.sprite = coins[0];
+            }
+            else
+            {
+                coin.sprite = coins[1];
+            }
+
+
+
+            /*
             towerDescription1.text =
             " ---- STATS ----\n" +
-            "Daño: " + activeTower.healthDamage + "\n" +
-            "Rango: " + activeTower.range + "\n" +
-            "Vel. disparo: " + activeTower.fireRate + "\n" +
-            "Vida: " + activeTower.health + "\n"
+            "Daño: " + activeTower.healthDamage.ToString("F1") + "\n" +
+            "Rango: " + activeTower.range.ToString("F1") + "\n" +
+            "Vel. disparo: " + activeTower.fireRate.ToString("F1") + "\n" +
+            "Vida: " + activeTower.health.ToString("F1") + "\n"
             //"Velocidad de giro: " + activeTower.turnSpeed + "\n" +
             ;
             towerDescription2.text =
             "-- EFFECTS --\n" +
-            "Hielo: " + activeTower.iceDamage + "%" + "\n" +
-            "Fuego: " + activeTower.igniteDamage + "%" + "\n" +
-            "Agua: " + activeTower.waterDamage + "%" + "\n" +
-            "Ascensión: " + activeTower.ascentDamage + "%" + "\n" +
-            "Sangrado: " + activeTower.bloodDamage + "%" + "\n" +
-            "Locura: " + activeTower.transformationDamage + "%" + "\n"
+            "Hielo: " + activeTower.iceDamage.ToString("F1") + "%" + "\n" +
+            "Fuego: " + activeTower.igniteDamage.ToString("F1") + "%" + "\n" +
+            "Agua: " + activeTower.waterDamage.ToString("F1") + "%" + "\n" +
+            "Ascensión: " + activeTower.ascentDamage.ToString("F1") + "%" + "\n" +
+            "Sangrado: " + activeTower.bloodDamage.ToString("F1") + "%" + "\n" +
+            "Locura: " + activeTower.transformationDamage.ToString("F1") + "%" + "\n"
             ;
-
+            */
             if (activeTower.level == 5)
             {
-                levelUpButton.gameObject.SetActive(false);
+                levelUpButton.text = "Max";
+                //levelUpButton.gameObject.SetActive(false);
             }
             else
             {
-                levelUpButton.gameObject.SetActive(true);
+                levelUpButton.text = "" + activeTower.levelUpPrice;
+                //levelUpButton.gameObject.SetActive(true);
             }
 
             float actualHealth = activeTower.health;
@@ -176,8 +225,8 @@ public class HUD_Manager : MonoBehaviour
 
             float healthPercent = actualHealth / actualHealthMax;
 
-            levelUpButton.text = "Mejorar" + "\n" + "(" + activeTower.levelUpPrice + activeTower.priceLogo + ")";
-            sellButton.text = "Vender" + "\n" + "(" + (int)(activeTower.acumulateGold * 0.7f * healthPercent) + "€)";
+            //levelUpButton.text = "" + activeTower.levelUpPrice;
+            sellButton.text = "" + (int)(activeTower.acumulateGold * 0.7f * healthPercent);
         }
 
         if (activeTower != null && activeTower.health < 0)
@@ -538,10 +587,10 @@ public class HUD_Manager : MonoBehaviour
 
     public void ActivatePotion()
     {
-        SoundManager.instance.SoundSelection(3, 0.5f);
-
         if (mainTower.restRounds <= 0)
         {
+            SoundManager.instance.SoundSelection(3, 0.5f);
+
             mainTower.activateTower = true;
         }
     }
@@ -628,5 +677,31 @@ public class HUD_Manager : MonoBehaviour
         SoundManager.instance.SoundSelection(3, 0.5f);
 
         preferencesBoard.SetActive(false);
+    }
+
+    public void ChangeTutorial(bool dir)
+    {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
+        if (dir)
+        {
+            tutorialSpriteId++;
+
+            if (tutorialSpriteId > tutorialImages.Length - 1)
+            {
+                tutorialSpriteId = 0;
+            }
+        }
+        else
+        {
+            tutorialSpriteId--;
+
+            if (tutorialSpriteId < 0)
+            {
+                tutorialSpriteId = tutorialImages.Length - 1;
+            }
+        }
+
+        tutorialSprite.sprite = tutorialImages[tutorialSpriteId];
     }
 }

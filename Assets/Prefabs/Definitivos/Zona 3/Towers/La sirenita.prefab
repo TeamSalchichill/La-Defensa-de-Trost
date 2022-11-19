@@ -3513,7 +3513,7 @@ MonoBehaviour:
   rangeArea: {fileID: 6548807115356223790}
   partToRotate: {fileID: 6928219942501838684}
   towerName: Reina Maribel
-  icon: {fileID: 21300000, guid: d9cf1c54cd12df447950b98b142dc6af, type: 3}
+  icon: {fileID: 21300000, guid: 1337da04df40a6f4baf5b85313a55b27, type: 3}
   price: 1000
   acumulateGold: 0
   specialTile: 0
@@ -3551,6 +3551,7 @@ MonoBehaviour:
   ascentDamage: 0
   bloodDamage: 0
   transformationDamage: 0
+  isAscent: 0
   isBurn: 0
   burnEffect: 0
   burnEffectPerShoot: 2
@@ -3568,7 +3569,9 @@ MonoBehaviour:
   destroyParticle: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56, type: 3}
   areaDamageParticle: {fileID: 100002, guid: 574f83e21e4c31c4a81bc1fb4f7c4b72, type: 3}
   shootAudio: {fileID: 8300000, guid: 31df8b6cc447ddb48a9da772b519d485, type: 3}
+  shootAudioVolume: 0.5
   abilityAudio: {fileID: 8300000, guid: 31df8b6cc447ddb48a9da772b519d485, type: 3}
+  abilityAudioVolume: 0.5
 --- !u!1 &7825128201249244154
 GameObject:
   m_ObjectHideFlags: 0

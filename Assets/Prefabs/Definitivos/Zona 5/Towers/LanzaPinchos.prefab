@@ -76,14 +76,14 @@ MonoBehaviour:
   canColocate: 0
   bulletType: 0
   zone: 5
-  specialStat: 6
+  specialStat: 10
   targetPreference: 0
   anim: {fileID: 737144673154292288}
   level5Light: {fileID: 737144672450666152}
   rangeArea: {fileID: 3996828510589588777}
   partToRotate: {fileID: 2353173496800930078}
   towerName: ThornGun
-  icon: {fileID: 21300000, guid: d9cf1c54cd12df447950b98b142dc6af, type: 3}
+  icon: {fileID: 21300000, guid: a2fb72df6ad97a347819870c1ea431a8, type: 3}
   price: 150
   acumulateGold: 0
   specialTile: 0
@@ -121,6 +121,7 @@ MonoBehaviour:
   ascentDamage: 0
   bloodDamage: 1
   transformationDamage: 0
+  isAscent: 0
   isBurn: 0
   burnEffect: 0
   burnEffectPerShoot: 2
@@ -138,7 +139,9 @@ MonoBehaviour:
   destroyParticle: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56, type: 3}
   areaDamageParticle: {fileID: 0}
   shootAudio: {fileID: 8300000, guid: bbfe814579ef4f04f927262359b8de56, type: 3}
+  shootAudioVolume: 0.5
   abilityAudio: {fileID: 0}
+  abilityAudioVolume: 0.5
 --- !u!65 &737144673154292290
 BoxCollider:
   m_ObjectHideFlags: 0

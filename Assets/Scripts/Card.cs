@@ -29,6 +29,7 @@ public class Card : MonoBehaviour
     public Image border;
     public Button button;
     public TextMeshProUGUI text;
+    public Image icon;
     public Image blockImage;
     public Sprite[] tiersBorders;
 
@@ -104,6 +105,8 @@ public class Card : MonoBehaviour
         {
             towerSelectedId = Random.Range(1, colocatorManager.towers.Length);
         }
+
+        icon.sprite = colocatorManager.towers[towerSelectedId].GetComponent<Tower>().icon;
 
         bool goodChoose = false;
 
@@ -842,7 +845,7 @@ public class Card : MonoBehaviour
         else
         {
             gameFlow.cardSelected = true;
-            gameFlow.dadosBackGround.gameObject.SetActive(false);
+            HUD_Manager.instance.dadosBackGround.gameObject.SetActive(false);
             
             foreach (var cardPos in gameFlow.cardsPos)
             {
@@ -960,6 +963,19 @@ public class Card : MonoBehaviour
         else
         {
             enemySelectedId = Random.Range(1, gameFlow.enemies.Length);
+        }
+
+        switch (gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().type)
+        {
+            case Enemy.Type.Pequeño:
+                icon.sprite = HUD_Manager.instance.enemyIcons[0];
+                break;
+            case Enemy.Type.Mediano:
+                icon.sprite = HUD_Manager.instance.enemyIcons[1];
+                break;
+            case Enemy.Type.Grande:
+                icon.sprite = HUD_Manager.instance.enemyIcons[2];
+                break;
         }
 
         statSelected = Random.Range(0, 5);

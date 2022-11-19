@@ -64,7 +64,7 @@ public class GameFlow : MonoBehaviour
 
     [Header("Dados")]
     public bool activateDados;
-    
+
     public Image[] cardsPos;
     public Card[] cardsScripts;
 
@@ -72,8 +72,6 @@ public class GameFlow : MonoBehaviour
 
     public bool showCards = false;
     public bool cardSelected = true;
-
-    public Image dadosBackGround;
 
     void Awake()
     {
@@ -119,7 +117,7 @@ public class GameFlow : MonoBehaviour
 
                 showCards = false;
                 cardSelected = false;
-                dadosBackGround.gameObject.SetActive(true);
+                hudManager.dadosBackGround.gameObject.SetActive(true);
 
                 // Towers cards
                 int towerCardAmount = Random.Range(1, 7);
