@@ -356,6 +356,8 @@ public class HUD_Manager : MonoBehaviour
     {
         if ((activeTower.level < 4 && gameFlow.coins >= activeTower.levelUpPrice) || (activeTower.level == 4 && gameFlow.specialCoins >= activeTower.levelUpPrice))
         {
+            SoundManager.instance.SoundSelection(17, 1);
+
             if (activeTower.level < 4)
             {
                 GameObject instParticle = Instantiate(levelUpParticle, activeTower.transform.position, transform.rotation);

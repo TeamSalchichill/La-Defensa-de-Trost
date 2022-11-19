@@ -431,6 +431,8 @@ public class Tower : MonoBehaviour
         // Comprobar vida
         if (health <= 0)
         {
+            SoundManager.instance.SoundSelection(15, 0.5f);
+
             GameObject instParticle = Instantiate(destroyParticle, transform.position, transform.rotation);
             instParticle.transform.localScale *= range;
             
@@ -712,6 +714,8 @@ public class Tower : MonoBehaviour
                         {
                             groundsInRange.Add(hit1.collider.gameObject);
                             anim.SetTrigger("doHit");
+
+                            SoundManager.instance.SoundSelection(12, 0.05f);
                         }
                     }
                 }
@@ -730,6 +734,8 @@ public class Tower : MonoBehaviour
 
     void Hero2SpecialAttack()
     {
+        SoundManager.instance.SoundSelection(12, 0.05f);
+
         anim.SetTrigger("doHit");
 
         RaycastHit[] towerInrange = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Tower"));
@@ -755,6 +761,8 @@ public class Tower : MonoBehaviour
         RaycastHit[] towersInRange = Physics.SphereCastAll(transform.position, range, transform.forward, 1, LayerMask.GetMask("Tower"));
         if (towersInRange.Length > 0)
         {
+            SoundManager.instance.SoundSelection(12, 0.05f);
+
             anim.SetTrigger("doHit");
 
             foreach (var tower in towersInRange)
@@ -776,6 +784,8 @@ public class Tower : MonoBehaviour
         RaycastHit[] tilesInRange = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Ground"));
         if (tilesInRange.Length > 0)
         {
+            SoundManager.instance.SoundSelection(12, 0.05f);
+
             anim.SetTrigger("doHit");
             Instantiate(thunder, tilesInRange[Random.Range(0, tilesInRange.Length)].transform.position + new Vector3(0, 3, 0), tilesInRange[0].transform.rotation);
         }
@@ -786,6 +796,8 @@ public class Tower : MonoBehaviour
         GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
         if (towers.Length > 0)
         {
+            SoundManager.instance.SoundSelection(12, 0.05f);
+
             foreach (GameObject tower in towers)
             {
                 if (tower.GetComponent<Tower>())
@@ -814,6 +826,8 @@ public class Tower : MonoBehaviour
 
     void Hero6SpecialAttack()
     {
+        SoundManager.instance.SoundSelection(12, 0.05f);
+
         StartCoroutine(SpawnEnemies());
     }
 

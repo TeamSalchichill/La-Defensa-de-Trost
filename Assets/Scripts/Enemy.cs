@@ -204,6 +204,8 @@ public class Enemy : MonoBehaviour
                         break;
                 }
 
+                SoundManager.instance.SoundSelection(8, 0.5f);
+
                 Destroy(gameObject);
             }
             nav.speed = normalSpeed;
@@ -422,6 +424,8 @@ public class Enemy : MonoBehaviour
                     }
 
                     miniMainTowerFound.GetComponent<MiniMainTower>().health--;
+
+                    SoundManager.instance.SoundSelection(8, 0.5f);
 
                     Destroy(gameObject);
                 }
@@ -792,6 +796,8 @@ public class Enemy : MonoBehaviour
 
             Instantiate(deadParticle, transform.position, transform.rotation);
 
+            SoundManager.instance.SoundSelection(8, 0.5f);
+
             Destroy(gameObject);
         }
 
@@ -855,6 +861,8 @@ public class Enemy : MonoBehaviour
             }
 
             gameFlow.enemiesLeft2++;
+
+            SoundManager.instance.SoundSelection(8, 0.5f);
 
             Destroy(gameObject);
         }
@@ -1226,6 +1234,9 @@ public class Enemy : MonoBehaviour
                         }
 
                         collision.collider.gameObject.GetComponentInParent<Tower>().health -= 250;
+
+                        SoundManager.instance.SoundSelection(8, 0.5f);
+
                         Destroy(gameObject);
                     }
                 }
@@ -1252,6 +1263,9 @@ public class Enemy : MonoBehaviour
             }
 
             MainTower.instance.health--;
+
+            SoundManager.instance.SoundSelection(8, 0.5f);
+
             Destroy(gameObject);
         }
 
@@ -1417,6 +1431,8 @@ public class Enemy : MonoBehaviour
                 gameFlow.enemiesLeft3--;
                 break;
         }
+
+        SoundManager.instance.SoundSelection(8, 0.5f);
 
         Destroy(gameObject);
     }

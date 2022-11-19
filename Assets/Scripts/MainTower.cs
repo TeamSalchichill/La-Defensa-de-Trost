@@ -71,6 +71,8 @@ public class MainTower : MonoBehaviour
             case Zone.Hielo:
                 if (Input.GetButtonDown("Fire1") && timeToWait > 0.2f && activateTower)
                 {
+                    SoundManager.instance.SoundSelection(7, 0.5f);
+
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit rayHit;
                     if (Physics.Raycast(ray, out rayHit, 1000))
@@ -87,6 +89,8 @@ public class MainTower : MonoBehaviour
             case Zone.Desierto:
                 if (Input.GetButtonDown("Fire1") && timeToWait > 0.2f && activateTower)
                 {
+                    SoundManager.instance.SoundSelection(7, 0.5f);
+
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit rayHit;
                     if (Physics.Raycast(ray, out rayHit, 1000))
@@ -103,6 +107,8 @@ public class MainTower : MonoBehaviour
             case Zone.Atlantis:
                 if (Input.GetButtonDown("Fire1") && timeToWait > 0.2f && activateTower)
                 {
+                    SoundManager.instance.SoundSelection(7, 0.5f);
+
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit rayHit;
                     if (Physics.Raycast(ray, out rayHit, 1000))
@@ -127,6 +133,8 @@ public class MainTower : MonoBehaviour
             case Zone.Vikingos:
                 if (Input.GetButtonDown("Fire1") && timeToWait > 0.2f && activateTower)
                 {
+                    SoundManager.instance.SoundSelection(7, 0.5f);
+
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit rayHit;
                     if (Physics.Raycast(ray, out rayHit, 1000))
@@ -143,6 +151,8 @@ public class MainTower : MonoBehaviour
             case Zone.Fantasia:
                 if (Input.GetButtonDown("Fire1") && timeToWait > 0.2f && activateTower)
                 {
+                    SoundManager.instance.SoundSelection(7, 0.5f);
+
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit rayHit;
                     if (Physics.Raycast(ray, out rayHit, 1000))
@@ -159,6 +169,8 @@ public class MainTower : MonoBehaviour
             case Zone.Infierno:
                 if (Input.GetButtonDown("Fire1") && timeToWait > 0.2f && activateTower)
                 {
+                    SoundManager.instance.SoundSelection(7, 0.5f);
+
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit rayHit;
                     if (Physics.Raycast(ray, out rayHit, 1000))
