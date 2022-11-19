@@ -7,6 +7,8 @@ public class HUD_Button : MonoBehaviour
 {
     public enum Link { LinkTree, itchio, Twitter, Youtube }
 
+    public GameObject panel;
+
     public void ChangeScene(int idScene)
     {
         SceneManager.LoadScene(idScene);
@@ -38,5 +40,12 @@ public class HUD_Button : MonoBehaviour
         SoundManager.instance.SoundSelection(3, 0.5f);
 
         Application.Quit();
+    }
+
+    public void TutorialOptions(bool activate)
+    {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
+        panel.SetActive(activate);
     }
 }
