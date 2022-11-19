@@ -69,6 +69,7 @@ public class HUD_Manager : MonoBehaviour
 
     [Header("Game Over")]
     public GameObject gameOverScreen;
+    public GameObject winScreen;
 
     [Header("Utility Buttons")]
     public GameObject towerPotionButton;
@@ -100,6 +101,14 @@ public class HUD_Manager : MonoBehaviour
     int imageId = 1;
 
     public GameObject panel;
+
+    [Header("End images")]
+    public Image activeImageEnd;
+    public Sprite[] imagesEnd;
+    int imageIdEnd = 1;
+
+    public GameObject panelEnd;
+
 
     void Awake()
     {
@@ -732,17 +741,32 @@ public class HUD_Manager : MonoBehaviour
         }
     }
 
-    public void NewImage()
+    public void NewImage(bool moment)
     {
-        if (imageId < images.Length)
+        if (!moment)
         {
-            activeImage.sprite = images[imageId];
-            imageId++;
+            if (imageId < images.Length)
+            {
+                activeImage.sprite = images[imageId];
+                imageId++;
+            }
+            else if (imageId == images.Length)
+            {
+                gameFlow.canExpand = true;
+                panel.SetActive(false);
+            }
         }
-        else if (imageId == images.Length)
+        else
         {
-            gameFlow.canExpand = true;
-            panel.SetActive(false);
+            if (imageIdEnd < imagesEnd.Length)
+            {
+                activeImageEnd.sprite = imagesEnd[imageIdEnd];
+                imageIdEnd++;
+            }
+            else if (imageIdEnd == imagesEnd.Length)
+            {
+                winScreen.SetActive(true);
+            }
         }
     }
 }

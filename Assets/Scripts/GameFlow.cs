@@ -107,9 +107,24 @@ public class GameFlow : MonoBehaviour
     {
         if ((enemiesLeft1 == 0 && enemiesLeft2 == 0  && enemiesLeft3 == 0 && !roundFinished))
         {
+            roundFinished = true;
+
+            if (round == totalRounds)
+            {
+                if (generator.zone == Generator.Zone.Infierno)
+                {
+                    hudManager.panelEnd.SetActive(true);
+                }
+                else
+                {
+                    hudManager.winScreen.SetActive(true);
+                }
+
+                return;
+            }
+
             BackgroundMusic.instance.ChangeClip();
 
-            roundFinished = true;
             specialCoins += newSpecialCoinsPerRound;
             gameManager.doSpawnEnemies = false;
 
