@@ -549,8 +549,8 @@ public class Tower : MonoBehaviour
                                 }
                                 
                                 GameObject instParticle = Instantiate(areaDamageParticle, transform.position, transform.rotation);
-                                instParticle.transform.localScale *= range;
-                                Destroy(instParticle, 3);
+                                instParticle.transform.localScale *= (range / 2);
+                                Destroy(instParticle, 1);
                             }
                             break;
                     }
@@ -608,8 +608,8 @@ public class Tower : MonoBehaviour
                         }
                         
                         GameObject instParticle = Instantiate(areaDamageParticle, transform.position, transform.rotation);
-                        instParticle.transform.localScale *= range;
-                        Destroy(instParticle, 3);
+                        instParticle.transform.localScale *= (range / 2);
+                        Destroy(instParticle, 1);
                         
                     }
                     break;
