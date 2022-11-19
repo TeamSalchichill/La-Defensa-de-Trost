@@ -91,6 +91,16 @@ public class HUD_Manager : MonoBehaviour
     public int tutorialSpriteId;
     public Sprite[] tutorialImages;
 
+    [Header("Hechizo")]
+    public TextMeshProUGUI hechizoText;
+
+    [Header("Intro images")]
+    public Image activeImage;
+    public Sprite[] images;
+    int imageId = 1;
+
+    public GameObject panel;
+
     void Awake()
     {
         instance = this;
@@ -255,7 +265,7 @@ public class HUD_Manager : MonoBehaviour
             towerBannerText.text = "Mostrar";
             towerBannerButton.GetComponent<RectTransform>().position = new Vector2(Screen.width / 2, (Screen.height / 9) * 2.5f);
         }
-
+        /*
         if (mainTower.activateTower)
         {
             towerPotionIcon.GetComponent<Image>().color = towerPotionIconColorHover;
@@ -272,6 +282,7 @@ public class HUD_Manager : MonoBehaviour
         {
             towerPotionButton.GetComponent<Image>().color = towerPotionButtonColorHover;
         }
+        */
     }
 
     public void AddCoins(int newCoins)
@@ -550,7 +561,7 @@ public class HUD_Manager : MonoBehaviour
     public void ChangeSpeed(int speed)
     {
         SoundManager.instance.SoundSelection(3, 0.5f);
-        BackgroundMusic.instance.ChangeClip();
+        //BackgroundMusic.instance.ChangeClip();
 
         Time.timeScale = speed;
     }
@@ -718,6 +729,20 @@ public class HUD_Manager : MonoBehaviour
         else
         {
             cameraController.gameObject.transform.RotateAround(HitInfo.point, -Vector3.up, 45);
+        }
+    }
+
+    public void NewImage()
+    {
+        if (imageId < images.Length)
+        {
+            activeImage.sprite = images[imageId];
+            imageId++;
+        }
+        else if (imageId == images.Length)
+        {
+            gameFlow.canExpand = true;
+            panel.SetActive(false);
         }
     }
 }

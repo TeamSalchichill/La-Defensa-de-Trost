@@ -72,6 +72,7 @@ public class MainTower : MonoBehaviour
                 if (Input.GetButtonDown("Fire1") && timeToWait > 0.2f && activateTower)
                 {
                     SoundManager.instance.SoundSelection(7, 0.5f);
+                    hudManager.hechizoText.text = roundsToReset.ToString();
 
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit rayHit;
@@ -90,6 +91,7 @@ public class MainTower : MonoBehaviour
                 if (Input.GetButtonDown("Fire1") && timeToWait > 0.2f && activateTower)
                 {
                     SoundManager.instance.SoundSelection(7, 0.5f);
+                    hudManager.hechizoText.text = roundsToReset.ToString();
 
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit rayHit;
@@ -108,6 +110,7 @@ public class MainTower : MonoBehaviour
                 if (Input.GetButtonDown("Fire1") && timeToWait > 0.2f && activateTower)
                 {
                     SoundManager.instance.SoundSelection(7, 0.5f);
+                    hudManager.hechizoText.text = roundsToReset.ToString();
 
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit rayHit;
@@ -134,6 +137,7 @@ public class MainTower : MonoBehaviour
                 if (Input.GetButtonDown("Fire1") && timeToWait > 0.2f && activateTower)
                 {
                     SoundManager.instance.SoundSelection(7, 0.5f);
+                    hudManager.hechizoText.text = roundsToReset.ToString();
 
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit rayHit;
@@ -152,6 +156,7 @@ public class MainTower : MonoBehaviour
                 if (Input.GetButtonDown("Fire1") && timeToWait > 0.2f && activateTower)
                 {
                     SoundManager.instance.SoundSelection(7, 0.5f);
+                    hudManager.hechizoText.text = roundsToReset.ToString();
 
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit rayHit;
@@ -170,6 +175,7 @@ public class MainTower : MonoBehaviour
                 if (Input.GetButtonDown("Fire1") && timeToWait > 0.2f && activateTower)
                 {
                     SoundManager.instance.SoundSelection(7, 0.5f);
+                    hudManager.hechizoText.text = roundsToReset.ToString();
 
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit rayHit;

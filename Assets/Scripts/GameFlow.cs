@@ -73,6 +73,8 @@ public class GameFlow : MonoBehaviour
     public bool showCards = false;
     public bool cardSelected = true;
 
+    public bool canExpand;
+
     void Awake()
     {
         instance = this;
@@ -277,8 +279,8 @@ public class GameFlow : MonoBehaviour
 
         round++;
         MainTower.instance.restRounds--;
-
         MainTower.instance.restRounds = Mathf.Max(MainTower.instance.restRounds, 0);
+        hudManager.hechizoText.text = MainTower.instance.restRounds.ToString();
     }
 
     void StopNextRound()

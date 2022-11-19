@@ -54,7 +54,7 @@ public class NewMapNode : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (gameFlow.cardSelected)
+        if (gameFlow.cardSelected && gameFlow.canExpand)
         {
             generator.newMapNodes.Remove(gameObject);
 
