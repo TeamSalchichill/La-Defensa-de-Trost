@@ -232,10 +232,14 @@ public class HUD_Manager : MonoBehaviour
 
     public void ResetGame()
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void ExitGame()
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         Application.Quit();
     }
     public void AbleSpawn()
@@ -252,6 +256,8 @@ public class HUD_Manager : MonoBehaviour
     }
     public void ChangeTower(int id)
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         isShowInfo = false;
 
         if (activeTower != null)
@@ -483,16 +489,22 @@ public class HUD_Manager : MonoBehaviour
 
     public void ChangeScene(int id)
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         SceneManager.LoadScene(id);
     }
 
     public void ChangeSpeed(int speed)
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         Time.timeScale = speed;
     }
 
     public void StartRoundButtom()
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         gameFlow.StartRound();
     }
 
@@ -508,16 +520,22 @@ public class HUD_Manager : MonoBehaviour
 
     public void HideTowerBanner()
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         showTowerBanner = !showTowerBanner;
     }
 
     public void ActivateGameOver()
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         gameOverScreen.SetActive(true);
     }
 
     public void ActivatePotion()
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         if (mainTower.restRounds <= 0)
         {
             mainTower.activateTower = true;
@@ -526,11 +544,15 @@ public class HUD_Manager : MonoBehaviour
 
     public void Zoom(int zoom)
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         cameraController.Zoom(zoom, Camera.main.orthographicSize);
     }
 
     public void ExitInfo()
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         isShowInfo = false;
 
         activeTower.rangeArea.SetActive(false);
@@ -542,6 +564,8 @@ public class HUD_Manager : MonoBehaviour
 
     public void ChangeEnemyPreference(int newPreference)
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         switch (newPreference)
         {
             case 0:
@@ -590,11 +614,15 @@ public class HUD_Manager : MonoBehaviour
 
     public void ShowPreferenceInfo()
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         preferencesBoard.SetActive(true);
     }
 
     public void HidePreferenceInfo()
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         preferencesBoard.SetActive(false);
     }
 }

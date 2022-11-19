@@ -117,12 +117,7 @@ public class Card : MonoBehaviour
 
             if (!blockedCards.Contains(block))
             {
-                print("1");
                 goodChoose = true;
-            }
-            else
-            {
-                print("2");
             }
         }
 
@@ -426,6 +421,8 @@ public class Card : MonoBehaviour
 
     public void SelectTowerCard()
     {
+        SoundManager.instance.SoundSelection(4, 0.5f);
+
         if (iter == 0)
         {
             GameObject[] allTowers = GameObject.FindGameObjectsWithTag("Tower");

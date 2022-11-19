@@ -107,12 +107,16 @@ public class GameFlow : MonoBehaviour
     {
         if ((enemiesLeft1 == 0 && enemiesLeft2 == 0  && enemiesLeft3 == 0 && !roundFinished))
         {
+            BackgroundMusic.instance.ChangeClip();
+
             roundFinished = true;
             specialCoins += newSpecialCoinsPerRound;
             gameManager.doSpawnEnemies = false;
 
             if (activateDados && showCards)
             {
+                SoundManager.instance.SoundSelection(4, 0.5f);
+
                 showCards = false;
                 cardSelected = false;
                 dadosBackGround.gameObject.SetActive(true);
@@ -169,6 +173,8 @@ public class GameFlow : MonoBehaviour
 
     public void StartRound()
     {
+        BackgroundMusic.instance.ChangeClip();
+
         if (round == totalRounds - 1 && generator.zone == Generator.Zone.Infierno)
         {
             generator.GenerateFinalBossMap();

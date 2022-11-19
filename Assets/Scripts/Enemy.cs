@@ -1183,7 +1183,6 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject == targetGO)
         {
             canFindNextTile = true;
-            print("1");
         }
     }
 
@@ -1192,7 +1191,6 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject == targetGO)
         {
             canFindNextTile = true;
-            print("2");
         }
 
         if (collision.collider.tag == "Tower")

@@ -14,6 +14,8 @@ public class HUD_Button : MonoBehaviour
 
     public void OpenURL(int idLink)
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         switch (idLink)
         {
             case 0:
@@ -33,6 +35,8 @@ public class HUD_Button : MonoBehaviour
 
     public void ExitGame()
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         Application.Quit();
     }
 }
