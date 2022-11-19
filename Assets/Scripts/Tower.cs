@@ -138,7 +138,13 @@ public class Tower : MonoBehaviour
     public GameObject curationParticle;
     public GameObject destroyParticle;
     public GameObject areaDamageParticle;
-    
+
+    [Header("Sounds")]
+    public AudioClip shootAudio;
+    public float shootAudioVolume = 0.5f;
+    public AudioClip abilityAudio;
+    public float abilityAudioVolume = 0.5f;
+
     void Start()
     {
         gameFlow = GameFlow.instance;
@@ -463,6 +469,8 @@ public class Tower : MonoBehaviour
         // Activar modo sobrecalentado
         if (burnEffect >= 100)
         {
+            SoundManager.instance.SoundSelection(21, 1);
+
             instSmoke = Instantiate(smokeOverHeat, transform.position, transform.rotation);
 
             isBurn = true;
@@ -482,6 +490,8 @@ public class Tower : MonoBehaviour
         // Disparar
         if (attackType == AttackType.Health && fireCountdown <= 0)
         {
+            SoundManager.instance.SoundPlay(shootAudio, shootAudioVolume);
+
             anim.SetTrigger("doShoot");
             RaycastHit[] towerInrange1 = Physics.SphereCastAll(transform.position, range, transform.forward, 0, LayerMask.GetMask("Tower"));
             if (towerInrange1.Length > 0)
@@ -507,6 +517,7 @@ public class Tower : MonoBehaviour
             {
                 case AttackType.Melee:
                     anim.SetTrigger("doShoot");
+                    SoundManager.instance.SoundPlay(shootAudio, shootAudioVolume);
                     break;
                 case AttackType.Range:
                     switch (targetType)
@@ -516,6 +527,7 @@ public class Tower : MonoBehaviour
                             {
                                 case BulletType.Prefab:
                                     anim.SetTrigger("doShoot");
+                                    SoundManager.instance.SoundPlay(shootAudio, shootAudioVolume);
                                     Shoot();
                                     break;
                                 case BulletType.Particles:
@@ -529,6 +541,7 @@ public class Tower : MonoBehaviour
                             {
                                 if (i < enemies.Length && enemies[i] != null && Vector3.Distance(transform.position, enemies[i].transform.position) < range)
                                 {
+                                    SoundManager.instance.SoundPlay(shootAudio, shootAudioVolume);
                                     MultiShoot(enemies[i].transform);
                                 }
                                 else
@@ -542,6 +555,8 @@ public class Tower : MonoBehaviour
                             RaycastHit[] enemiesInRange1 = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Enemy"));
                             if (enemiesInRange1.Length > 0)
                             {
+                                SoundManager.instance.SoundPlay(shootAudio, shootAudioVolume);
+
                                 foreach (var enemy in enemiesInRange1)
                                 {
                                     if (enemy.collider.gameObject.GetComponent<Enemy>())
@@ -560,11 +575,14 @@ public class Tower : MonoBehaviour
                 case AttackType.Resources:
                     if (!gameFlow.roundFinished)
                     {
+                        SoundManager.instance.SoundPlay(shootAudio, shootAudioVolume);
+
                         hudManager.AddCoins(healthDamage);
                     }
                     break;
                 case AttackType.ResourcesVariable:
                     anim.SetTrigger("doShoot");
+                    SoundManager.instance.SoundPlay(shootAudio, shootAudioVolume);
                     hudManager.AddCoins(healthDamage * 3);
                     healthDamage = 0;
                     break;
@@ -597,6 +615,7 @@ public class Tower : MonoBehaviour
                         GameObject instParticle = Instantiate(curationParticle, transform.position, transform.rotation);
                         instParticle.transform.localScale *= range;
                         Destroy(instParticle, 3);
+                        SoundManager.instance.SoundPlay(shootAudio, shootAudioVolume);
                     }
                     RaycastHit[] enemiesInrange2 = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Enemy"));
                     if (enemiesInrange2.Length > 0)
@@ -621,6 +640,8 @@ public class Tower : MonoBehaviour
                     RaycastHit[] tilesInRange = Physics.SphereCastAll(transform.position, 5, transform.forward, 1.0f, LayerMask.GetMask("Ground"));
                     if (tilesInRange.Length > 0 && enemiesInrange3.Length > 0)
                     {
+                        SoundManager.instance.SoundPlay(shootAudio, shootAudioVolume);
+
                         GameObject allyInst = Instantiate(ally, tilesInRange[0].transform.position, tilesInRange[0].transform.rotation);
                         allyInst.GetComponent<Ally>().damage = healthDamage;
                     }
@@ -715,7 +736,7 @@ public class Tower : MonoBehaviour
                             groundsInRange.Add(hit1.collider.gameObject);
                             anim.SetTrigger("doHit");
 
-                            SoundManager.instance.SoundSelection(12, 0.05f);
+                            SoundManager.instance.SoundPlay(abilityAudio, abilityAudioVolume);
                         }
                     }
                 }
@@ -734,7 +755,7 @@ public class Tower : MonoBehaviour
 
     void Hero2SpecialAttack()
     {
-        SoundManager.instance.SoundSelection(12, 0.05f);
+        SoundManager.instance.SoundPlay(abilityAudio, abilityAudioVolume);
 
         anim.SetTrigger("doHit");
 
@@ -761,7 +782,7 @@ public class Tower : MonoBehaviour
         RaycastHit[] towersInRange = Physics.SphereCastAll(transform.position, range, transform.forward, 1, LayerMask.GetMask("Tower"));
         if (towersInRange.Length > 0)
         {
-            SoundManager.instance.SoundSelection(12, 0.05f);
+            SoundManager.instance.SoundPlay(abilityAudio, abilityAudioVolume);
 
             anim.SetTrigger("doHit");
 
@@ -784,7 +805,7 @@ public class Tower : MonoBehaviour
         RaycastHit[] tilesInRange = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Ground"));
         if (tilesInRange.Length > 0)
         {
-            SoundManager.instance.SoundSelection(12, 0.05f);
+            SoundManager.instance.SoundPlay(abilityAudio, abilityAudioVolume);
 
             anim.SetTrigger("doHit");
             Instantiate(thunder, tilesInRange[Random.Range(0, tilesInRange.Length)].transform.position + new Vector3(0, 3, 0), tilesInRange[0].transform.rotation);
@@ -796,7 +817,7 @@ public class Tower : MonoBehaviour
         GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
         if (towers.Length > 0)
         {
-            SoundManager.instance.SoundSelection(12, 0.05f);
+            SoundManager.instance.SoundPlay(abilityAudio, abilityAudioVolume);
 
             foreach (GameObject tower in towers)
             {
@@ -826,7 +847,7 @@ public class Tower : MonoBehaviour
 
     void Hero6SpecialAttack()
     {
-        SoundManager.instance.SoundSelection(12, 0.05f);
+        SoundManager.instance.SoundPlay(abilityAudio, abilityAudioVolume);
 
         StartCoroutine(SpawnEnemies());
     }

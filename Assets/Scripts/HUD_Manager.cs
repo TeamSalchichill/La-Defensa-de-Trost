@@ -460,6 +460,8 @@ public class HUD_Manager : MonoBehaviour
     {
         if (!activeTower.isHero)
         {
+            SoundManager.instance.SoundSelection(6, 1);
+
             float actualHealth = activeTower.health;
             float actualHealthMax = activeTower.healthMax;
 
