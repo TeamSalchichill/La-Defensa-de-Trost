@@ -530,7 +530,10 @@ public class Tower : MonoBehaviour
                             {
                                 case BulletType.Prefab:
                                     anim.SetTrigger("doShoot");
-                                    SoundManager.instance.SoundPlay(shootAudio, shootAudioVolume);
+                                    if (towerName != "Test-Lah")
+                                    {
+                                        SoundManager.instance.SoundPlay(shootAudio, shootAudioVolume);
+                                    }
                                     Shoot();
                                     break;
                                 case BulletType.Particles:

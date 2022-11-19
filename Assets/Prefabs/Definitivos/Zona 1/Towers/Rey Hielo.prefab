@@ -430,6 +430,7 @@ MonoBehaviour:
   ascentDamage: 0
   bloodDamage: 0
   transformationDamage: 0
+  isAscent: 0
   isBurn: 0
   burnEffect: 0
   burnEffectPerShoot: 2
@@ -449,7 +450,7 @@ MonoBehaviour:
   shootAudio: {fileID: 8300000, guid: a26ad0d6a19f1c844a86ddac9cf17db3, type: 3}
   shootAudioVolume: 0.5
   abilityAudio: {fileID: 8300000, guid: 314ff3877ad447d49964f20e944dd446, type: 3}
-  abilityAudioVolume: 0.5
+  abilityAudioVolume: 0.25
 --- !u!114 &7576927462864335720
 MonoBehaviour:
   m_ObjectHideFlags: 0

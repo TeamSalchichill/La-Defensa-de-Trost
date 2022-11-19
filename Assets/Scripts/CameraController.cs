@@ -66,8 +66,8 @@ public class CameraController : MonoBehaviour
         if (Input.GetKey("e"))
         {
             transform.RotateAround(HitInfo.point, -Vector3.up, 90 * Time.deltaTime);
-
         }
+
         // Hacer zoom con el ratón
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         float size = Camera.main.orthographicSize;

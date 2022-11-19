@@ -1264,7 +1264,7 @@ public class Enemy : MonoBehaviour
 
             MainTower.instance.health--;
 
-            SoundManager.instance.SoundSelection(19, 0.5f);
+            SoundManager.instance.SoundSelection(19, 0.3f);
 
             Destroy(gameObject);
         }

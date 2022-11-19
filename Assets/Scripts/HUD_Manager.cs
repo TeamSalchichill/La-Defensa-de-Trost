@@ -550,6 +550,7 @@ public class HUD_Manager : MonoBehaviour
     public void ChangeSpeed(int speed)
     {
         SoundManager.instance.SoundSelection(3, 0.5f);
+        BackgroundMusic.instance.ChangeClip();
 
         Time.timeScale = speed;
     }
@@ -703,5 +704,20 @@ public class HUD_Manager : MonoBehaviour
         }
 
         tutorialSprite.sprite = tutorialImages[tutorialSpriteId];
+    }
+
+    public void TurnCamera(bool dir)
+    {
+        RaycastHit HitInfo;
+        Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out HitInfo, 100.0f);
+
+        if (dir)
+        {
+            cameraController.gameObject.transform.RotateAround(HitInfo.point, Vector3.up, 45);
+        }
+        else
+        {
+            cameraController.gameObject.transform.RotateAround(HitInfo.point, -Vector3.up, 45);
+        }
     }
 }

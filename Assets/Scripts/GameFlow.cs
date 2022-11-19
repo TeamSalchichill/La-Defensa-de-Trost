@@ -277,6 +277,8 @@ public class GameFlow : MonoBehaviour
 
         round++;
         MainTower.instance.restRounds--;
+
+        MainTower.instance.restRounds = Mathf.Max(MainTower.instance.restRounds, 0);
     }
 
     void StopNextRound()
