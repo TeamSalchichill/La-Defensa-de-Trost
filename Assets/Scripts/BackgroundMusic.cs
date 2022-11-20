@@ -9,7 +9,7 @@ public class BackgroundMusic : MonoBehaviour
     public AudioSource musicOutRounds;
     public AudioSource musicInRounds;
 
-    float defaultVolume = 0.2f;
+    float defaultVolume = 0.5f;
     float transitionTime = 0.25f;
 
     void Awake()

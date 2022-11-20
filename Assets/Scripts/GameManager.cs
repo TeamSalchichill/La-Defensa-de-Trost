@@ -32,8 +32,11 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 1;
 
-        print(volumeMultiplier);
-        print(volumeMultiplierEffects);
+        if (SceneManager.GetActiveScene().name == "Options")
+        {
+            sliderVolumeMusic.value = volumeMultiplier;
+            sliderVolumeMusicEffects.value = volumeMultiplierEffects;
+        }
     }
 
     void Update()

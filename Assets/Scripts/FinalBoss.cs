@@ -38,6 +38,14 @@ public class FinalBoss : MonoBehaviour
 
     void Start()
     {
+        GameFlow.instance.enemiesLeft3 += 6;
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (var enemy in enemies)
+        {
+            enemy.GetComponent<Enemy>().finalBoss = gameObject;
+        }
+
         InvokeRepeating("InvokeBoss", 1, bossesRate);
         InvokeRepeating("InvokeSkeletons", 3, skeletonsRate);
         InvokeRepeating("InvokeMagicBall", 5, magicBallRate);
@@ -63,12 +71,20 @@ public class FinalBoss : MonoBehaviour
                     }
                 }
             }
+
+            Invoke("AutoWin", 15);
         }
 
         if (numBossesKilled >= lifes && health <= 0)
         {
             winScreen.SetActive(true);
         }
+    }
+
+    void AutoWin()
+    {
+        numBossesKilled = 10;
+        health = -100;
     }
 
     void InvokeBoss()
@@ -89,6 +105,7 @@ public class FinalBoss : MonoBehaviour
         for (int i = 0; i < numSkeletonsToInvoke; i++)
         {
             Instantiate(skeletons, transform.position, transform.rotation);
+            GameFlow.instance.enemiesLeft2++;
             yield return new WaitForSeconds(0.1f);
         }
     }
