@@ -33,6 +33,12 @@ public class InfiteLevelManager : MonoBehaviour
     [Space]
     public GameObject[] hero;
 
+    [Header("Checks")]
+    public bool zoneChoosed;
+    public bool mainTowerChoosed;
+    public bool towersChoosed;
+    public bool heroChoosed;
+
     void Start()
     {
         gameFlow.enemiesPerRound1 = new int[1000];
@@ -87,6 +93,8 @@ public class InfiteLevelManager : MonoBehaviour
 
     public void SelectZone(int id)
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         generator.grassBlock = normalTerrain[id];
         generator.specialGrassBlock = specialTerrain[id];
         generator.fireTile = differentTerrain[id];
@@ -119,16 +127,24 @@ public class InfiteLevelManager : MonoBehaviour
                 generator.zone = Generator.Zone.Infierno;
                 break;
         }
+
+        zoneChoosed = true;
     }
 
     public void SelectMainTower(int id)
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         generator.mainTower = mainTower[id];
         generator.miniMainTower = miniMainTower[id];
+
+        mainTowerChoosed = true;
     }
 
     public void SelectTower(int id)
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         if (towersSelected.Contains(id))
         {
             towersSelected.Remove(id);
@@ -142,23 +158,34 @@ public class InfiteLevelManager : MonoBehaviour
                 numTowersSelected++;
             }
         }
+
+        towersChoosed = numTowersSelected == 6;
     }
 
     public void SelectHero(int id)
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         colocatorManager.towers[0] = hero[id];
+
+        heroChoosed = true;
     }
 
     public void StartGame()
     {
-        for (int i = 1; i < 7; i++)
-        {
-            colocatorManager.towers[i] = tower[towersSelected[i - 1]];
-        }
+        SoundManager.instance.SoundSelection(3, 0.5f);
 
-        gameManagerGO.SetActive(true);
-        canvas.SetActive(true);
-        cameraController.enabled = true;
-        selectScreen.SetActive(false);
+        if (zoneChoosed && mainTowerChoosed && towersChoosed && heroChoosed)
+        {
+            for (int i = 1; i < 7; i++)
+            {
+                colocatorManager.towers[i] = tower[towersSelected[i - 1]];
+            }
+
+            gameManagerGO.SetActive(true);
+            canvas.SetActive(true);
+            cameraController.enabled = true;
+            selectScreen.SetActive(false);
+        }
     }
 }

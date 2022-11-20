@@ -187,7 +187,7 @@ public class HUD_Manager : MonoBehaviour
             }
 
             statsTexts[0].text = activeTower.healthDamage.ToString("F1");
-            statsTexts[1].text = activeTower.health.ToString("F1");
+            statsTexts[1].text = ((int)activeTower.health).ToString();
             statsTexts[2].text = activeTower.range.ToString("F1");
             statsTexts[3].text = activeTower.fireRate.ToString("F1");
 
@@ -728,6 +728,8 @@ public class HUD_Manager : MonoBehaviour
 
     public void TurnCamera(bool dir)
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         RaycastHit HitInfo;
         Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out HitInfo, 100.0f);
 

@@ -11,6 +11,8 @@ public class HUD_Button : MonoBehaviour
 
     public void ChangeScene(int idScene)
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         SceneManager.LoadScene(idScene);
     }
 
@@ -37,6 +39,8 @@ public class HUD_Button : MonoBehaviour
 
     public void ExitGame()
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         SoundManager.instance.SoundSelection(3, 0.5f);
 
         Application.Quit();

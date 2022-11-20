@@ -204,15 +204,15 @@ public class Card : MonoBehaviour
                 {
                     case Rarity.Normal:
                         incrementAmount = Random.Range(50, 101);
-                        text.text = "El daño de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
+                        text.text = "El ataque de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Rare:
                         incrementAmount = Random.Range(5, 51);
-                        text.text = "El daño de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + "%.";
+                        text.text = "El ataque de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + "%.";
                         break;
                     case Rarity.Legendary:
                         incrementAmount = Random.Range(50, 101);
-                        text.text = "El daño de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
+                        text.text = "El ataque de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                 }
                 break;
@@ -336,10 +336,10 @@ public class Card : MonoBehaviour
                             switch (randomUpgrade)
                             {
                                 case 0:
-                                    text.text = "Cuando desaparece la barrera de hielo de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " explota y hace daño";
+                                    text.text = "Cuando desaparece la barrera de hielo de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " explota y hace ataque";
                                     break;
                                 case 1:
-                                    text.text = colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " inflinge un 30% más de daño a los enemigos que tengan algo congelación";
+                                    text.text = colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " inflinge un 30% más de ataque a los enemigos que tengan algo congelación";
                                     break;
                                 case 2:
                                     text.text = "La barrera de hielo de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " inflinge congelación en un area alrededor suya";
@@ -1006,15 +1006,15 @@ public class Card : MonoBehaviour
                 {
                     case Rarity.Normal:
                         incrementAmount = Random.Range(2, 7);
-                        text.text = "El daño de " + gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().enemyName + " incrementa en " + incrementAmount + ".";
+                        text.text = "El ataque de " + gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().enemyName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Rare:
                         incrementAmount = Random.Range(5, 51);
-                        text.text = "El daño de " + gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().enemyName + " incrementa en " + incrementAmount + "%.";
+                        text.text = "El ataque de " + gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().enemyName + " incrementa en " + incrementAmount + "%.";
                         break;
                     case Rarity.Legendary:
                         incrementAmount = Random.Range(5, 11);
-                        text.text = "El daño de " + gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().enemyName + " incrementa en " + incrementAmount + ".";
+                        text.text = "El ataque de " + gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().enemyName + " incrementa en " + incrementAmount + ".";
                         break;
                 }
                 break;
@@ -1174,14 +1174,14 @@ public class Card : MonoBehaviour
         block16.Atributte = 10;
         blockedCards.Add(block16);
 
-        //Mundo 0 - Cañón
+        //Mundo 0 - Kanyon
         BlockCards block20 = new BlockCards();
-        block20.Tower = "Cañón";
+        block20.Tower = "Kanyon";
         block20.Atributte = 3;
         blockedCards.Add(block20);
 
         BlockCards block21 = new BlockCards();
-        block21.Tower = "Cañón";
+        block21.Tower = "Kanyon";
         block21.Atributte = 8;
         blockedCards.Add(block21);
 
