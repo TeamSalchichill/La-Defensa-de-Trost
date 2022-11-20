@@ -510,7 +510,7 @@ public class Card : MonoBehaviour
                         case Rarity.Rare:
                             float porcetaje = 1 + (incrementAmount * 0.01f);
                             //int newHealth = (int)(colocatorManager.towers[towerSelectedId].GetComponent<Tower>().fireRate * porcetaje);
-                            int newHealth = (int)Mathf.Ceil((colocatorManager.towers[towerSelectedId].GetComponent<Tower>().fireRate * porcetaje));
+                            float newHealth = colocatorManager.towers[towerSelectedId].GetComponent<Tower>().fireRate * porcetaje;
                             foreach (var towerSelected in allTowersSelected)
                             {
                                 towerSelected.fireRate = newHealth;

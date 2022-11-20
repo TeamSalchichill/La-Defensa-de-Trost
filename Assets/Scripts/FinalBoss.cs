@@ -73,7 +73,7 @@ public class FinalBoss : MonoBehaviour
         {
             anim.SetTrigger("doDie");
 
-            winScreen.SetActive(true);
+            HUD_Manager.instance.endScreen.SetActive(true);
         }
     }
 
@@ -81,7 +81,7 @@ public class FinalBoss : MonoBehaviour
     {
         anim.SetTrigger("doDie");
 
-        winScreen.SetActive(true);
+        HUD_Manager.instance.endScreen.SetActive(true);
 
         numBossesKilled = 10;
         health = -100;

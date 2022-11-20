@@ -70,6 +70,7 @@ public class HUD_Manager : MonoBehaviour
     [Header("Game Over")]
     public GameObject gameOverScreen;
     public GameObject winScreen;
+    public GameObject endScreen;
 
     [Header("Utility Buttons")]
     public GameObject towerPotionButton;
