@@ -48,7 +48,7 @@ public class FinalBoss : MonoBehaviour
 
     void Update()
     {
-        if (GameFlow.instance.enemiesLeft3 < 1)
+        if (GameFlow.instance.enemiesLeft3 > 2)
         {
             health = Mathf.Max(health, 1000);
         }
@@ -80,6 +80,8 @@ public class FinalBoss : MonoBehaviour
     void AutoWin()
     {
         anim.SetTrigger("doDie");
+
+        winScreen.SetActive(true);
 
         numBossesKilled = 10;
         health = -100;

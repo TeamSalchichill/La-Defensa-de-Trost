@@ -167,7 +167,7 @@ public class Card : MonoBehaviour
                 switch (rarity)
                 {
                     case Rarity.Normal:
-                        incrementAmount = Random.Range(2, 6);
+                        incrementAmount = Random.Range(1, 4);
                         text.text = "La velocidad de ataque de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Rare:

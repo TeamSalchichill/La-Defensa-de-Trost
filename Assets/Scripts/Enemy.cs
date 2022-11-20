@@ -1321,7 +1321,7 @@ public class Enemy : MonoBehaviour
 
                     break;
                 case Generator.Zone.Infierno:
-                    if (type != Type.Grande)
+                    if (type != Type.Grande || enemyName != "Esqueleto")
                     {
                         transformationEffect += 10;
                     }
