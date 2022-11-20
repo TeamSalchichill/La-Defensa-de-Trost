@@ -40,12 +40,6 @@ public class FinalBoss : MonoBehaviour
     {
         GameFlow.instance.enemiesLeft3 += 6;
 
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (var enemy in enemies)
-        {
-            enemy.GetComponent<Enemy>().finalBoss = gameObject;
-        }
-
         InvokeRepeating("InvokeBoss", 1, bossesRate);
         InvokeRepeating("InvokeSkeletons", 3, skeletonsRate);
         InvokeRepeating("InvokeMagicBall", 5, magicBallRate);
@@ -54,7 +48,7 @@ public class FinalBoss : MonoBehaviour
 
     void Update()
     {
-        if (numBossesKilled < lifes)
+        if (GameFlow.instance.enemiesLeft3 < 1)
         {
             health = Mathf.Max(health, 1000);
         }
@@ -72,17 +66,21 @@ public class FinalBoss : MonoBehaviour
                 }
             }
 
-            Invoke("AutoWin", 15);
+            Invoke("AutoWin", 5);
         }
 
-        if (numBossesKilled >= lifes && health <= 0)
+        if (GameFlow.instance.enemiesLeft3 <= 0 && health <= 0)
         {
+            anim.SetTrigger("doDie");
+
             winScreen.SetActive(true);
         }
     }
 
     void AutoWin()
     {
+        anim.SetTrigger("doDie");
+
         numBossesKilled = 10;
         health = -100;
     }
@@ -91,6 +89,8 @@ public class FinalBoss : MonoBehaviour
     {
         if (numBossesInvoked < 6)
         {
+            anim.SetTrigger("doBoss");
+
             Instantiate(bosses[numBossesInvoked], transform.position, transform.rotation);
             numBossesInvoked++;
         }
@@ -98,6 +98,8 @@ public class FinalBoss : MonoBehaviour
 
     void InvokeSkeletons()
     {
+        anim.SetTrigger("doSkeleton");
+
         StartCoroutine(CoInvokeSkeletons());
     }
     IEnumerator CoInvokeSkeletons()
@@ -117,6 +119,8 @@ public class FinalBoss : MonoBehaviour
         GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
         if (towers.Length > 0)
         {
+            anim.SetTrigger("doMagicBall");
+
             foreach (var tower in towers)
             {
                 if (tower.GetComponent<Tower>())
@@ -148,6 +152,8 @@ public class FinalBoss : MonoBehaviour
 
     void InvokeEnergyRay()
     {
+        anim.SetTrigger("doEnergyBall");
+
         GameObject instEnergyRay = Instantiate(energyRay, transform.position, transform.rotation);
         instEnergyRay.transform.localScale *= range;
         

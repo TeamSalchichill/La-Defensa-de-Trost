@@ -734,11 +734,12 @@ public class Enemy : MonoBehaviour
 
         if (health < 0)
         {
+            /*
             if (type == Type.Grande && finalBoss != null)
             {
                 finalBoss.GetComponent<FinalBoss>().numBossesKilled++;
             }
-
+            */
             GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
             if (towers.Length > 0)
             {

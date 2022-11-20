@@ -2593,7 +2593,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
+  m_BackGroundColor: {r: 0.21960784, g: 0.24313726, b: 0.38039216, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -5711,6 +5711,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doSpawnEnemies: 1
   isInfiniteLevel: 0
+  volumeMultiplierPublic: 1
+  sliderVolumeMusic: {fileID: 0}
+  volumeMultiplierEffectsPublic: 1
+  sliderVolumeMusicEffects: {fileID: 0}
 --- !u!4 &320456132
 Transform:
   m_ObjectHideFlags: 0
