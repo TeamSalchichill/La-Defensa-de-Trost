@@ -36,6 +36,8 @@ public class FinalBoss : MonoBehaviour
     [Header("Others")]
     public GameObject winScreen;
 
+    bool dead = false;
+
     void Start()
     {
         GameFlow.instance.enemiesLeft3 += 6;
@@ -71,7 +73,11 @@ public class FinalBoss : MonoBehaviour
 
         if (GameFlow.instance.enemiesLeft3 <= 0 && health <= 0)
         {
-            anim.SetTrigger("doDie");
+            if (!dead)
+            {
+                anim.SetTrigger("doDie");
+                dead = true;
+            }
 
             HUD_Manager.instance.endScreen.SetActive(true);
         }

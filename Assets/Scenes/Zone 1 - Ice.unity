@@ -762,10 +762,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SALIR
+  m_text: INICIO
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a478210a65d19d349ab0c13e172265ec, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -3057761074478425410, guid: a478210a65d19d349ab0c13e172265ec, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -828,7 +828,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &37467257
@@ -2330,7 +2330,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a478210a65d19d349ab0c13e172265ec, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -3057761074478425410, guid: a478210a65d19d349ab0c13e172265ec, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -13553,7 +13553,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a478210a65d19d349ab0c13e172265ec, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -3057761074478425410, guid: a478210a65d19d349ab0c13e172265ec, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -13992,7 +13992,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a478210a65d19d349ab0c13e172265ec, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -3057761074478425410, guid: a478210a65d19d349ab0c13e172265ec, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -16432,7 +16432,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a478210a65d19d349ab0c13e172265ec, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -3057761074478425410, guid: a478210a65d19d349ab0c13e172265ec, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -17948,6 +17948,7 @@ MonoBehaviour:
   towerBannerText: {fileID: 1370976491}
   gameOverScreen: {fileID: 828807275}
   winScreen: {fileID: 718007574}
+  endScreen: {fileID: 0}
   towerPotionButton: {fileID: 657586367}
   towerPotionIcon: {fileID: 209046079}
   towerPotionButtonColorHover: {r: 0, g: 0, b: 0, a: 0.5882353}
@@ -17965,6 +17966,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 280422e9fdf5a414581dd9d16a1cebcf, type: 3}
   - {fileID: 21300000, guid: 59edc0ace89809741b51f86c444d1c86, type: 3}
   - {fileID: 21300000, guid: a32d08358cdb06e4c8eeda9569257d99, type: 3}
+  - {fileID: 21300000, guid: 507edad8b6bdfbc478a82189ad41e832, type: 3}
   hechizoText: {fileID: 132705292}
   activeImage: {fileID: 1125826168}
   images:
@@ -17977,6 +17979,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 625bafa5967ffe645b77a1d221903d67, type: 3}
   - {fileID: 21300000, guid: 59edc0ace89809741b51f86c444d1c86, type: 3}
   - {fileID: 21300000, guid: a32d08358cdb06e4c8eeda9569257d99, type: 3}
+  - {fileID: 21300000, guid: 507edad8b6bdfbc478a82189ad41e832, type: 3}
   - {fileID: 21300000, guid: 280422e9fdf5a414581dd9d16a1cebcf, type: 3}
   panel: {fileID: 1047996819}
   activeImageEnd: {fileID: 0}

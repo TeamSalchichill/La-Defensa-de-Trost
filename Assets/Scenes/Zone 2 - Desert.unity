@@ -18990,7 +18990,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SALIR
+  m_text: INICIO
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a478210a65d19d349ab0c13e172265ec, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -34782,6 +34782,7 @@ MonoBehaviour:
   towerBannerText: {fileID: 764282706}
   gameOverScreen: {fileID: 348982707}
   winScreen: {fileID: 1438657863}
+  endScreen: {fileID: 0}
   towerPotionButton: {fileID: 874032531}
   towerPotionIcon: {fileID: 409847229}
   towerPotionButtonColorHover: {r: 0, g: 0, b: 0, a: 0.5882353}
@@ -34799,12 +34800,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: de8a2fbb827bfe24da2939d35ca1dcb0, type: 3}
   - {fileID: 21300000, guid: 59edc0ace89809741b51f86c444d1c86, type: 3}
   - {fileID: 21300000, guid: a32d08358cdb06e4c8eeda9569257d99, type: 3}
+  - {fileID: 21300000, guid: 507edad8b6bdfbc478a82189ad41e832, type: 3}
   hechizoText: {fileID: 1414038317}
   activeImage: {fileID: 475387031}
   images:
   - {fileID: 21300000, guid: 88a9de7be9bc35e45b3cf972406861ad, type: 3}
   - {fileID: 21300000, guid: 59edc0ace89809741b51f86c444d1c86, type: 3}
   - {fileID: 21300000, guid: a32d08358cdb06e4c8eeda9569257d99, type: 3}
+  - {fileID: 21300000, guid: 507edad8b6bdfbc478a82189ad41e832, type: 3}
   - {fileID: 21300000, guid: de8a2fbb827bfe24da2939d35ca1dcb0, type: 3}
   panel: {fileID: 732021182}
   activeImageEnd: {fileID: 0}
