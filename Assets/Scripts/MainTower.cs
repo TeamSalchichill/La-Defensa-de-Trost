@@ -136,7 +136,7 @@ public class MainTower : MonoBehaviour
             case Zone.Vikingos:
                 if (Input.GetButtonDown("Fire1") && timeToWait > 0.2f && activateTower)
                 {
-                    SoundManager.instance.SoundSelection(7, 0.5f);
+                    SoundManager.instance.SoundSelection(7, 0.7f);
                     hudManager.hechizoText.text = roundsToReset.ToString();
 
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

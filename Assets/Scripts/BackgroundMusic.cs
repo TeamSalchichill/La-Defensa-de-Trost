@@ -17,6 +17,12 @@ public class BackgroundMusic : MonoBehaviour
         instance = this;
     }
 
+    void Start()
+    {
+        musicOutRounds.volume *= GameManager.instance.volumeMultiplierPublic;
+        musicInRounds.volume *= GameManager.instance.volumeMultiplierPublic;
+    }
+
     public void ChangeClip()
     {
         AudioSource nowPlaying = musicOutRounds;
@@ -52,6 +58,7 @@ public class BackgroundMusic : MonoBehaviour
         while (target.volume < defaultVolume)
         {
             target.volume = Mathf.Lerp(0, defaultVolume, percentage);
+            target.volume *= GameManager.instance.volumeMultiplierPublic;
             percentage += Time.deltaTime / transitionTime;
             yield return null;
         }

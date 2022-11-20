@@ -22,11 +22,13 @@ public class SoundManager : MonoBehaviour
 
     public void SoundSelection(int index, float volume)
     {
-        controlAudio.PlayOneShot(audios[index], volume);
+        print(volume * GameManager.instance.volumeMultiplierEffectsPublic);
+        controlAudio.PlayOneShot(audios[index], volume * GameManager.instance.volumeMultiplierEffectsPublic);
     }
 
     public void SoundPlay(AudioClip clip, float volume)
     {
-        controlAudio.PlayOneShot(clip, volume);
+        print(volume * GameManager.instance.volumeMultiplierEffectsPublic);
+        controlAudio.PlayOneShot(clip, volume * GameManager.instance.volumeMultiplierEffectsPublic);
     }
 }

@@ -708,6 +708,7 @@ MonoBehaviour:
   ascentDamage: 0
   bloodDamage: 0
   transformationDamage: 0
+  isAscent: 0
   isBurn: 0
   burnEffect: 0
   burnEffectPerShoot: 2
@@ -725,9 +726,9 @@ MonoBehaviour:
   destroyParticle: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56, type: 3}
   areaDamageParticle: {fileID: 0}
   shootAudio: {fileID: 8300000, guid: 086be03172332f341a9040ec4ece3f3c, type: 3}
-  shootAudioVolume: 0.5
+  shootAudioVolume: 0.35
   abilityAudio: {fileID: 8300000, guid: 086be03172332f341a9040ec4ece3f3c, type: 3}
-  abilityAudioVolume: 0.5
+  abilityAudioVolume: 0.35
 --- !u!95 &4232022859828179271
 Animator:
   serializedVersion: 4
