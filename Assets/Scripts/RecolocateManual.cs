@@ -19,11 +19,18 @@ public class RecolocateManual : MonoBehaviour
             RaycastHit rayHit;
             if (Physics.Raycast(ray, out rayHit, 1000))
             {
-                if (rayHit.collider.gameObject.layer == 7)
+                if ((rayHit.collider.gameObject.layer == 7 && GetComponent<Tower>().canColocate == Tower.CanColocate.Ground) || (rayHit.collider.gameObject.layer == 8 && GetComponent<Tower>().canColocate == Tower.CanColocate.Path))
                 {
                     if ((Input.GetButtonDown("Fire1") || Input.GetButton("Fire1")))
                     {
-                        transform.position = rayHit.collider.gameObject.transform.position + new Vector3(0, 0.5f, 0);
+                        Vector3 recolocateOffset = new Vector3(0, 0, 0);
+
+                        if (GetComponent<Recolocate>())
+                        {
+                            recolocateOffset = GetComponent<Recolocate>().offsetPos;
+                        }
+
+                        transform.position = rayHit.collider.gameObject.transform.position + new Vector3(0, 0.5f, 0) + recolocateOffset;
                         realocate = false;
                         nextRound = false;
 

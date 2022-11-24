@@ -1484,14 +1484,14 @@ public class Card : MonoBehaviour
         block77.Atributte = 8;
         blockedCards.Add(block77);
 
-        //Mundo 5 - Reina Tatiana
+        //Mundo 5 - Reina Tatinia
         BlockCards block78 = new BlockCards();
-        block78.Tower = "Reina Tatiana";
+        block78.Tower = "Reina Tatinia";
         block78.Atributte = 3;
         blockedCards.Add(block78);
 
         BlockCards block79 = new BlockCards();
-        block79.Tower = "Reina Tatiana";
+        block79.Tower = "Reina Tatinia";
         block79.Atributte = 8;
         blockedCards.Add(block79);
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ColocatorManager : MonoBehaviour
 {
@@ -157,6 +158,7 @@ public class ColocatorManager : MonoBehaviour
                     {
                         if (towerID == 0)
                         {
+                            HUD_Manager.instance.towersButtonIcon[0].GetComponent<Button>().interactable = false;
                             heroBuild = true;
                         }
 

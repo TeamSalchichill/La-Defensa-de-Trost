@@ -33,7 +33,14 @@ public class Hero : MonoBehaviour
                 {
                     if ((Input.GetButtonDown("Fire1") || Input.GetButton("Fire1")))
                     {
-                        transform.position = rayHit.collider.gameObject.transform.position + new Vector3(0, 0.25f, 0);
+                        Vector3 recolocateOffset = new Vector3(0, 0, 0);
+
+                        if (GetComponent<Recolocate>())
+                        {
+                            recolocateOffset = GetComponent<Recolocate>().offsetPos;
+                        }
+
+                        transform.position = rayHit.collider.gameObject.transform.position + new Vector3(0, 0.5f, 0) + recolocateOffset;
                         realocate = false;
                         nextRound = false;
 

@@ -110,7 +110,6 @@ public class HUD_Manager : MonoBehaviour
 
     public GameObject panelEnd;
 
-
     void Awake()
     {
         instance = this;

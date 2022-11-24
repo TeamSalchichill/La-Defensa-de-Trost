@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -44,6 +45,9 @@ public class GameFlow : MonoBehaviour
     public Material healthBarRed;
     int changeWaterRate = 3;
     public float newSpeed = 1;
+
+    public GameObject mareaInfo;
+    public TextMeshProUGUI mareaInfoText;
 
     [Header("Enemy waves")]
     public float spawnRate;
@@ -273,20 +277,25 @@ public class GameFlow : MonoBehaviour
             {
                 int newSpeedRandom = Random.Range(0, 3);
                 //newSpeedRandom = 2;
+                mareaInfo.SetActive(true);
+                Invoke("DisableMareaInfo", 4);
 
                 switch (newSpeedRandom)
                 {
                     case 0:
                         newSpeed = 0.5f;
                         waterFlag.GetComponent<MeshRenderer>().material = healthBarGreen;
+                        mareaInfoText.text = "La marea te ayuda";
                         break;
                     case 1:
                         newSpeed = 1;
                         waterFlag.GetComponent<MeshRenderer>().material = healthBarYellow;
+                        mareaInfoText.text = "La marea se ha calmado";
                         break;
                     case 2:
                         newSpeed = 2;
                         waterFlag.GetComponent<MeshRenderer>().material = healthBarRed;
+                        mareaInfoText.text = "La marea te perjudica";
                         break;
                 }
             }
@@ -296,6 +305,11 @@ public class GameFlow : MonoBehaviour
         MainTower.instance.restRounds--;
         MainTower.instance.restRounds = Mathf.Max(MainTower.instance.restRounds, 0);
         hudManager.hechizoText.text = MainTower.instance.restRounds.ToString();
+    }
+
+    void DisableMareaInfo()
+    {
+        mareaInfo.SetActive(false);
     }
 
     void StopNextRound()

@@ -107,6 +107,23 @@ public class CameraController : MonoBehaviour
         }
 
         Zoom(scroll, size);
+
+        if (transform.position.x > 150)
+        {
+            transform.position = new Vector3(150, transform.position.y, transform.position.z);
+        }
+        if (transform.position.x < -50)
+        {
+            transform.position = new Vector3(-50, transform.position.y, transform.position.z);
+        }
+        if (transform.position.z > 70)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, 70);
+        }
+        if (transform.position.z < -128)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, -128);
+        }
     }
 
     public void Zoom(float increment, float size)
