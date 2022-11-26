@@ -89,17 +89,6 @@ public class Card : MonoBehaviour
         if (rarity == Rarity.Legendary)
         {
             towerSelectedId = 0;
-
-            /*
-            if (id % 2 == 0)
-            {
-                statSelected = Random.Range(0, 11);
-            }
-            else
-            {
-                statSelected = 11;
-            }
-            */
         }
         else
         {
@@ -135,8 +124,8 @@ public class Card : MonoBehaviour
                         text.text = "La salud de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Rare:
-                        incrementAmount = Random.Range(5, 51);
-                        text.text = "La salud de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + "%.";
+                        incrementAmount = Random.Range(150, 300);
+                        text.text = "La salud de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Legendary:
                         incrementAmount = Random.Range(500, 1501);
@@ -153,11 +142,11 @@ public class Card : MonoBehaviour
                         text.text = "El rango de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Rare:
-                        incrementAmount = Random.Range(5, 51);
-                        text.text = "El rango de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + "%.";
+                        incrementAmount = Random.Range(10, 16);
+                        text.text = "El rango de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Legendary:
-                        incrementAmount = Random.Range(10, 11);
+                        incrementAmount = Random.Range(10, 16);
                         text.text = "El rango de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                 }
@@ -167,12 +156,12 @@ public class Card : MonoBehaviour
                 switch (rarity)
                 {
                     case Rarity.Normal:
-                        incrementAmount = Random.Range(1, 4);
+                        incrementAmount = Random.Range(1, 2);
                         text.text = "La velocidad de ataque de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Rare:
-                        incrementAmount = Random.Range(5, 51);
-                        text.text = "La velocidad de ataque de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + "%.";
+                        incrementAmount = Random.Range(2, 4);
+                        text.text = "La velocidad de ataque de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Legendary:
                         incrementAmount = Random.Range(2, 6);
@@ -189,8 +178,8 @@ public class Card : MonoBehaviour
                         text.text = "La velocidad de giro de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Rare:
-                        incrementAmount = Random.Range(5, 51);
-                        text.text = "La velocidad de giro de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + "%.";
+                        incrementAmount = Random.Range(100, 201);
+                        text.text = "La velocidad de giro de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Legendary:
                         incrementAmount = Random.Range(50, 101);
@@ -203,15 +192,15 @@ public class Card : MonoBehaviour
                 switch (rarity)
                 {
                     case Rarity.Normal:
-                        incrementAmount = Random.Range(50, 101);
+                        incrementAmount = Random.Range(25, 76);
                         text.text = "El ataque de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Rare:
-                        incrementAmount = Random.Range(5, 51);
+                        incrementAmount = Random.Range(75, 136);
                         text.text = "El ataque de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + "%.";
                         break;
                     case Rarity.Legendary:
-                        incrementAmount = Random.Range(50, 101);
+                        incrementAmount = Random.Range(50, 126);
                         text.text = "El ataque de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                 }
@@ -225,11 +214,11 @@ public class Card : MonoBehaviour
                         text.text = "El efecto de hielo de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Rare:
-                        incrementAmount = Random.Range(5, 51);
-                        text.text = "El efecto de hielo de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + "%.";
+                        incrementAmount = Random.Range(5, 10);
+                        text.text = "El efecto de hielo de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Legendary:
-                        incrementAmount = Random.Range(1, 5);
+                        incrementAmount = Random.Range(1, 10);
                         text.text = "El efecto de hielo de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                 }
@@ -243,11 +232,11 @@ public class Card : MonoBehaviour
                         text.text = "El efecto de fuego de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Rare:
-                        incrementAmount = Random.Range(5, 51);
-                        text.text = "El efecto de fuego de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + "%.";
+                        incrementAmount = Random.Range(5, 10);
+                        text.text = "El efecto de fuego de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Legendary:
-                        incrementAmount = Random.Range(1, 5);
+                        incrementAmount = Random.Range(1, 10);
                         text.text = "El efecto de fuego de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                 }
@@ -261,11 +250,11 @@ public class Card : MonoBehaviour
                         text.text = "El efecto de agua de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Rare:
-                        incrementAmount = Random.Range(5, 51);
-                        text.text = "El efecto de agua de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + "%.";
+                        incrementAmount = Random.Range(5, 10);
+                        text.text = "El efecto de agua de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Legendary:
-                        incrementAmount = Random.Range(1, 5);
+                        incrementAmount = Random.Range(1, 10);
                         text.text = "El efecto de agua de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                 }
@@ -279,11 +268,11 @@ public class Card : MonoBehaviour
                         text.text = "El efecto de ascension de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Rare:
-                        incrementAmount = Random.Range(5, 51);
-                        text.text = "El efecto de ascension de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + "%.";
+                        incrementAmount = Random.Range(5, 10);
+                        text.text = "El efecto de ascension de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Legendary:
-                        incrementAmount = Random.Range(1, 5);
+                        incrementAmount = Random.Range(1, 10);
                         text.text = "El efecto de ascension de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                 }
@@ -297,11 +286,11 @@ public class Card : MonoBehaviour
                         text.text = "El efecto de sangrado de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Rare:
-                        incrementAmount = Random.Range(5, 51);
-                        text.text = "El efecto de sangrado de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + "%.";
+                        incrementAmount = Random.Range(5, 10);
+                        text.text = "El efecto de sangrado de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Legendary:
-                        incrementAmount = Random.Range(1, 5);
+                        incrementAmount = Random.Range(1, 10);
                         text.text = "El efecto de sangrado de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                 }
@@ -315,108 +304,13 @@ public class Card : MonoBehaviour
                         text.text = "El efecto de locura de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Rare:
-                        incrementAmount = Random.Range(5, 51);
-                        text.text = "El efecto de locura de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + "%.";
-                        break;
-                    case Rarity.Legendary:
-                        incrementAmount = Random.Range(1, 5);
+                        incrementAmount = Random.Range(5, 10);
                         text.text = "El efecto de locura de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
-                }
-                break;
-            case 11:
-                randomUpgrade = id % 2;
-                randomUpgrade--;
-
-                if (Hero.instance)
-                {
-                    switch (Hero.instance.zone)
-                    {
-                        case Hero.Zone.Hielo:
-                            switch (randomUpgrade)
-                            {
-                                case 0:
-                                    text.text = "Cuando desaparece la barrera de hielo de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " explota y hace ataque";
-                                    break;
-                                case 1:
-                                    text.text = colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " inflinge un 30% más de ataque a los enemigos que tengan algo congelación";
-                                    break;
-                                case 2:
-                                    text.text = "La barrera de hielo de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " inflinge congelación en un area alrededor suya";
-                                    break;
-                            }
-                            break;
-                        case Hero.Zone.Desierto:
-                            switch (randomUpgrade)
-                            {
-                                case 0:
-                                    text.text = "WIP";
-                                    break;
-                                case 1:
-                                    text.text = "WIP";
-                                    break;
-                                case 2:
-                                    text.text = "WIP";
-                                    break;
-                            }
-                            break;
-                        case Hero.Zone.Atlantis:
-                            switch (randomUpgrade)
-                            {
-                                case 0:
-                                    text.text = "WIP";
-                                    break;
-                                case 1:
-                                    text.text = "WIP";
-                                    break;
-                                case 2:
-                                    text.text = "WIP";
-                                    break;
-                            }
-                            break;
-                        case Hero.Zone.Vikingos:
-                            switch (randomUpgrade)
-                            {
-                                case 0:
-                                    text.text = "WIP";
-                                    break;
-                                case 1:
-                                    text.text = "WIP";
-                                    break;
-                                case 2:
-                                    text.text = "WIP";
-                                    break;
-                            }
-                            break;
-                        case Hero.Zone.Fantasia:
-                            switch (randomUpgrade)
-                            {
-                                case 0:
-                                    text.text = "WIP";
-                                    break;
-                                case 1:
-                                    text.text = "WIP";
-                                    break;
-                                case 2:
-                                    text.text = "WIP";
-                                    break;
-                            }
-                            break;
-                        case Hero.Zone.Infierno:
-                            switch (randomUpgrade)
-                            {
-                                case 0:
-                                    text.text = "WIP";
-                                    break;
-                                case 1:
-                                    text.text = "WIP";
-                                    break;
-                                case 2:
-                                    text.text = "WIP";
-                                    break;
-                            }
-                            break;
-                    }
+                    case Rarity.Legendary:
+                        incrementAmount = Random.Range(1, 10);
+                        text.text = "El efecto de locura de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
+                        break;
                 }
                 break;
         }
@@ -443,395 +337,80 @@ public class Card : MonoBehaviour
             {
                 case 0:
                     // Health
-                    switch (rarity)
+                    foreach (var towerSelected in allTowersSelected)
                     {
-                        case Rarity.Normal:
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.health += incrementAmount;
-                                towerSelected.healthMax += incrementAmount;
-                            }
-                            break;
-                        case Rarity.Rare:
-                            float porcetaje = 1 + (incrementAmount * 0.01f);
-                            //int newHealth = (int)(colocatorManager.towers[towerSelectedId].GetComponent<Tower>().health * porcetaje);
-                            int newHealth = (int)Mathf.Ceil((colocatorManager.towers[towerSelectedId].GetComponent<Tower>().health * porcetaje));
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.health = newHealth;
-                            }
-                            break;
-                        case Rarity.Legendary:
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.health += incrementAmount;
-                                towerSelected.healthMax += incrementAmount;
-                            }
-                            break;
+                        towerSelected.health += incrementAmount;
+                        towerSelected.healthMax += incrementAmount;
                     }
                     break;
                 case 1:
                     // Range
-                    switch (rarity)
+                    foreach (var towerSelected in allTowersSelected)
                     {
-                        case Rarity.Normal:
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.range += incrementAmount;
-                            }
-                            break;
-                        case Rarity.Rare:
-                            float porcetaje = 1 + (incrementAmount * 0.01f);
-                            //int newHealth = (int)(colocatorManager.towers[towerSelectedId].GetComponent<Tower>().range * porcetaje);
-                            int newHealth = (int)Mathf.Ceil((colocatorManager.towers[towerSelectedId].GetComponent<Tower>().range * porcetaje));
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.range = newHealth;
-                            }
-                            break;
-                        case Rarity.Legendary:
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.range += incrementAmount;
-                            }
-                            break;
+                        towerSelected.range += incrementAmount;
                     }
                     break;
                 case 2:
                     // Shoot Speed
-                    switch (rarity)
+                    foreach (var towerSelected in allTowersSelected)
                     {
-                        case Rarity.Normal:
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.fireRate += incrementAmount;
-                            }
-                            break;
-                        case Rarity.Rare:
-                            float porcetaje = 1 + (incrementAmount * 0.01f);
-                            //int newHealth = (int)(colocatorManager.towers[towerSelectedId].GetComponent<Tower>().fireRate * porcetaje);
-                            float newHealth = colocatorManager.towers[towerSelectedId].GetComponent<Tower>().fireRate * porcetaje;
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.fireRate = newHealth;
-                            }
-                            break;
-                        case Rarity.Legendary:
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.fireRate += incrementAmount;
-                            }
-                            break;
+                        towerSelected.fireRate += incrementAmount;
                     }
                     break;
                 case 3:
                     // Turn Speed
-                    switch (rarity)
+                    foreach (var towerSelected in allTowersSelected)
                     {
-                        case Rarity.Normal:
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.turnSpeed += incrementAmount;
-                            }
-                            break;
-                        case Rarity.Rare:
-                            float porcetaje = 1 + (incrementAmount * 0.01f);
-                            //int newHealth = (int)(colocatorManager.towers[towerSelectedId].GetComponent<Tower>().turnSpeed * porcetaje);
-                            int newHealth = (int)Mathf.Ceil((colocatorManager.towers[towerSelectedId].GetComponent<Tower>().turnSpeed * porcetaje));
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.turnSpeed = newHealth;
-                            }
-                            break;
-                        case Rarity.Legendary:
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.turnSpeed += incrementAmount;
-                            }
-                            break;
+                        towerSelected.turnSpeed += incrementAmount;
                     }
                     break;
                 case 4:
                     // Health Damage
-                    switch (rarity)
+                    foreach (var towerSelected in allTowersSelected)
                     {
-                        case Rarity.Normal:
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.healthDamage += incrementAmount;
-                            }
-                            break;
-                        case Rarity.Rare:
-                            float porcetaje = 1 + (incrementAmount * 0.01f);
-                            //int newHealth = (int)(colocatorManager.towers[towerSelectedId].GetComponent<Tower>().healthDamage * porcetaje);
-                            int newHealth = (int)Mathf.Ceil((colocatorManager.towers[towerSelectedId].GetComponent<Tower>().turnSpeed * porcetaje));
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.healthDamage = newHealth;
-                            }
-                            break;
-                        case Rarity.Legendary:
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.healthDamage += incrementAmount;
-                            }
-                            break;
+                        towerSelected.healthDamage += incrementAmount;
                     }
                     break;
                 case 5:
                     // Ice Effect
-                    switch (rarity)
+                    foreach (var towerSelected in allTowersSelected)
                     {
-                        case Rarity.Normal:
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.iceDamage += incrementAmount;
-                            }
-                            break;
-                        case Rarity.Rare:
-                            float porcetaje = 1 + (incrementAmount * 0.01f);
-                            int newHealth = (int)Mathf.Ceil((colocatorManager.towers[towerSelectedId].GetComponent<Tower>().iceDamage * porcetaje));
-                            
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.iceDamage = newHealth;
-                            }
-                            break;
-                        case Rarity.Legendary:
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.iceDamage += incrementAmount;
-                            }
-                            break;
+                        towerSelected.iceDamage += incrementAmount;
                     }
                     break;
                 case 6:
                     // Ignite Effect
-                    switch (rarity)
+                    foreach (var towerSelected in allTowersSelected)
                     {
-                        case Rarity.Normal:
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.igniteDamage += incrementAmount;
-                            }
-                            break;
-                        case Rarity.Rare:
-                            float porcetaje = 1 + (incrementAmount * 0.01f);
-                            int newHealth = (int)Mathf.Ceil((colocatorManager.towers[towerSelectedId].GetComponent<Tower>().igniteDamage * porcetaje));
-
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.igniteDamage = newHealth;
-                            }
-                            break;
-                        case Rarity.Legendary:
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.igniteDamage += incrementAmount;
-                            }
-                            break;
+                        towerSelected.igniteDamage += incrementAmount;
                     }
                     break;
                 case 7:
                     // Water Effect
-                    switch (rarity)
+                    foreach (var towerSelected in allTowersSelected)
                     {
-                        case Rarity.Normal:
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.waterDamage += incrementAmount;
-                            }
-                            break;
-                        case Rarity.Rare:
-                            float porcetaje = 1 + (incrementAmount * 0.01f);
-                            int newHealth = (int)Mathf.Ceil((colocatorManager.towers[towerSelectedId].GetComponent<Tower>().waterDamage * porcetaje));
-
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.waterDamage = newHealth;
-                            }
-                            break;
-                        case Rarity.Legendary:
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.waterDamage += incrementAmount;
-                            }
-                            break;
+                        towerSelected.waterDamage += incrementAmount;
                     }
                     break;
                 case 8:
                     // Ascension Effect
-                    switch (rarity)
+                    foreach (var towerSelected in allTowersSelected)
                     {
-                        case Rarity.Normal:
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.ascentDamage += incrementAmount;
-                            }
-                            break;
-                        case Rarity.Rare:
-                            float porcetaje = 1 + (incrementAmount * 0.01f);
-                            int newHealth = (int)Mathf.Ceil((colocatorManager.towers[towerSelectedId].GetComponent<Tower>().ascentDamage * porcetaje));
-
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.ascentDamage = newHealth;
-                            }
-                            break;
-                        case Rarity.Legendary:
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.ascentDamage += incrementAmount;
-                            }
-                            break;
+                        towerSelected.ascentDamage += incrementAmount;
                     }
                     break;
                 case 9:
                     // Blood Effect
-                    switch (rarity)
+                    foreach (var towerSelected in allTowersSelected)
                     {
-                        case Rarity.Normal:
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.bloodDamage += incrementAmount;
-                            }
-                            break;
-                        case Rarity.Rare:
-                            float porcetaje = 1 + (incrementAmount * 0.01f);
-                            int newHealth = (int)Mathf.Ceil((colocatorManager.towers[towerSelectedId].GetComponent<Tower>().bloodDamage * porcetaje));
-
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.bloodDamage = newHealth;
-                            }
-                            break;
-                        case Rarity.Legendary:
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.bloodDamage += incrementAmount;
-                            }
-                            break;
+                        towerSelected.bloodDamage += incrementAmount;
                     }
                     break;
                 case 10:
                     // Crazy Effect
-                    switch (rarity)
+                    foreach (var towerSelected in allTowersSelected)
                     {
-                        case Rarity.Normal:
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.transformationDamage += incrementAmount;
-                            }
-                            break;
-                        case Rarity.Rare:
-                            float porcetaje = 1 + (incrementAmount * 0.01f);
-                            int newHealth = (int)Mathf.Ceil((colocatorManager.towers[towerSelectedId].GetComponent<Tower>().transformationDamage * porcetaje));
-
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.transformationDamage = newHealth;
-                            }
-                            break;
-                        case Rarity.Legendary:
-                            foreach (var towerSelected in allTowersSelected)
-                            {
-                                towerSelected.transformationDamage += incrementAmount;
-                            }
-                            break;
-                    }
-                    break;
-                case 11:
-                    if (Hero.instance)
-                    {
-                        switch (Hero.instance.zone)
-                        {
-                            case Hero.Zone.Hielo:
-                                switch (randomUpgrade)
-                                {
-                                    case 0:
-                                        hero.gameObject.GetComponent<Tower>().exploteIceWall = true;
-                                        break;
-                                    case 1:
-                                        float porcetaje = 1 + (30 * 0.01f);
-                                        int newHealth = (int)(hero.gameObject.GetComponent<Tower>().healthDamage * porcetaje);
-                                        hero.gameObject.GetComponent<Tower>().healthDamage = newHealth;
-                                        break;
-                                    case 2:
-                                        hero.gameObject.GetComponent<Tower>().frezzeIceWall = true;
-                                        break;
-                                }
-                                break;
-                            case Hero.Zone.Desierto:
-                                switch (randomUpgrade)
-                                {
-                                    case 0:
-
-                                        break;
-                                    case 1:
-
-                                        break;
-                                    case 2:
-
-                                        break;
-                                }
-                                break;
-                            case Hero.Zone.Atlantis:
-                                switch (randomUpgrade)
-                                {
-                                    case 0:
-
-                                        break;
-                                    case 1:
-
-                                        break;
-                                    case 2:
-
-                                        break;
-                                }
-                                break;
-                            case Hero.Zone.Vikingos:
-                                switch (randomUpgrade)
-                                {
-                                    case 0:
-
-                                        break;
-                                    case 1:
-
-                                        break;
-                                    case 2:
-
-                                        break;
-                                }
-                                break;
-                            case Hero.Zone.Fantasia:
-                                switch (randomUpgrade)
-                                {
-                                    case 0:
-
-                                        break;
-                                    case 1:
-
-                                        break;
-                                    case 2:
-
-                                        break;
-                                }
-                                break;
-                            case Hero.Zone.Infierno:
-                                switch (randomUpgrade)
-                                {
-                                    case 0:
-
-                                        break;
-                                    case 1:
-
-                                        break;
-                                    case 2:
-
-                                        break;
-                                }
-                                break;
-                        }
+                        towerSelected.transformationDamage += incrementAmount;
                     }
                     break;
             }
@@ -862,9 +441,7 @@ public class Card : MonoBehaviour
                             gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().health += incrementAmount;
                             break;
                         case Rarity.Rare:
-                            float porcetaje = 1 + (incrementAmount * 0.01f);
-                            int newHealth = (int)(gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().health * porcetaje);
-                            gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().health = newHealth;
+                            gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().health += incrementAmount;
                             break;
                         case Rarity.Legendary:
                             gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().health += incrementAmount;
@@ -879,9 +456,7 @@ public class Card : MonoBehaviour
                             gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().damage += incrementAmount;
                             break;
                         case Rarity.Rare:
-                            float porcetaje = 1 + (incrementAmount * 0.01f);
-                            int newHealth = (int)(gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().damage * porcetaje);
-                            gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().damage = newHealth;
+                            gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().damage += incrementAmount;
                             break;
                         case Rarity.Legendary:
                             gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().damage += incrementAmount;
@@ -896,9 +471,7 @@ public class Card : MonoBehaviour
                             gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().normalSpeed += incrementAmount;
                             break;
                         case Rarity.Rare:
-                            float porcetaje = 1 + (incrementAmount * 0.01f);
-                            int newHealth = (int)(gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().normalSpeed * porcetaje);
-                            gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().normalSpeed = newHealth;
+                            gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().normalSpeed += incrementAmount;
                             break;
                         case Rarity.Legendary:
                             gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().normalSpeed += incrementAmount;
@@ -913,9 +486,7 @@ public class Card : MonoBehaviour
                             gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().range += incrementAmount;
                             break;
                         case Rarity.Rare:
-                            float porcetaje = 1 + (incrementAmount * 0.01f);
-                            int newHealth = (int)(gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().range * porcetaje);
-                            gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().range = newHealth;
+                            gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().range += incrementAmount;
                             break;
                         case Rarity.Legendary:
                             gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().range += incrementAmount;
@@ -930,9 +501,7 @@ public class Card : MonoBehaviour
                             gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().gold -= incrementAmount;
                             break;
                         case Rarity.Rare:
-                            float porcetaje = 1 - (incrementAmount * 0.01f);
-                            int newHealth = (int)(gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().gold * porcetaje);
-                            gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().gold = newHealth;
+                            gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().gold -= incrementAmount;
                             break;
                         case Rarity.Legendary:
                             gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().gold -= incrementAmount;
@@ -991,8 +560,8 @@ public class Card : MonoBehaviour
                         text.text = "La salud de " + gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().enemyName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Rare:
-                        incrementAmount = Random.Range(5, 51);
-                        text.text = "La salud de " + gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().enemyName + " incrementa en " + incrementAmount + "%.";
+                        incrementAmount = Random.Range(150, 501);
+                        text.text = "La salud de " + gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().enemyName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Legendary:
                         incrementAmount = Random.Range(1000, 2001);
@@ -1009,8 +578,8 @@ public class Card : MonoBehaviour
                         text.text = "El ataque de " + gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().enemyName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Rare:
-                        incrementAmount = Random.Range(5, 51);
-                        text.text = "El ataque de " + gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().enemyName + " incrementa en " + incrementAmount + "%.";
+                        incrementAmount = Random.Range(7, 15);
+                        text.text = "El ataque de " + gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().enemyName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Legendary:
                         incrementAmount = Random.Range(5, 11);
@@ -1023,12 +592,12 @@ public class Card : MonoBehaviour
                 switch (rarity)
                 {
                     case Rarity.Normal:
-                        incrementAmount = Random.Range(1, 4);
+                        incrementAmount = Random.Range(1, 3);
                         text.text = "La velocidad de " + gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().enemyName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Rare:
-                        incrementAmount = Random.Range(5, 51);
-                        text.text = "La velocidad de " + gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().enemyName + " incrementa en " + incrementAmount + "%.";
+                        incrementAmount = Random.Range(3, 6);
+                        text.text = "La velocidad de " + gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().enemyName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Legendary:
                         incrementAmount = Random.Range(2, 4);
@@ -1045,7 +614,7 @@ public class Card : MonoBehaviour
                         text.text = "El rango de " + gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().enemyName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Rare:
-                        incrementAmount = Random.Range(5, 51);
+                        incrementAmount = Random.Range(3, 5);
                         text.text = "El rango de " + gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().enemyName + " incrementa en " + incrementAmount + "%.";
                         break;
                     case Rarity.Legendary:
@@ -1063,7 +632,7 @@ public class Card : MonoBehaviour
                         text.text = "El oro que da " + gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().enemyName + " decrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Rare:
-                        incrementAmount = Random.Range(5, 51);
+                        incrementAmount = Random.Range(30, 51);
                         text.text = "El oro que da " + gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().enemyName + " decrementa en " + incrementAmount + "%.";
                         break;
                     case Rarity.Legendary:
@@ -1073,11 +642,6 @@ public class Card : MonoBehaviour
                 }
                 break;
         }
-    }
-
-    public void SelectEnemyCard()
-    {
-
     }
 
     void AddBlockCards()

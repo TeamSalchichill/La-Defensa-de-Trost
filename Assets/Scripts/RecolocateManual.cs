@@ -12,6 +12,8 @@ public class RecolocateManual : MonoBehaviour
         if (Input.GetButtonDown("Fire2"))
         {
             realocate = false;
+            GetComponent<BoxCollider>().enabled = true;
+            GetComponent<Tower>().enabled = true;
         }
         if (realocate && nextRound)
         {
@@ -23,14 +25,12 @@ public class RecolocateManual : MonoBehaviour
                 {
                     if ((Input.GetButtonDown("Fire1") || Input.GetButton("Fire1")))
                     {
-                        Vector3 recolocateOffset = new Vector3(0, 0, 0);
+                        ParticleSystem instParticle = Instantiate(GetComponent<Tower>().spawnParticles, transform.position, transform.rotation);
+                        Destroy(instParticle, 3);
 
-                        if (GetComponent<Recolocate>())
-                        {
-                            recolocateOffset = GetComponent<Recolocate>().offsetPos;
-                        }
+                        GetComponent<BoxCollider>().enabled = true;
+                        GetComponent<Tower>().enabled = true;
 
-                        transform.position = rayHit.collider.gameObject.transform.position + new Vector3(0, 0.5f, 0) + recolocateOffset;
                         realocate = false;
                         nextRound = false;
 
@@ -42,6 +42,15 @@ public class RecolocateManual : MonoBehaviour
                             }
                         }
                     }
+
+                    Vector3 recolocateOffset = new Vector3(0, 0, 0);
+
+                    if (GetComponent<Recolocate>())
+                    {
+                        recolocateOffset = GetComponent<Recolocate>().offsetPos;
+                    }
+
+                    transform.position = rayHit.collider.gameObject.transform.position + new Vector3(0, 0.5f, 0) + recolocateOffset;
                 }
             }
         }
@@ -55,5 +64,7 @@ public class RecolocateManual : MonoBehaviour
     void CanRealocate()
     {
         realocate = true;
+        GetComponent<BoxCollider>().enabled = false;
+        GetComponent<Tower>().enabled = false;
     }
 }

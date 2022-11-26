@@ -22,6 +22,8 @@ public class Hero : MonoBehaviour
         if (Input.GetButtonDown("Fire2"))
         {
             realocate = false;
+            GetComponent<BoxCollider>().enabled = true;
+            GetComponent<Tower>().enabled = true;
         }
         if (realocate && nextRound)
         {
@@ -33,14 +35,11 @@ public class Hero : MonoBehaviour
                 {
                     if ((Input.GetButtonDown("Fire1") || Input.GetButton("Fire1")))
                     {
-                        Vector3 recolocateOffset = new Vector3(0, 0, 0);
+                        ParticleSystem instParticle = Instantiate(GetComponent<Tower>().spawnParticles, transform.position, transform.rotation);
+                        Destroy(instParticle, 3);
 
-                        if (GetComponent<Recolocate>())
-                        {
-                            recolocateOffset = GetComponent<Recolocate>().offsetPos;
-                        }
-
-                        transform.position = rayHit.collider.gameObject.transform.position + new Vector3(0, 0.5f, 0) + recolocateOffset;
+                        GetComponent<BoxCollider>().enabled = true;
+                        GetComponent<Tower>().enabled = true;
                         realocate = false;
                         nextRound = false;
 
@@ -52,6 +51,15 @@ public class Hero : MonoBehaviour
                             }
                         }
                     }
+
+                    Vector3 recolocateOffset = new Vector3(0, 0, 0);
+
+                    if (GetComponent<Recolocate>())
+                    {
+                        recolocateOffset = GetComponent<Recolocate>().offsetPos;
+                    }
+
+                    transform.position = rayHit.collider.gameObject.transform.position + new Vector3(0, 0.5f, 0) + recolocateOffset;
                 }
             }
         }
@@ -65,5 +73,7 @@ public class Hero : MonoBehaviour
     void CanRealocate()
     {
         realocate = true;
+        GetComponent<BoxCollider>().enabled = false;
+        GetComponent<Tower>().enabled = false;
     }
 }

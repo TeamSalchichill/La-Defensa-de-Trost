@@ -71,6 +71,8 @@ public class HUD_Manager : MonoBehaviour
     public GameObject gameOverScreen;
     public GameObject winScreen;
     public GameObject endScreen;
+    public GameObject checkExit;
+    public GameObject checkReset;
 
     [Header("Utility Buttons")]
     public GameObject towerPotionButton;
@@ -109,6 +111,9 @@ public class HUD_Manager : MonoBehaviour
     int imageIdEnd = 1;
 
     public GameObject panelEnd;
+
+    [Header("Loading")]
+    public GameObject loadingScreen;
 
     void Awake()
     {
@@ -302,6 +307,11 @@ public class HUD_Manager : MonoBehaviour
     public void ResetGame()
     {
         SoundManager.instance.SoundSelection(3, 0.5f);
+
+        if (checkExit)
+        {
+            checkReset.SetActive(false);
+        }
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
@@ -562,6 +572,8 @@ public class HUD_Manager : MonoBehaviour
 
     public void ChangeScene(int id)
     {
+        loadingScreen.SetActive(true);
+
         SoundManager.instance.SoundSelection(3, 0.5f);
 
         SceneManager.LoadScene(id);
@@ -602,6 +614,11 @@ public class HUD_Manager : MonoBehaviour
     public void ActivateGameOver()
     {
         SoundManager.instance.SoundSelection(3, 0.5f);
+
+        if (checkExit)
+        {
+            checkExit.SetActive(false);
+        }
 
         gameOverScreen.SetActive(true);
     }
@@ -770,5 +787,30 @@ public class HUD_Manager : MonoBehaviour
                 winScreen.SetActive(true);
             }
         }
+    }
+
+    public void SkipImages()
+    {
+        activeImage.sprite = images[imageId - 1];
+        imageId = images.Length;
+        gameFlow.canExpand = true;
+        panel.SetActive(false);
+    }
+
+    public void CheckExit()
+    {
+        checkExit.SetActive(true);
+    }
+    public void DisableCheckExit()
+    {
+        checkExit.SetActive(false);
+    }
+    public void CheckReset()
+    {
+        checkReset.SetActive(true);
+    }
+    public void DisableCheckReset()
+    {
+        checkReset.SetActive(false);
     }
 }

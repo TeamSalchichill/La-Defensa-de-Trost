@@ -9,12 +9,25 @@ public class InteractiveButton : MonoBehaviour
     public Sprite normalSprite;
     public Sprite hoverSprite;
 
+    void Awake()
+    {
+        button = GetComponent<Image>();
+    }
+
     public void Enter()
     {
-        button.sprite = hoverSprite;
+        if (hoverSprite && normalSprite)
+        {
+            button.sprite = hoverSprite;
+        }
+        button.rectTransform.sizeDelta += new Vector2(25, 25);
     }
     public void Exit()
     {
-        button.sprite = normalSprite;
+        if (hoverSprite && normalSprite)
+        {
+            button.sprite = normalSprite;
+        }
+        button.rectTransform.sizeDelta -= new Vector2(25, 25);
     }
 }

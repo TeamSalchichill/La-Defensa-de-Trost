@@ -9,8 +9,13 @@ public class HUD_Button : MonoBehaviour
 
     public GameObject panel;
 
+    [Header("Loading")]
+    public GameObject loadingScreen;
+
     public void ChangeScene(int idScene)
     {
+        loadingScreen.SetActive(true);
+
         SoundManager.instance.SoundSelection(3, 0.5f);
 
         SceneManager.LoadScene(idScene);

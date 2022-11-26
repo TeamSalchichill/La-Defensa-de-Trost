@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
         {
             doSpawnEnemies = !doSpawnEnemies;
         }
+        /*
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -68,6 +69,7 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0;
         }
+        */
     }
 
     public void ChangeVolumeMusic()

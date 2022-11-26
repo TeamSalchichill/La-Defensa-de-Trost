@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InfiteLevelManager : MonoBehaviour
 {
@@ -38,6 +39,17 @@ public class InfiteLevelManager : MonoBehaviour
     public bool mainTowerChoosed;
     public bool towersChoosed;
     public bool heroChoosed;
+
+    [Header("Buttons")]
+    public Image[] zoneImages;
+    public Image[] mainTowerImages;
+    public Image[] towersImages;
+    public Image[] herosImages;
+    
+    int lastIdZone = 0;
+    int lastIdMainTower = 0;
+    int lastIdTowers = 0;
+    int lastIdHeros = 0;
 
     void Start()
     {
@@ -128,6 +140,15 @@ public class InfiteLevelManager : MonoBehaviour
                 break;
         }
 
+        zoneImages[lastIdZone].color = new Color(1, 1, 1, 1);
+        if (zoneChoosed)
+        {
+            zoneImages[lastIdZone].rectTransform.sizeDelta += new Vector2(25, 25);
+        }
+        zoneImages[id].color = new Color(1, 1, 1, 0.5f);
+        zoneImages[id].rectTransform.sizeDelta -= new Vector2(25, 25);
+        lastIdZone = id;
+
         zoneChoosed = true;
     }
 
@@ -137,6 +158,15 @@ public class InfiteLevelManager : MonoBehaviour
 
         generator.mainTower = mainTower[id];
         generator.miniMainTower = miniMainTower[id];
+
+        mainTowerImages[lastIdMainTower].color = new Color(1, 1, 1, 1);
+        if (mainTowerChoosed)
+        {
+            mainTowerImages[lastIdMainTower].rectTransform.sizeDelta += new Vector2(25, 25);
+        }
+        mainTowerImages[id].color = new Color(1, 1, 1, 0.5f);
+        mainTowerImages[id].rectTransform.sizeDelta -= new Vector2(25, 25);
+        lastIdMainTower = id;
 
         mainTowerChoosed = true;
     }
@@ -149,6 +179,8 @@ public class InfiteLevelManager : MonoBehaviour
         {
             towersSelected.Remove(id);
             numTowersSelected--;
+            towersImages[id].color = new Color(1, 1, 1, 1);
+            towersImages[id].rectTransform.sizeDelta += new Vector2(25, 25);
         }
         else
         {
@@ -156,6 +188,8 @@ public class InfiteLevelManager : MonoBehaviour
             {
                 towersSelected.Add(id);
                 numTowersSelected++;
+                towersImages[id].color = new Color(1, 1, 1, 0.5f);
+                towersImages[id].rectTransform.sizeDelta -= new Vector2(25, 25);
             }
         }
 
@@ -167,6 +201,15 @@ public class InfiteLevelManager : MonoBehaviour
         SoundManager.instance.SoundSelection(3, 0.5f);
 
         colocatorManager.towers[0] = hero[id];
+
+        herosImages[lastIdHeros].color = new Color(1, 1, 1, 1);
+        if (heroChoosed)
+        {
+            herosImages[lastIdHeros].rectTransform.sizeDelta += new Vector2(25, 25);
+        }
+        herosImages[id].color = new Color(1, 1, 1, 0.5f);
+        herosImages[id].rectTransform.sizeDelta -= new Vector2(25, 25);
+        lastIdHeros = id;
 
         heroChoosed = true;
     }
