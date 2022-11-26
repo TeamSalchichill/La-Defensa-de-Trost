@@ -19,6 +19,8 @@ public class MiniMainTower : MonoBehaviour
         {
             mainTower.health -= 7;
 
+            GameFlow.instance.miniObjetivesDestroyed++;
+
             Destroy(gameObject);
         }
     }

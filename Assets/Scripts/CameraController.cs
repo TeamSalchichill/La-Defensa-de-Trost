@@ -27,16 +27,19 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
+        doMovement = true;
+
         colocatorManager = ColocatorManager.instance;
         hudManager = HUD_Manager.instance;
     }
 
     void FixedUpdate()
     {
-        // Bloquear movimiento de la cámara con el ratón
-        if (Input.GetKeyDown(KeyCode.L))
+        transform.position = new(transform.position.x, 50, transform.position.z);
+
+        if (!doMovement)
         {
-            doMovement = !doMovement;
+            return;
         }
 
         // Mover la cámara con el teclado
@@ -45,11 +48,11 @@ public class CameraController : MonoBehaviour
 
         if (Input.GetKey("w"))
         {
-            transform.Translate(Vector3.up * panSpeed * Time.deltaTime);
+            transform.Translate(Vector3.up * panSpeed * Time.deltaTime * 2);
         }
         if (Input.GetKey("s"))
         {
-            transform.Translate(Vector3.down * panSpeed * Time.deltaTime);
+            transform.Translate(Vector3.down * panSpeed * Time.deltaTime * 2);
         }
         if (Input.GetKey("d"))
         {
@@ -79,7 +82,7 @@ public class CameraController : MonoBehaviour
             cameraIsMove = true;
         }
 
-        if (Input.touchCount == 2 && doMovement && !colocatorManager.canBuild && !hudManager.isShowInfo)
+        if (Input.touchCount == 2 && !colocatorManager.canBuild && !hudManager.isShowInfo)
         {
             Touch touchZero = Input.GetTouch(0);
             Touch touchOne = Input.GetTouch(1);
@@ -94,7 +97,7 @@ public class CameraController : MonoBehaviour
 
             Zoom(difference * 0.01f, size);
         }
-        else if (Input.GetMouseButton(0) && doMovement && !colocatorManager.canBuild && !hudManager.isShowInfo && cameraIsMove)
+        else if (Input.GetMouseButton(0) && !colocatorManager.canBuild && !hudManager.isShowInfo && cameraIsMove)
         {
             Vector3 direction = touchStart - Camera.main.ScreenToWorldPoint(Input.mousePosition);
             direction = new Vector3(direction.x, 0, direction.z);
@@ -139,5 +142,15 @@ public class CameraController : MonoBehaviour
 
         size = Mathf.Clamp(size, zoomMin, zoomMax);
         Camera.main.orthographicSize = size;
+    }
+
+    public void CameraCanMove()
+    {
+        doMovement = false;
+        Invoke("InvokeCameraCanMove", 0.1f);
+    }
+    public void InvokeCameraCanMove()
+    {
+        doMovement = true;
     }
 }

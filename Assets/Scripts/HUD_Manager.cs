@@ -115,6 +115,10 @@ public class HUD_Manager : MonoBehaviour
     [Header("Loading")]
     public GameObject loadingScreen;
 
+    [Header("Summary")]
+    public TextMeshProUGUI summaryTextDead;
+    public TextMeshProUGUI summaryTextWin;
+
     void Awake()
     {
         instance = this;
@@ -360,6 +364,8 @@ public class HUD_Manager : MonoBehaviour
         colocatorManager.canBuild = true;
 
         colocatorManager.canDisableColocatotMode = 1;
+
+        cameraController.CameraCanMove();
     }
 
     public void MoveCameraW()
@@ -443,6 +449,7 @@ public class HUD_Manager : MonoBehaviour
                 Destroy(instParticle, 3);
                 
                 gameFlow.coins -= activeTower.levelUpPrice;
+                gameFlow.goldSpent += activeTower.levelUpPrice;
             }
             else
             {
@@ -451,6 +458,7 @@ public class HUD_Manager : MonoBehaviour
                 Destroy(instParticle, 3);
                 
                 gameFlow.specialCoins -= activeTower.levelUpPrice;
+                gameFlow.specialGoldSpent += activeTower.levelUpPrice;
 
                 activeTower.gameObject.AddComponent<RecolocateManual>();
             }
@@ -619,6 +627,18 @@ public class HUD_Manager : MonoBehaviour
         {
             checkExit.SetActive(false);
         }
+
+        summaryTextDead.text = 
+            "Tiempo: " + gameFlow.time + "\n" + 
+            "Muertes enemigos pequeños: " + gameFlow.kills1 + "\n" + 
+            "Muertes enemigos medianos: " + gameFlow.kills2 + "\n" + 
+            "Muertes enemigos bosses: " + gameFlow.kills3 + "\n" + 
+            "Torres construidas: " + gameFlow.towersBuild + "\n" + 
+            "Torres destruidas: " + gameFlow.towersDestroyed + "\n" + 
+            "Monedas: " + gameFlow.goldSpent + "\n" + 
+            "Cristales: " + gameFlow.specialGoldSpent + "\n" + 
+            "Mini objetivos destruidos: " + gameFlow.miniObjetivesDestroyed + "\n"
+            ;
 
         gameOverScreen.SetActive(true);
     }
@@ -795,6 +815,18 @@ public class HUD_Manager : MonoBehaviour
         imageId = images.Length;
         gameFlow.canExpand = true;
         panel.SetActive(false);
+
+        summaryTextWin.text =
+            "Tiempo: " + gameFlow.time + "\n" +
+            "Muertes enemigos pequeños: " + gameFlow.kills1 + "\n" +
+            "Muertes enemigos medianos: " + gameFlow.kills2 + "\n" +
+            "Muertes enemigos bosses: " + gameFlow.kills3 + "\n" +
+            "Torres construidas: " + gameFlow.towersBuild + "\n" +
+            "Torres destruidas: " + gameFlow.towersDestroyed + "\n" +
+            "Monedas: " + gameFlow.goldSpent + "\n" +
+            "Cristales: " + gameFlow.specialGoldSpent + "\n" +
+            "Mini objetivos destruidos: " + gameFlow.miniObjetivesDestroyed + "\n"
+            ;
     }
 
     public void CheckExit()

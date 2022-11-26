@@ -129,6 +129,8 @@ public class ColocatorManager : MonoBehaviour
 
         if ((Input.GetButtonDown("Fire1") || Input.GetButton("Fire1")) && canBuild)
         {
+            CameraController.instance.CameraCanMove();
+
             if (heroBuild && towerID == 0)
             {
                 return;
@@ -163,6 +165,7 @@ public class ColocatorManager : MonoBehaviour
                         }
 
                         gameFlow.coins -= towerScript.price;
+                        gameFlow.goldSpent += towerScript.price;
 
                         //rayHit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
                         //rayHit.collider.gameObject.layer = 0;
@@ -174,6 +177,8 @@ public class ColocatorManager : MonoBehaviour
                                 minesBuilt++;
                             }
                         }
+
+                        gameFlow.towersBuild++;
 
                         GameObject instTower = Instantiate(towers[towerID], rayHit.collider.gameObject.transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
                         instTower.GetComponent<Tower>().enabled = true;
@@ -240,6 +245,8 @@ public class ColocatorManager : MonoBehaviour
 
                         //rayHit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
                         //rayHit.collider.gameObject.layer = 0;
+
+                        gameFlow.towersBuild++;
 
                         GameObject instTower = Instantiate(towers[towerID], rayHit.collider.gameObject.transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
                         instTower.GetComponent<Tower>().enabled = true;

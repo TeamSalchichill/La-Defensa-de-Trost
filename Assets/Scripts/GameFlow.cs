@@ -79,6 +79,22 @@ public class GameFlow : MonoBehaviour
 
     public bool canExpand;
 
+    [Header("Summary")]
+    public float time = 0;
+
+    public int kills1 = 0;
+    public int kills2 = 0;
+    public int kills3 = 0;
+
+    public int towersBuild = 0;
+    public int towersDestroyed = 0;
+    public int heroChanges = 0;
+
+    public int goldSpent = 0;
+    public int specialGoldSpent = 0;
+
+    public int miniObjetivesDestroyed = 0;
+
     void Awake()
     {
         instance = this;
@@ -109,6 +125,8 @@ public class GameFlow : MonoBehaviour
 
     void Update()
     {
+        time += Time.deltaTime;
+
         if ((enemiesLeft1 == 0 && enemiesLeft2 == 0  && enemiesLeft3 == 0 && !roundFinished))
         {
             roundFinished = true;

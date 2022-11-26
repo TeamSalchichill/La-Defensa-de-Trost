@@ -14,10 +14,13 @@ public class GameManager : MonoBehaviour
     public static float volumeMultiplier = 1;
     public float volumeMultiplierPublic = 1;
     public Slider sliderVolumeMusic;
+    public AudioSource musicAS;
+    public AudioSource musicASAux;
 
     public static float volumeMultiplierEffects = 1;
     public float volumeMultiplierEffectsPublic = 1;
     public Slider sliderVolumeMusicEffects;
+    public AudioSource effectsAS;
 
     void Awake()
     {
@@ -75,9 +78,17 @@ public class GameManager : MonoBehaviour
     public void ChangeVolumeMusic()
     {
         volumeMultiplier = sliderVolumeMusic.value;
+        musicAS.volume = volumeMultiplier / 2;
+
+        if (musicASAux)
+        {
+            musicASAux.volume = volumeMultiplier / 2;
+        }
+        BackgroundMusic.instance.defaultVolume = volumeMultiplier / 2;
     }
     public void ChangeEffectsMusic()
     {
         volumeMultiplierEffects = sliderVolumeMusicEffects.value;
+        effectsAS.volume = volumeMultiplierEffects / 2;
     }
 }

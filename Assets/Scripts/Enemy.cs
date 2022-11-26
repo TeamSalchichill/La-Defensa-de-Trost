@@ -195,12 +195,15 @@ public class Enemy : MonoBehaviour
                 {
                     case (Type.Pequeño):
                         gameFlow.enemiesLeft1--;
+                        gameFlow.kills1++;
                         break;
                     case (Type.Mediano):
                         gameFlow.enemiesLeft2--;
+                        gameFlow.kills2++;
                         break;
                     case (Type.Grande):
                         gameFlow.enemiesLeft3--;
+                        gameFlow.kills3++;
                         break;
                 }
 
@@ -414,12 +417,15 @@ public class Enemy : MonoBehaviour
                     {
                         case (Type.Pequeño):
                             gameFlow.enemiesLeft1--;
+                            gameFlow.kills1++;
                             break;
                         case (Type.Mediano):
                             gameFlow.enemiesLeft2--;
+                            gameFlow.kills2++;
                             break;
                         case (Type.Grande):
                             gameFlow.enemiesLeft3--;
+                            gameFlow.kills3++;
                             break;
                     }
 
@@ -783,12 +789,15 @@ public class Enemy : MonoBehaviour
             {
                 case (Type.Pequeño):
                     gameFlow.enemiesLeft1--;
+                    gameFlow.kills1++;
                     break;
                 case (Type.Mediano):
                     gameFlow.enemiesLeft2--;
+                    gameFlow.kills2++;
                     break;
                 case (Type.Grande):
                     gameFlow.enemiesLeft3--;
+                    gameFlow.kills3++;
                     break;
             }
 
@@ -852,12 +861,15 @@ public class Enemy : MonoBehaviour
             {
                 case (Type.Pequeño):
                     gameFlow.enemiesLeft1--;
+                    gameFlow.kills1++;
                     break;
                 case (Type.Mediano):
                     gameFlow.enemiesLeft2--;
+                    gameFlow.kills2++;
                     break;
                 case (Type.Grande):
                     gameFlow.enemiesLeft3--;
+                    gameFlow.kills3++;
                     break;
             }
 
@@ -1225,12 +1237,15 @@ public class Enemy : MonoBehaviour
                         {
                             case (Type.Pequeño):
                                 gameFlow.enemiesLeft1--;
+                                gameFlow.kills1++;
                                 break;
                             case (Type.Mediano):
                                 gameFlow.enemiesLeft2--;
+                                gameFlow.kills2++;
                                 break;
                             case (Type.Grande):
                                 gameFlow.enemiesLeft3--;
+                                gameFlow.kills3++;
                                 break;
                         }
 
@@ -1253,12 +1268,15 @@ public class Enemy : MonoBehaviour
             {
                 case (Type.Pequeño):
                     gameFlow.enemiesLeft1--;
+                    gameFlow.kills1++;
                     break;
                 case (Type.Mediano):
                     gameFlow.enemiesLeft2--;
+                    gameFlow.kills2++;
                     break;
                 case (Type.Grande):
                     gameFlow.enemiesLeft3--;
+                    gameFlow.kills3++;
                     mainTower.health = -1;
                     break;
             }
@@ -1424,12 +1442,15 @@ public class Enemy : MonoBehaviour
         {
             case (Type.Pequeño):
                 gameFlow.enemiesLeft1--;
+                gameFlow.kills1++;
                 break;
             case (Type.Mediano):
                 gameFlow.enemiesLeft2--;
+                gameFlow.kills2++;
                 break;
             case (Type.Grande):
                 gameFlow.enemiesLeft3--;
+                gameFlow.kills3++;
                 break;
         }
 

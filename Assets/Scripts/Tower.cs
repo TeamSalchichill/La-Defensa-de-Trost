@@ -442,6 +442,8 @@ public class Tower : MonoBehaviour
         {
             SoundManager.instance.SoundSelection(15, 0.5f);
 
+            gameFlow.towersDestroyed++;
+
             GameObject instParticle = Instantiate(destroyParticle, transform.position, transform.rotation);
             instParticle.transform.localScale *= range;
             

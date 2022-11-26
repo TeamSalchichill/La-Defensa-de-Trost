@@ -38,6 +38,8 @@ public class Hero : MonoBehaviour
                         ParticleSystem instParticle = Instantiate(GetComponent<Tower>().spawnParticles, transform.position, transform.rotation);
                         Destroy(instParticle, 3);
 
+                        GameFlow.instance.heroChanges++;
+
                         GetComponent<BoxCollider>().enabled = true;
                         GetComponent<Tower>().enabled = true;
                         realocate = false;
