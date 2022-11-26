@@ -310,6 +310,7 @@ MonoBehaviour:
   ascentDamage: 0
   bloodDamage: 0
   transformationDamage: 0
+  isAscent: 0
   isBurn: 0
   burnEffect: 0
   burnEffectPerShoot: 2
@@ -327,7 +328,9 @@ MonoBehaviour:
   destroyParticle: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56, type: 3}
   areaDamageParticle: {fileID: 0}
   shootAudio: {fileID: 8300000, guid: f73da1a4a4f07404b92d0faac738c45c, type: 3}
+  shootAudioVolume: 0.5
   abilityAudio: {fileID: 0}
+  abilityAudioVolume: 0.5
 --- !u!65 &529317125
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -402,7 +405,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7816324940044139596, guid: 49158a708727b314c9fa679320285573, type: 3}
+  - {fileID: 2100000, guid: 0c2f858922b67f34396f8b4c57730e77, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

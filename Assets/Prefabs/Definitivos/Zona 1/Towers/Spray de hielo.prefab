@@ -155,7 +155,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6868350025523587292, guid: 8cc69cb3ee81a8745a2cd0637b9b5391, type: 3}
+  - {fileID: 2100000, guid: 519e39ddd962f9349b746beebc4cdd87, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -238,7 +238,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7816324940044139596, guid: 8cc69cb3ee81a8745a2cd0637b9b5391, type: 3}
+  - {fileID: 2100000, guid: 217fd51f69661d9449fcca955e2ee20a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -373,6 +373,7 @@ MonoBehaviour:
   ascentDamage: 0
   bloodDamage: 0
   transformationDamage: 0
+  isAscent: 0
   isBurn: 0
   burnEffect: 0
   burnEffectPerShoot: 2
@@ -389,6 +390,10 @@ MonoBehaviour:
   curationParticle: {fileID: 0}
   destroyParticle: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56, type: 3}
   areaDamageParticle: {fileID: 0}
+  shootAudio: {fileID: 0}
+  shootAudioVolume: 0.5
+  abilityAudio: {fileID: 0}
+  abilityAudioVolume: 0.5
 --- !u!95 &5171838331411577514
 Animator:
   serializedVersion: 4
