@@ -57,4 +57,11 @@ public class HUD_Button : MonoBehaviour
 
         panel.SetActive(activate);
     }
+
+    public void StartLevel(int id)
+    {
+        loadingScreen.SetActive(true);
+
+        GameManager.instance.SelectLevel(id);
+    }
 }

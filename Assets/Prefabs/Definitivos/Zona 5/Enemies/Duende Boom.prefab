@@ -340,9 +340,9 @@ GameObject:
   - component: {fileID: 4189710331414314710}
   - component: {fileID: 4444610984518523171}
   - component: {fileID: 4444610984518523174}
-  - component: {fileID: 4444610984518523175}
   - component: {fileID: 4444610984518523168}
   - component: {fileID: 4444610984518523169}
+  - component: {fileID: 1819938909689048332}
   m_Layer: 6
   m_Name: Duende Boom
   m_TagString: Enemy
@@ -402,22 +402,6 @@ CapsuleCollider:
   m_Height: 10
   m_Direction: 1
   m_Center: {x: 0, y: 5, z: 0}
---- !u!54 &4444610984518523175
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3562074582159172716}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!195 &4444610984518523168
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -522,10 +506,25 @@ MonoBehaviour:
   fireSpearAttackRate: 7
   fireBlins: {fileID: 0}
   finalBoss: {fileID: 0}
-  sokekAttackParticle: {fileID: 0}
   infectionParticle: {fileID: 100006, guid: 2a474af3f4c27be4e9bdce39cfe4315d, type: 3}
   hitParticle: {fileID: 100000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
   torbellinoParticle: {fileID: 100000, guid: 18204b98237ccb540808f2cd2d78c2c8, type: 3}
+--- !u!54 &1819938909689048332
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3562074582159172716}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3572427305464064081
 GameObject:
   m_ObjectHideFlags: 0

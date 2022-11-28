@@ -456,9 +456,9 @@ GameObject:
   - component: {fileID: 7889086106026472962}
   - component: {fileID: 7705961871850387877}
   - component: {fileID: 7705961871850387873}
-  - component: {fileID: 7705961871850387872}
   - component: {fileID: 7705961871850387879}
   - component: {fileID: 7705961871850387878}
+  - component: {fileID: -5392328719709994205}
   m_Layer: 6
   m_Name: TobyDoFogo
   m_TagString: Enemy
@@ -518,22 +518,6 @@ CapsuleCollider:
   m_Height: 10
   m_Direction: 1
   m_Center: {x: 0, y: 5, z: 0}
---- !u!54 &7705961871850387872
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7363520284711529656}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!195 &7705961871850387879
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -638,10 +622,25 @@ MonoBehaviour:
   fireSpearAttackRate: 7
   fireBlins: {fileID: 0}
   finalBoss: {fileID: 0}
-  sokekAttackParticle: {fileID: 0}
   infectionParticle: {fileID: 100006, guid: 2a474af3f4c27be4e9bdce39cfe4315d, type: 3}
   hitParticle: {fileID: 100000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
   torbellinoParticle: {fileID: 100000, guid: 18204b98237ccb540808f2cd2d78c2c8, type: 3}
+--- !u!54 &-5392328719709994205
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7363520284711529656}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7705961873401624485
 GameObject:
   m_ObjectHideFlags: 0

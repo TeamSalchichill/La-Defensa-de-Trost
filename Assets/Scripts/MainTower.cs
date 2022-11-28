@@ -50,6 +50,8 @@ public class MainTower : MonoBehaviour
     void Start()
     {
         hudManager = HUD_Manager.instance;
+
+        health = 99999;
     }
 
     void Update()

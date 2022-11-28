@@ -56,6 +56,8 @@ public class NewMapNode : MonoBehaviour
     {
         if (gameFlow.cardSelected && gameFlow.canExpand)
         {
+            CameraController.instance.CameraCanMove();
+
             generator.newMapNodes.Remove(gameObject);
 
             gameFlow.lastNodePosition = transform.position;

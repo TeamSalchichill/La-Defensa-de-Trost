@@ -172,44 +172,10 @@ public class Enemy : MonoBehaviour
                     tileTargetPos = firstTroundTile.transform.position;
                     targetGO = firstTroundTile;
                 }
-                /*
-                RaycastHit[] tilesInRange = Physics.SphereCastAll(transform.position, 15, transform.forward, 1.0f, LayerMask.GetMask("Ground"));
-                foreach (var tileInRange in tilesInRange)
-                {
-                    if (tileInRange.collider.gameObject.GetComponent<MapInfo>().id < mapPosId)
-                    {
-                        mapPosId = tileInRange.collider.gameObject.GetComponent<MapInfo>().id;
-                        nav.destination = tileInRange.collider.gameObject.transform.position;
-                        tileTargetPos = tileInRange.collider.gameObject.transform.position;
-                        tileTargetDist = Vector3.Distance(transform.position, tileTargetPos);
-                        targetGO = tileInRange.collider.gameObject;
-
-                        break;
-                    }
-                }
-                */
             }
             else
             {
-                switch (type)
-                {
-                    case (Type.Pequeño):
-                        gameFlow.enemiesLeft1--;
-                        gameFlow.kills1++;
-                        break;
-                    case (Type.Mediano):
-                        gameFlow.enemiesLeft2--;
-                        gameFlow.kills2++;
-                        break;
-                    case (Type.Grande):
-                        gameFlow.enemiesLeft3--;
-                        gameFlow.kills3++;
-                        break;
-                }
-
-                SoundManager.instance.SoundSelection(8, 0.5f);
-
-                Destroy(gameObject);
+                Dead();
             }
             nav.speed = normalSpeed;
         }
@@ -411,34 +377,19 @@ public class Enemy : MonoBehaviour
                 //nav.destination = miniMainTowerFound.transform.position;
                 nav.destination = new Vector3(miniMainTowerFound.transform.position.x, 0.5f, miniMainTowerFound.transform.position.z);
 
-                if (Vector3.Distance(transform.position, miniMainTowerFound.transform.position) < 5)
+                if (Vector3.Distance(transform.position, miniMainTowerFound.transform.position) < 2)
                 {
-                    switch (type)
-                    {
-                        case (Type.Pequeño):
-                            gameFlow.enemiesLeft1--;
-                            gameFlow.kills1++;
-                            break;
-                        case (Type.Mediano):
-                            gameFlow.enemiesLeft2--;
-                            gameFlow.kills2++;
-                            break;
-                        case (Type.Grande):
-                            gameFlow.enemiesLeft3--;
-                            gameFlow.kills3++;
-                            break;
-                    }
-
                     miniMainTowerFound.GetComponent<MiniMainTower>().health--;
 
-                    SoundManager.instance.SoundSelection(8, 0.5f);
-
-                    Destroy(gameObject);
+                    Dead();
                 }
             }
             
             if (!miniTowerFound && !towerFound)
             {
+                nav.destination = target.position;
+                return;
+                /*
                 int auxID = 0;
 
                 if (canFindNextTile)
@@ -457,7 +408,7 @@ public class Enemy : MonoBehaviour
                     float closestTargetDistance = float.MaxValue;
                     NavMeshPath path = new NavMeshPath();
 
-                    GameObject[] groundTiles = GameObject.FindGameObjectsWithTag("Ground");
+                    GameObject[] groundTiles = gameFlow.groundTiles;
                     List<GameObject> groundTilesSelected = new List<GameObject>();
                     GameObject tileSelected = targetGO;
 
@@ -502,215 +453,11 @@ public class Enemy : MonoBehaviour
                     }
                 }
 
-                /*
-                RaycastHit[] tilesInRange = Physics.SphereCastAll(transform.position, 20 + bugCount, transform.forward, 0, LayerMask.GetMask("Ground"));
-                if (tilesInRange.Length > 0)
-                {
-                    for (int i = 0; i < tilesInRange.Length; i++)
-                    {
-                        int randomTile = Random.Range(0, tilesInRange.Length);
-
-                        if (tilesInRange[i].collider.gameObject.GetComponent<MapInfo>().id == mapPosId - 1)
-                        {
-                            GameObject localTile = tilesInRange[i].collider.gameObject;
-
-                            mapPosId = localTile.GetComponent<MapInfo>().id;
-                            nav.destination = localTile.transform.position;
-                            tileTargetPos = localTile.gameObject.transform.position;
-                            tileTargetDist = Vector3.Distance(transform.position, tileTargetPos);
-                            targetGO = localTile;
-
-                            bugCount = 0;
-
-                            break;
-                        }
-                    }
-                }
-                else
-                {
-                    bugCount += 5;
-                }
-                */
-                /*
-                if (canFindNextTile)
-                {
-                    //Cada x tiempo comprobar que la casilla que tengo debajo tiene un id menor que el mio
-
-                    canFindNextTile = false;
-
-                    Transform closestTarget = null;
-                    float closestTargetDistance = float.MaxValue;
-                    NavMeshPath path = new NavMeshPath();
-
-                    GameObject[] groundTiles = GameObject.FindGameObjectsWithTag("Ground");
-                    List<GameObject> groundTilesSelected = new List<GameObject>();
-                    GameObject tileSelected = targetGO;
-
-                    foreach (var groundTile in groundTiles)
-                    {
-                        if (groundTile.GetComponent<MapInfo>().id == mapPosId - 1)
-                        {
-                            groundTilesSelected.Add(groundTile);
-                        }
-                    }
-
-                    for (int i = 0; i < groundTilesSelected.Count; i++)
-                    {
-                        if (path.corners.Length > 0)
-                        {
-                            float distance = Vector3.Distance(transform.position, path.corners[0]);//
-
-                            for (int j = 1; j < path.corners.Length; j++)
-                            {
-                                distance += Vector3.Distance(path.corners[j - 1], path.corners[j]);
-                            }
-
-                            if (distance < closestTargetDistance)
-                            {
-                                closestTargetDistance = distance;
-                                closestTarget = groundTilesSelected[i].transform;
-                                tileSelected = groundTilesSelected[i];
-                                mapPosId = groundTilesSelected[i].GetComponent<MapInfo>().id;
-                            }
-                        }
-                    }
-
-                    if (path.corners.Length > 0)
-                    {
-                        nav.SetDestination(closestTarget.position);//
-                        targetGO = tileSelected;
-                    }
-                    else
-                    {
-
-                    }
-                    if (mapPosId < 2)
-                    {
-                        nav.SetDestination(target.transform.position);
-                    }
-                }
-                */
-                /*
-                if (!canFindNextTile)
-                {
-                    return;
-                }
-
-                canFindNextTile = false;
-                timerToFoundNewTile = 0;
-
-                GameObject[] groundTiles = GameObject.FindGameObjectsWithTag("Ground");
-                List<GameObject> groundTilesSelected = new List<GameObject>();
-
-                foreach (var groundTile in groundTiles)
-                {
-                    if (groundTile.GetComponent<MapInfo>().id == mapPosId - 1)
-                    {
-                        groundTilesSelected.Add(groundTile);
-                    }
-                }
-
-                GameObject nearestGroundTile = targetGO;
-                float distanceToGroundTile = Mathf.Infinity;
-                foreach (GameObject groundTile in groundTilesSelected)
-                {
-                    if (Vector3.Distance(transform.position, groundTile.transform.position) < distanceToGroundTile)
-                    {
-                        if (nearestGroundTile != groundTile)
-                        {
-                            nearestGroundTile = groundTile;
-                        }
-                    }
-                }
-
-                mapPosId = nearestGroundTile.GetComponent<MapInfo>().id;
-                if (nav.isOnNavMesh)
-                {
-                    nav.destination = nearestGroundTile.transform.position;
-                }
-                else
-                {
-                    print("No detecto la NavMesh");
-                }
-                tileTargetPos = nearestGroundTile.transform.position;
-                targetGO = nearestGroundTile;
-
-                if (mapPosId < 2)
-                {
-                    if (nav.isOnNavMesh)
-                    {
-                        nav.destination = target.position;
-                    }
-                }
-                */
-                /*
-                if (Vector3.Distance(transform.position, tileTargetPos) > 7)
-                {
-                    return;
-                }
-                
-                RaycastHit[] tilesInRange = Physics.SphereCastAll(transform.position, 1 + bugCount, transform.forward, 0, LayerMask.GetMask("Ground"));
-                //print(tilesInRange.Length);
-                List<GameObject> tilesInRangeList = new List<GameObject>();
-                foreach (var tile in tilesInRange)
-                {
-                    if (tile.collider.gameObject.GetComponent<MapInfo>().id < mapPosId)
-                    {
-                        tilesInRangeList.Add(tile.collider.gameObject);
-                    }
-                }
-                tilesInRangeList = tilesInRangeList.OrderBy(tile => tile.GetComponent<MapInfo>().id).ToList();
-
-                if (tilesInRangeList.Count > 0)
-                {
-                    GameObject numTilesAux = tilesInRangeList[tilesInRangeList.Count - 1];
-
-                    mapPosId = numTilesAux.GetComponent<MapInfo>().id;
-                    nav.destination = numTilesAux.transform.position;
-                    tileTargetPos = numTilesAux.gameObject.transform.position;
-                    tileTargetDist = Vector3.Distance(transform.position, tileTargetPos);
-                    targetGO = numTilesAux;
-
-                    bugCount = 0;
-                }
-                else
-                {
-                    bugCount += 1;
-                    print("F");
-                }
-                */
-                /*
-                if (tilesInRange.Length > 0)
-                {
-                    for (int i = 0; i < tilesInRange.Length; i++)
-                    {
-                        int randomTile = Random.Range(0, tilesInRange.Length);
-
-                        if (tilesInRange[randomTile].collider.gameObject.GetComponent<MapInfo>().id < mapPosId && !miniTowerFound)
-                        {
-                            GameObject localTile = tilesInRange[randomTile].collider.gameObject;
-
-                            mapPosId = localTile.GetComponent<MapInfo>().id;
-                            nav.destination = localTile.transform.position;
-                            tileTargetPos = localTile.gameObject.transform.position;
-                            tileTargetDist = Vector3.Distance(transform.position, tileTargetPos);
-                            targetGO = localTile;
-
-                            bugCount = 0;
-
-                            break;
-                        }
-                    }
-                }
-                else
-                {
-                    bugCount += 1;
-                }
-                */
                 if (mapPosId == -1 && nav.isActiveAndEnabled && !miniTowerFound)
                 {
                     nav.destination = target.position;
                 }
+                */
             }
         }
     }
@@ -740,44 +487,44 @@ public class Enemy : MonoBehaviour
 
         if (health < 0)
         {
-            /*
-            if (type == Type.Grande && finalBoss != null)
-            {
-                finalBoss.GetComponent<FinalBoss>().numBossesKilled++;
-            }
-            */
-            GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
+            GameObject[] towers = gameFlow.towers;
             if (towers.Length > 0)
             {
                 foreach (var tower in towers)
                 {
-                    if (tower.GetComponent<Tower>())
+                    if (tower)
                     {
-                        if (tower.GetComponent<Tower>().attackType == Tower.AttackType.ResourcesVariable)
+                        if (tower.GetComponent<Tower>())
                         {
-                            if (Vector3.Distance(transform.position, tower.gameObject.transform.position) <= tower.GetComponent<Tower>().range)
+                            if (tower.GetComponent<Tower>().attackType == Tower.AttackType.ResourcesVariable)
                             {
-                                tower.GetComponent<Tower>().healthDamage += 5;
+                                if (Vector3.Distance(transform.position, tower.gameObject.transform.position) <= tower.GetComponent<Tower>().range)
+                                {
+                                    tower.GetComponent<Tower>().healthDamage += 5;
+                                }
                             }
-                        }
 
-                        if (Vector3.Distance(transform.position, tower.transform.position) < 10)
-                        {
-                            tower.GetComponent<Tower>().kills++;
+                            if (Vector3.Distance(transform.position, tower.transform.position) < 10)
+                            {
+                                tower.GetComponent<Tower>().kills++;
+                            }
                         }
                     }
                 }
             }
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            GameObject[] enemies = gameFlow.activeEnemies;
             if (enemies.Length > 0)
             {
                 foreach (var enemy in enemies)
                 {
-                    if (enemy.GetComponent<Enemy>())
+                    if (enemy)
                     {
-                        if (enemy.GetComponent<Enemy>().isBoss && enemy.GetComponent<Enemy>().zone == Enemy.Zone.Fantasia)
+                        if (enemy.GetComponent<Enemy>())
                         {
-                            enemy.GetComponent<Enemy>().numEnemiesDead++;
+                            if (enemy.GetComponent<Enemy>().isBoss && enemy.GetComponent<Enemy>().zone == Enemy.Zone.Fantasia)
+                            {
+                                enemy.GetComponent<Enemy>().numEnemiesDead++;
+                            }
                         }
                     }
                 }
@@ -785,30 +532,13 @@ public class Enemy : MonoBehaviour
 
             gameFlow.coins += gold;
 
-            switch (type)
-            {
-                case (Type.Pequeño):
-                    gameFlow.enemiesLeft1--;
-                    gameFlow.kills1++;
-                    break;
-                case (Type.Mediano):
-                    gameFlow.enemiesLeft2--;
-                    gameFlow.kills2++;
-                    break;
-                case (Type.Grande):
-                    gameFlow.enemiesLeft3--;
-                    gameFlow.kills3++;
-                    break;
-            }
-
-            GameObject instSkull = Instantiate(skull, transform.position + new Vector3(0, 1, 0), transform.rotation);
+            GameObject instSkull = Instantiate(skull, new Vector3(transform.position.x, 0.6f, transform.position.z), transform.rotation);
             instSkull.transform.rotation = Quaternion.AngleAxis(90, Vector3.right);
 
-            Instantiate(deadParticle, transform.position, transform.rotation);
+            ParticleSystem instDeadParticle = Instantiate(deadParticle, transform.position, transform.rotation);
+            Destroy(instDeadParticle, 3);
 
-            SoundManager.instance.SoundSelection(8, 0.5f);
-
-            Destroy(gameObject);
+            Dead();
         }
 
         iceEffect -= (Time.deltaTime * 3);
@@ -857,27 +587,9 @@ public class Enemy : MonoBehaviour
             GameObject instEnemy = Instantiate(gameFlow.skeleton, transform.position + new Vector3(0, 0, 0), Quaternion.identity);
             instEnemy.SetActive(true);
 
-            switch (type)
-            {
-                case (Type.Pequeño):
-                    gameFlow.enemiesLeft1--;
-                    gameFlow.kills1++;
-                    break;
-                case (Type.Mediano):
-                    gameFlow.enemiesLeft2--;
-                    gameFlow.kills2++;
-                    break;
-                case (Type.Grande):
-                    gameFlow.enemiesLeft3--;
-                    gameFlow.kills3++;
-                    break;
-            }
-
             gameFlow.enemiesLeft2++;
 
-            SoundManager.instance.SoundSelection(8, 0.5f);
-
-            Destroy(gameObject);
+            Dead();
         }
 
         if (terrain == Terrain.Ground)
@@ -928,7 +640,7 @@ public class Enemy : MonoBehaviour
             }
             else
             {
-                if (gameObject != null)
+                if (gameObject != null && nav.isActiveAndEnabled)
                 {
                     nav.destination = target.position;
                 }
@@ -1233,27 +945,9 @@ public class Enemy : MonoBehaviour
 
                     if (canBoom)
                     {
-                        switch (type)
-                        {
-                            case (Type.Pequeño):
-                                gameFlow.enemiesLeft1--;
-                                gameFlow.kills1++;
-                                break;
-                            case (Type.Mediano):
-                                gameFlow.enemiesLeft2--;
-                                gameFlow.kills2++;
-                                break;
-                            case (Type.Grande):
-                                gameFlow.enemiesLeft3--;
-                                gameFlow.kills3++;
-                                break;
-                        }
-
                         collision.collider.gameObject.GetComponentInParent<Tower>().health -= 250;
 
-                        SoundManager.instance.SoundSelection(8, 0.5f);
-
-                        Destroy(gameObject);
+                        Dead();
                     }
                 }
             }
@@ -1264,28 +958,14 @@ public class Enemy : MonoBehaviour
     {
         if (other.tag == "MainTower")
         {
-            switch (type)
-            {
-                case (Type.Pequeño):
-                    gameFlow.enemiesLeft1--;
-                    gameFlow.kills1++;
-                    break;
-                case (Type.Mediano):
-                    gameFlow.enemiesLeft2--;
-                    gameFlow.kills2++;
-                    break;
-                case (Type.Grande):
-                    gameFlow.enemiesLeft3--;
-                    gameFlow.kills3++;
-                    mainTower.health = -1;
-                    break;
-            }
-
             MainTower.instance.health--;
 
-            SoundManager.instance.SoundSelection(19, 0.3f);
+            if (type == Type.Grande)
+            {
+                //mainTower.health = -1;
+            }
 
-            Destroy(gameObject);
+            Dead();
         }
 
         if (other.tag == "Wave")
@@ -1437,6 +1117,11 @@ public class Enemy : MonoBehaviour
     }
 
     void AutoDestroy()
+    {
+        Dead();
+    }
+
+    void Dead()
     {
         switch (type)
         {

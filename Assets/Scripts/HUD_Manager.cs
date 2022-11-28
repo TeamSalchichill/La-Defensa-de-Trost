@@ -101,7 +101,8 @@ public class HUD_Manager : MonoBehaviour
     [Header("Intro images")]
     public Image activeImage;
     public Sprite[] images;
-    int imageId = 1;
+    public int imageId = 1;
+    public int imageIdFinal = 1;
 
     public GameObject panel;
 
@@ -118,6 +119,10 @@ public class HUD_Manager : MonoBehaviour
     [Header("Summary")]
     public TextMeshProUGUI summaryTextDead;
     public TextMeshProUGUI summaryTextWin;
+
+    [Header("Move")]
+    public GameObject moveTowerButton;
+    public GameObject moveHeroButton;
 
     void Awake()
     {
@@ -195,17 +200,17 @@ public class HUD_Manager : MonoBehaviour
                 icon.sprite = activeTower.icon;
             }
 
-            statsTexts[0].text = activeTower.healthDamage.ToString("F1");
-            statsTexts[1].text = ((int)activeTower.health).ToString();
-            statsTexts[2].text = activeTower.range.ToString("F1");
+            statsTexts[0].text = activeTower.healthDamage.ToString("F0");
+            statsTexts[1].text = activeTower.health.ToString("F0");
+            statsTexts[2].text = activeTower.range.ToString("F0");
             statsTexts[3].text = activeTower.fireRate.ToString("F1");
 
-            effectsTexts[0].text = activeTower.iceDamage.ToString("F1");
-            effectsTexts[1].text = activeTower.igniteDamage.ToString("F1");
-            effectsTexts[2].text = activeTower.waterDamage.ToString("F1");
-            effectsTexts[3].text = activeTower.ascentDamage.ToString("F1");
-            effectsTexts[4].text = activeTower.bloodDamage.ToString("F1");
-            effectsTexts[5].text = activeTower.transformationDamage.ToString("F1");
+            effectsTexts[0].text = activeTower.iceDamage.ToString("F0");
+            effectsTexts[1].text = activeTower.igniteDamage.ToString("F0");
+            effectsTexts[2].text = activeTower.waterDamage.ToString("F0");
+            effectsTexts[3].text = activeTower.ascentDamage.ToString("F0");
+            effectsTexts[4].text = activeTower.bloodDamage.ToString("F0");
+            effectsTexts[5].text = activeTower.transformationDamage.ToString("F0");
 
             if (activeTower.level < 4)
             {
@@ -216,27 +221,6 @@ public class HUD_Manager : MonoBehaviour
                 coin.sprite = coins[1];
             }
 
-
-
-            /*
-            towerDescription1.text =
-            " ---- STATS ----\n" +
-            "Daño: " + activeTower.healthDamage.ToString("F1") + "\n" +
-            "Rango: " + activeTower.range.ToString("F1") + "\n" +
-            "Vel. disparo: " + activeTower.fireRate.ToString("F1") + "\n" +
-            "Vida: " + activeTower.health.ToString("F1") + "\n"
-            //"Velocidad de giro: " + activeTower.turnSpeed + "\n" +
-            ;
-            towerDescription2.text =
-            "-- EFFECTS --\n" +
-            "Hielo: " + activeTower.iceDamage.ToString("F1") + "%" + "\n" +
-            "Fuego: " + activeTower.igniteDamage.ToString("F1") + "%" + "\n" +
-            "Agua: " + activeTower.waterDamage.ToString("F1") + "%" + "\n" +
-            "Ascensión: " + activeTower.ascentDamage.ToString("F1") + "%" + "\n" +
-            "Sangrado: " + activeTower.bloodDamage.ToString("F1") + "%" + "\n" +
-            "Locura: " + activeTower.transformationDamage.ToString("F1") + "%" + "\n"
-            ;
-            */
             if (activeTower.level == 5)
             {
                 levelUpButton.text = "Max";
@@ -283,24 +267,6 @@ public class HUD_Manager : MonoBehaviour
             towerBannerText.text = "Mostrar";
             towerBannerButton.GetComponent<RectTransform>().position = new Vector2(Screen.width / 2, (Screen.height / 9) * 2.5f);
         }
-        /*
-        if (mainTower.activateTower)
-        {
-            towerPotionIcon.GetComponent<Image>().color = towerPotionIconColorHover;
-        }
-        else
-        {
-            towerPotionIcon.GetComponent<Image>().color = Color.white;
-        }
-        if (mainTower.restRounds <= 0)
-        {
-            towerPotionButton.GetComponent<Image>().color = Color.white;
-        }
-        else
-        {
-            towerPotionButton.GetComponent<Image>().color = towerPotionButtonColorHover;
-        }
-        */
     }
 
     public void AddCoins(int newCoins)
@@ -349,17 +315,7 @@ public class HUD_Manager : MonoBehaviour
         }
 
         fichaTecnica.SetActive(false);
-        /*
-        if (colocatorManager.towerID == id)
-        {
-            colocatorManager.canBuild = false;
-        }
-        else
-        {
-            colocatorManager.towerID = id;
-            colocatorManager.canBuild = true;
-        }
-        */
+        
         colocatorManager.towerID = id;
         colocatorManager.canBuild = true;
 
@@ -395,39 +351,10 @@ public class HUD_Manager : MonoBehaviour
         activeTower = tower;
 
         tower.rangeArea.SetActive(true);
-        /*
-        towerName.text = tower.towerName;
-        //icon = tower.icon;
-        
-        towerDescription.text =
-            " ----- STATS -----\n" +
-            "Nivel: " + tower.level + "\n" +
-            "Vida: " + tower.health + "\n" + 
-            "Rango: " + tower.range + "\n" +
-            "Velocidad de disparo: " + tower.fireRate + "\n" +
-            "Velocidad de giro: " + tower.turnSpeed + "\n" +
-            " ----- DAÑOS -----\n" +
-            "Vida: " + tower.healthDamage + "\n" +
-            "Hielo: " + tower.iceDamage + "%" + "\n" +
-            "Fuego: " + tower.igniteDamage + "%" + "\n" +
-            "Agua: " + tower.waterDamage + "%" + "\n" +
-            "Ascensión: " + tower.ascentDamage + "%" + "\n" +
-            "Sangrado: " + tower.bloodDamage + "%" + "\n" +
-            "Locura: " + tower.transformationDamage + "%" + "\n"
-            ;
-        
-        if (tower.level == 5)
-        {
-            levelUpButton.gameObject.SetActive(false);
-        }
-        else
-        {
-            levelUpButton.gameObject.SetActive(true);
-        }
-        
-        levelUpButton.text = "Mejorar" + "\n" + "(" + tower.levelUpPrice + ")";
-        sellButton.text = "Vender" + "\n" + "(" + (int)(tower.acumulateGold * 0.7f) + ")";
-        */
+
+        moveTowerButton.SetActive(activeTower.level == 5 && !activeTower.isHero && activeTower.GetComponent<RecolocateManual>().nextRound);
+        moveHeroButton.SetActive(activeTower.isHero && activeTower.GetComponent<Hero>().nextRound);
+
         Invoke("CanDisableFichaTecnica", 0.2f);
         fichaTecnica.SetActive(true);
     }
@@ -461,6 +388,10 @@ public class HUD_Manager : MonoBehaviour
                 gameFlow.specialGoldSpent += activeTower.levelUpPrice;
 
                 activeTower.gameObject.AddComponent<RecolocateManual>();
+                if (!activeTower.isHero)
+                {
+                    moveTowerButton.SetActive(true);
+                }
             }
             
             activeTower.level++;
@@ -468,7 +399,7 @@ public class HUD_Manager : MonoBehaviour
 
             if (activeTower.level < 4)
             {
-                activeTower.levelUpPrice = (int)(activeTower.levelUpPrice * activeTower.levelMultiplier);
+                activeTower.levelUpPrice = (int)(activeTower.levelUpPrice * 1.2f);
             }
             else
             {
@@ -478,62 +409,71 @@ public class HUD_Manager : MonoBehaviour
 
 
             activeTower.numTargets++;
-            activeTower.healthMax = (int)(activeTower.healthMax * activeTower.levelMultiplier);
-            activeTower.health = (int)(activeTower.health * activeTower.levelMultiplier);
-            activeTower.armorMax = (int)(activeTower.armorMax * activeTower.levelMultiplier);
-            activeTower.armor = (int)(activeTower.armor * activeTower.levelMultiplier);
-            activeTower.range = (int)(activeTower.range * activeTower.levelMultiplier);
-            activeTower.fireRate = (activeTower.fireRate * activeTower.levelMultiplier);
-            activeTower.turnSpeed = (int)(activeTower.turnSpeed * activeTower.levelMultiplier);
+            activeTower.healthMax = (int)(activeTower.healthMax + activeTower.healthMax * 0.2f);
+            activeTower.health = (int)(activeTower.health + activeTower.health * 0.2f);
+            activeTower.range = (activeTower.range + activeTower.range * 0.2f);
+            activeTower.fireRate = (activeTower.fireRate + activeTower.fireRate * 0.2f);
 
-            activeTower.healthDamage = (int)(activeTower.healthDamage * activeTower.levelMultiplier);
-            activeTower.armorDamage = (int)(activeTower.armorDamage * activeTower.levelMultiplier);
-            activeTower.iceDamage = (int)(activeTower.iceDamage * activeTower.levelMultiplier);
-            activeTower.igniteDamage = (int)(activeTower.igniteDamage * activeTower.levelMultiplier);
-            activeTower.waterDamage = (int)(activeTower.waterDamage * activeTower.levelMultiplier);
-            activeTower.ascentDamage = (int)(activeTower.ascentDamage * activeTower.levelMultiplier);
-            activeTower.bloodDamage = (int)(activeTower.bloodDamage * activeTower.levelMultiplier);
-            activeTower.transformationDamage = (int)(activeTower.transformationDamage * activeTower.levelMultiplier);
+            activeTower.healthDamage = (int)(activeTower.healthDamage + activeTower.healthDamage * 0.2f);
+            if (activeTower.iceDamage > 0)
+            {
+                activeTower.iceDamage++;
+            }
+            if (activeTower.igniteDamage > 0)
+            {
+                activeTower.igniteDamage++;
+            }
+            if (activeTower.waterDamage > 0)
+            {
+                activeTower.waterDamage++;
+            }
+            if (activeTower.ascentDamage > 0)
+            {
+                activeTower.ascentDamage++;
+            }
+            if (activeTower.bloodDamage > 0)
+            {
+                activeTower.bloodDamage++;
+            }
+            if (activeTower.transformationDamage > 0)
+            {
+                activeTower.transformationDamage++;
+            }
 
             activeTower.rangeArea.transform.localScale = new Vector3(activeTower.range * activeTower.rangeAreaOriginalScale, activeTower.rangeAreaOriginalScale, activeTower.range * activeTower.rangeAreaOriginalScale);
 
             switch (activeTower.specialStat)
             {
-                case Tower.SpecialStat.None:
-
-                    break;
                 case Tower.SpecialStat.Health:
-                    activeTower.healthMax = (int)(activeTower.healthMax * activeTower.levelMultiplierSpecialStat);
+                    activeTower.health = (int)(activeTower.health + activeTower.health * 0.2f);
+                    activeTower.healthMax = (int)(activeTower.healthMax + activeTower.healthMax * 0.2f);
                     break;
                 case Tower.SpecialStat.Range:
-                    activeTower.range = (int)(activeTower.range * activeTower.levelMultiplierSpecialStat);
+                    activeTower.range = (activeTower.range + activeTower.range * 0.3f);
                     break;
                 case Tower.SpecialStat.ShootSpeed:
-                    activeTower.fireRate = (int)(activeTower.fireRate * activeTower.levelMultiplierSpecialStat);
-                    break;
-                case Tower.SpecialStat.TurnSpeed:
-                    activeTower.turnSpeed = (int)(activeTower.turnSpeed * activeTower.levelMultiplierSpecialStat);
+                    activeTower.fireRate = (activeTower.fireRate + activeTower.fireRate * 0.3f);
                     break;
                 case Tower.SpecialStat.HealthDamage:
-                    activeTower.healthDamage = (int)(activeTower.healthDamage * activeTower.levelMultiplierSpecialStat);
+                    activeTower.healthDamage = (int)(activeTower.healthDamage + activeTower.healthDamage * 0.3f);
                     break;
                 case Tower.SpecialStat.IceEffect:
-                    activeTower.iceDamage = (int)(activeTower.iceDamage * activeTower.levelMultiplierSpecialStat);
+                    activeTower.iceDamage += 2;
                     break;
                 case Tower.SpecialStat.IgniteEffect:
-                    activeTower.igniteDamage = (int)(activeTower.igniteDamage * activeTower.levelMultiplierSpecialStat);
+                    activeTower.igniteDamage += 2;
                     break;
                 case Tower.SpecialStat.WaterEffect:
-                    activeTower.waterDamage = (int)(activeTower.waterDamage * activeTower.levelMultiplierSpecialStat);
+                    activeTower.waterDamage += 2;
                     break;
                 case Tower.SpecialStat.AscensionEffect:
-                    activeTower.ascentDamage = (int)(activeTower.ascentDamage * activeTower.levelMultiplierSpecialStat);
+                    activeTower.ascentDamage += 2;
                     break;
                 case Tower.SpecialStat.BloodEffect:
-                    activeTower.bloodDamage = (int)(activeTower.bloodDamage * activeTower.levelMultiplierSpecialStat);
+                    activeTower.bloodDamage += 2;
                     break;
                 case Tower.SpecialStat.CrazyEffect:
-                    activeTower.transformationDamage = (int)(activeTower.transformationDamage * activeTower.levelMultiplierSpecialStat);
+                    activeTower.transformationDamage += 2;
                     break;
             }
 
@@ -599,6 +539,8 @@ public class HUD_Manager : MonoBehaviour
     {
         SoundManager.instance.SoundSelection(3, 0.5f);
 
+        nextRoundButton.gameObject.GetComponent<Image>().rectTransform.sizeDelta -= new Vector2(25, 25);
+
         gameFlow.StartRound();
     }
 
@@ -628,15 +570,16 @@ public class HUD_Manager : MonoBehaviour
             checkExit.SetActive(false);
         }
 
-        summaryTextDead.text = 
-            "Tiempo: " + gameFlow.time + "\n" + 
-            "Muertes enemigos pequeños: " + gameFlow.kills1 + "\n" + 
-            "Muertes enemigos medianos: " + gameFlow.kills2 + "\n" + 
-            "Muertes enemigos bosses: " + gameFlow.kills3 + "\n" + 
-            "Torres construidas: " + gameFlow.towersBuild + "\n" + 
-            "Torres destruidas: " + gameFlow.towersDestroyed + "\n" + 
-            "Monedas: " + gameFlow.goldSpent + "\n" + 
-            "Cristales: " + gameFlow.specialGoldSpent + "\n" + 
+        summaryTextDead.text =
+            "Tiempo: " + (int)gameFlow.time + " segundos" + "\n" +
+            "Ronda: " + gameFlow.round + "\n" +
+            "Muertes enemigos enanos: " + gameFlow.kills1 + "\n" +
+            "Muertes enemigos medianos: " + gameFlow.kills2 + "\n" +
+            "Muertes enemigos bosses: " + gameFlow.kills3 + "\n" +
+            "Torres construidas: " + gameFlow.towersBuild + "\n" +
+            "Torres destruidas: " + gameFlow.towersDestroyed + "\n" +
+            "Monedas gastadas: " + gameFlow.goldSpent + "\n" +
+            "Cristales gastadas: " + gameFlow.specialGoldSpent + "\n" +
             "Mini objetivos destruidos: " + gameFlow.miniObjetivesDestroyed + "\n"
             ;
 
@@ -648,8 +591,8 @@ public class HUD_Manager : MonoBehaviour
         if (mainTower.restRounds <= 0)
         {
             SoundManager.instance.SoundSelection(3, 0.5f);
-
-            mainTower.activateTower = true;
+            
+            MainTower.instance.activateTower = true;
         }
     }
 
@@ -782,6 +725,7 @@ public class HUD_Manager : MonoBehaviour
 
     public void NewImage(bool moment)
     {
+        /*
         if (!moment)
         {
             if (imageId < images.Length)
@@ -807,6 +751,46 @@ public class HUD_Manager : MonoBehaviour
                 winScreen.SetActive(true);
             }
         }
+        */
+
+        if (!moment)
+        {
+            if (imageId < imageIdFinal)
+            {
+                activeImage.sprite = images[imageId];
+                imageId++;
+            }
+            else if (imageId == imageIdFinal)
+            {
+                gameFlow.canExpand = true;
+                panel.SetActive(false);
+            }
+        }
+        else
+        {
+            if (imageIdEnd < imagesEnd.Length)
+            {
+                activeImageEnd.sprite = imagesEnd[imageIdEnd];
+                imageIdEnd++;
+            }
+            else if (imageIdEnd == imagesEnd.Length)
+            {
+                summaryTextWin.text =
+                    "Tiempo: " + (int)gameFlow.time + " segundos" + "\n" +
+                    "Ronda: " + gameFlow.round + "\n" +
+                    "Muertes enemigos enanos: " + gameFlow.kills1 + "\n" +
+                    "Muertes enemigos medianos: " + gameFlow.kills2 + "\n" +
+                    "Muertes enemigos bosses: " + gameFlow.kills3 + "\n" +
+                    "Torres construidas: " + gameFlow.towersBuild + "\n" +
+                    "Torres destruidas: " + gameFlow.towersDestroyed + "\n" +
+                    "Monedas gastadas: " + gameFlow.goldSpent + "\n" +
+                    "Cristales gastadas: " + gameFlow.specialGoldSpent + "\n" +
+                    "Mini objetivos destruidos: " + gameFlow.miniObjetivesDestroyed + "\n"
+                    ;
+
+                winScreen.SetActive(true);
+            }
+        }
     }
 
     public void SkipImages()
@@ -815,18 +799,6 @@ public class HUD_Manager : MonoBehaviour
         imageId = images.Length;
         gameFlow.canExpand = true;
         panel.SetActive(false);
-
-        summaryTextWin.text =
-            "Tiempo: " + gameFlow.time + "\n" +
-            "Muertes enemigos pequeños: " + gameFlow.kills1 + "\n" +
-            "Muertes enemigos medianos: " + gameFlow.kills2 + "\n" +
-            "Muertes enemigos bosses: " + gameFlow.kills3 + "\n" +
-            "Torres construidas: " + gameFlow.towersBuild + "\n" +
-            "Torres destruidas: " + gameFlow.towersDestroyed + "\n" +
-            "Monedas: " + gameFlow.goldSpent + "\n" +
-            "Cristales: " + gameFlow.specialGoldSpent + "\n" +
-            "Mini objetivos destruidos: " + gameFlow.miniObjetivesDestroyed + "\n"
-            ;
     }
 
     public void CheckExit()
@@ -844,5 +816,23 @@ public class HUD_Manager : MonoBehaviour
     public void DisableCheckReset()
     {
         checkReset.SetActive(false);
+    }
+
+    public void StartLevel(int id)
+    {
+        gameManager.levelSelectedPublic = id;
+
+        SceneManager.LoadScene(3);
+    }
+
+    public void MoveTower()
+    {
+        moveTowerButton.SetActive(false);
+        activeTower.gameObject.GetComponent<RecolocateManual>().CanRealocateAux();
+    }
+    public void MoveHero()
+    {
+        moveHeroButton.SetActive(false);
+        Hero.instance.gameObject.GetComponent<Hero>().CanRealocateAux();
     }
 }

@@ -33,14 +33,14 @@ public class CameraController : MonoBehaviour
         hudManager = HUD_Manager.instance;
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        transform.position = new(transform.position.x, 50, transform.position.z);
-
         if (!doMovement)
         {
             return;
         }
+
+        transform.position = new(transform.position.x, 50, transform.position.z);
 
         // Mover la cámara con el teclado
         RaycastHit HitInfo;
@@ -48,11 +48,11 @@ public class CameraController : MonoBehaviour
 
         if (Input.GetKey("w"))
         {
-            transform.Translate(Vector3.up * panSpeed * Time.deltaTime * 2);
+            transform.Translate(Vector3.up * panSpeed * Time.deltaTime);
         }
         if (Input.GetKey("s"))
         {
-            transform.Translate(Vector3.down * panSpeed * Time.deltaTime * 2);
+            transform.Translate(Vector3.down * panSpeed * Time.deltaTime);
         }
         if (Input.GetKey("d"))
         {
@@ -81,23 +81,7 @@ public class CameraController : MonoBehaviour
 
             cameraIsMove = true;
         }
-
-        if (Input.touchCount == 2 && !colocatorManager.canBuild && !hudManager.isShowInfo)
-        {
-            Touch touchZero = Input.GetTouch(0);
-            Touch touchOne = Input.GetTouch(1);
-
-            Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
-            Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
-
-            float prevMagnitude = (touchZeroPrevPos - touchOnePrevPos).magnitude;
-            float currentMagnitude = (touchZero.position - touchOne.position).magnitude;
-
-            float difference = currentMagnitude - prevMagnitude;
-
-            Zoom(difference * 0.01f, size);
-        }
-        else if (Input.GetMouseButton(0) && !colocatorManager.canBuild && !hudManager.isShowInfo && cameraIsMove)
+        if (Input.GetMouseButton(0) && cameraIsMove && doMovement)
         {
             Vector3 direction = touchStart - Camera.main.ScreenToWorldPoint(Input.mousePosition);
             direction = new Vector3(direction.x, 0, direction.z);
@@ -147,7 +131,7 @@ public class CameraController : MonoBehaviour
     public void CameraCanMove()
     {
         doMovement = false;
-        Invoke("InvokeCameraCanMove", 0.1f);
+        Invoke("InvokeCameraCanMove", 0.25f);
     }
     public void InvokeCameraCanMove()
     {

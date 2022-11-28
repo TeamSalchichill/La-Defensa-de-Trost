@@ -187,14 +187,11 @@ public class Tower : MonoBehaviour
                     waterDamage *= 3;
                     break;
                 case Generator.Zone.Valhalla:
-                    healthDamage *= (int)2;
-                    range *= (int)2;
-                    fireRate *= (int)2;
-                    turnSpeed *= (int)2;
-                    health *= (int)2;
-                    healthMax *= (int)2;
-                    levelMultiplier += 0.1f;
-                    levelMultiplierSpecialStat += 0.2f;
+                    healthDamage *= 2;
+                    range *= 2;
+                    fireRate *= 2;
+                    health *= 2;
+                    healthMax *= 2;
                     iceDamage += 3;
                     igniteDamage += 3;
                     waterDamage += 3;
@@ -407,21 +404,8 @@ public class Tower : MonoBehaviour
             }
         }
         
-        
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        /*
-        float shortestDistance = Mathf.Infinity;
-        GameObject nearestEnemy = null;
-        foreach (GameObject enemy in enemies)
-        {
-            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-            if (distanceToEnemy < shortestDistance)
-            {
-                shortestDistance = distanceToEnemy;
-                nearestEnemy = enemy;
-            }
-        }
-        */
+        enemies = gameFlow.activeEnemies;
+
         if (selectedEnemy != null)
         {
             target = selectedEnemy.transform;
@@ -432,7 +416,6 @@ public class Tower : MonoBehaviour
             target = null;
             anim.SetBool("isShoot", false);
         }
-        
     }
 
     void Update()
@@ -822,7 +805,7 @@ public class Tower : MonoBehaviour
 
     void Hero5SpecialAttack()
     {
-        GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
+        GameObject[] towers = gameFlow.towers;
         if (towers.Length > 0)
         {
             SoundManager.instance.SoundPlay(abilityAudio, abilityAudioVolume);

@@ -50,47 +50,23 @@ public class FinalBoss : MonoBehaviour
 
     void Update()
     {
-        if (GameFlow.instance.enemiesLeft3 > 2)
+        if (GameFlow.instance.enemiesLeft3 > 0)
         {
             health = Mathf.Max(health, 1000);
         }
-        else
+        else if (!dead)
         {
-            GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
-            if (towers.Length > 0)
-            {
-                foreach (var tower in towers)
-                {
-                    if (tower.GetComponent<Tower>())
-                    {
-                        tower.GetComponent<Tower>().range = 1000;
-                    }
-                }
-            }
+            dead = true;
 
-            Invoke("AutoWin", 5);
-        }
+            anim.SetTrigger("doDie");
 
-        if (GameFlow.instance.enemiesLeft3 <= 0 && health <= 0)
-        {
-            if (!dead)
-            {
-                anim.SetTrigger("doDie");
-                dead = true;
-            }
-
-            HUD_Manager.instance.endScreen.SetActive(true);
+            Invoke("AutoWin", 3);
         }
     }
 
     void AutoWin()
     {
-        anim.SetTrigger("doDie");
-
         HUD_Manager.instance.endScreen.SetActive(true);
-
-        numBossesKilled = 10;
-        health = -100;
     }
 
     void InvokeBoss()
@@ -99,7 +75,7 @@ public class FinalBoss : MonoBehaviour
         {
             anim.SetTrigger("doBoss");
 
-            Instantiate(bosses[numBossesInvoked], transform.position, transform.rotation);
+            Instantiate(bosses[numBossesInvoked], new Vector3(transform.position.x, 1.25f, transform.position.z), transform.rotation);
             numBossesInvoked++;
         }
     }
@@ -124,19 +100,22 @@ public class FinalBoss : MonoBehaviour
     {
         int moreKills = -1;
 
-        GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
+        GameObject[] towers = GameFlow.instance.towers;
         if (towers.Length > 0)
         {
             anim.SetTrigger("doMagicBall");
 
             foreach (var tower in towers)
             {
-                if (tower.GetComponent<Tower>())
+                if (tower)
                 {
-                    if (tower.GetComponent<Tower>().kills > moreKills)
+                    if (tower.GetComponent<Tower>())
                     {
-                        moreKills = tower.GetComponent<Tower>().kills;
-                        selectedTower = tower;
+                        if (tower.GetComponent<Tower>().kills > moreKills)
+                        {
+                            moreKills = tower.GetComponent<Tower>().kills;
+                            selectedTower = tower;
+                        }
                     }
                 }
             }
@@ -165,7 +144,7 @@ public class FinalBoss : MonoBehaviour
         GameObject instEnergyRay = Instantiate(energyRay, transform.position, transform.rotation);
         instEnergyRay.transform.localScale *= range;
         
-        GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
+        GameObject[] towers = GameFlow.instance.towers;
         if (towers.Length > 0)
         {
             foreach (var tower in towers)

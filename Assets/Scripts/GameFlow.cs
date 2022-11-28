@@ -95,15 +95,22 @@ public class GameFlow : MonoBehaviour
 
     public int miniObjetivesDestroyed = 0;
 
+    [Header("Listas y arrays")]
+    public GameObject[] groundTiles;
+    public GameObject[] towers;
+    public GameObject[] activeEnemies;
+
     void Awake()
     {
         instance = this;
 
         for (int i = 0; i < enemies.Length; i++)
         {
-            GameObject instEnemy = Instantiate(enemies[i], new Vector3(0, -1000, 0), transform.rotation);
+            GameObject instEnemy = Instantiate(enemies[i], new Vector3(0, 0, 0), transform.rotation);
 
             instEnemy.SetActive(false);
+
+            instEnemy.transform.position = new Vector3(0, -1000, 0);
 
             enemies[i] = instEnemy;
         }
@@ -114,6 +121,8 @@ public class GameFlow : MonoBehaviour
         generator = Generator.instance;
         gameManager = GameManager.instance;
         hudManager = HUD_Manager.instance;
+
+        InvokeRepeating("UpdateLists", 0.1f, 1);
 
         cardsScripts = new Card[cardsPos.Length];
         for (int i = 0; i < cardsPos.Length; i++)
@@ -139,6 +148,19 @@ public class GameFlow : MonoBehaviour
                 }
                 else
                 {
+                    hudManager.summaryTextWin.text =
+                    "Tiempo: " + (int)time + " segundos" + "\n" +
+                    "Ronda: " + round + "\n" +
+                    "Muertes enemigos enanos: " + kills1 + "\n" +
+                    "Muertes enemigos medianos: " + kills2 + "\n" +
+                    "Muertes enemigos bosses: " + kills3 + "\n" +
+                    "Torres construidas: " + towersBuild + "\n" +
+                    "Torres destruidas: " + towersDestroyed + "\n" +
+                    "Monedas gastadas: " + goldSpent + "\n" +
+                    "Cristales gastadas: " + specialGoldSpent + "\n" +
+                    "Mini objetivos destruidos: " + miniObjetivesDestroyed + "\n"
+                    ;
+
                     hudManager.winScreen.SetActive(true);
                 }
 
@@ -210,7 +232,14 @@ public class GameFlow : MonoBehaviour
 
     public void StartRound()
     {
+        CameraController.instance.CameraCanMove();
+
         BackgroundMusic.instance.ChangeClip();
+
+        if (ColocatorManager.instance.heroBuild)
+        {
+            HUD_Manager.instance.towersButtonIcon[0].GetComponent<Button>().interactable = false;
+        }
 
         if (round == totalRounds - 1 && generator.zone == Generator.Zone.Infierno)
         {
@@ -237,25 +266,7 @@ public class GameFlow : MonoBehaviour
         enemiesLeft2 = enemiesPerRound2[round];
         enemiesToSpawn3 = enemiesPerRound3[round];
         enemiesLeft3 = enemiesPerRound3[round];
-        /*
-        if (round == 4)
-        {
-            generator.expandRate = 2;
-        }
-        if (round == 10)
-        {
-            generator.expandRate = 3;
-        }
-        if (round == 15)
-        {
-            generator.expandRate = 4;
-        }
-        if (round == 20)
-        {
-            generator.expandRate = 5;
-        }
-        */
-        
+
         if (round % cardsRate == 0)
         {
             showCards = true;
@@ -333,5 +344,32 @@ public class GameFlow : MonoBehaviour
     void StopNextRound()
     {
         nextRound = false;
+    }
+
+    void UpdateLists()
+    {
+        groundTiles = GameObject.FindGameObjectsWithTag("Ground");
+        towers = GameObject.FindGameObjectsWithTag("Tower");
+
+
+        GameObject[] activeEnemiesArray = GameObject.FindGameObjectsWithTag("Enemy");
+        List<GameObject> activeEnemiesList = new List<GameObject>();
+        foreach (var item in activeEnemiesArray)
+        {
+            if (item.GetComponent<Enemy>())
+            {
+                activeEnemiesList.Add(item);
+            }
+        }
+
+        activeEnemies = new GameObject[activeEnemiesList.Count];
+        int aux = 0;
+        foreach (var item in activeEnemiesList)
+        {
+            activeEnemies[aux] = item;
+            aux++;
+        }
+
+        //activeEnemies = GameObject.FindGameObjectsWithTag("Enemy");
     }
 }

@@ -42,7 +42,7 @@ public class Bullet : MonoBehaviour
     {
         if (target == null && canRebote)
         {
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            GameObject[] enemies = GameFlow.instance.activeEnemies;
             foreach (GameObject enemy in enemies)
             {
                 if (enemies.Length > 0)
@@ -85,23 +85,26 @@ public class Bullet : MonoBehaviour
 
         if (target != null)
         {
-            Enemy.Type enemyType = target.gameObject.GetComponent<Enemy>().type;
-
-            switch (enemyType)
+            if (target.gameObject.GetComponent<Enemy>())
             {
-                case Enemy.Type.Pequeño:
-                    impactEffect = impactEffects[0];
-                    break;
-                case Enemy.Type.Mediano:
-                    impactEffect = impactEffects[1];
-                    break;
-                case Enemy.Type.Grande:
-                    impactEffect = impactEffects[2];
-                    break;
-            }
+                Enemy.Type enemyType = target.gameObject.GetComponent<Enemy>().type;
 
-            GameObject efffectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
-            Destroy(efffectIns, 2f);
+                switch (enemyType)
+                {
+                    case Enemy.Type.Pequeño:
+                        impactEffect = impactEffects[0];
+                        break;
+                    case Enemy.Type.Mediano:
+                        impactEffect = impactEffects[1];
+                        break;
+                    case Enemy.Type.Grande:
+                        impactEffect = impactEffects[2];
+                        break;
+                }
+
+                GameObject efffectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+                Destroy(efffectIns, 2f);
+            }
         }
         
         switch (type)
@@ -180,7 +183,7 @@ public class Bullet : MonoBehaviour
                 Destroy(gameObject);
             }
 
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            GameObject[] enemies = GameFlow.instance.activeEnemies;
             foreach (GameObject enemy in enemies)
             {
                 if (enemies.Length > 0)

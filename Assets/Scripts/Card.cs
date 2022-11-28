@@ -37,7 +37,6 @@ public class Card : MonoBehaviour
     int enemySelectedId;
     int statSelected;
     int incrementAmount;
-    int randomUpgrade;
 
     void Start()
     {
@@ -197,7 +196,7 @@ public class Card : MonoBehaviour
                         break;
                     case Rarity.Rare:
                         incrementAmount = Random.Range(75, 136);
-                        text.text = "El ataque de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + "%.";
+                        text.text = "El ataque de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Legendary:
                         incrementAmount = Random.Range(50, 126);
@@ -322,7 +321,7 @@ public class Card : MonoBehaviour
 
         if (iter == 0)
         {
-            GameObject[] allTowers = GameObject.FindGameObjectsWithTag("Tower");
+            GameObject[] allTowers = gameFlow.towers;
             List<Tower> allTowersSelected = new List<Tower>();
 
             foreach (var tower in allTowers)
@@ -435,78 +434,23 @@ public class Card : MonoBehaviour
             {
                 case 0:
                     // Health
-                    switch (rarity)
-                    {
-                        case Rarity.Normal:
-                            gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().health += incrementAmount;
-                            break;
-                        case Rarity.Rare:
-                            gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().health += incrementAmount;
-                            break;
-                        case Rarity.Legendary:
-                            gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().health += incrementAmount;
-                            break;
-                    }
+                    gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().health += incrementAmount;
                     break;
                 case 1:
                     // Damage
-                    switch (rarity)
-                    {
-                        case Rarity.Normal:
-                            gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().damage += incrementAmount;
-                            break;
-                        case Rarity.Rare:
-                            gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().damage += incrementAmount;
-                            break;
-                        case Rarity.Legendary:
-                            gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().damage += incrementAmount;
-                            break;
-                    }
+                    gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().damage += incrementAmount;
                     break;
                 case 2:
                     // Speed
-                    switch (rarity)
-                    {
-                        case Rarity.Normal:
-                            gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().normalSpeed += incrementAmount;
-                            break;
-                        case Rarity.Rare:
-                            gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().normalSpeed += incrementAmount;
-                            break;
-                        case Rarity.Legendary:
-                            gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().normalSpeed += incrementAmount;
-                            break;
-                    }
+                    gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().normalSpeed += incrementAmount;
                     break;
                 case 3:
                     // Range
-                    switch (rarity)
-                    {
-                        case Rarity.Normal:
-                            gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().range += incrementAmount;
-                            break;
-                        case Rarity.Rare:
-                            gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().range += incrementAmount;
-                            break;
-                        case Rarity.Legendary:
-                            gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().range += incrementAmount;
-                            break;
-                    }
+                    gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().range += incrementAmount;
                     break;
                 case 4:
                     // Gold
-                    switch (rarity)
-                    {
-                        case Rarity.Normal:
-                            gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().gold -= incrementAmount;
-                            break;
-                        case Rarity.Rare:
-                            gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().gold -= incrementAmount;
-                            break;
-                        case Rarity.Legendary:
-                            gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().gold -= incrementAmount;
-                            break;
-                    }
+                    gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().gold -= incrementAmount;
                     break;
             }
 
@@ -615,7 +559,7 @@ public class Card : MonoBehaviour
                         break;
                     case Rarity.Rare:
                         incrementAmount = Random.Range(3, 5);
-                        text.text = "El rango de " + gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().enemyName + " incrementa en " + incrementAmount + "%.";
+                        text.text = "El rango de " + gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().enemyName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Legendary:
                         incrementAmount = Random.Range(3, 6);
@@ -633,7 +577,7 @@ public class Card : MonoBehaviour
                         break;
                     case Rarity.Rare:
                         incrementAmount = Random.Range(30, 51);
-                        text.text = "El oro que da " + gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().enemyName + " decrementa en " + incrementAmount + "%.";
+                        text.text = "El oro que da " + gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().enemyName + " decrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Legendary:
                         incrementAmount = Random.Range(1000, 2001);

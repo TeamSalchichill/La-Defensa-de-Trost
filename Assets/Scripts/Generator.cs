@@ -103,6 +103,9 @@ public class Generator : MonoBehaviour
 
     public int idRoundTile = 0;
 
+    Vector3 spawnPos = Vector3.zero;
+    Vector3 spawnPosAux = Vector3.zero;
+
     void Awake()
     {
         instance = this;
@@ -217,27 +220,6 @@ public class Generator : MonoBehaviour
 
     public void Generate(int newStartSide, string newStartSideOrientation, Vector3 newOffsetStart, Vector2 newMapPos, int newIdX, int newIdZ)
     {
-        /*
-        // Colocamos la base de tierra
-        for (int i = 0; i < sizeX; i++)
-        {
-            for (int j = 0; j < sizeZ; j++)
-            {
-                int specialTile = Random.Range(0, 101);
-                if (specialTile < probabilitySpecialTiles)
-                {
-                    Instantiate(specialGroundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
-                }
-                else
-                {
-                    Instantiate(groundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
-                }
-
-                map[i, j] = 1;
-            }
-        }
-        */
-
         for (int i = 0; i < sizeX; i++)
         {
             for (int j = 0; j < sizeZ; j++)
@@ -250,102 +232,6 @@ public class Generator : MonoBehaviour
         {
             miniMainTowerColocate = true;
             
-            map[1, 1] = -1;
-            map[2, 1] = -1;
-            map[1, 2] = -1;
-            map[2, 2] = -1;
-
-            map[5, 5] = -1;
-            map[5, 4] = -1;
-            map[4, 5] = -1;
-            map[4, 4] = -1;
-
-            map[1, 5] = -1;
-            map[2, 5] = -1;
-            map[1, 4] = -1;
-            map[2, 4] = -1;
-
-            map[5, 1] = -1;
-            map[5, 2] = -1;
-            map[4, 1] = -1;
-            map[4, 2] = -1;
-
-            /*
-            map[3, 3] = -1;
-            map[3, 2] = -1;
-            map[3, 4] = -1;
-            map[2, 3] = -1;
-            map[4, 3] = -1;
-            */
-
-            int closeWays = Random.Range(0, 3);
-
-            for (int i = 0; i < closeWays; i++)
-            {
-                if (i < closeWays)
-                {
-                    switch (i)
-                    {
-                        case 0:
-                            map[3, 2] = -1;
-                            map[3, 1] = -1;
-                            break;
-                        case 1:
-                            map[2, 3] = -1;
-                            map[1, 3] = -1;
-                            break;
-                        case 2:
-                            map[5, 3] = -1;
-                            map[6, 3] = -1;
-                            break;
-                    }
-                }
-            }
-
-            // Ponemos césped donde no hay camino
-            for (int i = 0; i < sizeX; i++)
-            {
-                for (int j = 0; j < sizeZ; j++)
-                {
-                    if (map[i, j] == -1)
-                    {
-                        Instantiate(grassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1) + newOffsetStart, Quaternion.identity);
-                    }
-                    else
-                    {
-                        int specialTile = Random.Range(0, 101);
-                        if (specialTile < probabilitySpecialTiles)
-                        {
-                            GameObject instTile = Instantiate(specialGroundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
-                            instTile.GetComponent<MapInfo>().id = idRoundTile;
-                            //instTile.GetComponent<MapInfo>().id = gameFlow.round;
-                            gameFlow.idTile++;
-
-                            if ((i * 2) > lastGroundBlockPosX)
-                            {
-                                lastGroundBlockPosX = (i * 2);
-                                lastGroundBlockPos = instTile.transform.position;
-                            }
-                        }
-                        else
-                        {
-                            GameObject instTile = Instantiate(groundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
-                            instTile.GetComponent<MapInfo>().id = idRoundTile;
-                            //instTile.GetComponent<MapInfo>().id = gameFlow.round;
-                            gameFlow.idTile++;
-
-                            if ((i * 2) > lastGroundBlockPosX)
-                            {
-                                lastGroundBlockPosX = (i * 2);
-                                lastGroundBlockPos = instTile.transform.position;
-                            }
-                        }
-
-                        map[i, j] = 1;
-                    }
-                }
-            }
-
             Instantiate(miniMainTower, new Vector3(3 * 2, 0, 3 * 2) + new Vector3(1, 3.5f, 1) + newOffsetStart, Quaternion.identity);
 
             switch (newStartSideOrientation)
@@ -388,6 +274,130 @@ public class Generator : MonoBehaviour
             }
 
             PrepareNextMap(newStartSide, newStartSideOrientation, newOffsetStart, newMapPos, newIdX, newIdZ, nextSideOrientation, false);
+
+            /*
+            map[1, 1] = -1;
+            map[2, 1] = -1;
+            map[1, 2] = -1;
+            map[2, 2] = -1;
+
+            map[5, 5] = -1;
+            map[5, 4] = -1;
+            map[4, 5] = -1;
+            map[4, 4] = -1;
+
+            map[1, 5] = -1;
+            map[2, 5] = -1;
+            map[1, 4] = -1;
+            map[2, 4] = -1;
+
+            map[5, 1] = -1;
+            map[5, 2] = -1;
+            map[4, 1] = -1;
+            map[4, 2] = -1;
+            */
+            map[0, 0] = -1;
+            map[0, 1] = -1;
+            map[0, 2] = -1;
+            map[0, 3] = -1;
+            map[0, 4] = -1;
+            map[0, 5] = -1;
+            map[0, 6] = -1;
+
+            map[6, 0] = -1;
+            map[6, 1] = -1;
+            map[6, 2] = -1;
+            map[6, 3] = -1;
+            map[6, 4] = -1;
+            map[6, 5] = -1;
+            map[6, 6] = -1;
+
+            map[1, 0] = -1;
+            map[2, 0] = -1;
+            map[3, 0] = -1;
+            map[4, 0] = -1;
+            map[5, 0] = -1;
+
+            map[1, 6] = -1;
+            map[2, 6] = -1;
+            map[3, 6] = -1;
+            map[4, 6] = -1;
+            map[5, 6] = -1;
+
+            map[2, 2] = -1;
+            map[4, 4] = -1;
+            map[4, 2] = -1;
+            map[2, 4] = -1;
+
+            int closeWays = Random.Range(0, 3);
+
+            for (int i = 0; i < closeWays; i++)
+            {
+                if (i < closeWays)
+                {
+                    switch (i)
+                    {
+                        case 0:
+                            map[3, 2] = -1;
+                            break;
+                        case 1:
+                            map[2, 3] = -1;
+                            break;
+                        case 2:
+                            map[5, 3] = -1;
+                            break;
+                    }
+                }
+            }
+
+            Instantiate(groundBlock, new Vector3(spawnPos.x * 2, 0.25f, spawnPos.z * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
+            Instantiate(groundBlock, new Vector3(spawnPosAux.x * 2, 0.25f, spawnPosAux.z * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
+            // Ponemos césped donde no hay camino
+            for (int i = 0; i < sizeX; i++)
+            {
+                for (int j = 0; j < sizeZ; j++)
+                {
+                    if (map[i, j] == -1)
+                    {
+                        if (new Vector3(i, 0, j) != spawnPos && new Vector3(i, 0, j) != spawnPosAux)
+                        {
+                            Instantiate(grassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1) + newOffsetStart, Quaternion.identity);
+                        }
+                    }
+                    else
+                    {
+                        int specialTile = Random.Range(0, 101);
+                        if (specialTile < probabilitySpecialTiles)
+                        {
+                            GameObject instTile = Instantiate(specialGroundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
+                            instTile.GetComponent<MapInfo>().id = idRoundTile;
+                            //instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                            gameFlow.idTile++;
+
+                            if ((i * 2) > lastGroundBlockPosX)
+                            {
+                                lastGroundBlockPosX = (i * 2);
+                                lastGroundBlockPos = instTile.transform.position;
+                            }
+                        }
+                        else
+                        {
+                            GameObject instTile = Instantiate(groundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
+                            instTile.GetComponent<MapInfo>().id = idRoundTile;
+                            //instTile.GetComponent<MapInfo>().id = gameFlow.round;
+                            gameFlow.idTile++;
+
+                            if ((i * 2) > lastGroundBlockPosX)
+                            {
+                                lastGroundBlockPosX = (i * 2);
+                                lastGroundBlockPos = instTile.transform.position;
+                            }
+                        }
+
+                        map[i, j] = 1;
+                    }
+                }
+            }
         }
         else
         {
@@ -864,6 +874,8 @@ public class Generator : MonoBehaviour
                     newMapScript1.idX = newIdX;
                     newMapScript1.idZ = newIdZ;
 
+                    spawnPos = new Vector3(0, 0, newIdZ);
+                    spawnPosAux = new Vector3(6, 0, newIdZ);
                     GameObject spawn = Instantiate(transparentEnemySpawn, new Vector3(0, 1.25f, newIdZ * 2) + localOffset1, Quaternion.identity);
                     newMapScript1.spawn = spawn;
 
@@ -1014,6 +1026,8 @@ public class Generator : MonoBehaviour
                     newMapScript2.idX = newIdX;
                     newMapScript2.idZ = newIdZ;
 
+                    spawnPos = new Vector3(newIdX, 0, 6);
+                    spawnPosAux = new Vector3(newIdX, 0, 0);
                     GameObject spawn = Instantiate(transparentEnemySpawn, new Vector3(newIdX * 2, 1.25f, (sizeZ * 2) - 2) + localOffset2, Quaternion.identity);
                     newMapScript2.spawn = spawn;
 
@@ -1136,6 +1150,8 @@ public class Generator : MonoBehaviour
                     newMapScript3.idX = newIdX;
                     newMapScript3.idZ = newIdZ;
 
+                    spawnPos = new Vector3(6, 0, newIdZ);
+                    spawnPosAux = new Vector3(0, 0, newIdZ);
                     GameObject spawn = Instantiate(transparentEnemySpawn, new Vector3((sizeX * 2) - 2, 1.25f, newIdZ * 2) + localOffset3, Quaternion.identity);
                     newMapScript3.spawn = spawn;
 
@@ -1258,6 +1274,8 @@ public class Generator : MonoBehaviour
                     newMapScript4.idX = newIdX;
                     newMapScript4.idZ = newIdZ;
 
+                    spawnPos = new Vector3(newIdX, 0, 0);
+                    spawnPosAux = new Vector3(newIdX, 0, 6);
                     GameObject spawn = Instantiate(transparentEnemySpawn, new Vector3(newIdX * 2, 1.25f, 0) + localOffset4, Quaternion.identity);
                     newMapScript4.spawn = spawn;
 
@@ -1366,7 +1384,7 @@ public class Generator : MonoBehaviour
         RaycastHit[] terrainInRange = Physics.SphereCastAll(finalBossInst.transform.position, 10, transform.forward, 0, LayerMask.GetMask("Grass"));
         foreach (var terrainTile in terrainInRange)
         {
-            Instantiate(groundBlock, terrainTile.transform.position + new Vector3(0, -0.5f, 0), transform.rotation);
+            Instantiate(groundBlock, terrainTile.transform.position + new Vector3(0, -0.25f, 0), transform.rotation);
             Destroy(terrainTile.collider.gameObject);
         }
     }

@@ -22,12 +22,17 @@ public class GameManager : MonoBehaviour
     public Slider sliderVolumeMusicEffects;
     public AudioSource effectsAS;
 
+    public static int levelSelected = 1;
+    public int levelSelectedPublic = 1;
+
     void Awake()
     {
         instance = this;
 
         volumeMultiplierPublic = volumeMultiplier;
         volumeMultiplierEffectsPublic = volumeMultiplierEffects;
+
+        levelSelectedPublic = levelSelected;
     }
     void Start()
     {
@@ -46,33 +51,6 @@ public class GameManager : MonoBehaviour
     {
         volumeMultiplierPublic = volumeMultiplier;
         volumeMultiplierEffectsPublic = volumeMultiplierEffects;
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            doSpawnEnemies = !doSpawnEnemies;
-        }
-        /*
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SceneManager.LoadScene(0);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            SceneManager.LoadScene(1);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            SceneManager.LoadScene(2);
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Time.timeScale = 0;
-        }
-        */
     }
 
     public void ChangeVolumeMusic()
@@ -90,5 +68,13 @@ public class GameManager : MonoBehaviour
     {
         volumeMultiplierEffects = sliderVolumeMusicEffects.value;
         effectsAS.volume = volumeMultiplierEffects / 2;
+    }
+
+    public void SelectLevel(int id)
+    {
+        levelSelected = id;
+        levelSelectedPublic = id;
+
+        SceneManager.LoadScene(5);
     }
 }

@@ -69,6 +69,11 @@ public class Hero : MonoBehaviour
 
     private void OnMouseUpAsButton()
     {
+        //Invoke("CanRealocate", 0.2f);
+    }
+
+    public void CanRealocateAux()
+    {
         Invoke("CanRealocate", 0.2f);
     }
 

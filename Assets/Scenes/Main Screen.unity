@@ -156,8 +156,12 @@ MonoBehaviour:
   isInfiniteLevel: 0
   volumeMultiplierPublic: 1
   sliderVolumeMusic: {fileID: 0}
+  musicAS: {fileID: 0}
+  musicASAux: {fileID: 0}
   volumeMultiplierEffectsPublic: 1
   sliderVolumeMusicEffects: {fileID: 0}
+  effectsAS: {fileID: 0}
+  levelSelectedPublic: 1
 --- !u!4 &2010852
 Transform:
   m_ObjectHideFlags: 0
@@ -754,7 +758,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 10
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2152,6 +2156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicOutRounds: {fileID: 1411309576}
   musicInRounds: {fileID: 1411309576}
+  defaultVolume: 0.5
 --- !u!1 &1433670433
 GameObject:
   m_ObjectHideFlags: 0

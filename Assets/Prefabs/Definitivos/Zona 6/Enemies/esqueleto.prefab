@@ -291,10 +291,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1882321649645525948}
   - component: {fileID: 3651910761506189308}
-  - component: {fileID: 7312501844918083643}
   - component: {fileID: 458756008144860240}
   - component: {fileID: 1478894537377072876}
   - component: {fileID: 6932217698475964774}
+  - component: {fileID: 4327497149527379503}
   m_Layer: 6
   m_Name: esqueleto
   m_TagString: Enemy
@@ -340,22 +340,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!54 &7312501844918083643
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1248773895441760518}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &458756008144860240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,7 +422,6 @@ MonoBehaviour:
   fireSpearAttackRate: 7
   fireBlins: {fileID: 0}
   finalBoss: {fileID: 0}
-  sokekAttackParticle: {fileID: 0}
   infectionParticle: {fileID: 100006, guid: 2a474af3f4c27be4e9bdce39cfe4315d, type: 3}
   hitParticle: {fileID: 100000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
   torbellinoParticle: {fileID: 100000, guid: 18204b98237ccb540808f2cd2d78c2c8, type: 3}
@@ -478,6 +461,22 @@ CapsuleCollider:
   m_Height: 6
   m_Direction: 1
   m_Center: {x: -0, y: 3, z: -0}
+--- !u!54 &4327497149527379503
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248773895441760518}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2025155725974744539
 GameObject:
   m_ObjectHideFlags: 0

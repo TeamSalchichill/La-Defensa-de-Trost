@@ -248,7 +248,7 @@ MonoBehaviour:
   spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
   healthDamage: 0
   armorDamage: 0
-  range: 5
+  range: 1
   rangeAreaOriginalScale: 0
   fireRate: 1
   turnSpeed: 10
@@ -278,6 +278,7 @@ MonoBehaviour:
   ascentDamage: 0
   bloodDamage: 0
   transformationDamage: 0
+  isAscent: 0
   isBurn: 0
   burnEffect: 0
   burnEffectPerShoot: 2
@@ -293,6 +294,11 @@ MonoBehaviour:
   areaCuration: 50
   curationParticle: {fileID: 0}
   destroyParticle: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56, type: 3}
+  areaDamageParticle: {fileID: 0}
+  shootAudio: {fileID: 0}
+  shootAudioVolume: 0.5
+  abilityAudio: {fileID: 0}
+  abilityAudioVolume: 0.5
 --- !u!114 &915475380494032893
 MonoBehaviour:
   m_ObjectHideFlags: 0
