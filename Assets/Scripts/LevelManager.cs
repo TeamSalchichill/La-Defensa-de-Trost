@@ -46,6 +46,10 @@ public class LevelManager : MonoBehaviour
 
         perla.SetActive(false);
 
+        Color backgroundColor;
+        ColorUtility.TryParseHtmlString("#383838", out backgroundColor);
+        string bacgroundColorString = "#383838";
+
         switch (id)
         {
             case 0:
@@ -53,18 +57,36 @@ public class LevelManager : MonoBehaviour
                 hudManager.imageId = 1;
                 hudManager.imageIdFinal = 10;
                 hudManager.activeImage.sprite = hudManager.images[hudManager.imageId - 1];
+
+                hudManager.tutorialSpriteId = 0;
+                hudManager.tutorialSpriteIdFinal = 4;
+                hudManager.tutorialSprite.sprite = hudManager.tutorialImages[hudManager.tutorialSpriteId];
+
+                bacgroundColorString = "#383E61";
                 break;
             case 1:
                 generator.zone = Generator.Zone.Desierto;
                 hudManager.imageId = 11;
                 hudManager.imageIdFinal = 15;
                 hudManager.activeImage.sprite = hudManager.images[hudManager.imageId - 1];
+
+                hudManager.tutorialSpriteId = 4;
+                hudManager.tutorialSpriteIdFinal = 8;
+                hudManager.tutorialSprite.sprite = hudManager.tutorialImages[hudManager.tutorialSpriteId];
+
+                bacgroundColorString = "#615638";
                 break;
             case 2:
                 generator.zone = Generator.Zone.Atlantis;
                 hudManager.imageId = 16;
                 hudManager.imageIdFinal = 20;
                 hudManager.activeImage.sprite = hudManager.images[hudManager.imageId - 1];
+
+                hudManager.tutorialSpriteId = 8;
+                hudManager.tutorialSpriteIdFinal = 12;
+                hudManager.tutorialSprite.sprite = hudManager.tutorialImages[hudManager.tutorialSpriteId];
+
+                bacgroundColorString = "#385861";
                 perla.SetActive(true);
                 break;
             case 3:
@@ -72,20 +94,41 @@ public class LevelManager : MonoBehaviour
                 hudManager.imageId = 21;
                 hudManager.imageIdFinal = 25;
                 hudManager.activeImage.sprite = hudManager.images[hudManager.imageId - 1];
+
+                hudManager.tutorialSpriteId = 12;
+                hudManager.tutorialSpriteIdFinal = 16;
+                hudManager.tutorialSprite.sprite = hudManager.tutorialImages[hudManager.tutorialSpriteId];
+
+                bacgroundColorString = "#7A8282";
                 break;
             case 4:
                 generator.zone = Generator.Zone.Fantasia;
                 hudManager.imageId = 26;
                 hudManager.imageIdFinal = 30;
                 hudManager.activeImage.sprite = hudManager.images[hudManager.imageId - 1];
+
+                hudManager.tutorialSpriteId = 16;
+                hudManager.tutorialSpriteIdFinal = 20;
+                hudManager.tutorialSprite.sprite = hudManager.tutorialImages[hudManager.tutorialSpriteId];
+
+                bacgroundColorString = "#4C824B";
                 break;
             case 5:
                 generator.zone = Generator.Zone.Infierno;
                 hudManager.imageId = 31;
                 hudManager.imageIdFinal = 36;
                 hudManager.activeImage.sprite = hudManager.images[hudManager.imageId - 1];
+
+                hudManager.tutorialSpriteId = 20;
+                hudManager.tutorialSpriteIdFinal = 24;
+                hudManager.tutorialSprite.sprite = hudManager.tutorialImages[hudManager.tutorialSpriteId];
+
+                bacgroundColorString = "#442424";
                 break;
         }
+
+        ColorUtility.TryParseHtmlString(bacgroundColorString, out backgroundColor);
+        Camera.main.backgroundColor = backgroundColor;
 
         generator.mainTower = mainTower[id];
         generator.miniMainTower = miniMainTower[id];

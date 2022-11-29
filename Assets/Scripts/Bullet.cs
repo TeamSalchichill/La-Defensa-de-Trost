@@ -63,6 +63,8 @@ public class Bullet : MonoBehaviour
             return;
         }
 
+        transform.LookAt(target.position);
+
         Vector3 dir = target.position - transform.position;
         float distanceThisFrame = speed * Time.deltaTime;
 

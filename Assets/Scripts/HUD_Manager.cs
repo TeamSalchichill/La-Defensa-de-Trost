@@ -93,6 +93,7 @@ public class HUD_Manager : MonoBehaviour
     [Header("Tutorial")]
     public Image tutorialSprite;
     public int tutorialSpriteId;
+    public int tutorialSpriteIdFinal;
     public Sprite[] tutorialImages;
 
     [Header("Hechizo")]
@@ -161,6 +162,11 @@ public class HUD_Manager : MonoBehaviour
         generator.probabilitySpecialTiles = (int)(sliders[3].value * 100);
         generator.probabilityObstacles = (int)(sliders[4].value * 100);
         generator.probabilityConectWays = (int)(sliders[5].value * 100);
+
+        if (generator.zone == Generator.Zone.Valhalla)
+        {
+            generator.probabilitySpecialTiles = 4;
+        }
 
         porcentajes[0].text = ((int)(sliders[0].value * 100)).ToString() + "%";
         porcentajes[1].text = ((int)(sliders[1].value * 100)).ToString() + "%";
@@ -380,6 +386,8 @@ public class HUD_Manager : MonoBehaviour
             }
             else
             {
+                //activeTower.level5Update.SetActive(true);
+
                 GameObject instParticle = Instantiate(levelUpSpecialParticle, activeTower.transform.position, transform.rotation);
                 instParticle.transform.rotation = Quaternion.AngleAxis(270, Vector3.right);
                 Destroy(instParticle, 3);
@@ -411,7 +419,7 @@ public class HUD_Manager : MonoBehaviour
             activeTower.numTargets++;
             activeTower.healthMax = (int)(activeTower.healthMax + activeTower.healthMax * 0.2f);
             activeTower.health = (int)(activeTower.health + activeTower.health * 0.2f);
-            activeTower.range = (activeTower.range + activeTower.range * 0.2f);
+            activeTower.range = (activeTower.range + activeTower.range * 0.1f);
             activeTower.fireRate = (activeTower.fireRate + activeTower.fireRate * 0.2f);
 
             activeTower.healthDamage = (int)(activeTower.healthDamage + activeTower.healthDamage * 0.2f);
@@ -449,7 +457,7 @@ public class HUD_Manager : MonoBehaviour
                     activeTower.healthMax = (int)(activeTower.healthMax + activeTower.healthMax * 0.2f);
                     break;
                 case Tower.SpecialStat.Range:
-                    activeTower.range = (activeTower.range + activeTower.range * 0.3f);
+                    activeTower.range = (activeTower.range + activeTower.range * 0.15f);
                     break;
                 case Tower.SpecialStat.ShootSpeed:
                     activeTower.fireRate = (activeTower.fireRate + activeTower.fireRate * 0.3f);
@@ -688,18 +696,18 @@ public class HUD_Manager : MonoBehaviour
         {
             tutorialSpriteId++;
 
-            if (tutorialSpriteId > tutorialImages.Length - 1)
+            if (tutorialSpriteId > tutorialSpriteIdFinal - 1)
             {
-                tutorialSpriteId = 0;
+                tutorialSpriteId = tutorialSpriteIdFinal - 4;
             }
         }
         else
         {
             tutorialSpriteId--;
 
-            if (tutorialSpriteId < 0)
+            if (tutorialSpriteId < tutorialSpriteIdFinal - 4)
             {
-                tutorialSpriteId = tutorialImages.Length - 1;
+                tutorialSpriteId = tutorialSpriteIdFinal - 1;
             }
         }
 

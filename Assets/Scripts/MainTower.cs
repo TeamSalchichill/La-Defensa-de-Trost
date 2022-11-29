@@ -20,6 +20,12 @@ public class MainTower : MonoBehaviour
     [Header("General")]
     float timeToWait = 0;
 
+    [Header("Preview")]
+    public GameObject hechizoHolo;
+    public Vector3 offset;
+
+    GameObject instHechizoHolo;
+
     [Header("Zona de hielo")]
     public GameObject blizzard;
     public float blizzadTime;
@@ -52,6 +58,8 @@ public class MainTower : MonoBehaviour
         hudManager = HUD_Manager.instance;
 
         health = 99999;
+
+        instHechizoHolo = Instantiate(hechizoHolo, new Vector3(0, -1000, 0), transform.rotation);
     }
 
     void Update()
@@ -68,56 +76,44 @@ public class MainTower : MonoBehaviour
 
         timeToWait += Time.deltaTime;
 
-        switch (zone)
+        if (activateTower)
         {
-            case Zone.Hielo:
-                if (Input.GetButtonDown("Fire1") && timeToWait > 0.2f && activateTower)
-                {
-                    SoundManager.instance.SoundSelection(7, 0.5f);
-                    hudManager.hechizoText.text = roundsToReset.ToString();
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit rayHit;
+            if (Physics.Raycast(ray, out rayHit, 1000))
+            {
+                instHechizoHolo.transform.position = rayHit.point + offset;
+            }
+            else
+            {
+                instHechizoHolo.transform.position = new Vector3(0, -1000, 0);
+            }
+        }
+        else
+        {
+            instHechizoHolo.transform.position = new Vector3(0, -1000, 0);
+        }
 
-                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    RaycastHit rayHit;
-                    if (Physics.Raycast(ray, out rayHit, 1000))
-                    {
+        if (Input.GetButtonDown("Fire1") && timeToWait > 0.2f && activateTower)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit rayHit;
+            if (Physics.Raycast(ray, out rayHit, 1000))
+            {
+                SoundManager.instance.SoundSelection(7, 0.5f);
+                hudManager.hechizoText.text = roundsToReset.ToString();
+
+                switch (zone)
+                {
+                    case Zone.Hielo:
                         GameObject instBlizzard = Instantiate(blizzard, rayHit.point, Quaternion.identity);
                         Destroy(instBlizzard, blizzadTime);
-                        activateTower = false;
-                        restRounds = roundsToReset;
-                    }
-
-                    timeToWait = 0;
-                }
-                break;
-            case Zone.Desierto:
-                if (Input.GetButtonDown("Fire1") && timeToWait > 0.2f && activateTower)
-                {
-                    SoundManager.instance.SoundSelection(7, 0.5f);
-                    hudManager.hechizoText.text = roundsToReset.ToString();
-
-                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    RaycastHit rayHit;
-                    if (Physics.Raycast(ray, out rayHit, 1000))
-                    {
+                        break;
+                    case Zone.Desierto:
                         GameObject instInfestation = Instantiate(infection, rayHit.point, Quaternion.identity);
                         Destroy(instInfestation, 5);
-                        activateTower = false;
-                        restRounds = roundsToReset;
-                    }
-
-                    timeToWait = 0;
-                }
-                break;
-            case Zone.Atlantis:
-                if (Input.GetButtonDown("Fire1") && timeToWait > 0.2f && activateTower)
-                {
-                    SoundManager.instance.SoundSelection(7, 0.5f);
-                    hudManager.hechizoText.text = roundsToReset.ToString();
-
-                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    RaycastHit rayHit;
-                    if (Physics.Raycast(ray, out rayHit, 1000))
-                    {
+                        break;
+                    case Zone.Atlantis:
                         GameObject instWave = Instantiate(wave, new Vector3(transform.position.x, 1, transform.position.z), Quaternion.identity);
 
                         Vector3 dir = rayHit.point - transform.position;
@@ -128,87 +124,34 @@ public class MainTower : MonoBehaviour
                         instWave.GetComponent<Rigidbody>().velocity = new Vector3(dir.normalized.x, 0, dir.normalized.z) * 10;
 
                         Destroy(instWave, 10);
-                        activateTower = false;
-                        restRounds = roundsToReset;
-                    }
-
-                    timeToWait = 0;
-                }
-                break;
-            case Zone.Vikingos:
-                if (Input.GetButtonDown("Fire1") && timeToWait > 0.2f && activateTower)
-                {
-                    SoundManager.instance.SoundSelection(7, 0.7f);
-                    hudManager.hechizoText.text = roundsToReset.ToString();
-
-                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    RaycastHit rayHit;
-                    if (Physics.Raycast(ray, out rayHit, 1000))
-                    {
+                        break;
+                    case Zone.Vikingos:
                         GameObject instLanza = Instantiate(lanza, rayHit.point, Quaternion.identity);
                         Destroy(instLanza, lanzaTime);
-                        activateTower = false;
-                        restRounds = roundsToReset;
-                    }
-
-                    timeToWait = 0;
-                }
-                break;
-            case Zone.Fantasia:
-                if (Input.GetButtonDown("Fire1") && timeToWait > 0.2f && activateTower)
-                {
-                    SoundManager.instance.SoundSelection(7, 0.5f);
-                    hudManager.hechizoText.text = roundsToReset.ToString();
-
-                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    RaycastHit rayHit;
-                    if (Physics.Raycast(ray, out rayHit, 1000))
-                    {
+                        break;
+                    case Zone.Fantasia:
                         GameObject instShield = Instantiate(shieldMagic, rayHit.point, Quaternion.identity);
                         Destroy(instShield, shieldTime);
-                        activateTower = false;
-                        restRounds = roundsToReset;
-                    }
-
-                    timeToWait = 0;
-                }
-                break;
-            case Zone.Infierno:
-                if (Input.GetButtonDown("Fire1") && timeToWait > 0.2f && activateTower)
-                {
-                    SoundManager.instance.SoundSelection(7, 0.5f);
-                    hudManager.hechizoText.text = roundsToReset.ToString();
-
-                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    RaycastHit rayHit;
-                    if (Physics.Raycast(ray, out rayHit, 1000))
-                    {
+                        break;
+                    case Zone.Infierno:
                         GameObject instBall = Instantiate(fireBall, new Vector3(transform.position.x, 1, transform.position.z), Quaternion.identity);
 
-                        Vector3 dir = rayHit.point - transform.position;
-                        Quaternion lookRotation = Quaternion.LookRotation(dir);
-                        Vector3 rotation = Quaternion.Lerp(instBall.transform.rotation, lookRotation, Time.deltaTime * 500).eulerAngles;
-                        instBall.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+                        Vector3 dir2 = rayHit.point - transform.position;
+                        Quaternion lookRotation2 = Quaternion.LookRotation(dir2);
+                        Vector3 rotation2 = Quaternion.Lerp(instBall.transform.rotation, lookRotation2, Time.deltaTime * 500).eulerAngles;
+                        instBall.transform.rotation = Quaternion.Euler(0f, rotation2.y, 0f);
 
-                        instBall.GetComponent<Rigidbody>().velocity = new Vector3(dir.normalized.x, 0, dir.normalized.z) * 10;
+                        instBall.GetComponent<Rigidbody>().velocity = new Vector3(dir2.normalized.x, 0, dir2.normalized.z) * 10;
 
                         Destroy(instBall, 10);
-                        activateTower = false;
-                        restRounds = roundsToReset;
-                    }
-
-                    timeToWait = 0;
+                        break;
                 }
-                break;
+
+                activateTower = false;
+                restRounds = roundsToReset;
+            }
+
+            timeToWait = 0;
         }
     }
-    /*
-    private void OnMouseUpAsButton()
-    {
-        if (restRounds <= 0)
-        {
-            activateTower = true;
-        }
-    }
-    */
 }

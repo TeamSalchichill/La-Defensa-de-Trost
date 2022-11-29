@@ -106,7 +106,7 @@ public class GameFlow : MonoBehaviour
 
         for (int i = 0; i < enemies.Length; i++)
         {
-            GameObject instEnemy = Instantiate(enemies[i], new Vector3(0, 0, 0), transform.rotation);
+            GameObject instEnemy = Instantiate(enemies[i], new Vector3(0, 1.25f, 0), transform.rotation);
 
             instEnemy.SetActive(false);
 

@@ -211,6 +211,7 @@ public class ColocatorManager : MonoBehaviour
 
                         if (rayHit.collider.gameObject.tag == "SpecialGrass")
                         {
+                            rayHit.collider.gameObject.tag = "Grass";
                             instTowerScript.specialTile = true;
                             instTowerScript.burnTile = false;
                         }
@@ -262,6 +263,7 @@ public class ColocatorManager : MonoBehaviour
 
                         if (rayHit.collider.gameObject.tag == "SpecialGround")
                         {
+                            rayHit.collider.gameObject.tag = "Ground";
                             instTowerScript.specialTile = true;
                         }
                         else

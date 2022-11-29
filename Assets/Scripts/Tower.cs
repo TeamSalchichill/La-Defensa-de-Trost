@@ -37,6 +37,7 @@ public class Tower : MonoBehaviour
     public Light level5Light;
     public GameObject rangeArea;
     public Transform partToRotate;
+    public GameObject level5Update;
 
     [Header("General")]
     public string towerName;
