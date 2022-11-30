@@ -1732,7 +1732,8 @@ Transform:
   m_LocalPosition: {x: -0, y: 2.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1616270473738057452}
   m_Father: {fileID: 5280775153071079245}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1866,6 +1867,8 @@ MonoBehaviour:
   level5Light: {fileID: 0}
   rangeArea: {fileID: 4654265142820233893}
   partToRotate: {fileID: 8813746195118008703}
+  level5Updates:
+  - {fileID: 2100355015392341078}
   towerName: Syrius Purple
   icon: {fileID: 21300000, guid: ad06f39d428b98c4d87c2f1393f714d3, type: 3}
   price: 500
@@ -2232,6 +2235,77 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1001 &1289327002085921031
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8830132821620726251}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: d70c9a467291a4446b3236a465080e00, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d70c9a467291a4446b3236a465080e00, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d70c9a467291a4446b3236a465080e00, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -10.97
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d70c9a467291a4446b3236a465080e00, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.23
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d70c9a467291a4446b3236a465080e00, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d70c9a467291a4446b3236a465080e00, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d70c9a467291a4446b3236a465080e00, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d70c9a467291a4446b3236a465080e00, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d70c9a467291a4446b3236a465080e00, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d70c9a467291a4446b3236a465080e00, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d70c9a467291a4446b3236a465080e00, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d70c9a467291a4446b3236a465080e00, type: 3}
+      propertyPath: m_Name
+      value: Anubis
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d70c9a467291a4446b3236a465080e00, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d70c9a467291a4446b3236a465080e00, type: 3}
+--- !u!4 &1616270473738057452 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d70c9a467291a4446b3236a465080e00, type: 3}
+  m_PrefabInstance: {fileID: 1289327002085921031}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2100355015392341078 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d70c9a467291a4446b3236a465080e00, type: 3}
+  m_PrefabInstance: {fileID: 1289327002085921031}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9068576239465129646
 PrefabInstance:
   m_ObjectHideFlags: 0

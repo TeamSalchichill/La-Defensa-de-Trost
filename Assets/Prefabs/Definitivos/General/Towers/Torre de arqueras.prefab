@@ -477,7 +477,8 @@ MonoBehaviour:
   level5Light: {fileID: 0}
   rangeArea: {fileID: 4417269779872820031}
   partToRotate: {fileID: 6188050100766881612}
-  level5Update: {fileID: 0}
+  level5Updates:
+  - {fileID: 7747013369489325298}
   towerName: Arqueras
   icon: {fileID: 21300000, guid: 6245349b8524cf940b6f61ad568a6bc9, type: 3}
   price: 200
@@ -679,7 +680,8 @@ Transform:
   m_LocalPosition: {x: -0, y: 2.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6974170582487967304}
   m_Father: {fileID: 399919755840761333}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1529,4 +1531,75 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4417269780429767691, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}
   m_PrefabInstance: {fileID: 569814836}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7440934275808084387
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6070846482422098923}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: dad28d564b8a57546af02d35ac4427f9, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dad28d564b8a57546af02d35ac4427f9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.082
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dad28d564b8a57546af02d35ac4427f9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.151
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dad28d564b8a57546af02d35ac4427f9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dad28d564b8a57546af02d35ac4427f9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dad28d564b8a57546af02d35ac4427f9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dad28d564b8a57546af02d35ac4427f9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dad28d564b8a57546af02d35ac4427f9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dad28d564b8a57546af02d35ac4427f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dad28d564b8a57546af02d35ac4427f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dad28d564b8a57546af02d35ac4427f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dad28d564b8a57546af02d35ac4427f9, type: 3}
+      propertyPath: m_Name
+      value: TorreArqueraNivel5
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dad28d564b8a57546af02d35ac4427f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dad28d564b8a57546af02d35ac4427f9, type: 3}
+--- !u!4 &6974170582487967304 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dad28d564b8a57546af02d35ac4427f9, type: 3}
+  m_PrefabInstance: {fileID: 7440934275808084387}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7747013369489325298 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: dad28d564b8a57546af02d35ac4427f9, type: 3}
+  m_PrefabInstance: {fileID: 7440934275808084387}
   m_PrefabAsset: {fileID: 0}

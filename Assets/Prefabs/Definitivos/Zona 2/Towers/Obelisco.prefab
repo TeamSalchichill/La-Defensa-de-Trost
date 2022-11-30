@@ -271,7 +271,8 @@ MonoBehaviour:
   level5Light: {fileID: 0}
   rangeArea: {fileID: 4417269780651086121}
   partToRotate: {fileID: 399853784}
-  level5Update: {fileID: 0}
+  level5Updates:
+  - {fileID: 958721604276697352}
   towerName: Test-Lah
   icon: {fileID: 21300000, guid: 7fb3b822c591574479f2fbdd9721cdfa, type: 3}
   price: 200
@@ -374,7 +375,8 @@ Transform:
   m_LocalPosition: {x: -0, y: 6.9500003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 433964683948975026}
   m_Father: {fileID: 5608338246061946874}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -506,6 +508,77 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4417269780429767691, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}
   m_PrefabInstance: {fileID: 324212002}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &112442560855311449
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2046859348289532388}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: deddd5512828aff4ea813e95a1384b00, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: deddd5512828aff4ea813e95a1384b00, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: deddd5512828aff4ea813e95a1384b00, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.88
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: deddd5512828aff4ea813e95a1384b00, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: deddd5512828aff4ea813e95a1384b00, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: deddd5512828aff4ea813e95a1384b00, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: deddd5512828aff4ea813e95a1384b00, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: deddd5512828aff4ea813e95a1384b00, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: deddd5512828aff4ea813e95a1384b00, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: deddd5512828aff4ea813e95a1384b00, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: deddd5512828aff4ea813e95a1384b00, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: deddd5512828aff4ea813e95a1384b00, type: 3}
+      propertyPath: m_Name
+      value: Obelisco
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: deddd5512828aff4ea813e95a1384b00, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: deddd5512828aff4ea813e95a1384b00, type: 3}
+--- !u!4 &433964683948975026 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: deddd5512828aff4ea813e95a1384b00, type: 3}
+  m_PrefabInstance: {fileID: 112442560855311449}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &958721604276697352 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: deddd5512828aff4ea813e95a1384b00, type: 3}
+  m_PrefabInstance: {fileID: 112442560855311449}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &650809532511456325
 PrefabInstance:

@@ -206,7 +206,8 @@ Transform:
   m_LocalPosition: {x: -0, y: 2.1000001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4033095095235110698}
   m_Father: {fileID: 1630840640074890735}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -334,6 +335,8 @@ MonoBehaviour:
   level5Light: {fileID: 0}
   rangeArea: {fileID: 4417269780560023396}
   partToRotate: {fileID: 2520043521327094820}
+  level5Updates:
+  - {fileID: 4374048786849971600}
   towerName: Spray de nieve
   icon: {fileID: 21300000, guid: b8b35af29c007f848b6b22358aaded78, type: 3}
   price: 250
@@ -636,4 +639,75 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8709583232544451809, guid: 908a168c83fa6534bad1d4af8fbc4175, type: 3}
   m_PrefabInstance: {fileID: 39733067821571664}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3491090033512186049
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5121400624299211761}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 078843e79f10d764bb487ab33e67ed62, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 078843e79f10d764bb487ab33e67ed62, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.243
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 078843e79f10d764bb487ab33e67ed62, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.86
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 078843e79f10d764bb487ab33e67ed62, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.149
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 078843e79f10d764bb487ab33e67ed62, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 078843e79f10d764bb487ab33e67ed62, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 078843e79f10d764bb487ab33e67ed62, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 078843e79f10d764bb487ab33e67ed62, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 078843e79f10d764bb487ab33e67ed62, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 078843e79f10d764bb487ab33e67ed62, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 078843e79f10d764bb487ab33e67ed62, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 078843e79f10d764bb487ab33e67ed62, type: 3}
+      propertyPath: m_Name
+      value: Torre_Hielo-0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 078843e79f10d764bb487ab33e67ed62, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 078843e79f10d764bb487ab33e67ed62, type: 3}
+--- !u!4 &4033095095235110698 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 078843e79f10d764bb487ab33e67ed62, type: 3}
+  m_PrefabInstance: {fileID: 3491090033512186049}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4374048786849971600 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 078843e79f10d764bb487ab33e67ed62, type: 3}
+  m_PrefabInstance: {fileID: 3491090033512186049}
   m_PrefabAsset: {fileID: 0}

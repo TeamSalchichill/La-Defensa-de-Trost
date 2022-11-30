@@ -218,6 +218,8 @@ MonoBehaviour:
   level5Light: {fileID: 0}
   rangeArea: {fileID: 4417269779791678791}
   partToRotate: {fileID: 689687963224042884}
+  level5Updates:
+  - {fileID: 8004881230411753738}
   towerName: Barricada
   icon: {fileID: 21300000, guid: 5dfd8607bead1884f93f2e49b1e81ad6, type: 3}
   price: 500
@@ -257,6 +259,7 @@ MonoBehaviour:
   ascentDamage: 0
   bloodDamage: 0
   transformationDamage: 0
+  isAscent: 0
   isBurn: 0
   burnEffect: 0
   burnEffectPerShoot: 2
@@ -339,7 +342,8 @@ Transform:
   m_LocalPosition: {x: -0, y: 2.2, z: 0.04999998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7231898908242359216}
   m_Father: {fileID: 550277942440705012}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -483,4 +487,75 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4417269780429767691, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}
   m_PrefabInstance: {fileID: 773359948}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7194048234257339483
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6201963079267745258}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 8b7ad8a13c98bb940b8388184371c06d, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8b7ad8a13c98bb940b8388184371c06d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8b7ad8a13c98bb940b8388184371c06d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.31
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8b7ad8a13c98bb940b8388184371c06d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8b7ad8a13c98bb940b8388184371c06d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8b7ad8a13c98bb940b8388184371c06d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8b7ad8a13c98bb940b8388184371c06d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8b7ad8a13c98bb940b8388184371c06d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8b7ad8a13c98bb940b8388184371c06d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8b7ad8a13c98bb940b8388184371c06d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8b7ad8a13c98bb940b8388184371c06d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8b7ad8a13c98bb940b8388184371c06d, type: 3}
+      propertyPath: m_Name
+      value: Barricada
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8b7ad8a13c98bb940b8388184371c06d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8b7ad8a13c98bb940b8388184371c06d, type: 3}
+--- !u!4 &7231898908242359216 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8b7ad8a13c98bb940b8388184371c06d, type: 3}
+  m_PrefabInstance: {fileID: 7194048234257339483}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8004881230411753738 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8b7ad8a13c98bb940b8388184371c06d, type: 3}
+  m_PrefabInstance: {fileID: 7194048234257339483}
   m_PrefabAsset: {fileID: 0}
