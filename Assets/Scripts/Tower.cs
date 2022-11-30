@@ -37,7 +37,7 @@ public class Tower : MonoBehaviour
     public Light level5Light;
     public GameObject rangeArea;
     public Transform partToRotate;
-    public GameObject level5Update;
+    public GameObject[] level5Updates;
 
     [Header("General")]
     public string towerName;
@@ -529,6 +529,28 @@ public class Tower : MonoBehaviour
                             break;
                         case TargetType.MultiTarget:
                             anim.SetTrigger("doShoot");
+
+                            List<GameObject> localEnemies = new List<GameObject>();
+                            foreach (var item in enemies)
+                            {
+                                if (item)
+                                {
+                                    if (Vector3.Distance(transform.position, item.transform.position) < range)
+                                    {
+                                        localEnemies.Add(item);
+                                    }
+                                }
+                            }
+
+                            for (int i = 0; i < numTargets; i++)
+                            {
+                                if (i < localEnemies.Count && localEnemies[i])
+                                {
+                                    SoundManager.instance.SoundPlay(shootAudio, shootAudioVolume);
+                                    MultiShoot(localEnemies[i].transform);
+                                }
+                            }
+                            /*
                             for (int i = 0; i < numTargets; i++)
                             {
                                 if (i < enemies.Length && enemies[i] != null && Vector3.Distance(transform.position, enemies[i].transform.position) < range)
@@ -541,6 +563,7 @@ public class Tower : MonoBehaviour
                                     //i--;
                                 }
                             }
+                            */
                             break;
                         case TargetType.AoE:
                             anim.SetTrigger("doShoot");

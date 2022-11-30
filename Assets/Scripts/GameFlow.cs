@@ -136,7 +136,7 @@ public class GameFlow : MonoBehaviour
     {
         time += Time.deltaTime;
 
-        if ((enemiesLeft1 == 0 && enemiesLeft2 == 0  && enemiesLeft3 == 0 && !roundFinished))
+        if ((enemiesLeft1 <= 0 && enemiesLeft2 <= 0  && enemiesLeft3 <= 0 && !roundFinished))
         {
             roundFinished = true;
 
@@ -148,8 +148,12 @@ public class GameFlow : MonoBehaviour
                 }
                 else
                 {
+                    int minutes = (int)time / 60;
+                    int seconds = (int)time % 60;
+
                     hudManager.summaryTextWin.text =
-                    "Tiempo: " + (int)time + " segundos" + "\n" +
+                    //"Tiempo: " + (int)gameFlow.time + " segundos" + "\n" +
+                    "Tiempo: " + minutes + ":" + seconds + "\n" +
                     "Ronda: " + round + "\n" +
                     "Muertes enemigos enanos: " + kills1 + "\n" +
                     "Muertes enemigos medianos: " + kills2 + "\n" +
@@ -178,11 +182,15 @@ public class GameFlow : MonoBehaviour
 
                 showCards = false;
                 cardSelected = false;
+
                 hudManager.dadosBackGround.gameObject.SetActive(true);
 
                 // Towers cards
                 int towerCardAmount = Random.Range(1, 7);
                 int towerCardRarity = Random.Range(0, 3);
+
+                hudManager.dicesImage.sprite = hudManager.dicesImages[towerCardAmount - 1];
+                hudManager.dicesText.text = "Has conseguido " + towerCardAmount + " cartas";
 
                 foreach (var cardPos in cardsPos)
                 {
@@ -369,7 +377,5 @@ public class GameFlow : MonoBehaviour
             activeEnemies[aux] = item;
             aux++;
         }
-
-        //activeEnemies = GameObject.FindGameObjectsWithTag("Enemy");
     }
 }

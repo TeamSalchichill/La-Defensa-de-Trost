@@ -985,6 +985,9 @@ public class Enemy : MonoBehaviour
                     igniteResistence *= 2;
                     break;
                 case Generator.Zone.Atlantis:
+                    
+                    break;
+                case Generator.Zone.Valhalla:
                     damage *= 2;
                     speed *= 2;
                     normalSpeed *= 2;
@@ -1011,9 +1014,6 @@ public class Enemy : MonoBehaviour
                             boxcolliderTile.enabled = false;
                         }
                     }
-                    break;
-                case Generator.Zone.Valhalla:
-
                     break;
                 case Generator.Zone.Fantasia:
 

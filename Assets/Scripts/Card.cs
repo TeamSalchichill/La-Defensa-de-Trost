@@ -85,7 +85,7 @@ public class Card : MonoBehaviour
                 break;
         }
 
-        if (rarity == Rarity.Legendary)
+        if (rarity == Rarity.Legendary && !colocatorManager.heroBuild)
         {
             towerSelectedId = 0;
         }
@@ -119,11 +119,11 @@ public class Card : MonoBehaviour
                 switch (rarity)
                 {
                     case Rarity.Normal:
-                        incrementAmount = Random.Range(50, 151);
+                        incrementAmount = Random.Range(50, 501);
                         text.text = "La salud de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Rare:
-                        incrementAmount = Random.Range(150, 300);
+                        incrementAmount = Random.Range(500, 1001);
                         text.text = "La salud de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Legendary:
@@ -137,15 +137,15 @@ public class Card : MonoBehaviour
                 switch (rarity)
                 {
                     case Rarity.Normal:
-                        incrementAmount = Random.Range(5, 11);
+                        incrementAmount = Random.Range(3, 7);
                         text.text = "El rango de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Rare:
-                        incrementAmount = Random.Range(10, 16);
+                        incrementAmount = Random.Range(6, 10);
                         text.text = "El rango de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Legendary:
-                        incrementAmount = Random.Range(10, 16);
+                        incrementAmount = Random.Range(8, 12);
                         text.text = "El rango de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                 }
@@ -191,15 +191,15 @@ public class Card : MonoBehaviour
                 switch (rarity)
                 {
                     case Rarity.Normal:
-                        incrementAmount = Random.Range(25, 76);
+                        incrementAmount = Random.Range(25, 51);
                         text.text = "El ataque de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Rare:
-                        incrementAmount = Random.Range(75, 136);
+                        incrementAmount = Random.Range(50, 76);
                         text.text = "El ataque de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                     case Rarity.Legendary:
-                        incrementAmount = Random.Range(50, 126);
+                        incrementAmount = Random.Range(75, 101);
                         text.text = "El ataque de " + colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName + " incrementa en " + incrementAmount + ".";
                         break;
                 }
@@ -323,7 +323,7 @@ public class Card : MonoBehaviour
         {
             GameObject[] allTowers = gameFlow.towers;
             List<Tower> allTowersSelected = new List<Tower>();
-
+            
             foreach (var tower in allTowers)
             {
                 if (tower.GetComponent<Tower>().towerName == colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName)

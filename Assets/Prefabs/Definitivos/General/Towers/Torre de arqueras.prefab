@@ -477,6 +477,7 @@ MonoBehaviour:
   level5Light: {fileID: 0}
   rangeArea: {fileID: 4417269779872820031}
   partToRotate: {fileID: 6188050100766881612}
+  level5Update: {fileID: 0}
   towerName: Arqueras
   icon: {fileID: 21300000, guid: 6245349b8524cf940b6f61ad568a6bc9, type: 3}
   price: 200
@@ -484,9 +485,9 @@ MonoBehaviour:
   specialTile: 0
   burnTile: 0
   spawnParticles: {fileID: 198159274938206214, guid: 9e4577abe56a95f4a91d29a0473cd30c, type: 3}
-  healthDamage: 75
+  healthDamage: 50
   armorDamage: 0
-  range: 10
+  range: 6
   rangeAreaOriginalScale: 0
   fireRate: 1.5
   turnSpeed: 10

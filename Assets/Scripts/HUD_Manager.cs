@@ -89,6 +89,9 @@ public class HUD_Manager : MonoBehaviour
 
     [Header("Cards")]
     public GameObject dadosBackGround;
+    public Sprite[] dicesImages;
+    public Image dicesImage;
+    public TextMeshProUGUI dicesText;
 
     [Header("Tutorial")]
     public Image tutorialSprite;
@@ -214,7 +217,15 @@ public class HUD_Manager : MonoBehaviour
             effectsTexts[0].text = activeTower.iceDamage.ToString("F0");
             effectsTexts[1].text = activeTower.igniteDamage.ToString("F0");
             effectsTexts[2].text = activeTower.waterDamage.ToString("F0");
-            effectsTexts[3].text = activeTower.ascentDamage.ToString("F0");
+            if (activeTower.isAscent)
+            {
+                effectsTexts[3].text = "SÍ";
+            }
+            else
+            {
+                effectsTexts[3].text = "NO";
+            }
+            
             effectsTexts[4].text = activeTower.bloodDamage.ToString("F0");
             effectsTexts[5].text = activeTower.transformationDamage.ToString("F0");
 
@@ -387,6 +398,13 @@ public class HUD_Manager : MonoBehaviour
             else
             {
                 //activeTower.level5Update.SetActive(true);
+                if (activeTower.level5Updates.Length > 0)
+                {
+                    foreach (GameObject update in activeTower.level5Updates)
+                    {
+                        update.SetActive(true);
+                    }
+                }
 
                 GameObject instParticle = Instantiate(levelUpSpecialParticle, activeTower.transform.position, transform.rotation);
                 instParticle.transform.rotation = Quaternion.AngleAxis(270, Vector3.right);
@@ -578,8 +596,12 @@ public class HUD_Manager : MonoBehaviour
             checkExit.SetActive(false);
         }
 
+        int minutes = (int)gameFlow.time / 60;
+        int seconds = (int)gameFlow.time % 60;
+
         summaryTextDead.text =
-            "Tiempo: " + (int)gameFlow.time + " segundos" + "\n" +
+            //"Tiempo: " + (int)gameFlow.time + " segundos" + "\n" +
+            "Tiempo: " + minutes + ":" + seconds + "\n" +
             "Ronda: " + gameFlow.round + "\n" +
             "Muertes enemigos enanos: " + gameFlow.kills1 + "\n" +
             "Muertes enemigos medianos: " + gameFlow.kills2 + "\n" +
@@ -733,34 +755,6 @@ public class HUD_Manager : MonoBehaviour
 
     public void NewImage(bool moment)
     {
-        /*
-        if (!moment)
-        {
-            if (imageId < images.Length)
-            {
-                activeImage.sprite = images[imageId];
-                imageId++;
-            }
-            else if (imageId == images.Length)
-            {
-                gameFlow.canExpand = true;
-                panel.SetActive(false);
-            }
-        }
-        else
-        {
-            if (imageIdEnd < imagesEnd.Length)
-            {
-                activeImageEnd.sprite = imagesEnd[imageIdEnd];
-                imageIdEnd++;
-            }
-            else if (imageIdEnd == imagesEnd.Length)
-            {
-                winScreen.SetActive(true);
-            }
-        }
-        */
-
         if (!moment)
         {
             if (imageId < imageIdFinal)
@@ -783,8 +777,12 @@ public class HUD_Manager : MonoBehaviour
             }
             else if (imageIdEnd == imagesEnd.Length)
             {
+                int minutes = (int)gameFlow.time / 60;
+                int seconds = (int)gameFlow.time % 60;
+
                 summaryTextWin.text =
-                    "Tiempo: " + (int)gameFlow.time + " segundos" + "\n" +
+                    //"Tiempo: " + (int)gameFlow.time + " segundos" + "\n" +
+                    "Tiempo: " + minutes + ":" + seconds + "\n" +
                     "Ronda: " + gameFlow.round + "\n" +
                     "Muertes enemigos enanos: " + gameFlow.kills1 + "\n" +
                     "Muertes enemigos medianos: " + gameFlow.kills2 + "\n" +

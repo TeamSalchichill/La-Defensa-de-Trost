@@ -153,7 +153,7 @@ public class Bullet : MonoBehaviour
                                 enemy.collider.gameObject.GetComponent<Enemy>().waterEffect += waterDamage;
                                 enemy.collider.gameObject.GetComponent<Enemy>().ascentEffect += ascentDamage;
                                 enemy.collider.gameObject.GetComponent<Enemy>().bloodEffect += bloodDamage;
-                                enemy.collider.gameObject.GetComponent<Enemy>().transformationEffect += transformationDamage;
+                                enemy.collider.gameObject.GetComponent<Enemy>().transformationEffect -= transformationDamage;
                             }
                         }
                         break;

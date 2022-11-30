@@ -153,7 +153,26 @@ public class Generator : MonoBehaviour
 
                 if (!((i == sizeX - 1 || i == sizeX - 2 || i == sizeX - 3) && j == 3))
                 {
-                    Instantiate(grassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1), Quaternion.identity);
+                    //Instantiate(grassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1), Quaternion.identity);
+
+                    int specialTile = Random.Range(0, 101);
+                    specialTile *= 12;
+                    if (specialTile < probabilitySpecialTiles)
+                    {
+                        Instantiate(specialGrassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1), Quaternion.identity);
+                    }
+                    else
+                    {
+                        int burnTile = Random.Range(0, 101);
+                        if (burnTile < probabilityFireTile)
+                        {
+                            Instantiate(fireTile, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1), Quaternion.identity);
+                        }
+                        else
+                        {
+                            Instantiate(grassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1), Quaternion.identity);
+                        }
+                    }
                 }
                 else
                 {
@@ -361,7 +380,26 @@ public class Generator : MonoBehaviour
                     {
                         if (new Vector3(i, 0, j) != spawnPos && new Vector3(i, 0, j) != spawnPosAux)
                         {
-                            Instantiate(grassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1) + newOffsetStart, Quaternion.identity);
+                            //Instantiate(grassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1) + newOffsetStart, Quaternion.identity);
+
+                            int specialTile = Random.Range(0, 101);
+                            specialTile *= 12;
+                            if (specialTile < probabilitySpecialTiles)
+                            {
+                                Instantiate(specialGrassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1) + newOffsetStart, Quaternion.identity);
+                            }
+                            else
+                            {
+                                int burnTile = Random.Range(0, 101);
+                                if (burnTile < probabilityFireTile)
+                                {
+                                    Instantiate(fireTile, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1) + newOffsetStart, Quaternion.identity);
+                                }
+                                else
+                                {
+                                    Instantiate(grassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1) + newOffsetStart, Quaternion.identity);
+                                }
+                            }
                         }
                     }
                     else
@@ -626,52 +664,14 @@ public class Generator : MonoBehaviour
                         }
 
                         map[i, j] = 1;
-                        
-                        int newLayer1 = Random.Range(30, 101);
-                        if (newLayer1 < 20)
+
+                        int newObstacle = Random.Range(0, 101);
+                        newObstacle *= 12;
+                        if (newObstacle < probabilityObstacles)
                         {
-                            /*
-                            if (specialTile < probabilitySpecialTiles)
-                            {
-                                grassAux2 = Instantiate(specialGrassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 1.25f, 1) + newOffsetStart, Quaternion.identity);
-                            }
-                            else
-                            {
-                                grassAux2 = Instantiate(grassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 1.25f, 1) + newOffsetStart, Quaternion.identity);
-                            }
-
-                            grassAux1.layer = 0;
-
-                            map[i, j] = 2;
-
-                            int newLayer2 = Random.Range(0, 101);
-                            if (newLayer2 < 20 && i != 0 && i != sizeX - 1 && j != 0 && j != sizeZ - 1)
-                            {
-                                if (specialTile < probabilitySpecialTiles)
-                                {
-                                    Instantiate(specialGrassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 1.75f, 1) + newOffsetStart, Quaternion.identity);
-                                }
-                                else
-                                {
-                                    Instantiate(grassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 1.75f, 1) + newOffsetStart, Quaternion.identity);
-                                }
-
-                                grassAux2.layer = 0;
-
-                                map[i, j] = 3;
-                            }
-                            */
+                            Instantiate(obstacleBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 3, 1) + newOffsetStart, Quaternion.identity);
                         }
-                        else
-                        {
-                            int newObstacle = Random.Range(0, 101);
-                            newObstacle *= 12;
-                            if (newObstacle < probabilityObstacles)
-                            {
-                                Instantiate(obstacleBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 3, 1) + newOffsetStart, Quaternion.identity);
-                            }
-                        }
-                        
+
                     }
                     else
                     {
@@ -1386,6 +1386,16 @@ public class Generator : MonoBehaviour
         {
             Instantiate(groundBlock, terrainTile.transform.position + new Vector3(0, -0.25f, 0), transform.rotation);
             Destroy(terrainTile.collider.gameObject);
+        }
+        RaycastHit[] towersInRange = Physics.SphereCastAll(finalBossInst.transform.position, 10, transform.forward, 0, LayerMask.GetMask("Tower"));
+        foreach (var towerInRange in towersInRange)
+        {
+            Destroy(towerInRange.collider.gameObject);
+        }
+        RaycastHit[] obstaclesInRange = Physics.SphereCastAll(finalBossInst.transform.position, 10, transform.forward, 0, LayerMask.GetMask("Default"));
+        foreach (var obstacleInRange in obstaclesInRange)
+        {
+            Destroy(obstacleInRange.collider.gameObject);
         }
     }
 }

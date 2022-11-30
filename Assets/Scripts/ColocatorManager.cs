@@ -54,17 +54,6 @@ public class ColocatorManager : MonoBehaviour
     {
         canDisableColocatotMode -= Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            //canBuild = !canBuild;
-        }
-        /*
-        if (Input.GetButtonDown("Fire2"))
-        {
-            canBuild = false;
-            towerID = -1;
-        }
-        */
         if (actualID != towerID && towerID != -1)
         {
             actualID = towerID;
@@ -167,9 +156,6 @@ public class ColocatorManager : MonoBehaviour
                         gameFlow.coins -= towerScript.price;
                         gameFlow.goldSpent += towerScript.price;
 
-                        //rayHit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
-                        //rayHit.collider.gameObject.layer = 0;
-
                         if (towerID == 7)
                         {
                             if (minesBuilt < limitMines)
@@ -243,9 +229,6 @@ public class ColocatorManager : MonoBehaviour
                     if (gameFlow.coins >= towerScript.price)
                     {
                         gameFlow.coins -= towerScript.price;
-
-                        //rayHit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
-                        //rayHit.collider.gameObject.layer = 0;
 
                         gameFlow.towersBuild++;
 

@@ -82,9 +82,12 @@ public class FinalBoss : MonoBehaviour
 
     void InvokeSkeletons()
     {
-        anim.SetTrigger("doSkeleton");
+        if (!dead)
+        {
+            anim.SetTrigger("doSkeleton");
 
-        StartCoroutine(CoInvokeSkeletons());
+            StartCoroutine(CoInvokeSkeletons());
+        }
     }
     IEnumerator CoInvokeSkeletons()
     {

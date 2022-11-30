@@ -472,6 +472,7 @@ MonoBehaviour:
   level5Light: {fileID: 0}
   rangeArea: {fileID: 4417269780756781421}
   partToRotate: {fileID: 9167911101740927899}
+  level5Update: {fileID: 0}
   towerName: Mina de oro
   icon: {fileID: 21300000, guid: 566f9e050a107c143817fb476190a91c, type: 3}
   price: 750
@@ -481,7 +482,7 @@ MonoBehaviour:
   spawnParticles: {fileID: 198159274938206214, guid: 9e4577abe56a95f4a91d29a0473cd30c, type: 3}
   healthDamage: 10
   armorDamage: 0
-  range: 15
+  range: 1
   rangeAreaOriginalScale: 0
   fireRate: 0.2
   turnSpeed: 10
@@ -511,6 +512,7 @@ MonoBehaviour:
   ascentDamage: 0
   bloodDamage: 0
   transformationDamage: 0
+  isAscent: 0
   isBurn: 0
   burnEffect: 0
   burnEffectPerShoot: 2
@@ -528,7 +530,9 @@ MonoBehaviour:
   destroyParticle: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56, type: 3}
   areaDamageParticle: {fileID: 0}
   shootAudio: {fileID: 8300000, guid: e1e5f179e350d4640a957bca6c4b3ee0, type: 3}
+  shootAudioVolume: 0.5
   abilityAudio: {fileID: 0}
+  abilityAudioVolume: 0.5
 --- !u!114 &-2740585283258192185
 MonoBehaviour:
   m_ObjectHideFlags: 0
