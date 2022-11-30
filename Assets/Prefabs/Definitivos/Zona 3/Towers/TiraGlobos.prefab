@@ -186,7 +186,8 @@ MonoBehaviour:
   level5Light: {fileID: 2308776481126034503}
   rangeArea: {fileID: 3948827861534618597}
   partToRotate: {fileID: 7188744020801765335}
-  level5Update: {fileID: 0}
+  level5Updates:
+  - {fileID: 8078771024009849439}
   towerName: Suw Balony
   icon: {fileID: 21300000, guid: 2bdb6ebca3667bc459a041f59df10d9f, type: 3}
   price: 500
@@ -699,4 +700,70 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ee6082a83d6214f43bb4aa0283492c35, type: 3}
   m_PrefabInstance: {fileID: 7226366331925794468}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8997319732996495118
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7188744020801765335}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: a75afa900a994a9428bd42247a8d09be, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a75afa900a994a9428bd42247a8d09be, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a75afa900a994a9428bd42247a8d09be, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a75afa900a994a9428bd42247a8d09be, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.41
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a75afa900a994a9428bd42247a8d09be, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a75afa900a994a9428bd42247a8d09be, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a75afa900a994a9428bd42247a8d09be, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a75afa900a994a9428bd42247a8d09be, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a75afa900a994a9428bd42247a8d09be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a75afa900a994a9428bd42247a8d09be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a75afa900a994a9428bd42247a8d09be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a75afa900a994a9428bd42247a8d09be, type: 3}
+      propertyPath: m_Name
+      value: Tirachinas
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a75afa900a994a9428bd42247a8d09be, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a75afa900a994a9428bd42247a8d09be, type: 3}
+--- !u!1 &8078771024009849439 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a75afa900a994a9428bd42247a8d09be, type: 3}
+  m_PrefabInstance: {fileID: 8997319732996495118}
   m_PrefabAsset: {fileID: 0}
