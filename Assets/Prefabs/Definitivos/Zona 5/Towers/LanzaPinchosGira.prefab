@@ -61,6 +61,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6322449189056217224}
+  - {fileID: 4803570914764881330}
   m_Father: {fileID: 1423398175849550722}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -786,7 +787,8 @@ MonoBehaviour:
   level5Light: {fileID: 1462073818345271455}
   rangeArea: {fileID: 2956365842787908382}
   partToRotate: {fileID: 1423398175849550722}
-  level5Updates: []
+  level5Updates:
+  - {fileID: 5323930853729183496}
   towerName: ThornGun
   icon: {fileID: 21300000, guid: a2fb72df6ad97a347819870c1ea431a8, type: 3}
   price: 150
@@ -1425,4 +1427,75 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4417269780429767691, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}
   m_PrefabInstance: {fileID: 1462073818161692437}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4981842339909081689
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4528562507170629417}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 8c5ae4d7c5904f647855eec185aad85b, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8c5ae4d7c5904f647855eec185aad85b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8c5ae4d7c5904f647855eec185aad85b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.9499999
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8c5ae4d7c5904f647855eec185aad85b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.43999982
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8c5ae4d7c5904f647855eec185aad85b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8c5ae4d7c5904f647855eec185aad85b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8c5ae4d7c5904f647855eec185aad85b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8c5ae4d7c5904f647855eec185aad85b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8c5ae4d7c5904f647855eec185aad85b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8c5ae4d7c5904f647855eec185aad85b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8c5ae4d7c5904f647855eec185aad85b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8c5ae4d7c5904f647855eec185aad85b, type: 3}
+      propertyPath: m_Name
+      value: MejoraTiraPinchos
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8c5ae4d7c5904f647855eec185aad85b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8c5ae4d7c5904f647855eec185aad85b, type: 3}
+--- !u!4 &4803570914764881330 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8c5ae4d7c5904f647855eec185aad85b, type: 3}
+  m_PrefabInstance: {fileID: 4981842339909081689}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5323930853729183496 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8c5ae4d7c5904f647855eec185aad85b, type: 3}
+  m_PrefabInstance: {fileID: 4981842339909081689}
   m_PrefabAsset: {fileID: 0}

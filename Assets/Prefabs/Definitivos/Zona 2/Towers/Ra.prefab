@@ -29,7 +29,8 @@ Transform:
   m_LocalPosition: {x: -0.050000023, y: 1.6, z: 0.049999952}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 170337009481378773}
   m_Father: {fileID: 2603060386838932308}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1054,6 +1055,8 @@ MonoBehaviour:
   level5Light: {fileID: 7032925671250798076}
   rangeArea: {fileID: 956256231441838653}
   partToRotate: {fileID: 8372852016417541427}
+  level5Updates:
+  - {fileID: 654983711280673135}
   towerName: Rey Axiryus
   icon: {fileID: 21300000, guid: ca72c71ec5bed674cacfa1537554a3bd, type: 3}
   price: 1000
@@ -2033,6 +2036,77 @@ Transform:
   m_Father: {fileID: 3645035532201918234}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &420965511245859902
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2428164848632069529}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: ccaebaf365eb70548b88a601af26b7a3, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ccaebaf365eb70548b88a601af26b7a3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ccaebaf365eb70548b88a601af26b7a3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -9.69
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ccaebaf365eb70548b88a601af26b7a3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ccaebaf365eb70548b88a601af26b7a3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ccaebaf365eb70548b88a601af26b7a3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ccaebaf365eb70548b88a601af26b7a3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ccaebaf365eb70548b88a601af26b7a3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ccaebaf365eb70548b88a601af26b7a3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ccaebaf365eb70548b88a601af26b7a3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ccaebaf365eb70548b88a601af26b7a3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccaebaf365eb70548b88a601af26b7a3, type: 3}
+      propertyPath: m_Name
+      value: azirNievl5
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccaebaf365eb70548b88a601af26b7a3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ccaebaf365eb70548b88a601af26b7a3, type: 3}
+--- !u!4 &170337009481378773 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ccaebaf365eb70548b88a601af26b7a3, type: 3}
+  m_PrefabInstance: {fileID: 420965511245859902}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &654983711280673135 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ccaebaf365eb70548b88a601af26b7a3, type: 3}
+  m_PrefabInstance: {fileID: 420965511245859902}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1279898678658520665
 PrefabInstance:
   m_ObjectHideFlags: 0

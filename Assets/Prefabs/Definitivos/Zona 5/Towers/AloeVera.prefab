@@ -277,6 +277,8 @@ MonoBehaviour:
   level5Light: {fileID: 201766529212274748}
   rangeArea: {fileID: 4576108986328184084}
   partToRotate: {fileID: 201766528148367477}
+  level5Updates:
+  - {fileID: 784791001914340895}
   towerName: Viva Porub
   icon: {fileID: 21300000, guid: 97b9284a3d7a26145bab0d1d49252454, type: 3}
   price: 350
@@ -1320,7 +1322,8 @@ Transform:
   m_LocalPosition: {x: -0, y: 1.5500001, z: 0.050000023}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 121583920750177445}
   m_Father: {fileID: 2575248481557950884}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1528,4 +1531,75 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4417269780429767691, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}
   m_PrefabInstance: {fileID: 201766528117764383}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &442842137748032334
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2871143223094369316}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 37da6d0407ffc7f4bbb0db66d1f15f20, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 37da6d0407ffc7f4bbb0db66d1f15f20, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 37da6d0407ffc7f4bbb0db66d1f15f20, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.16
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 37da6d0407ffc7f4bbb0db66d1f15f20, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 37da6d0407ffc7f4bbb0db66d1f15f20, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 37da6d0407ffc7f4bbb0db66d1f15f20, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 37da6d0407ffc7f4bbb0db66d1f15f20, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 37da6d0407ffc7f4bbb0db66d1f15f20, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 37da6d0407ffc7f4bbb0db66d1f15f20, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 37da6d0407ffc7f4bbb0db66d1f15f20, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 37da6d0407ffc7f4bbb0db66d1f15f20, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 37da6d0407ffc7f4bbb0db66d1f15f20, type: 3}
+      propertyPath: m_Name
+      value: MejoraAloeVera
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 37da6d0407ffc7f4bbb0db66d1f15f20, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 37da6d0407ffc7f4bbb0db66d1f15f20, type: 3}
+--- !u!4 &121583920750177445 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 37da6d0407ffc7f4bbb0db66d1f15f20, type: 3}
+  m_PrefabInstance: {fileID: 442842137748032334}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &784791001914340895 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 37da6d0407ffc7f4bbb0db66d1f15f20, type: 3}
+  m_PrefabInstance: {fileID: 442842137748032334}
   m_PrefabAsset: {fileID: 0}
