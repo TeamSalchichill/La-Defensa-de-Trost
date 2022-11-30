@@ -45,6 +45,7 @@ public class Enemy : MonoBehaviour
 
     [Header("General")]
     public string enemyName;
+    public Sprite icon;
     public GameObject skull;
     public ParticleSystem deadParticle;
 

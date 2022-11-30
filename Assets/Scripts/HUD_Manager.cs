@@ -150,6 +150,14 @@ public class HUD_Manager : MonoBehaviour
         }
 
         dadosBackGround.SetActive(false);
+        /*
+        generator.probabilityStraight = (int)(sliders[0].value * 100);
+        generator.probabilityNewWays = (int)(sliders[1].value * 100);
+        generator.probabilityDeleteWay = (int)(sliders[2].value * 100);
+        generator.probabilitySpecialTiles = (int)(sliders[3].value * 100);
+        generator.probabilityObstacles = (int)(sliders[4].value * 100);
+        generator.probabilityConectWays = (int)(sliders[5].value * 100);
+        */
     }
 
     void Update()
@@ -158,13 +166,6 @@ public class HUD_Manager : MonoBehaviour
         {
             fichaTecnica.SetActive(false);
         }
-
-        generator.probabilityStraight = (int)(sliders[0].value * 100);
-        generator.probabilityNewWays = (int)(sliders[1].value * 100);
-        generator.probabilityDeleteWay = (int)(sliders[2].value * 100);
-        generator.probabilitySpecialTiles = (int)(sliders[3].value * 100);
-        generator.probabilityObstacles = (int)(sliders[4].value * 100);
-        generator.probabilityConectWays = (int)(sliders[5].value * 100);
 
         if (generator.zone == Generator.Zone.Valhalla)
         {

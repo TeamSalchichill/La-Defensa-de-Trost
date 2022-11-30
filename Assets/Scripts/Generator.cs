@@ -117,6 +117,10 @@ public class Generator : MonoBehaviour
 
         expandRate = 3;
 
+        probabilityStraight = 100;
+        probabilityNewWays = 0;
+        probabilityDeleteWay = 0;
+
         InicializeMap();
     }
 
@@ -239,6 +243,35 @@ public class Generator : MonoBehaviour
 
     public void Generate(int newStartSide, string newStartSideOrientation, Vector3 newOffsetStart, Vector2 newMapPos, int newIdX, int newIdZ)
     {
+        switch (gameFlow.round)
+        {
+            case 1:
+                probabilityStraight = 50;
+                probabilityNewWays = 100;
+                probabilityDeleteWay = 0;
+                break;
+            case 5:
+                probabilityStraight = 50;
+                probabilityNewWays = 75;
+                probabilityDeleteWay = 0;
+                break;
+            case 10:
+                probabilityStraight = 50;
+                probabilityNewWays = 50;
+                probabilityDeleteWay = 25;
+                break;
+            case 15:
+                probabilityStraight = 50;
+                probabilityNewWays = 50;
+                probabilityDeleteWay = 25;
+                break;
+            case 20:
+                probabilityStraight = 75;
+                probabilityNewWays = 25;
+                probabilityDeleteWay = 50;
+                break;
+        }
+
         for (int i = 0; i < sizeX; i++)
         {
             for (int j = 0; j < sizeZ; j++)
