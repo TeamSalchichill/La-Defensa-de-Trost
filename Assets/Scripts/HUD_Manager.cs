@@ -502,11 +502,12 @@ public class HUD_Manager : MonoBehaviour
                     activeTower.transformationDamage += 2;
                     break;
             }
-
+            /*
             if (activeTower.level == 5)
             {
                 activeTower.level5Light.enabled = true;
             }
+            */
         }
     }
     public void SellTower()

@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 1462073817706722423}
   m_Layer: 9
   m_Name: LanzaPinchosArriba
-  m_TagString: Tower
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -737,9 +737,9 @@ GameObject:
   - component: {fileID: 2347048538193328074}
   - component: {fileID: 5517196398604833626}
   - component: {fileID: 1542404255807647678}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LanzaPinchosGira
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -786,7 +786,7 @@ MonoBehaviour:
   level5Light: {fileID: 1462073818345271455}
   rangeArea: {fileID: 2956365842787908382}
   partToRotate: {fileID: 1423398175849550722}
-  level5Update: {fileID: 0}
+  level5Updates: []
   towerName: ThornGun
   icon: {fileID: 21300000, guid: a2fb72df6ad97a347819870c1ea431a8, type: 3}
   price: 150
@@ -1101,7 +1101,7 @@ GameObject:
   - component: {fileID: 6047244590354333686}
   m_Layer: 9
   m_Name: LanzaPinchosAbajo
-  m_TagString: Tower
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1401,6 +1401,18 @@ PrefabInstance:
     - target: {fileID: 4417269780429767691, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}
       propertyPath: m_Name
       value: rango
+      objectReference: {fileID: 0}
+    - target: {fileID: 4417269780429767691, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724566107546707850, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814231855809447847, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}
