@@ -20,8 +20,23 @@ public class Ally : MonoBehaviour
     public int range = 10;
     public bool canInfect;
 
+    [Header("Level 5")]
+    public bool level5;
+    public GameObject[] level5Updates;
+
     void Start()
     {
+        if (level5)
+        {
+            if (level5Updates.Length > 0)
+            {
+                foreach (var level5Update in level5Updates)
+                {
+                    level5Update.SetActive(true);
+                }
+            }
+        }
+
         InvokeRepeating("UpdateTarget", 0.1f, 0.55f);
     }
 

@@ -69,6 +69,14 @@ public class NewMapNode : MonoBehaviour
                 Hero.instance.GetComponentInParent<Tower>().health = Hero.instance.GetComponentInParent<Tower>().health;
             }
 
+            foreach (var tower in gameFlow.towers)
+            {
+                if (tower.GetComponent<RecolocateManual>())
+                {
+                    tower.GetComponent<RecolocateManual>().nextRound = true;
+                }
+            }
+
             generator.Generate(startSide, startSideOrientation, offsetStart, mapPos, idX, idZ);
             colocatorManager.canBuild = false;
 

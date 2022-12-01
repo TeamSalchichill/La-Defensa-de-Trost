@@ -354,6 +354,7 @@ MonoBehaviour:
   level5Light: {fileID: 0}
   rangeArea: {fileID: 3313683416957181367}
   partToRotate: {fileID: 1202983320903760973}
+  level5Updates: []
   towerName: PeRigie
   icon: {fileID: 21300000, guid: 67a7eb3d56d652e4e8698db94c17a741, type: 3}
   price: 300
@@ -440,9 +441,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offsetPos: {x: 0, y: 0, z: 0}
-  offsetRot: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
+  offsetRot: {x: 0, y: 0, z: 0, w: 0}
   isSpawn: 0
-  oritateToPath: 0
+  oritateToPath: 1
 --- !u!1001 &1202983321257138620
 PrefabInstance:
   m_ObjectHideFlags: 0

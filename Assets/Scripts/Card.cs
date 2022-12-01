@@ -422,6 +422,8 @@ public class Card : MonoBehaviour
         }
         else
         {
+            border.rectTransform.sizeDelta -= new Vector2(25, 25);
+
             gameFlow.cardSelected = true;
             HUD_Manager.instance.dadosBackGround.gameObject.SetActive(false);
             

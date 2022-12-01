@@ -153,6 +153,8 @@ public class Tower : MonoBehaviour
         hudManager = HUD_Manager.instance;
         generator = Generator.instance;
 
+        levelUpPrice = (int)(price * 0.8f);
+
         level5Light = GetComponentInChildren<Light>();
 
         healthMax = health;
@@ -659,6 +661,7 @@ public class Tower : MonoBehaviour
 
                         GameObject allyInst = Instantiate(ally, tilesInRange[0].transform.position, tilesInRange[0].transform.rotation);
                         allyInst.GetComponent<Ally>().damage = healthDamage;
+                        allyInst.GetComponent<Ally>().level5 = level == 5;
                     }
                     break;
             }
@@ -875,6 +878,7 @@ public class Tower : MonoBehaviour
         {
             GameObject allyInst = Instantiate(bullet, bulletPos.transform.position, transform.rotation);
             allyInst.GetComponent<Ally>().damage = healthDamage / 10;
+            allyInst.GetComponent<Ally>().level5 = level == 5;
             yield return new WaitForSeconds(0.1f);
         }
     }

@@ -128,6 +128,21 @@ public class HUD_Manager : MonoBehaviour
     public GameObject moveTowerButton;
     public GameObject moveHeroButton;
 
+    [Header("Speed")]
+    public Image speedImage;
+    public Sprite speed1;
+    public Sprite speed2;
+    int actualSpeed = 1;
+
+    [Header("Button Fixs")]
+    public Image sellButtonImage;
+    public Image closeButtonImage;
+    public Image close2ButtonImage;
+    public Image moveTowerButtonImage;
+    public Image moveHeroButtonImage;
+    public Image exitButtonImage;
+    public Image resetButtonImage;
+
     void Awake()
     {
         instance = this;
@@ -170,6 +185,10 @@ public class HUD_Manager : MonoBehaviour
         if (generator.zone == Generator.Zone.Valhalla)
         {
             generator.probabilitySpecialTiles = 4;
+        }
+        if (generator.zone == Generator.Zone.Fantasia)
+        {
+            generator.probabilitySpecialTiles = 10;
         }
 
         porcentajes[0].text = ((int)(sliders[0].value * 100)).ToString() + "%";
@@ -242,12 +261,10 @@ public class HUD_Manager : MonoBehaviour
             if (activeTower.level == 5)
             {
                 levelUpButton.text = "Max";
-                //levelUpButton.gameObject.SetActive(false);
             }
             else
             {
                 levelUpButton.text = "" + activeTower.levelUpPrice;
-                //levelUpButton.gameObject.SetActive(true);
             }
 
             float actualHealth = activeTower.health;
@@ -255,7 +272,6 @@ public class HUD_Manager : MonoBehaviour
 
             float healthPercent = actualHealth / actualHealthMax;
 
-            //levelUpButton.text = "" + activeTower.levelUpPrice;
             sellButton.text = "" + (int)(activeTower.acumulateGold * 0.7f * healthPercent);
         }
 
@@ -517,6 +533,8 @@ public class HUD_Manager : MonoBehaviour
         {
             SoundManager.instance.SoundSelection(6, 1);
 
+            sellButtonImage.rectTransform.sizeDelta -= new Vector2(25, 25);
+
             float actualHealth = activeTower.health;
             float actualHealthMax = activeTower.healthMax;
 
@@ -555,17 +573,49 @@ public class HUD_Manager : MonoBehaviour
         SceneManager.LoadScene(id);
     }
 
-    public void ChangeSpeed(int speed)
+    public void ChangeSpeed()
     {
         SoundManager.instance.SoundSelection(3, 0.5f);
         //BackgroundMusic.instance.ChangeClip();
 
-        Time.timeScale = speed;
+        switch (actualSpeed)
+        {
+            case 1:
+                speedImage.sprite = speed2;
+                Time.timeScale = 2;
+                actualSpeed = 2;
+                break;
+            case 2:
+                speedImage.sprite = speed1;
+                Time.timeScale = 1;
+                actualSpeed = 1;
+                break;
+        }
+    }
+
+    public void PauseGame(int iter)
+    {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
+        Time.timeScale = iter;
     }
 
     public void StartRoundButtom()
     {
         SoundManager.instance.SoundSelection(3, 0.5f);
+
+        if (Hero.instance != null)
+        {
+            Hero.instance.nextRound = true;
+            Hero.instance.GetComponentInParent<Tower>().health = Hero.instance.GetComponentInParent<Tower>().health;
+        }
+        foreach (var tower in gameFlow.towers)
+        {
+            if (tower.GetComponent<RecolocateManual>())
+            {
+                tower.GetComponent<RecolocateManual>().nextRound = true;
+            }
+        }
 
         nextRoundButton.gameObject.GetComponent<Image>().rectTransform.sizeDelta -= new Vector2(25, 25);
 
@@ -624,7 +674,7 @@ public class HUD_Manager : MonoBehaviour
         {
             SoundManager.instance.SoundSelection(3, 0.5f);
             
-            MainTower.instance.activateTower = true;
+            MainTower.instance.activateTower = !MainTower.instance.activateTower;
         }
     }
 
@@ -638,6 +688,8 @@ public class HUD_Manager : MonoBehaviour
     public void ExitInfo()
     {
         SoundManager.instance.SoundSelection(3, 0.5f);
+
+        closeButtonImage.rectTransform.sizeDelta -= new Vector2(25, 25);
 
         isShowInfo = false;
 
@@ -708,6 +760,8 @@ public class HUD_Manager : MonoBehaviour
     public void HidePreferenceInfo()
     {
         SoundManager.instance.SoundSelection(3, 0.5f);
+
+        close2ButtonImage.rectTransform.sizeDelta -= new Vector2(25, 25);
 
         preferencesBoard.SetActive(false);
     }
@@ -815,6 +869,7 @@ public class HUD_Manager : MonoBehaviour
     }
     public void DisableCheckExit()
     {
+        exitButtonImage.rectTransform.sizeDelta -= new Vector2(25, 25);
         checkExit.SetActive(false);
     }
     public void CheckReset()
@@ -823,6 +878,7 @@ public class HUD_Manager : MonoBehaviour
     }
     public void DisableCheckReset()
     {
+        resetButtonImage.rectTransform.sizeDelta -= new Vector2(25, 25);
         checkReset.SetActive(false);
     }
 
@@ -835,11 +891,15 @@ public class HUD_Manager : MonoBehaviour
 
     public void MoveTower()
     {
+        moveTowerButtonImage.rectTransform.sizeDelta -= new Vector2(25, 25);
+
         moveTowerButton.SetActive(false);
         activeTower.gameObject.GetComponent<RecolocateManual>().CanRealocateAux();
     }
     public void MoveHero()
     {
+        moveHeroButtonImage.rectTransform.sizeDelta -= new Vector2(25, 25);
+
         moveHeroButton.SetActive(false);
         Hero.instance.gameObject.GetComponent<Hero>().CanRealocateAux();
     }

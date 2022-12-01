@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class HUD_Button : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class HUD_Button : MonoBehaviour
 
     [Header("Loading")]
     public GameObject loadingScreen;
+
+    [Header("Button Fixs")]
+    public Image backButtonImage;
 
     public void ChangeScene(int idScene)
     {
@@ -56,6 +60,11 @@ public class HUD_Button : MonoBehaviour
         SoundManager.instance.SoundSelection(3, 0.5f);
 
         panel.SetActive(activate);
+
+        if (!activate)
+        {
+            backButtonImage.rectTransform.sizeDelta -= new Vector2(25, 25);
+        }
     }
 
     public void StartLevel(int id)
