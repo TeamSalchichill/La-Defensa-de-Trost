@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class WikiManager : MonoBehaviour
@@ -32,6 +33,9 @@ public class WikiManager : MonoBehaviour
     public Sprite[] cards6Aux;
 
     public Sprite emphyCards;
+
+    public Image[] portalIcons;
+    public Image backImage;
     
     public void SelectWorld(int idWorld)
     {
@@ -40,6 +44,8 @@ public class WikiManager : MonoBehaviour
 
         selector.SetActive(false);
         cards.SetActive(true);
+
+        portalIcons[idWorld].rectTransform.sizeDelta -= new Vector2(25, 25);
 
         switch (worldSelected)
         {
@@ -602,5 +608,17 @@ public class WikiManager : MonoBehaviour
         }
 
         flipedCards[idCard] = !flipedCards[idCard];
+    }
+
+    public void BackWiki()
+    {
+        backImage.rectTransform.sizeDelta -= new Vector2(25, 25);
+
+        cards.SetActive(false);
+        selector.SetActive(true);
+    }
+    public void BackMenu()
+    {
+        SceneManager.LoadScene(1);
     }
 }
