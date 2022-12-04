@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     GameFlow gameFlow;
     MainTower mainTower;
     Generator generator;
+    CameraController camera;
 
     [Header("Components")]
     public Animator anim;
@@ -959,6 +960,9 @@ public class Enemy : MonoBehaviour
     {
         if (other.tag == "MainTower")
         {
+            Invoke("cameraShake", 0f);
+            Invoke("ReturnCameraPosition", 0.1f);
+
             MainTower.instance.health--;
 
             if (type == Type.Grande)
@@ -966,7 +970,8 @@ public class Enemy : MonoBehaviour
                 //mainTower.health = -1;
             }
 
-            Dead();
+            Invoke("Dead", 0.2f);
+           
         }
 
         if (other.tag == "Wave")
@@ -1143,5 +1148,16 @@ public class Enemy : MonoBehaviour
         SoundManager.instance.SoundSelection(8, 0.5f);
 
         Destroy(gameObject);
+    }
+
+    void cameraShake()
+    {
+        print("1");
+        CameraController.instance.transform.Translate(Vector3.down * 20f);
+    }
+    void ReturnCameraPosition()
+    {
+        print("2");
+        CameraController.instance.transform.Translate(Vector3.up * 20f);
     }
 }
