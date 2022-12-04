@@ -262,65 +262,76 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetType: 0
   attackType: 1
-  canTarget: 0
   canColocate: 0
   bulletType: 1
   zone: 2
   specialStat: 2
-  towerName: Obelisco
-  icon: {fileID: 0}
+  targetPreference: 0
+  anim: {fileID: 529317122}
   level5Light: {fileID: 0}
   rangeArea: {fileID: 4417269780651086121}
-  rangeAreaOriginalScale: 0
-  anim: {fileID: 529317122}
-  particles: {fileID: 399853783}
-  target: {fileID: 0}
-  bullet: {fileID: 0}
-  bulletPos: {fileID: 1578840397}
   partToRotate: {fileID: 399853784}
-  fullRotate: 1
-  offsetY: 1.65
-  isHero: 0
+  level5Updates: []
+  towerName: Obelisco
+  icon: {fileID: 0}
+  price: 200
+  acumulateGold: 0
   specialTile: 0
   burnTile: 0
+  spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
+  healthDamage: 40
+  armorDamage: 0
+  range: 9
+  rangeAreaOriginalScale: 0
+  fireRate: 3
+  turnSpeed: 10
+  health: 500
+  healthMax: 0
+  armor: 0
+  armorMax: 0
+  sirenitaBoost: 0
+  shieldBoost: 0
+  kills: 0
+  target: {fileID: 0}
+  numTargets: 1
+  bullet: {fileID: 0}
+  bulletPos: {fileID: 1578840397}
+  particles: {fileID: 399853783}
+  fullRotate: 1
+  ally: {fileID: 0}
   level: 1
   levelMultiplier: 1.1
   levelMultiplierSpecialStat: 1.2
   levelUpPrice: 150
   level5Price: 100
   priceLogo: "\u20AC"
-  acumulateGold: 0
-  health: 500
-  healthMax: 0
-  armor: 0
-  armorMax: 0
-  range: 9
-  fireRate: 3
-  turnSpeed: 10
-  price: 200
-  isDie: 0
-  healthDamage: 40
-  armorDamage: 0
   iceDamage: 0
   igniteDamage: 1
   waterDamage: 0
   ascentDamage: 0
   bloodDamage: 0
   transformationDamage: 0
+  isAscent: 0
   isBurn: 0
   burnEffect: 0
   burnEffectPerShoot: 2
   timeInOverHeat: 10
   smokeOverHeat: {fileID: 8550112519114524154, guid: 0e92832738859c442a7291bfea6e6f75, type: 3}
+  isHero: 0
   iceWall: {fileID: 0}
   exploteIceWall: 0
   frezzeIceWall: 0
-  spawnParticles: {fileID: 1497311182214831118, guid: fca769d222550cb44b1e919330393b2d, type: 3}
   curation: 50
-  RaParticles: []
-  numRays: 0
-  partToRotateGO: {fileID: 0}
-  allEnemiesInRange: []
+  singParticles: {fileID: 0}
+  thunder: {fileID: 0}
+  areaCuration: 50
+  curationParticle: {fileID: 0}
+  destroyParticle: {fileID: 0}
+  areaDamageParticle: {fileID: 0}
+  shootAudio: {fileID: 0}
+  shootAudioVolume: 0.5
+  abilityAudio: {fileID: 0}
+  abilityAudioVolume: 0.5
 --- !u!65 &529317125
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -395,7 +406,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7816324940044139596, guid: 49158a708727b314c9fa679320285573, type: 3}
+  - {fileID: 2100000, guid: 0c2f858922b67f34396f8b4c57730e77, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
