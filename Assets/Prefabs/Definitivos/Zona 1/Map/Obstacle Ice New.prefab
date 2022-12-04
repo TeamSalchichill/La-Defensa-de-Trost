@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4571980662434644881}
   - component: {fileID: 5671147684778150040}
+  - component: {fileID: 5379829859798199032}
   m_Layer: 10
   m_Name: Obstacle Ice New
   m_TagString: Untagged
@@ -46,6 +47,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.2, y: 2.2, z: 2.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5379829859798199032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3763074822107502891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3fbfe8f8037ed54285c9166d87b7002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offsetPos: {x: 0, y: -2, z: 0}
+  offsetRot: {x: 0, y: 0, z: 0, w: 0}
+  isSpawn: 0
+  oritateToPath: 0
 --- !u!1 &5311128781523280370
 GameObject:
   m_ObjectHideFlags: 0

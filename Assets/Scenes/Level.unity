@@ -1532,7 +1532,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Ronda: 000'
+  m_text: 'Ronda: 10/30'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a478210a65d19d349ab0c13e172265ec, type: 2}
   m_sharedMaterial: {fileID: -3057761074478425410, guid: a478210a65d19d349ab0c13e172265ec, type: 2}
@@ -1559,13 +1559,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 55
-  m_fontSizeBase: 55
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -15932,6 +15932,13 @@ MonoBehaviour:
   - {fileID: 101079529873787619, guid: 9e0ae629e199067459294224d3846553, type: 3}
   - {fileID: 2930776255959184392, guid: 574a5079d7ca5be4e844f90943d14d00, type: 3}
   - {fileID: 1120393623344298996, guid: ba5152bdf6563b74ea5a87d224f0a335, type: 3}
+  treasure:
+  - {fileID: 3715463319372084666, guid: 28b032b2731201747baf233faf07caf8, type: 3}
+  - {fileID: 2140574845459965548, guid: 3d27d515593c6aa4d80f3a1ab50dda28, type: 3}
+  - {fileID: 309196780467141169, guid: 6fd80677572cbf84d8bb2441666258df, type: 3}
+  - {fileID: 1945395301259974052, guid: 6d7439431306cef45ae3d45b4366f872, type: 3}
+  - {fileID: 2166342061584616117, guid: 4f40d438a0d36294bb5afea9004811a9, type: 3}
+  - {fileID: 725773619320302972, guid: 01c5289d6504eb54e85e2b59068d0d71, type: 3}
   mainTower:
   - {fileID: 3957486680709386853, guid: b79ea236e426256408e3ef297128ec71, type: 3}
   - {fileID: 5652631880309883029, guid: 73d2f0df4bdc1714ab1fc729ce7ef1cf, type: 3}
@@ -17230,7 +17237,7 @@ MonoBehaviour:
   nextMap: {fileID: 1723674981817254988, guid: 6f2ec046c387f1544811f4777c80d56c, type: 3}
   enemySpawn: {fileID: 1120393623344298996, guid: ba5152bdf6563b74ea5a87d224f0a335, type: 3}
   transparentEnemySpawn: {fileID: 1723674981817254988, guid: d642f908b56ca7e49b1d082fccc59b55, type: 3}
-  treasure: {fileID: 8480749302787634468, guid: 46fdea678f6d102488bee3891e9836c8, type: 3}
+  treasure: {fileID: 725773619320302972, guid: 01c5289d6504eb54e85e2b59068d0d71, type: 3}
   obstacleBlock: {fileID: 4815476922100832967, guid: febb552eea538394ea0f050f89f5821f, type: 3}
   fireTile: {fileID: 6060194335321953284, guid: 383e54806b2d517429c59983a5410bc8, type: 3}
   auxBlock: {fileID: 1723674981817254988, guid: a08bf5c2f9be9e847ac481e99e410a9f, type: 3}
@@ -28183,6 +28190,8 @@ MonoBehaviour:
   effectsAS: {fileID: 1816181065}
   levelSelectedPublic: 1
   levelMaxPublic: 1
+  firstTimePublic: 1
+  loginScreen: {fileID: 0}
 --- !u!4 &1329845408
 Transform:
   m_ObjectHideFlags: 0

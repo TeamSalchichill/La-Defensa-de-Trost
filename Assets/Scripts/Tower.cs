@@ -887,7 +887,10 @@ public class Tower : MonoBehaviour
     {
         if (gameObject.GetComponent<Tower>())
         {
-            hudManager.ShowTowerInfo(gameObject.GetComponent<Tower>());
+            if (gameObject.GetComponent<Tower>().enabled)
+            {
+                hudManager.ShowTowerInfo(gameObject.GetComponent<Tower>());
+            }
         }
         else
         {

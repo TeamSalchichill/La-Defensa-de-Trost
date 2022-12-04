@@ -960,9 +960,11 @@ public class Enemy : MonoBehaviour
     {
         if (other.tag == "MainTower")
         {
+            //StartCoroutine(CameraController.instance.Shake(0.15f, 0.4f));
+            
             Invoke("cameraShake", 0f);
             Invoke("ReturnCameraPosition", 0.1f);
-
+            
             MainTower.instance.health--;
 
             if (type == Type.Grande)
@@ -971,7 +973,7 @@ public class Enemy : MonoBehaviour
             }
 
             Invoke("Dead", 0.2f);
-           
+            //Dead();
         }
 
         if (other.tag == "Wave")

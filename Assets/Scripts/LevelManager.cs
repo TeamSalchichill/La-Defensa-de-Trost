@@ -20,6 +20,7 @@ public class LevelManager : MonoBehaviour
     public GameObject[] specialPath;
     public GameObject[] obstacle;
     public GameObject[] spawner;
+    public GameObject[] treasure;
     [Space]
     public GameObject[] mainTower;
     public GameObject[] miniMainTower;
@@ -43,6 +44,7 @@ public class LevelManager : MonoBehaviour
         generator.specialGroundBlock = specialPath[id];
         generator.obstacleBlock = obstacle[id];
         generator.enemySpawn = spawner[id];
+        generator.treasure = treasure[id];
 
         perla.SetActive(false);
 

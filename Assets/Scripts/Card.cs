@@ -493,7 +493,7 @@ public class Card : MonoBehaviour
                 break;
         }
 
-        //icon.sprite = gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().icon;
+        icon.sprite = gameFlow.enemies[enemySelectedId].GetComponent<Enemy>().icon;
 
         statSelected = Random.Range(0, 5);
 
