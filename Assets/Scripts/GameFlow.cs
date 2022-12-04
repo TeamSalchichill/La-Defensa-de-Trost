@@ -142,6 +142,11 @@ public class GameFlow : MonoBehaviour
 
             if (round == totalRounds)
             {
+                if (gameManager.levelSelectedPublic >= gameManager.levelMaxPublic)
+                {
+                    DataManger.instance.SaveData();
+                }
+                
                 if (generator.zone == Generator.Zone.Infierno)
                 {
                     hudManager.panelEnd.SetActive(true);
@@ -166,6 +171,8 @@ public class GameFlow : MonoBehaviour
                     ;
 
                     hudManager.winScreen.SetActive(true);
+
+                    hudManager.CanExitInvoke();
                 }
 
                 return;

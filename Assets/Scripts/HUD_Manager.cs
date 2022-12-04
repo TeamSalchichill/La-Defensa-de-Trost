@@ -70,6 +70,7 @@ public class HUD_Manager : MonoBehaviour
     [Header("Game Over")]
     public GameObject gameOverScreen;
     public GameObject winScreen;
+    public Button winScreenButton;
     public GameObject endScreen;
     public GameObject checkExit;
     public GameObject checkReset;
@@ -200,7 +201,7 @@ public class HUD_Manager : MonoBehaviour
 
         coinsText.text = gameFlow.coins.ToString();
         specialCoinsText.text = gameFlow.specialCoins.ToString();
-        roundText.text = "Ronda: " + gameFlow.round.ToString();
+        roundText.text = "Ronda: " + gameFlow.round.ToString() + "/" + gameFlow.totalRounds.ToString();
         if (mainTower == null)
         {
             mainTower = MainTower.instance;
@@ -851,8 +852,18 @@ public class HUD_Manager : MonoBehaviour
                     ;
 
                 winScreen.SetActive(true);
+                CanExitInvoke();
             }
         }
+    }
+
+    public void CanExitInvoke()
+    {
+        Invoke("CanExit", 5);
+    }
+    void CanExit()
+    {
+        winScreenButton.interactable = true;
     }
 
     public void SkipImages()

@@ -25,6 +25,13 @@ public class GameManager : MonoBehaviour
     public static int levelSelected = 1;
     public int levelSelectedPublic = 1;
 
+    public static int levelMax = 1;
+    public int levelMaxPublic = 1;
+
+    public static bool firstTime = true;
+    public bool firstTimePublic = true;
+    public GameObject loginScreen;
+
     void Awake()
     {
         instance = this;
@@ -33,9 +40,16 @@ public class GameManager : MonoBehaviour
         volumeMultiplierEffectsPublic = volumeMultiplierEffects;
 
         levelSelectedPublic = levelSelected;
+        levelMaxPublic = levelMax;
     }
+
     void Start()
     {
+        if (loginScreen)
+        {
+            loginScreen.SetActive(firstTime);
+        }
+
         Application.targetFrameRate = 30;
 
         Time.timeScale = 1;
@@ -76,5 +90,16 @@ public class GameManager : MonoBehaviour
         levelSelectedPublic = id;
 
         SceneManager.LoadScene(5);
+    }
+
+    public void UpdateMaxLevel(int newMaxLevel)
+    {
+        levelMax = newMaxLevel;
+        levelMaxPublic = newMaxLevel;
+    }
+    public void UpdateFirstTime()
+    {
+        firstTime = false;
+        firstTimePublic = false;
     }
 }

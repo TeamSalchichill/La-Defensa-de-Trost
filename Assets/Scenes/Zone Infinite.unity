@@ -1804,6 +1804,19 @@ MonoBehaviour:
   showCards: 0
   cardSelected: 1
   canExpand: 1
+  time: 0
+  kills1: 0
+  kills2: 0
+  kills3: 0
+  towersBuild: 0
+  towersDestroyed: 0
+  heroChanges: 0
+  goldSpent: 0
+  specialGoldSpent: 0
+  miniObjetivesDestroyed: 0
+  groundTiles: []
+  towers: []
+  activeEnemies: []
 --- !u!114 &51762635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1904,8 +1917,13 @@ MonoBehaviour:
   isInfiniteLevel: 1
   volumeMultiplierPublic: 1
   sliderVolumeMusic: {fileID: 0}
+  musicAS: {fileID: 0}
+  musicASAux: {fileID: 0}
   volumeMultiplierEffectsPublic: 1
   sliderVolumeMusicEffects: {fileID: 0}
+  effectsAS: {fileID: 0}
+  levelSelectedPublic: 1
+  levelMaxPublic: 1
 --- !u!4 &51762638
 Transform:
   m_ObjectHideFlags: 0
@@ -9866,8 +9884,13 @@ MonoBehaviour:
   isInfiniteLevel: 1
   volumeMultiplierPublic: 1
   sliderVolumeMusic: {fileID: 0}
+  musicAS: {fileID: 0}
+  musicASAux: {fileID: 0}
   volumeMultiplierEffectsPublic: 1
   sliderVolumeMusicEffects: {fileID: 0}
+  effectsAS: {fileID: 0}
+  levelSelectedPublic: 1
+  levelMaxPublic: 1
 --- !u!4 &497251282
 Transform:
   m_ObjectHideFlags: 0
@@ -15611,7 +15634,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 0}
-  loadingScreen: {fileID: 0}
+  loadingScreen: {fileID: 243202995}
+  backButtonImage: {fileID: 0}
 --- !u!1 &720180401
 GameObject:
   m_ObjectHideFlags: 0
@@ -40114,6 +40138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicOutRounds: {fileID: 1794100756}
   musicInRounds: {fileID: 1794100755}
+  defaultVolume: 0.5
 --- !u!4 &1794100758
 Transform:
   m_ObjectHideFlags: 0
@@ -41535,7 +41560,10 @@ MonoBehaviour:
   towerBannerText: {fileID: 121415601}
   gameOverScreen: {fileID: 1709241901}
   winScreen: {fileID: 1404851756}
+  winScreenButton: {fileID: 0}
   endScreen: {fileID: 0}
+  checkExit: {fileID: 0}
+  checkReset: {fileID: 0}
   towerPotionButton: {fileID: 2058484093}
   towerPotionIcon: {fileID: 1160045394}
   towerPotionButtonColorHover: {r: 0, g: 0, b: 0, a: 0.5882353}
@@ -41547,8 +41575,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 24eac95572fc95b40a3534e636936a21, type: 3}
   - {fileID: 21300000, guid: 877506e76f590ec47895170af76a539a, type: 3}
   dadosBackGround: {fileID: 1768681526}
+  dicesImages: []
+  dicesImage: {fileID: 0}
+  dicesText: {fileID: 0}
   tutorialSprite: {fileID: 230984724}
   tutorialSpriteId: 0
+  tutorialSpriteIdFinal: 0
   tutorialImages:
   - {fileID: 21300000, guid: 59edc0ace89809741b51f86c444d1c86, type: 3}
   - {fileID: 21300000, guid: a32d08358cdb06e4c8eeda9569257d99, type: 3}
@@ -41566,11 +41598,27 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 59edc0ace89809741b51f86c444d1c86, type: 3}
   - {fileID: 21300000, guid: a32d08358cdb06e4c8eeda9569257d99, type: 3}
   - {fileID: 21300000, guid: 1f80b2be268c90a4bb493dbeabcdb6ff, type: 3}
+  imageId: 1
+  imageIdFinal: 1
   panel: {fileID: 976363938}
   activeImageEnd: {fileID: 0}
   imagesEnd: []
   panelEnd: {fileID: 0}
   loadingScreen: {fileID: 243202995}
+  summaryTextDead: {fileID: 0}
+  summaryTextWin: {fileID: 0}
+  moveTowerButton: {fileID: 0}
+  moveHeroButton: {fileID: 0}
+  speedImage: {fileID: 0}
+  speed1: {fileID: 0}
+  speed2: {fileID: 0}
+  sellButtonImage: {fileID: 0}
+  closeButtonImage: {fileID: 0}
+  close2ButtonImage: {fileID: 0}
+  moveTowerButtonImage: {fileID: 0}
+  moveHeroButtonImage: {fileID: 0}
+  exitButtonImage: {fileID: 0}
+  resetButtonImage: {fileID: 0}
 --- !u!114 &1857192870
 MonoBehaviour:
   m_ObjectHideFlags: 0
