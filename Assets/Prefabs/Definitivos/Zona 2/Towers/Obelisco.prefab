@@ -275,6 +275,7 @@ MonoBehaviour:
   - {fileID: 958721604276697352}
   towerName: Test-Lah
   icon: {fileID: 21300000, guid: 7fb3b822c591574479f2fbdd9721cdfa, type: 3}
+  infoInGame: {fileID: 21300000, guid: f9bfc3cf1feb7504e9a1087fbc6d6ae3, type: 3}
   price: 200
   acumulateGold: 0
   specialTile: 0
@@ -570,7 +571,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: deddd5512828aff4ea813e95a1384b00, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deddd5512828aff4ea813e95a1384b00, type: 3}

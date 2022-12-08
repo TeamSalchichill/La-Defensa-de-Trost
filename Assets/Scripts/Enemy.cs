@@ -69,6 +69,8 @@ public class Enemy : MonoBehaviour
     [Space]
     public bool infectationMode = false;
     public bool canBoom = false;
+    [Space]
+    public bool attackTowers;
 
     [Header("Stats multiplier")]
     [Range(0, 1)]
@@ -960,16 +962,16 @@ public class Enemy : MonoBehaviour
     {
         if (other.tag == "MainTower")
         {
-            //StartCoroutine(CameraController.instance.Shake(0.15f, 0.4f));
+            StartCoroutine(CameraController.instance.Shake(30, 5));
             
-            Invoke("cameraShake", 0f);
-            Invoke("ReturnCameraPosition", 0.1f);
+            //Invoke("cameraShake", 0f);
+            //Invoke("ReturnCameraPosition", 0.1f);
             
             MainTower.instance.health--;
 
             if (type == Type.Grande)
             {
-                //mainTower.health = -1;
+                mainTower.health = -1;
             }
 
             Invoke("Dead", 0.2f);

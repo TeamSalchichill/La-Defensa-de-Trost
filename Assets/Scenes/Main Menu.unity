@@ -397,6 +397,10 @@ MonoBehaviour:
   button: {fileID: 12544351}
   normalSprite: {fileID: 0}
   hoverSprite: {fileID: 0}
+  infoImage: {fileID: 0}
+  idTorre: 0
+  isHechizo: 0
+  infoHechizo: {fileID: 0}
 --- !u!114 &12544355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1241,6 +1245,7 @@ MonoBehaviour:
   levelMaxPublic: 7
   firstTimePublic: 1
   loginScreen: {fileID: 0}
+  invitatePublic: 0
 --- !u!4 &266286336
 Transform:
   m_ObjectHideFlags: 0
@@ -1818,6 +1823,10 @@ MonoBehaviour:
   button: {fileID: 499102954}
   normalSprite: {fileID: 0}
   hoverSprite: {fileID: 0}
+  infoImage: {fileID: 0}
+  idTorre: 0
+  isHechizo: 0
+  infoHechizo: {fileID: 0}
 --- !u!114 &499102958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1857,7 +1866,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 190968198}
   m_OnClick:
     m_PersistentCalls:
@@ -2013,6 +2022,10 @@ MonoBehaviour:
   button: {fileID: 502293538}
   normalSprite: {fileID: 0}
   hoverSprite: {fileID: 0}
+  infoImage: {fileID: 0}
+  idTorre: 0
+  isHechizo: 0
+  infoHechizo: {fileID: 0}
 --- !u!114 &502293542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2208,6 +2221,10 @@ MonoBehaviour:
   button: {fileID: 529495838}
   normalSprite: {fileID: 0}
   hoverSprite: {fileID: 0}
+  infoImage: {fileID: 0}
+  idTorre: 0
+  isHechizo: 0
+  infoHechizo: {fileID: 0}
 --- !u!114 &529495842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2342,7 +2359,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 190968198}
   m_OnClick:
     m_PersistentCalls:
@@ -4067,6 +4084,10 @@ MonoBehaviour:
   button: {fileID: 1260061913}
   normalSprite: {fileID: 0}
   hoverSprite: {fileID: 0}
+  infoImage: {fileID: 0}
+  idTorre: 0
+  isHechizo: 0
+  infoHechizo: {fileID: 0}
 --- !u!114 &1260061917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4397,6 +4418,10 @@ MonoBehaviour:
   button: {fileID: 1354913159}
   normalSprite: {fileID: 0}
   hoverSprite: {fileID: 0}
+  infoImage: {fileID: 0}
+  idTorre: 0
+  isHechizo: 0
+  infoHechizo: {fileID: 0}
 --- !u!114 &1354913163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5709,6 +5734,10 @@ MonoBehaviour:
   button: {fileID: 1639530336}
   normalSprite: {fileID: 0}
   hoverSprite: {fileID: 0}
+  infoImage: {fileID: 0}
+  idTorre: 0
+  isHechizo: 0
+  infoHechizo: {fileID: 0}
 --- !u!114 &1639530340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6012,6 +6041,7 @@ MonoBehaviour:
   - {fileID: 162486852}
   - {fileID: 187932857}
   - {fileID: 1380007281}
+  - {fileID: 573440079}
   levelsButtonsAux:
   - {fileID: 1639530340}
   - {fileID: 1260061917}
@@ -6019,6 +6049,7 @@ MonoBehaviour:
   - {fileID: 529495842}
   - {fileID: 1354913163}
   - {fileID: 12544355}
+  - {fileID: 499102958}
 --- !u!4 &1683322579
 Transform:
   m_ObjectHideFlags: 0
@@ -6185,6 +6216,10 @@ MonoBehaviour:
   button: {fileID: 1720017749}
   normalSprite: {fileID: 0}
   hoverSprite: {fileID: 0}
+  infoImage: {fileID: 0}
+  idTorre: 0
+  isHechizo: 0
+  infoHechizo: {fileID: 0}
 --- !u!114 &1720017752
 MonoBehaviour:
   m_ObjectHideFlags: 0

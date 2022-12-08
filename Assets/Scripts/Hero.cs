@@ -12,6 +12,8 @@ public class Hero : MonoBehaviour
     public bool realocate = false;
     public bool nextRound = true;
 
+    public BoxCollider[] extraColliders;
+
     void Awake()
     {
         instance = this;

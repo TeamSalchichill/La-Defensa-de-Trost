@@ -360,6 +360,10 @@ MonoBehaviour:
   button: {fileID: 142392800}
   normalSprite: {fileID: 0}
   hoverSprite: {fileID: 0}
+  infoImage: {fileID: 0}
+  idTorre: 0
+  isHechizo: 0
+  infoHechizo: {fileID: 0}
 --- !u!114 &142392799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -744,7 +748,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d31a4cdfdd070424aa4aa4936c573bc9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 54d3b48ca52cde74fb4b79bdd1296bdf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -901,6 +905,10 @@ MonoBehaviour:
   button: {fileID: 0}
   normalSprite: {fileID: 0}
   hoverSprite: {fileID: 0}
+  infoImage: {fileID: 0}
+  idTorre: 0
+  isHechizo: 0
+  infoHechizo: {fileID: 0}
 --- !u!114 &325016581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1169,6 +1177,10 @@ MonoBehaviour:
   button: {fileID: 368039814}
   normalSprite: {fileID: 0}
   hoverSprite: {fileID: 0}
+  infoImage: {fileID: 0}
+  idTorre: 0
+  isHechizo: 0
+  infoHechizo: {fileID: 0}
 --- !u!114 &368039813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1434,7 +1446,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -775, y: 0}
+  m_AnchoredPosition: {x: -600, y: 250}
   m_SizeDelta: {x: 300, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &656829961
@@ -1497,6 +1509,10 @@ MonoBehaviour:
   button: {fileID: 0}
   normalSprite: {fileID: 0}
   hoverSprite: {fileID: 0}
+  infoImage: {fileID: 0}
+  idTorre: 0
+  isHechizo: 0
+  infoHechizo: {fileID: 0}
 --- !u!114 &656829963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1629,7 +1645,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -400, y: -250}
+  m_AnchoredPosition: {x: -600, y: -250}
   m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &665652908
@@ -1692,6 +1708,10 @@ MonoBehaviour:
   button: {fileID: 0}
   normalSprite: {fileID: 0}
   hoverSprite: {fileID: 0}
+  infoImage: {fileID: 0}
+  idTorre: 0
+  isHechizo: 0
+  infoHechizo: {fileID: 0}
 --- !u!114 &665652910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1731,7 +1751,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 665652911}
   m_OnClick:
     m_PersistentCalls:
@@ -1824,7 +1844,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 250}
+  m_AnchoredPosition: {x: 200, y: 250}
   m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &767599875
@@ -1887,6 +1907,10 @@ MonoBehaviour:
   button: {fileID: 0}
   normalSprite: {fileID: 0}
   hoverSprite: {fileID: 0}
+  infoImage: {fileID: 0}
+  idTorre: 0
+  isHechizo: 0
+  infoHechizo: {fileID: 0}
 --- !u!114 &767599877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1926,7 +1950,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 767599878}
   m_OnClick:
     m_PersistentCalls:
@@ -2255,6 +2279,10 @@ MonoBehaviour:
   button: {fileID: 0}
   normalSprite: {fileID: 0}
   hoverSprite: {fileID: 0}
+  infoImage: {fileID: 0}
+  idTorre: 0
+  isHechizo: 0
+  infoHechizo: {fileID: 0}
 --- !u!114 &910486297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2425,7 +2453,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -250}
+  m_AnchoredPosition: {x: -200, y: -250}
   m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1116740189
@@ -2488,6 +2516,10 @@ MonoBehaviour:
   button: {fileID: 0}
   normalSprite: {fileID: 0}
   hoverSprite: {fileID: 0}
+  infoImage: {fileID: 0}
+  idTorre: 0
+  isHechizo: 0
+  infoHechizo: {fileID: 0}
 --- !u!114 &1116740191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2527,7 +2559,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1116740192}
   m_OnClick:
     m_PersistentCalls:
@@ -2620,7 +2652,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 400, y: -250}
+  m_AnchoredPosition: {x: 200, y: -250}
   m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1253139695
@@ -2683,6 +2715,10 @@ MonoBehaviour:
   button: {fileID: 0}
   normalSprite: {fileID: 0}
   hoverSprite: {fileID: 0}
+  infoImage: {fileID: 0}
+  idTorre: 0
+  isHechizo: 0
+  infoHechizo: {fileID: 0}
 --- !u!114 &1253139697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2722,7 +2758,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1253139698}
   m_OnClick:
     m_PersistentCalls:
@@ -2919,6 +2955,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1362205639}
+  - component: {fileID: 1362205640}
   - component: {fileID: 1362205638}
   m_Layer: 0
   m_Name: WikiManager
@@ -2941,6 +2978,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selector: {fileID: 186065945}
   cards: {fileID: 347162553}
+  buttons:
+  - {fileID: 656829963}
+  - {fileID: 2118511502}
+  - {fileID: 767599877}
+  - {fileID: 1821844086}
+  - {fileID: 665652910}
+  - {fileID: 1116740191}
+  - {fileID: 1253139697}
   cardsPrefabs:
   - {fileID: 1800274535}
   - {fileID: 459562948}
@@ -3137,6 +3182,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1362205640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362205637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b121ade81feb174c92e5742791a848e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doSpawnEnemies: 0
+  isInfiniteLevel: 0
+  volumeMultiplierPublic: 1
+  sliderVolumeMusic: {fileID: 0}
+  musicAS: {fileID: 0}
+  musicASAux: {fileID: 0}
+  volumeMultiplierEffectsPublic: 1
+  sliderVolumeMusicEffects: {fileID: 0}
+  effectsAS: {fileID: 0}
+  levelSelectedPublic: 1
+  levelMaxPublic: 1
+  firstTimePublic: 1
+  loginScreen: {fileID: 0}
+  invitatePublic: 0
 --- !u!1 &1463953442
 GameObject:
   m_ObjectHideFlags: 0
@@ -3402,7 +3473,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 400, y: 250}
+  m_AnchoredPosition: {x: 600, y: 250}
   m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1821844084
@@ -3465,6 +3536,10 @@ MonoBehaviour:
   button: {fileID: 0}
   normalSprite: {fileID: 0}
   hoverSprite: {fileID: 0}
+  infoImage: {fileID: 0}
+  idTorre: 0
+  isHechizo: 0
+  infoHechizo: {fileID: 0}
 --- !u!114 &1821844086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3504,7 +3579,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1821844087}
   m_OnClick:
     m_PersistentCalls:
@@ -3597,7 +3672,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -400, y: 250}
+  m_AnchoredPosition: {x: -200, y: 250}
   m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2118511502
@@ -3639,7 +3714,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2118511503}
   m_OnClick:
     m_PersistentCalls:
@@ -3754,3 +3829,7 @@ MonoBehaviour:
   button: {fileID: 0}
   normalSprite: {fileID: 0}
   hoverSprite: {fileID: 0}
+  infoImage: {fileID: 0}
+  idTorre: 0
+  isHechizo: 0
+  infoHechizo: {fileID: 0}

@@ -22,7 +22,7 @@ public class SoundManager : MonoBehaviour
         if (GameFlow.instance)
         {
             volume -= 0.25f;
-            controlAudio.PlayOneShot(audios[index], (volume * GameManager.instance.volumeMultiplierEffectsPublic) + ((60 - GameFlow.instance.round) * 0.01f));
+            controlAudio.PlayOneShot(audios[index], (volume * GameManager.instance.volumeMultiplierEffectsPublic) + ((40 - GameFlow.instance.round) * 0.01f));
         }
         else
         {
@@ -34,8 +34,8 @@ public class SoundManager : MonoBehaviour
     {
         if (GameFlow.instance)
         {
-            volume -= 0.25f;
-            controlAudio.PlayOneShot(clip, (volume * GameManager.instance.volumeMultiplierEffectsPublic) + ((60 - GameFlow.instance.round) * 0.01f));
+            volume -= 0.35f;
+            controlAudio.PlayOneShot(clip, (volume * GameManager.instance.volumeMultiplierEffectsPublic) + ((40 - GameFlow.instance.round) * 0.01f));
         }
         else
         {

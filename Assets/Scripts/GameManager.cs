@@ -32,6 +32,9 @@ public class GameManager : MonoBehaviour
     public bool firstTimePublic = true;
     public GameObject loginScreen;
 
+    public static bool invitate;
+    public bool invitatePublic;
+
     void Awake()
     {
         instance = this;
@@ -41,6 +44,8 @@ public class GameManager : MonoBehaviour
 
         levelSelectedPublic = levelSelected;
         levelMaxPublic = levelMax;
+
+        invitatePublic = invitate;
     }
 
     void Start()
@@ -101,5 +106,10 @@ public class GameManager : MonoBehaviour
     {
         firstTime = false;
         firstTimePublic = false;
+    }
+    public void UpdateInvitate()
+    {
+        invitate = true;
+        invitatePublic = true;
     }
 }

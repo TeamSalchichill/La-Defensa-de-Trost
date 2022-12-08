@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -31,11 +32,16 @@ public class LevelManager : MonoBehaviour
     public GameObject[] enemy;
     [Space]
     public GameObject[] hero;
+    [Space]
+    public InteractiveButton hechizo;
+    public Sprite[] hechizosInfo;
 
     void Start()
     {
         int id = GameManager.instance.levelSelectedPublic;
         id--;
+
+        hechizo.infoHechizo = hechizosInfo[id];
 
         generator.grassBlock = normalTerrain[id];
         generator.specialGrassBlock = specialTerrain[id];
@@ -64,6 +70,8 @@ public class LevelManager : MonoBehaviour
                 hudManager.tutorialSpriteIdFinal = 4;
                 hudManager.tutorialSprite.sprite = hudManager.tutorialImages[hudManager.tutorialSpriteId];
 
+                gameFlow.totalRounds = 10;
+
                 bacgroundColorString = "#383E61";
                 break;
             case 1:
@@ -76,6 +84,8 @@ public class LevelManager : MonoBehaviour
                 hudManager.tutorialSpriteIdFinal = 8;
                 hudManager.tutorialSprite.sprite = hudManager.tutorialImages[hudManager.tutorialSpriteId];
 
+                gameFlow.totalRounds = 20;
+
                 bacgroundColorString = "#615638";
                 break;
             case 2:
@@ -87,6 +97,19 @@ public class LevelManager : MonoBehaviour
                 hudManager.tutorialSpriteId = 8;
                 hudManager.tutorialSpriteIdFinal = 12;
                 hudManager.tutorialSprite.sprite = hudManager.tutorialImages[hudManager.tutorialSpriteId];
+
+                gameFlow.totalRounds = 30;
+                for (int i = 0; i < gameFlow.enemiesPerRound1.Length; i++)
+                {
+                    gameFlow.enemiesPerRound1[i] = (int)(gameFlow.enemiesPerRound1[i] * 0.7f);
+                }
+                for (int i = 0; i < gameFlow.enemiesPerRound2.Length; i++)
+                {
+                    gameFlow.enemiesPerRound2[i] = (int)(gameFlow.enemiesPerRound2[i] * 0.7f);
+                }
+                gameFlow.enemiesPerRound3[9] = 0;
+                gameFlow.enemiesPerRound3[19] = 0;
+                gameFlow.enemiesPerRound3[29] = 1;
 
                 bacgroundColorString = "#385861";
                 perla.SetActive(true);
@@ -101,6 +124,8 @@ public class LevelManager : MonoBehaviour
                 hudManager.tutorialSpriteIdFinal = 16;
                 hudManager.tutorialSprite.sprite = hudManager.tutorialImages[hudManager.tutorialSpriteId];
 
+                gameFlow.totalRounds = 30;
+
                 bacgroundColorString = "#7A8282";
                 break;
             case 4:
@@ -113,6 +138,8 @@ public class LevelManager : MonoBehaviour
                 hudManager.tutorialSpriteIdFinal = 20;
                 hudManager.tutorialSprite.sprite = hudManager.tutorialImages[hudManager.tutorialSpriteId];
 
+                gameFlow.totalRounds = 30;
+
                 bacgroundColorString = "#4C824B";
                 break;
             case 5:
@@ -124,6 +151,8 @@ public class LevelManager : MonoBehaviour
                 hudManager.tutorialSpriteId = 20;
                 hudManager.tutorialSpriteIdFinal = 24;
                 hudManager.tutorialSprite.sprite = hudManager.tutorialImages[hudManager.tutorialSpriteId];
+
+                gameFlow.totalRounds = 30;
 
                 bacgroundColorString = "#442424";
                 break;

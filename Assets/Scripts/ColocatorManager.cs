@@ -143,6 +143,17 @@ public class ColocatorManager : MonoBehaviour
                     towerScript = towers[towerID].GetComponentInChildren<Tower>();
                 }
 
+                if (towers[towerID].GetComponent<Hero>())
+                {
+                    if (towers[towerID].GetComponent<Hero>().extraColliders.Length > 0)
+                    {
+                        foreach (var collider in towers[towerID].GetComponent<Hero>().extraColliders)
+                        {
+                            collider.enabled = true;
+                        }
+                    }
+                }
+
                 if (rayHit.collider.gameObject.layer == 7 && towerScript.canColocate == Tower.CanColocate.Ground)
                 {
                     if (gameFlow.coins >= towerScript.price)

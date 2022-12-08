@@ -18,5 +18,10 @@ public class LevelDataManager : MonoBehaviour
                 levelsButtonsAux[i].interactable = true;
             }
         }
+        if (GameManager.instance.levelMaxPublic > 3)
+        {
+            levelsButtons[6].interactable = true;
+            levelsButtonsAux[6].interactable = true;
+        }
     }
 }

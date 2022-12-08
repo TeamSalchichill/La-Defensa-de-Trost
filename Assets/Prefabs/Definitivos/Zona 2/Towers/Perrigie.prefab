@@ -24,12 +24,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 909604035199897184}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.832, z: 0.601}
-  m_LocalScale: {x: 0.17, y: 0.17, z: 0.17}
+  m_LocalPosition: {x: 0, y: 4.3789477, z: 3.1631582}
+  m_LocalScale: {x: 0.89473695, y: 0.89473695, z: 0.89473695}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3149475103350266929}
-  m_RootOrder: 4
+  m_Father: {fileID: 3188433733221361529}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2539594349097777125
 GameObject:
@@ -160,7 +160,6 @@ Transform:
   - {fileID: 3188433732847740464}
   - {fileID: 6023278949212854046}
   - {fileID: 992377290981839557}
-  - {fileID: 5534055110135256506}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -192,6 +191,7 @@ MonoBehaviour:
   - {fileID: 3446795439896460112}
   towerName: PeRigie
   icon: {fileID: 21300000, guid: 67a7eb3d56d652e4e8698db94c17a741, type: 3}
+  infoInGame: {fileID: 21300000, guid: 5567453743740424dbdf3f79e524af45, type: 3}
   price: 300
   acumulateGold: 0
   specialTile: 0

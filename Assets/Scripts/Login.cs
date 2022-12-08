@@ -10,6 +10,10 @@ public class Login : MonoBehaviour
 {
     public GameObject loginScreen;
 
+    public Button loginButtonInt;
+    public Button registerButtonInt;
+    public Button invitationButtonInt;
+
     public TMP_InputField user;
     public TMP_InputField pass;
     public TextMeshProUGUI info;
@@ -18,15 +22,21 @@ public class Login : MonoBehaviour
 
     public void RegisterButton()
     {
+        loginButtonInt.interactable = false;
+        registerButtonInt.interactable = false;
+        invitationButtonInt.interactable = false;
+
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         if (pass.text.Length < 6)
         {
-            info.text = "Password too short!";
+            info.text = "La contraseña debe tener al menos 6 caracteres";
             return;
         }
 
         if (user.text.Contains("@") || user.text.Contains("."))
         {
-            info.text = "No puede contener @ ni .";
+            info.text = "El usuario no puede contener \'@\' ni \'.\'";
             return;
         }
 
@@ -42,7 +52,12 @@ public class Login : MonoBehaviour
     }
     void OnRegisterSuccess(RegisterPlayFabUserResult result)
     {
-        info.text = "registered and logged in!";
+        loginButtonInt.interactable = true;
+        registerButtonInt.interactable = true;
+        invitationButtonInt.interactable = true;
+
+        info.text = "Registro completado";
+        print("Successful account create!");
         loginScreen.SetActive(false);
 
         playerName.text = "Preparate para defender Trost " + user.text;
@@ -53,6 +68,12 @@ public class Login : MonoBehaviour
 
     public void LoginButton()
     {
+        loginButtonInt.interactable = false;
+        registerButtonInt.interactable = false;
+        invitationButtonInt.interactable = false;
+
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         string userGmail = user.text + "@gmail.com";
 
         var request = new LoginWithEmailAddressRequest
@@ -64,8 +85,12 @@ public class Login : MonoBehaviour
     }
     void OnLoginSuccess(LoginResult result)
     {
-        info.text = "Logged in!";
-        print("Successful login/account create!");
+        loginButtonInt.interactable = true;
+        registerButtonInt.interactable = true;
+        invitationButtonInt.interactable = true;
+
+        info.text = "Has conectado con Trost correctamente";
+        print("Successful login!");
         loginScreen.SetActive(false);
 
         playerName.text = "Preparate para defender Trost " + user.text;
@@ -76,7 +101,23 @@ public class Login : MonoBehaviour
 
     void OnError(PlayFabError error)
     {
+        loginButtonInt.interactable = true;
+        registerButtonInt.interactable = true;
+        invitationButtonInt.interactable = true;
+
         info.text = error.ErrorMessage;
         print(error.GenerateErrorReport());
+    }
+
+    public void PlayInvitation()
+    {
+        loginButtonInt.interactable = false;
+        registerButtonInt.interactable = false;
+        invitationButtonInt.interactable = false;
+
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
+        GameManager.instance.UpdateInvitate();
+        loginScreen.SetActive(false);
     }
 }

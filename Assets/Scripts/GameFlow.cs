@@ -142,7 +142,7 @@ public class GameFlow : MonoBehaviour
 
             if (round == totalRounds)
             {
-                if (gameManager.levelSelectedPublic >= gameManager.levelMaxPublic)
+                if (gameManager.levelSelectedPublic >= gameManager.levelMaxPublic && !gameManager.invitatePublic)
                 {
                     DataManger.instance.SaveData();
                 }
@@ -287,11 +287,21 @@ public class GameFlow : MonoBehaviour
             showCards = true;
         }
 
-        if (generator.zone == Generator.Zone.Hielo)
+        if ((round + 1) % 6 == 0)
         {
+            mareaInfo.SetActive(true);
+            Invoke("DisableMareaInfo", 4);
 
+            mareaInfoText.text = "En la siguiente ronda tienes que defender un base aliada";
         }
-        
+        if (round % 10 == 0 && round > 2)
+        {
+            mareaInfo.SetActive(true);
+            Invoke("DisableMareaInfo", 4);
+
+            mareaInfoText.text = "En la siguiente ronda viene un fuerte rival";
+        }
+
         if (generator.zone == Generator.Zone.Desierto)
         {
             if (!isActiveSandStorm)

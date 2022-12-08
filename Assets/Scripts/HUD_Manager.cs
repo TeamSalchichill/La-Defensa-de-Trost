@@ -56,6 +56,9 @@ public class HUD_Manager : MonoBehaviour
     [Header("Tower Buttons")]
     public TextMeshProUGUI[] towersButton;
     public Image[] towersButtonIcon;
+    public Image[] squareImages;
+    public Sprite squarePath;
+    public Sprite squareTerrain;
 
     [Header("Screens")]
     public GameObject pauseScreen;
@@ -143,6 +146,7 @@ public class HUD_Manager : MonoBehaviour
     public Image moveHeroButtonImage;
     public Image exitButtonImage;
     public Image resetButtonImage;
+    public Image playButton;
 
     void Awake()
     {
@@ -163,6 +167,16 @@ public class HUD_Manager : MonoBehaviour
             //towersButton[i].text = colocatorManager.towers[i].GetComponent<Tower>().towerName + "\n" + "(" + colocatorManager.towers[i].GetComponent<Tower>().price + "€)";
             towersButton[i].text = "" + colocatorManager.towers[i].GetComponent<Tower>().price;
             towersButtonIcon[i].sprite = colocatorManager.towers[i].GetComponent<Tower>().icon;
+            /*
+            if (colocatorManager.towers[i].GetComponent<Tower>().canColocate == Tower.CanColocate.Path)
+            {
+                squareImages[i].sprite = squarePath;
+            }
+            else
+            {
+                squareImages[i].sprite = squareTerrain;
+            }
+            */
         }
 
         dadosBackGround.SetActive(false);
@@ -598,6 +612,11 @@ public class HUD_Manager : MonoBehaviour
     {
         SoundManager.instance.SoundSelection(3, 0.5f);
 
+        if (iter == 1)
+        {
+            playButton.rectTransform.sizeDelta -= new Vector2(25, 25);
+        }
+
         Time.timeScale = iter;
     }
 
@@ -612,9 +631,12 @@ public class HUD_Manager : MonoBehaviour
         }
         foreach (var tower in gameFlow.towers)
         {
-            if (tower.GetComponent<RecolocateManual>())
+            if (tower)
             {
-                tower.GetComponent<RecolocateManual>().nextRound = true;
+                if (tower.GetComponent<RecolocateManual>())
+                {
+                    tower.GetComponent<RecolocateManual>().nextRound = true;
+                }
             }
         }
 

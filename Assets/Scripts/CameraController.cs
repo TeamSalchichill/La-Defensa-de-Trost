@@ -20,6 +20,8 @@ public class CameraController : MonoBehaviour
     Vector3 touchStart;
     bool cameraIsMove = false;
 
+    RaycastHit HitInfo;
+
     void Awake()
     {
         instance = this;
@@ -35,7 +37,7 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        if (!doMovement)
+        if (!doMovement || Time.timeScale == 0)
         {
             return;
         }
@@ -43,22 +45,21 @@ public class CameraController : MonoBehaviour
         transform.position = new(transform.position.x, 50, transform.position.z);
 
         // Mover la cámara con el teclado
-        RaycastHit HitInfo;
-        Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out HitInfo, 100.0f);
+        //Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out HitInfo, 100.0f);
 
-        if (Input.GetKey("w"))
+        if (Input.GetKey("w") && !Input.GetKey("q") && !Input.GetKey("e"))
         {
             transform.Translate(Vector3.up * panSpeed * Time.deltaTime);
         }
-        if (Input.GetKey("s"))
+        if (Input.GetKey("s") && !Input.GetKey("q") && !Input.GetKey("e"))
         {
             transform.Translate(Vector3.down * panSpeed * Time.deltaTime);
         }
-        if (Input.GetKey("d"))
+        if (Input.GetKey("d") && !Input.GetKey("q") && !Input.GetKey("e"))
         {
             transform.Translate(Vector3.right * panSpeed * Time.deltaTime);
         }
-        if (Input.GetKey("a"))
+        if (Input.GetKey("a") && !Input.GetKey("q") && !Input.GetKey("e"))
         {
             transform.Translate(Vector3.left * panSpeed * Time.deltaTime);
         }
@@ -69,6 +70,11 @@ public class CameraController : MonoBehaviour
         if (Input.GetKey("e"))
         {
             transform.RotateAround(HitInfo.point, -Vector3.up, 90 * Time.deltaTime);
+        }
+
+        if (!Input.GetKey("w") && !Input.GetKey("s") && !Input.GetKey("d") && !Input.GetKey("a") && !Input.GetKey("q") && !Input.GetKey("e"))
+        {
+            Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out HitInfo, 100.0f);
         }
 
         // Hacer zoom con el ratón
@@ -142,18 +148,14 @@ public class CameraController : MonoBehaviour
     {
         Vector3 originalPos = transform.position;
 
-        float elapsed = 0.0f;
-
-        while(elapsed < duration)
+        for (int i = 0; i < duration; i++)
         {
             float x = Random.Range(-1f, 1f) * magnitude;
             float z = Random.Range(-1f, 1f) * magnitude;
 
-            transform.localPosition = new Vector3(x, originalPos.y, z);
+            transform.position = originalPos + new Vector3(x, 0, z);
 
-            elapsed += Time.deltaTime;
-
-            yield return null;
+            yield return new WaitForSeconds(0.05f);
         }
 
         transform.position = originalPos;

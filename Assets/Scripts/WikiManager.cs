@@ -13,10 +13,12 @@ public class WikiManager : MonoBehaviour
 
     public GameObject selector;
     public GameObject cards;
-
+    [Space]
+    public Button[] buttons;
+    [Space]
     public Image[] cardsPrefabs;
     public Image[] cardsPrefabsAux;
-
+    [Space]
     public Sprite[] cards0;
     public Sprite[] cards0Aux;
     public Sprite[] cards1;
@@ -36,7 +38,19 @@ public class WikiManager : MonoBehaviour
 
     public Image[] portalIcons;
     public Image backImage;
-    
+
+    void Start()
+    {
+        for (int i = 0; i <= GameManager.instance.levelMaxPublic - 1; i++)
+        {
+            if (i < buttons.Length)
+            {
+                buttons[i].interactable = true;
+                buttons[i].interactable = true;
+            }
+        }
+    }
+
     public void SelectWorld(int idWorld)
     {
         worldSelected = idWorld;
@@ -619,6 +633,6 @@ public class WikiManager : MonoBehaviour
     }
     public void BackMenu()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 }

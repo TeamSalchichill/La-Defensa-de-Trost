@@ -326,9 +326,12 @@ public class Card : MonoBehaviour
             
             foreach (var tower in allTowers)
             {
-                if (tower.GetComponent<Tower>().towerName == colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName)
+                if (tower)
                 {
-                    allTowersSelected.Add(tower.GetComponent<Tower>());
+                    if (tower.GetComponent<Tower>().towerName == colocatorManager.towers[towerSelectedId].GetComponent<Tower>().towerName)
+                    {
+                        allTowersSelected.Add(tower.GetComponent<Tower>());
+                    }
                 }
             }
 

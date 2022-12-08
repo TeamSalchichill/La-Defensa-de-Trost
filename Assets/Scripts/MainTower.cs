@@ -57,8 +57,6 @@ public class MainTower : MonoBehaviour
     {
         hudManager = HUD_Manager.instance;
 
-        health = 99999;
-
         instHechizoHolo = Instantiate(hechizoHolo, new Vector3(0, -1000, 0), transform.rotation);
     }
 

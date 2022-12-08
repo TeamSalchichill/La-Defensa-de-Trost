@@ -42,6 +42,7 @@ public class Tower : MonoBehaviour
     [Header("General")]
     public string towerName;
     public Sprite icon;
+    public Sprite infoInGame;
     [Space]
     public int price;
     public int acumulateGold = 0;
