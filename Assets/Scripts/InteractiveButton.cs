@@ -17,7 +17,7 @@ public class InteractiveButton : MonoBehaviour
     void Awake()
     {
         button = GetComponent<Image>();
-
+        
         if (infoImage)
         {
             infoImage.GetComponent<Image>().sprite = ColocatorManager.instance.towers[idTorre].GetComponent<Tower>().infoInGame;

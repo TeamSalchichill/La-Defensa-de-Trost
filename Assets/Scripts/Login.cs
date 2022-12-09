@@ -31,12 +31,20 @@ public class Login : MonoBehaviour
         if (pass.text.Length < 6)
         {
             info.text = "La contraseña debe tener al menos 6 caracteres";
+
+            loginButtonInt.interactable = true;
+            registerButtonInt.interactable = true;
+            invitationButtonInt.interactable = true;
             return;
         }
 
         if (user.text.Contains("@") || user.text.Contains("."))
         {
             info.text = "El usuario no puede contener \'@\' ni \'.\'";
+
+            loginButtonInt.interactable = true;
+            registerButtonInt.interactable = true;
+            invitationButtonInt.interactable = true;
             return;
         }
 
@@ -64,6 +72,8 @@ public class Login : MonoBehaviour
 
         GameManager.instance.UpdateMaxLevel(1);
         GameManager.instance.UpdateFirstTime();
+
+        DataManger.instance.SaveData();
     }
 
     public void LoginButton()

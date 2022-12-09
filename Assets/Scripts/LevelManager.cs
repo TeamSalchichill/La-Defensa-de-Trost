@@ -99,11 +99,11 @@ public class LevelManager : MonoBehaviour
                 hudManager.tutorialSprite.sprite = hudManager.tutorialImages[hudManager.tutorialSpriteId];
 
                 gameFlow.totalRounds = 30;
-                for (int i = 0; i < gameFlow.enemiesPerRound1.Length; i++)
+                for (int i = 1; i < gameFlow.enemiesPerRound1.Length; i++)
                 {
                     gameFlow.enemiesPerRound1[i] = (int)(gameFlow.enemiesPerRound1[i] * 0.7f);
                 }
-                for (int i = 0; i < gameFlow.enemiesPerRound2.Length; i++)
+                for (int i = 1; i < gameFlow.enemiesPerRound2.Length; i++)
                 {
                     gameFlow.enemiesPerRound2[i] = (int)(gameFlow.enemiesPerRound2[i] * 0.7f);
                 }

@@ -224,6 +224,9 @@ public class Enemy : MonoBehaviour
         {
             switch (zone)
             {
+                case Zone.None:
+                    InvokeRepeating("Zone0Attack1", 1, 10);
+                    break;
                 case Zone.Hielo:
                     InvokeRepeating("Zone1Attack1", 1, attackRate);
                     InvokeRepeating("Zone1Attack2", 3.5f, invokeGloblinsRate);
@@ -663,6 +666,27 @@ public class Enemy : MonoBehaviour
         speed = normalSpeed;
         isWaterEffect = false;
         waterEffectTime = 2;
+    }
+
+    void Zone0Attack1()
+    {
+        RaycastHit[] towerInrange = Physics.SphereCastAll(transform.position, 5, transform.forward, range, LayerMask.GetMask("Tower"));
+        if (towerInrange.Length > 0)
+        {
+            anim.SetTrigger("doHit");
+            speed = 0;
+
+            foreach (var tower in towerInrange)
+            {
+                if (tower.collider.gameObject.GetComponent<Tower>())
+                {
+                    tower.collider.gameObject.GetComponent<Tower>().health -= damage;
+                }
+            }
+
+            isAttack = true;
+            Invoke("canMove", 1.15f);
+        }
     }
 
     void Zone1Attack1()

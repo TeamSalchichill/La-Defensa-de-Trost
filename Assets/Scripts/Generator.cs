@@ -327,7 +327,6 @@ public class Generator : MonoBehaviour
 
             PrepareNextMap(newStartSide, newStartSideOrientation, newOffsetStart, newMapPos, newIdX, newIdZ, nextSideOrientation, false);
 
-            /*
             map[1, 1] = -1;
             map[2, 1] = -1;
             map[1, 2] = -1;
@@ -347,7 +346,8 @@ public class Generator : MonoBehaviour
             map[5, 2] = -1;
             map[4, 1] = -1;
             map[4, 2] = -1;
-            */
+            
+            /*
             map[0, 0] = -1;
             map[0, 1] = -1;
             map[0, 2] = -1;
@@ -380,7 +380,7 @@ public class Generator : MonoBehaviour
             map[4, 4] = -1;
             map[4, 2] = -1;
             map[2, 4] = -1;
-
+            */
             int closeWays = Random.Range(0, 3);
 
             for (int i = 0; i < closeWays; i++)

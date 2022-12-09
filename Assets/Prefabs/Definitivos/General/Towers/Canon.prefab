@@ -269,7 +269,7 @@ MonoBehaviour:
   specialTile: 0
   burnTile: 0
   spawnParticles: {fileID: 198159274938206214, guid: 9e4577abe56a95f4a91d29a0473cd30c, type: 3}
-  healthDamage: 200
+  healthDamage: 175
   armorDamage: 0
   range: 5
   rangeAreaOriginalScale: 0
@@ -308,6 +308,7 @@ MonoBehaviour:
   timeInOverHeat: 10
   smokeOverHeat: {fileID: 8550112519114524154, guid: 0e92832738859c442a7291bfea6e6f75, type: 3}
   isHero: 0
+  hitParticle: {fileID: 0}
   iceWall: {fileID: 0}
   exploteIceWall: 0
   frezzeIceWall: 0

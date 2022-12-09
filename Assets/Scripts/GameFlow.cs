@@ -142,7 +142,7 @@ public class GameFlow : MonoBehaviour
 
             if (round == totalRounds)
             {
-                if (gameManager.levelSelectedPublic >= gameManager.levelMaxPublic && !gameManager.invitatePublic)
+                if (gameManager.levelSelectedPublic >= gameManager.levelMaxPublic && !gameManager.invitatePublic && totalRounds > 6)
                 {
                     DataManger.instance.SaveData();
                 }

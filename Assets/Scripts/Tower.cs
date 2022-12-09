@@ -120,6 +120,9 @@ public class Tower : MonoBehaviour
     [Header("Hero - General")]
     public bool isHero;
 
+    [Header("Hero - Normal")]
+    public GameObject hitParticle;
+
     [Header("Hero - Hielo")]
     public GameObject iceWall;
     public bool exploteIceWall = false;
@@ -213,6 +216,9 @@ public class Tower : MonoBehaviour
                 case Generator.Zone.Infierno:
                     transformationDamage += 2;
                     break;
+                default:
+                    healthDamage *= 2;
+                    break;
             }
         }
 
@@ -220,6 +226,9 @@ public class Tower : MonoBehaviour
         {
             switch (zone)
             {
+                case Zone.None:
+                    InvokeRepeating("Hero0SpecialAttack", 1, 15);
+                    break;
                 case Zone.Hielo:
                     InvokeRepeating("Hero1SpecialAttack", 1, 15);
                     break;
@@ -733,6 +742,27 @@ public class Tower : MonoBehaviour
         if (newBullet != null)
         {
             newBullet.Seek(targetPos);
+        }
+    }
+
+    void Hero0SpecialAttack()
+    {
+        RaycastHit[] towersInRange = Physics.SphereCastAll(transform.position, range, transform.forward, 0, LayerMask.GetMask("Tower"));
+        if (towersInRange.Length > 0)
+        {
+            SoundManager.instance.SoundPlay(abilityAudio, abilityAudioVolume);
+
+            anim.SetTrigger("doHit");
+
+            Instantiate(hitParticle, transform.position, transform.rotation);
+
+            foreach (var tower in towersInRange)
+            {
+                if (tower.collider.gameObject.GetComponent<Tower>())
+                {
+                    tower.collider.gameObject.GetComponent<Tower>().health -= (healthDamage * 2);
+                }
+            }
         }
     }
 
