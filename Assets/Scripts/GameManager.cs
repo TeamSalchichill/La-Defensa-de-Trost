@@ -70,6 +70,11 @@ public class GameManager : MonoBehaviour
     {
         volumeMultiplierPublic = volumeMultiplier;
         volumeMultiplierEffectsPublic = volumeMultiplierEffects;
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            SceneManager.LoadScene(7);
+        }
     }
 
     public void ChangeVolumeMusic()

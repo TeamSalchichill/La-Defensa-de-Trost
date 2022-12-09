@@ -85,7 +85,7 @@ public class Card : MonoBehaviour
                 break;
         }
 
-        if (rarity == Rarity.Legendary && !colocatorManager.heroBuild)
+        if (rarity == Rarity.Legendary && colocatorManager.heroBuild)
         {
             towerSelectedId = 0;
         }
@@ -976,7 +976,7 @@ public class Card : MonoBehaviour
         BlockCards block73 = new BlockCards();
         block73.Tower = "Viva Porub";
         block73.Atributte = 7;
-        blockedCards.Add(block72);
+        blockedCards.Add(block73);
 
         BlockCards block74 = new BlockCards();
         block74.Tower = "Viva Porub";
@@ -1123,7 +1123,7 @@ public class Card : MonoBehaviour
         BlockCards block101 = new BlockCards();
         block101.Tower = "Hihell";
         block101.Atributte = 8;
-        blockedCards.Add(block92);
+        blockedCards.Add(block101);
 
         BlockCards block102 = new BlockCards();
         block102.Tower = "Hihell";

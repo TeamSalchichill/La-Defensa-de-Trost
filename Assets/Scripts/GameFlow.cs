@@ -142,7 +142,7 @@ public class GameFlow : MonoBehaviour
 
             if (round == totalRounds)
             {
-                if (gameManager.levelSelectedPublic >= gameManager.levelMaxPublic && !gameManager.invitatePublic && totalRounds > 6)
+                if (gameManager.levelSelectedPublic >= gameManager.levelMaxPublic && !gameManager.invitatePublic)
                 {
                     DataManger.instance.SaveData();
                 }
@@ -292,7 +292,7 @@ public class GameFlow : MonoBehaviour
             mareaInfo.SetActive(true);
             Invoke("DisableMareaInfo", 4);
 
-            mareaInfoText.text = "En la siguiente ronda tienes que defender un base aliada";
+            mareaInfoText.text = "En la siguiente ronda tienes que defender una base aliada";
         }
         if (round % 10 == 0 && round > 2)
         {

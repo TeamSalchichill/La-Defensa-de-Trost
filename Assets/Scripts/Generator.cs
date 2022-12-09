@@ -239,6 +239,11 @@ public class Generator : MonoBehaviour
                 break;
             }
         }
+
+        if (TutorialManager.instance)
+        {
+            TutorialManager.instance.firstNewMapNode = newMap;
+        }
     }
 
     public void Generate(int newStartSide, string newStartSideOrientation, Vector3 newOffsetStart, Vector2 newMapPos, int newIdX, int newIdZ)

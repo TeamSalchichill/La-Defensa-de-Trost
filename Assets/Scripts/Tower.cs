@@ -185,13 +185,13 @@ public class Tower : MonoBehaviour
             switch (generator.zone)
             {
                 case Generator.Zone.Hielo:
-                    iceDamage *= 3;
+                    iceDamage += 3;
                     break;
                 case Generator.Zone.Desierto:
-                    igniteDamage *= 3;
+                    igniteDamage += 3;
                     break;
                 case Generator.Zone.Atlantis:
-                    waterDamage *= 3;
+                    waterDamage += 3;
                     break;
                 case Generator.Zone.Valhalla:
                     healthDamage *= 2;
@@ -747,8 +747,8 @@ public class Tower : MonoBehaviour
 
     void Hero0SpecialAttack()
     {
-        RaycastHit[] towersInRange = Physics.SphereCastAll(transform.position, range, transform.forward, 0, LayerMask.GetMask("Tower"));
-        if (towersInRange.Length > 0)
+        RaycastHit[] enemiesInRange = Physics.SphereCastAll(transform.position, range, transform.forward, 0, LayerMask.GetMask("Enemy"));
+        if (enemiesInRange.Length > 0)
         {
             SoundManager.instance.SoundPlay(abilityAudio, abilityAudioVolume);
 
@@ -756,11 +756,11 @@ public class Tower : MonoBehaviour
 
             Instantiate(hitParticle, transform.position, transform.rotation);
 
-            foreach (var tower in towersInRange)
+            foreach (var enemy in enemiesInRange)
             {
-                if (tower.collider.gameObject.GetComponent<Tower>())
+                if (enemy.collider.gameObject.GetComponent<Enemy>())
                 {
-                    tower.collider.gameObject.GetComponent<Tower>().health -= (healthDamage * 2);
+                    enemy.collider.gameObject.GetComponent<Enemy>().health -= (healthDamage * 2);
                 }
             }
         }
