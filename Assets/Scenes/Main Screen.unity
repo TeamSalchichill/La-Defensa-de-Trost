@@ -161,8 +161,8 @@ MonoBehaviour:
   volumeMultiplierEffectsPublic: 1
   sliderVolumeMusicEffects: {fileID: 0}
   effectsAS: {fileID: 0}
-  levelSelectedPublic: 6
-  levelMaxPublic: 6
+  levelSelectedPublic: 0
+  levelMaxPublic: 0
   firstTimePublic: 1
   loginScreen: {fileID: 586516183}
   invitatePublic: 0
@@ -1219,11 +1219,11 @@ MonoBehaviour:
       - m_Target: {fileID: 699202810}
         m_TargetAssemblyTypeName: DataManger, Assembly-CSharp
         m_MethodName: SaveData
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 7
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1685,8 +1685,8 @@ RectTransform:
   - {fileID: 339103731}
   - {fileID: 197269171}
   - {fileID: 379898512}
-  - {fileID: 787624450}
   - {fileID: 586516184}
+  - {fileID: 787624450}
   - {fileID: 89802014}
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -2933,7 +2933,7 @@ RectTransform:
   - {fileID: 160951030}
   - {fileID: 877903522}
   m_Father: {fileID: 335555657}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3425,7 +3425,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 335555657}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

@@ -27,17 +27,17 @@ public class DataManger : MonoBehaviour
             GameManager.instance.UpdateMaxLevel(int.Parse(result.Data["LevelMax"].Value));
         }
     }
-    public void SaveData()
+    public void SaveData(int levelMax)
     {
         var request = new UpdateUserDataRequest
         {
             Data = new Dictionary<string, string>
             {
-                {"LevelMax", (GameManager.instance.levelSelectedPublic + 1).ToString()}
+                {"LevelMax", (levelMax).ToString()}
             }
         };
 
-        GameManager.instance.UpdateMaxLevel(GameManager.instance.levelSelectedPublic + 1);
+        GameManager.instance.UpdateMaxLevel(levelMax);
 
         PlayFabClientAPI.UpdateUserData(request, OnDataSend, OnError);
     }

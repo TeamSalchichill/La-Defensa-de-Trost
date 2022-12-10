@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class WikiManager : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class WikiManager : MonoBehaviour
     public GameObject cards;
     [Space]
     public Button[] buttons;
+    public GameObject[] shadows;
     [Space]
     public Image[] cardsPrefabs;
     public Image[] cardsPrefabsAux;
@@ -38,16 +40,20 @@ public class WikiManager : MonoBehaviour
 
     public Image[] portalIcons;
     public Image backImage;
+    [Space]
+    [Space]
+    public GameObject videosPanel;
+    public int idClip;
+    public GameObject[] videos;
 
     void Start()
     {
-        for (int i = 0; i <= GameManager.instance.levelMaxPublic - 1; i++)
+        int maxLevel = Mathf.Min(GameManager.instance.levelMaxPublic, buttons.Length - 1);
+
+        for (int i = 0; i <= maxLevel; i++)
         {
-            if (i < buttons.Length)
-            {
-                buttons[i].interactable = true;
-                buttons[i].interactable = true;
-            }
+            buttons[i].interactable = true;
+            shadows[i].SetActive(false);
         }
     }
 
@@ -629,10 +635,45 @@ public class WikiManager : MonoBehaviour
         backImage.rectTransform.sizeDelta -= new Vector2(25, 25);
 
         cards.SetActive(false);
+        videosPanel.SetActive(false);
         selector.SetActive(true);
     }
     public void BackMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void ShowVideos()
+    {
+        selector.SetActive(false);
+        videosPanel.SetActive(true);
+    }
+    public void ChangeVideo(bool dir)
+    {
+        if (dir)
+        {
+            idClip++;
+
+            if (idClip == videos.Length)
+            {
+                idClip = 0;
+            }
+        }
+        else
+        {
+            idClip--;
+
+            if (idClip == -1)
+            {
+                idClip = videos.Length - 1;
+            }
+        }
+
+        foreach (var video in videos)
+        {
+            video.SetActive(false);
+        }
+
+        videos[idClip].SetActive(true);
     }
 }

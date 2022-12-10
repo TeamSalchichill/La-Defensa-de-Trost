@@ -50,8 +50,6 @@ public class HUD_Button : MonoBehaviour
     {
         SoundManager.instance.SoundSelection(3, 0.5f);
 
-        SoundManager.instance.SoundSelection(3, 0.5f);
-
         Application.Quit();
     }
 
@@ -69,8 +67,10 @@ public class HUD_Button : MonoBehaviour
 
     public void StartLevel(int id)
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         loadingScreen.SetActive(true);
 
-        GameManager.instance.SelectLevel(id);
+        GameManager.instance.SelectLevel(id); 
     }
 }

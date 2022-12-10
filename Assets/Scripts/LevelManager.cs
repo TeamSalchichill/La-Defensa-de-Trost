@@ -156,6 +156,8 @@ public class LevelManager : MonoBehaviour
 
                 gameFlow.totalRounds = 30;
 
+                generator.probabilitySpecialTiles = 10;
+
                 bacgroundColorString = "#442424";
                 break;
         }

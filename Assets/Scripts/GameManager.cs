@@ -70,11 +70,6 @@ public class GameManager : MonoBehaviour
     {
         volumeMultiplierPublic = volumeMultiplier;
         volumeMultiplierEffectsPublic = volumeMultiplierEffects;
-
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            SceneManager.LoadScene(7);
-        }
     }
 
     public void ChangeVolumeMusic()
@@ -99,7 +94,14 @@ public class GameManager : MonoBehaviour
         levelSelected = id;
         levelSelectedPublic = id;
 
-        SceneManager.LoadScene(5);
+        if (id == 0)
+        {
+            SceneManager.LoadScene(7);
+        }
+        else
+        {
+            SceneManager.LoadScene(5);
+        }
     }
 
     public void UpdateMaxLevel(int newMaxLevel)

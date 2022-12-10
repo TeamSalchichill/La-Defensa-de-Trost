@@ -142,9 +142,9 @@ public class GameFlow : MonoBehaviour
 
             if (round == totalRounds && MainTower.instance.health > 0)
             {
-                if (gameManager.levelSelectedPublic >= gameManager.levelMaxPublic && !gameManager.invitatePublic)
+                if (gameManager.levelSelectedPublic + 1 >= gameManager.levelMaxPublic && !gameManager.invitatePublic)
                 {
-                    DataManger.instance.SaveData();
+                    DataManger.instance.SaveData(gameManager.levelSelectedPublic + 1);
                 }
                 
                 if (generator.zone == Generator.Zone.Infierno)
@@ -295,12 +295,15 @@ public class GameFlow : MonoBehaviour
             mareaInfoText.text = "En la siguiente ronda tienes que defender una base aliada";
         }
         //if (round % 10 == 0 && round > 2)
-        if (enemiesPerRound3[round + 1] > 0)
+        if (round + 1 < totalRounds)
         {
-            mareaInfo.SetActive(true);
-            Invoke("DisableMareaInfo", 4);
+            if (enemiesPerRound3[round + 1] > 0)
+            {
+                mareaInfo.SetActive(true);
+                Invoke("DisableMareaInfo", 4);
 
-            mareaInfoText.text = "En la siguiente ronda viene un fuerte rival";
+                mareaInfoText.text = "En la siguiente ronda viene un fuerte rival";
+            }
         }
 
         if (generator.zone == Generator.Zone.Desierto)

@@ -206,7 +206,8 @@ public class TutorialManager : MonoBehaviour
     {
         if (idStep >= dialogos.Length)
         {
-            SceneManager.LoadScene(1);
+            Invoke("ExitLevel", 5);
+            nextStepButton.SetActive(false);
             return;
         }
 
@@ -345,5 +346,10 @@ public class TutorialManager : MonoBehaviour
         {
             NextStep();
         }
+    }
+
+    void ExitLevel()
+    {
+        SceneManager.LoadScene(1);
     }
 }

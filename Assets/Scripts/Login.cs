@@ -70,10 +70,10 @@ public class Login : MonoBehaviour
 
         playerName.text = "Preparate para defender Trost " + user.text;
 
-        GameManager.instance.UpdateMaxLevel(1);
+        GameManager.instance.UpdateMaxLevel(0);
         GameManager.instance.UpdateFirstTime();
 
-        DataManger.instance.SaveData();
+        DataManger.instance.SaveData(0);
     }
 
     public void LoginButton()
@@ -101,12 +101,13 @@ public class Login : MonoBehaviour
 
         info.text = "Has conectado con Trost correctamente";
         print("Successful login!");
-        loginScreen.SetActive(false);
-
+        
         playerName.text = "Preparate para defender Trost " + user.text;
 
         DataManger.instance.GetData();
         GameManager.instance.UpdateFirstTime();
+
+        Invoke("EnableStart", 5);
     }
 
     void OnError(PlayFabError error)
@@ -128,6 +129,11 @@ public class Login : MonoBehaviour
         SoundManager.instance.SoundSelection(3, 0.5f);
 
         GameManager.instance.UpdateInvitate();
+        loginScreen.SetActive(false);
+    }
+
+    void EnableStart()
+    {
         loginScreen.SetActive(false);
     }
 }
