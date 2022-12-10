@@ -199,9 +199,6 @@ public class TutorialManager : MonoBehaviour
                     NextStep();
                 }
                 break;
-            case 27:
-
-                break;
         }
     }
 
@@ -313,12 +310,9 @@ public class TutorialManager : MonoBehaviour
                 dialogoImage.enabled = false;
                 break;
             case 26:
-                dialogoImage.sprite = dialogos[idStep];
+                dialogoImage.sprite = dialogos[idStep - 1];
                 dialogoImage.enabled = true;
                 nextStepButton.SetActive(true);
-                break;
-            case 27:
-
                 break;
         }
 
