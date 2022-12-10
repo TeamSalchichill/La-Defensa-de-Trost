@@ -56,6 +56,8 @@ public class NewMapNode : MonoBehaviour
     {
         if (gameFlow.cardSelected && gameFlow.canExpand)
         {
+            SoundManager.instance.SoundSelection(3, 0.5f);
+
             CameraController.instance.CameraCanMove();
 
             generator.newMapNodes.Remove(gameObject);

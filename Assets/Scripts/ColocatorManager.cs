@@ -177,6 +177,8 @@ public class ColocatorManager : MonoBehaviour
 
                         gameFlow.towersBuild++;
 
+                        SoundManager.instance.SoundSelection(3, 0.5f);
+
                         GameObject instTower = Instantiate(towers[towerID], rayHit.collider.gameObject.transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
                         instTower.GetComponent<Tower>().enabled = true;
 
@@ -242,6 +244,8 @@ public class ColocatorManager : MonoBehaviour
                         gameFlow.coins -= towerScript.price;
 
                         gameFlow.towersBuild++;
+
+                        SoundManager.instance.SoundSelection(3, 0.5f);
 
                         GameObject instTower = Instantiate(towers[towerID], rayHit.collider.gameObject.transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
                         instTower.GetComponent<Tower>().enabled = true;

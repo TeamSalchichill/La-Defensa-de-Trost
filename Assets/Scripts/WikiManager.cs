@@ -59,6 +59,8 @@ public class WikiManager : MonoBehaviour
 
     public void SelectWorld(int idWorld)
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         worldSelected = idWorld;
         idActualFirstCard = 0;
 
@@ -207,6 +209,8 @@ public class WikiManager : MonoBehaviour
 
     public void NextCards()
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         idActualFirstCard += 3;
 
         switch (worldSelected)
@@ -376,6 +380,8 @@ public class WikiManager : MonoBehaviour
     }
     public void PreviusCards()
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         idActualFirstCard -= 3;
         
         switch (worldSelected)
@@ -553,6 +559,8 @@ public class WikiManager : MonoBehaviour
 
     public void FlipCard(int idCard)
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         switch (worldSelected)
         {
             case 0:
@@ -632,6 +640,8 @@ public class WikiManager : MonoBehaviour
 
     public void BackWiki()
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         backImage.rectTransform.sizeDelta -= new Vector2(25, 25);
 
         cards.SetActive(false);
@@ -640,16 +650,22 @@ public class WikiManager : MonoBehaviour
     }
     public void BackMenu()
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         SceneManager.LoadScene(0);
     }
 
     public void ShowVideos()
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         selector.SetActive(false);
         videosPanel.SetActive(true);
     }
     public void ChangeVideo(bool dir)
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         if (dir)
         {
             idClip++;

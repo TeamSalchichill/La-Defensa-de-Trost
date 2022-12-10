@@ -20,6 +20,8 @@ public class Login : MonoBehaviour
 
     public TextMeshProUGUI playerName;
 
+    public Button wiki;
+
     public void RegisterButton()
     {
         loginButtonInt.interactable = false;
@@ -126,6 +128,8 @@ public class Login : MonoBehaviour
 
         GameManager.instance.UpdateInvitate();
         loginScreen.SetActive(false);
+        wiki.interactable = false;
+        GameManager.instance.UpdateFirstTime();
     }
 
     void EnableStart()

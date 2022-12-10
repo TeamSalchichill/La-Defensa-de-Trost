@@ -570,6 +570,8 @@ public class HUD_Manager : MonoBehaviour
     {
         if (isShowInfo)
         {
+            SoundManager.instance.SoundSelection(3, 0.5f);
+
             isShowInfo = false;
 
             if (activeTower != null)
@@ -836,6 +838,8 @@ public class HUD_Manager : MonoBehaviour
 
     public void NewImage(bool moment)
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         if (!moment)
         {
             if (imageId < imageIdFinal)
@@ -892,6 +896,8 @@ public class HUD_Manager : MonoBehaviour
 
     public void SkipImages()
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         activeImage.sprite = images[imageId - 1];
         imageId = images.Length;
         gameFlow.canExpand = true;
@@ -900,25 +906,35 @@ public class HUD_Manager : MonoBehaviour
 
     public void CheckExit()
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         checkExit.SetActive(true);
     }
     public void DisableCheckExit()
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         exitButtonImage.rectTransform.sizeDelta -= new Vector2(25, 25);
         checkExit.SetActive(false);
     }
     public void CheckReset()
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         checkReset.SetActive(true);
     }
     public void DisableCheckReset()
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         resetButtonImage.rectTransform.sizeDelta -= new Vector2(25, 25);
         checkReset.SetActive(false);
     }
 
     public void StartLevel(int id)
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         gameManager.levelSelectedPublic = id;
 
         SceneManager.LoadScene(3);
@@ -926,6 +942,8 @@ public class HUD_Manager : MonoBehaviour
 
     public void MoveTower()
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         moveTowerButtonImage.rectTransform.sizeDelta -= new Vector2(25, 25);
 
         moveTowerButton.SetActive(false);
@@ -933,6 +951,8 @@ public class HUD_Manager : MonoBehaviour
     }
     public void MoveHero()
     {
+        SoundManager.instance.SoundSelection(3, 0.5f);
+
         moveHeroButtonImage.rectTransform.sizeDelta -= new Vector2(25, 25);
 
         moveHeroButton.SetActive(false);

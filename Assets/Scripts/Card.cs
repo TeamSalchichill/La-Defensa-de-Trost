@@ -350,6 +350,7 @@ public class Card : MonoBehaviour
                     foreach (var towerSelected in allTowersSelected)
                     {
                         towerSelected.range += incrementAmount;
+                        towerSelected.rangeArea.transform.localScale = new Vector3(towerSelected.range * towerSelected.rangeAreaOriginalScale, towerSelected.rangeAreaOriginalScale, towerSelected.range * towerSelected.rangeAreaOriginalScale);
                     }
                     break;
                 case 2:
