@@ -35,37 +35,36 @@ public class CameraController : MonoBehaviour
         hudManager = HUD_Manager.instance;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!doMovement || Time.timeScale == 0)
         {
             return;
         }
 
-        transform.position = new(transform.position.x, 50, transform.position.z);
-
-        // Mover la cámara con el teclado
-        //Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out HitInfo, 100.0f);
-
-        if (Input.GetKey("w") && !Input.GetKey("q") && !Input.GetKey("e"))
+        if (!Input.GetKey("q") && !Input.GetKey("e"))
         {
-            transform.Translate(Vector3.up * panSpeed * Time.deltaTime);
+            if (Input.GetKey("w"))
+            {
+                transform.Translate(Vector3.up * panSpeed * Time.deltaTime);
+            }
+            if (Input.GetKey("s"))
+            {
+                transform.Translate(Vector3.down * panSpeed * Time.deltaTime);
+            }
+            if (Input.GetKey("d"))
+            {
+                transform.Translate(Vector3.right * panSpeed * Time.deltaTime);
+            }
+            if (Input.GetKey("a"))
+            {
+                transform.Translate(Vector3.left * panSpeed * Time.deltaTime);
+            }
         }
-        if (Input.GetKey("s") && !Input.GetKey("q") && !Input.GetKey("e"))
-        {
-            transform.Translate(Vector3.down * panSpeed * Time.deltaTime);
-        }
-        if (Input.GetKey("d") && !Input.GetKey("q") && !Input.GetKey("e"))
-        {
-            transform.Translate(Vector3.right * panSpeed * Time.deltaTime);
-        }
-        if (Input.GetKey("a") && !Input.GetKey("q") && !Input.GetKey("e"))
-        {
-            transform.Translate(Vector3.left * panSpeed * Time.deltaTime);
-        }
+        
         if (Input.GetKey("q"))
         {
-            transform.RotateAround (HitInfo.point, Vector3.up, 90 * Time.deltaTime);
+            transform.RotateAround(HitInfo.point, Vector3.up, 90 * Time.deltaTime);
         }
         if (Input.GetKey("e"))
         {
@@ -76,6 +75,16 @@ public class CameraController : MonoBehaviour
         {
             Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out HitInfo, 100.0f);
         }
+    }
+
+    void Update()
+    {
+        if (!doMovement || Time.timeScale == 0)
+        {
+            return;
+        }
+
+        transform.position = new(transform.position.x, 50, transform.position.z);
 
         // Hacer zoom con el ratón
         float scroll = Input.GetAxis("Mouse ScrollWheel");
@@ -155,7 +164,7 @@ public class CameraController : MonoBehaviour
 
             transform.position = originalPos + new Vector3(x, 0, z);
 
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.01f);
         }
 
         transform.position = originalPos;

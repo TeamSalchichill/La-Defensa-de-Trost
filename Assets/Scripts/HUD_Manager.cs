@@ -465,12 +465,14 @@ public class HUD_Manager : MonoBehaviour
                 activeTower.priceLogo = "$";
             }
 
-
             activeTower.numTargets++;
             activeTower.healthMax = (int)(activeTower.healthMax + activeTower.healthMax * 0.2f);
             activeTower.health = (int)(activeTower.health + activeTower.health * 0.2f);
             activeTower.range = (activeTower.range + activeTower.range * 0.1f);
-            activeTower.fireRate = (activeTower.fireRate + activeTower.fireRate * 0.2f);
+            if (activeTower.towerName != "Mina de oro")
+            {
+                activeTower.fireRate = (activeTower.fireRate + activeTower.fireRate * 0.2f);
+            }
 
             activeTower.healthDamage = (int)(activeTower.healthDamage + activeTower.healthDamage * 0.2f);
             if (activeTower.iceDamage > 0)

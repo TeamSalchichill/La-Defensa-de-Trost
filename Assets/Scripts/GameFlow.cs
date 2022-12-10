@@ -140,7 +140,7 @@ public class GameFlow : MonoBehaviour
         {
             roundFinished = true;
 
-            if (round == totalRounds)
+            if (round == totalRounds && MainTower.instance.health > 0)
             {
                 if (gameManager.levelSelectedPublic >= gameManager.levelMaxPublic && !gameManager.invitatePublic)
                 {
@@ -294,7 +294,8 @@ public class GameFlow : MonoBehaviour
 
             mareaInfoText.text = "En la siguiente ronda tienes que defender una base aliada";
         }
-        if (round % 10 == 0 && round > 2)
+        //if (round % 10 == 0 && round > 2)
+        if (enemiesPerRound3[round + 1] > 0)
         {
             mareaInfo.SetActive(true);
             Invoke("DisableMareaInfo", 4);
@@ -334,6 +335,11 @@ public class GameFlow : MonoBehaviour
                 mareaInfo.SetActive(true);
                 Invoke("DisableMareaInfo", 4);
 
+                if (round < 3)
+                {
+                    newSpeedRandom = Random.Range(0, 2);
+                }
+
                 switch (newSpeedRandom)
                 {
                     case 0:
@@ -347,7 +353,7 @@ public class GameFlow : MonoBehaviour
                         mareaInfoText.text = "La marea se ha calmado";
                         break;
                     case 2:
-                        newSpeed = 2;
+                        newSpeed = 1.75f;
                         waterFlag.GetComponent<MeshRenderer>().material = healthBarRed;
                         mareaInfoText.text = "La marea te perjudica";
                         break;
@@ -394,5 +400,13 @@ public class GameFlow : MonoBehaviour
             activeEnemies[aux] = item;
             aux++;
         }
+    }
+
+    public void MiniObjetiveDestroyed()
+    {
+        mareaInfo.SetActive(true);
+        Invoke("DisableMareaInfo", 4);
+
+        mareaInfoText.text = "Oh no, te han destruido la base aliada, has perdido 7 de vida, tienes que estar más atento soldado";
     }
 }

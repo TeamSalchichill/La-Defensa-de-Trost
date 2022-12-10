@@ -86,6 +86,8 @@ public class LevelManager : MonoBehaviour
 
                 gameFlow.totalRounds = 20;
 
+                generator.probabilityFireTile = 20;
+
                 bacgroundColorString = "#615638";
                 break;
             case 2:

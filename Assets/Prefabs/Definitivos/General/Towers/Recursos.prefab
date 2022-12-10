@@ -467,7 +467,7 @@ MonoBehaviour:
   canColocate: 0
   bulletType: 0
   zone: 0
-  specialStat: 3
+  specialStat: 1
   targetPreference: 0
   anim: {fileID: 9167911101958514819}
   level5Light: {fileID: 0}
@@ -522,6 +522,7 @@ MonoBehaviour:
   timeInOverHeat: 10
   smokeOverHeat: {fileID: 8550112519114524154, guid: 0e92832738859c442a7291bfea6e6f75, type: 3}
   isHero: 0
+  hitParticle: {fileID: 0}
   iceWall: {fileID: 0}
   exploteIceWall: 0
   frezzeIceWall: 0
@@ -548,7 +549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3fbfe8f8037ed54285c9166d87b7002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetPos: {x: 0, y: -1.375, z: 0}
+  offsetPos: {x: 0, y: -1.375, z: 0.5}
   offsetRot: {x: 0, y: 1, z: 0, w: -0.00000004371139}
   isSpawn: 0
   oritateToPath: 0
@@ -564,7 +565,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3, y: 2, z: 3}
-  m_Center: {x: -0, y: 2, z: -0.35}
+  m_Center: {x: -0, y: 2, z: 0.7}
 --- !u!1 &8943606919853885110
 GameObject:
   m_ObjectHideFlags: 0

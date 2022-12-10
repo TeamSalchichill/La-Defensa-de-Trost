@@ -17,6 +17,8 @@ public class MiniMainTower : MonoBehaviour
     {
         if (health <= 0)
         {
+            GameFlow.instance.MiniObjetiveDestroyed();
+
             mainTower.health -= 7;
 
             GameFlow.instance.miniObjetivesDestroyed++;

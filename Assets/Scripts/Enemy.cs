@@ -185,7 +185,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            transform.position += new Vector3(0, 5, 0);
+            transform.position += new Vector3(0, 3, 0);
         }
         
         waterParticles.SetActive(false);
@@ -199,19 +199,19 @@ public class Enemy : MonoBehaviour
         switch (type)
         {
             case Type.Pequeño:
-                gold = 15 * 2;
+                gold = 30;
                 normalSpeed = 2;
                 health *= healthMultiplier;
                 healthMax *= healthMultiplier;
                 break;
             case Type.Mediano:
-                gold = 40 * 2;
+                gold = 80;
                 normalSpeed = 1.5f;
                 health *= healthMultiplier;
                 healthMax *= healthMultiplier;
                 break;
             case Type.Grande:
-                gold = 1000 * 2;
+                gold = 1500;
                 normalSpeed = 1;
                 health *= healthMultiplier;
                 healthMax *= healthMultiplier;
@@ -986,11 +986,10 @@ public class Enemy : MonoBehaviour
     {
         if (other.tag == "MainTower")
         {
-            StartCoroutine(CameraController.instance.Shake(30, 5));
-            
-            //Invoke("cameraShake", 0f);
-            //Invoke("ReturnCameraPosition", 0.1f);
-            
+            StartCoroutine(CameraController.instance.Shake(250, 3));
+
+            SoundManager.instance.SoundSelection(19, 0.5f);
+
             MainTower.instance.health--;
 
             if (type == Type.Grande)
@@ -999,7 +998,6 @@ public class Enemy : MonoBehaviour
             }
 
             Invoke("Dead", 0.2f);
-            //Dead();
         }
 
         if (other.tag == "Wave")

@@ -681,11 +681,11 @@ MonoBehaviour:
   specialTile: 0
   burnTile: 0
   spawnParticles: {fileID: 198159274938206214, guid: 9e4577abe56a95f4a91d29a0473cd30c, type: 3}
-  healthDamage: 150
+  healthDamage: 100
   armorDamage: 0
-  range: 15
+  range: 10
   rangeAreaOriginalScale: 0
-  fireRate: 0.8
+  fireRate: 0.5
   turnSpeed: 10
   health: 3500
   healthMax: 0
@@ -720,6 +720,7 @@ MonoBehaviour:
   timeInOverHeat: 10
   smokeOverHeat: {fileID: 8550112519114524154, guid: 0e92832738859c442a7291bfea6e6f75, type: 3}
   isHero: 1
+  hitParticle: {fileID: 0}
   iceWall: {fileID: 2875652900901777722, guid: 81a426079a166ec4c85a9c19e739a18e, type: 3}
   exploteIceWall: 0
   frezzeIceWall: 0
@@ -731,9 +732,9 @@ MonoBehaviour:
   destroyParticle: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56, type: 3}
   areaDamageParticle: {fileID: 0}
   shootAudio: {fileID: 8300000, guid: 086be03172332f341a9040ec4ece3f3c, type: 3}
-  shootAudioVolume: 0.35
+  shootAudioVolume: 0.2
   abilityAudio: {fileID: 8300000, guid: 086be03172332f341a9040ec4ece3f3c, type: 3}
-  abilityAudioVolume: 0.35
+  abilityAudioVolume: 0.2
 --- !u!95 &4232022859828179271
 Animator:
   serializedVersion: 4
