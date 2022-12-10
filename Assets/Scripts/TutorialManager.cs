@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.AI;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class TutorialManager : MonoBehaviour
     public GameObject Zoom2;
     public GameObject firstNewMapNode;
     public GameObject sellButton;
+    public GameObject upgradeButton;
     
     void Awake()
     {
@@ -46,8 +48,28 @@ public class TutorialManager : MonoBehaviour
     {
         GameObject[] groundTiles = GameObject.FindGameObjectsWithTag("Ground");
         GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
         HUD_Manager.instance.winScreen.SetActive(false);
+
+        if (GameFlow.instance.round == 1)
+        {
+            foreach (var enemy in enemies)
+            {
+                if (enemy.transform.position.y > -10)
+                {
+                    enemy.GetComponent<Enemy>().normalSpeed = 0;
+                }
+            }
+        }
+
+        foreach (var tower in towers)
+        {
+            if (tower.transform.position.y > -10)
+            {
+                tower.GetComponent<Tower>().range = 30;
+            }
+        }
 
         switch (idStep)
         {
@@ -99,10 +121,9 @@ public class TutorialManager : MonoBehaviour
                 
                 break;
             case 11:
-                if (towers.Length > 4 && (Input.GetButtonDown("Fire1") || Input.GetButton("Fire1")))
+                if (towers.Length > 3 && (Input.GetButtonDown("Fire1") || Input.GetButton("Fire1")))
                 {
                     towersIcon[1].SetActive(false);
-                    Time.timeScale = 1;
                 }
                 if (GameFlow.instance.round == 1 && GameFlow.instance.enemiesLeft1 == 0)
                 {
@@ -128,7 +149,7 @@ public class TutorialManager : MonoBehaviour
                 
                 break;
             case 16:
-                if (towers.Length > 5 && (Input.GetButtonDown("Fire1") || Input.GetButton("Fire1")))
+                if (towers.Length > 3 && (Input.GetButtonDown("Fire1") || Input.GetButton("Fire1")))
                 {
                     NextStep();
                 }
@@ -140,7 +161,7 @@ public class TutorialManager : MonoBehaviour
 
                 break;
             case 19:
-                if (towers.Length > 6 && (Input.GetButtonDown("Fire1") || Input.GetButton("Fire1")))
+                if (towers.Length > 4 && (Input.GetButtonDown("Fire1") || Input.GetButton("Fire1")))
                 {
                     NextStep();
                 }
@@ -149,7 +170,7 @@ public class TutorialManager : MonoBehaviour
 
                 break;
             case 21:
-                if (towers.Length > 7 && (Input.GetButtonDown("Fire1") || Input.GetButton("Fire1")))
+                if (towers.Length > 5 && (Input.GetButtonDown("Fire1") || Input.GetButton("Fire1")))
                 {
                     NextStep();
                 }
@@ -173,7 +194,7 @@ public class TutorialManager : MonoBehaviour
                 }
                 break;
             case 26:
-                if (GameFlow.instance.round == 4 && GameFlow.instance.enemiesLeft1 == 0 && GameFlow.instance.enemiesLeft2 == 0 && GameFlow.instance.enemiesLeft3 == 0)
+                if (GameFlow.instance.round == 5 && GameFlow.instance.enemiesLeft1 == 0 && GameFlow.instance.enemiesLeft2 == 0 && GameFlow.instance.enemiesLeft3 == 0)
                 {
                     NextStep();
                 }
@@ -229,7 +250,6 @@ public class TutorialManager : MonoBehaviour
                 break;
             case 8:
                 nextStepButton.SetActive(true);
-                Invoke("Slow", 1.1f);
                 break;
             case 9:
                 nextStepButton.SetActive(false);
@@ -245,7 +265,7 @@ public class TutorialManager : MonoBehaviour
 
                 break;
             case 13:
-
+                upgradeButton.SetActive(true);
                 break;
             case 14:
                 sellButton.SetActive(true);
@@ -293,7 +313,7 @@ public class TutorialManager : MonoBehaviour
                 dialogoImage.enabled = false;
                 break;
             case 26:
-                dialogoImage.sprite = dialogos[idStep - 1];
+                dialogoImage.sprite = dialogos[idStep];
                 dialogoImage.enabled = true;
                 nextStepButton.SetActive(true);
                 break;
@@ -331,10 +351,5 @@ public class TutorialManager : MonoBehaviour
         {
             NextStep();
         }
-    }
-
-    void Slow()
-    {
-        Time.timeScale = 0.1f;
     }
 }
