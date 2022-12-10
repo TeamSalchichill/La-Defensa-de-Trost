@@ -14,6 +14,7 @@ public class TutorialManager : MonoBehaviour
     public int idStep;
     public Image dialogoImage;
     public Sprite[] dialogos;
+    public GameObject finalScreen;
 
     [Header("Interactuable")]
     public GameObject nextStepButton;
@@ -208,6 +209,7 @@ public class TutorialManager : MonoBehaviour
         {
             Invoke("ExitLevel", 5);
             nextStepButton.SetActive(false);
+            finalScreen.SetActive(true);
             return;
         }
 

@@ -71,6 +71,7 @@ public class LevelManager : MonoBehaviour
                 hudManager.tutorialSprite.sprite = hudManager.tutorialImages[hudManager.tutorialSpriteId];
 
                 gameFlow.totalRounds = 10;
+                gameFlow.coins = 1300;
 
                 bacgroundColorString = "#383E61";
                 break;
@@ -87,6 +88,7 @@ public class LevelManager : MonoBehaviour
                 gameFlow.totalRounds = 20;
 
                 generator.probabilityFireTile = 20;
+                gameFlow.coins = 1200;
 
                 bacgroundColorString = "#615638";
                 break;
@@ -113,6 +115,8 @@ public class LevelManager : MonoBehaviour
                 gameFlow.enemiesPerRound3[19] = 0;
                 gameFlow.enemiesPerRound3[29] = 1;
 
+                gameFlow.coins = 1100;
+
                 bacgroundColorString = "#385861";
                 perla.SetActive(true);
                 break;
@@ -127,6 +131,7 @@ public class LevelManager : MonoBehaviour
                 hudManager.tutorialSprite.sprite = hudManager.tutorialImages[hudManager.tutorialSpriteId];
 
                 gameFlow.totalRounds = 30;
+                gameFlow.coins = 1000;
 
                 bacgroundColorString = "#7A8282";
                 break;
@@ -141,6 +146,7 @@ public class LevelManager : MonoBehaviour
                 hudManager.tutorialSprite.sprite = hudManager.tutorialImages[hudManager.tutorialSpriteId];
 
                 gameFlow.totalRounds = 30;
+                gameFlow.coins = 900;
 
                 bacgroundColorString = "#4C824B";
                 break;
@@ -155,6 +161,7 @@ public class LevelManager : MonoBehaviour
                 hudManager.tutorialSprite.sprite = hudManager.tutorialImages[hudManager.tutorialSpriteId];
 
                 gameFlow.totalRounds = 30;
+                gameFlow.coins = 800;
 
                 generator.probabilitySpecialTiles = 10;
 

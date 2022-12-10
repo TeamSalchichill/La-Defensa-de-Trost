@@ -95,11 +95,7 @@ public class Login : MonoBehaviour
     }
     void OnLoginSuccess(LoginResult result)
     {
-        loginButtonInt.interactable = true;
-        registerButtonInt.interactable = true;
-        invitationButtonInt.interactable = true;
-
-        info.text = "Has conectado con Trost correctamente";
+        info.text = "Entrando en Trost...";
         print("Successful login!");
         
         playerName.text = "Preparate para defender Trost " + user.text;

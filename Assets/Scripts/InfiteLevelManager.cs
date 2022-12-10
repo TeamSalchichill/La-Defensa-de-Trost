@@ -15,6 +15,12 @@ public class InfiteLevelManager : MonoBehaviour
     public GameObject canvas;
     public GameObject selectScreen;
     [Space]
+    public List<GameObject> herosGO;
+    public List<GameObject> zonesGO;
+    public List<GameObject> mainTowersGO;
+    public List<GameObject> towersGO;
+    public Sprite interrogacion;
+    [Space]
     public GameObject[] normalTerrain;
     public GameObject[] specialTerrain;
     public GameObject[] differentTerrain;
@@ -53,6 +59,30 @@ public class InfiteLevelManager : MonoBehaviour
 
     void Start()
     {
+        herosGO.Reverse();
+        zonesGO.Reverse();
+        mainTowersGO.Reverse();
+        towersGO.Reverse();
+
+        for (int i = 0; i <  (6 - (gameManager.levelMaxPublic - 1)) * 3; i++)
+        {
+            towersGO[i].GetComponent<Image>().sprite = interrogacion;
+            towersGO[i].GetComponent<Button>().interactable = false;
+        }
+        for (int i = 0; i < (8 - gameManager.levelMaxPublic - 1); i++)
+        {
+            herosGO[i].GetComponent<Image>().sprite = interrogacion;
+            herosGO[i].GetComponent<Button>().interactable = false;
+            zonesGO[i].GetComponent<Image>().sprite = interrogacion;
+            zonesGO[i].GetComponent<Button>().interactable = false;
+            mainTowersGO[i].GetComponent<Image>().sprite = interrogacion;
+            mainTowersGO[i].GetComponent<Button>().interactable = false;
+        }
+
+
+
+
+
         gameFlow.enemiesPerRound1 = new int[1000];
         gameFlow.enemiesPerRound2 = new int[1000];
         gameFlow.enemiesPerRound3 = new int[1000];
@@ -229,6 +259,8 @@ public class InfiteLevelManager : MonoBehaviour
             canvas.SetActive(true);
             cameraController.enabled = true;
             selectScreen.SetActive(false);
+
+            canvas.GetComponent<HUD_Manager>().tutorialSpriteIdFinal = 3 + gameManager.levelMaxPublic;
         }
     }
 }

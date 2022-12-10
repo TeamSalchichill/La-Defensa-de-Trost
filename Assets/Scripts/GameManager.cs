@@ -25,8 +25,8 @@ public class GameManager : MonoBehaviour
     public static int levelSelected = 1;
     public int levelSelectedPublic = 1;
 
-    public static int levelMax = 1;
-    public int levelMaxPublic = 1;
+    public static int levelMax = 4;
+    public int levelMaxPublic = 4;
 
     public static bool firstTime = true;
     public bool firstTimePublic = true;
