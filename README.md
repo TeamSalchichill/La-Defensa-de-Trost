@@ -1544,9 +1544,23 @@ El marketing de la Defensa de Trost tiene su pilar fundamental en las redes soci
 
 Estas publicaciones se basan principalmente en la presentación progresiva de todos los elementos del juego, para incitar a todas las personas que lo vieran a jugar y conocerlos de primera mano.
 
+<p align="center">
+<img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/m1.png" alt="JuveR" width="300px">
+<img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/m2.png" alt="JuveR" width="300px">
+</p>  
+
 Además de presentar todo el contenido del juego, también se ha optado por la publicación de memes o elementos que relacionan nuestro videojuego con acontecimientos importantes, logrando así muchas más impresiones de las habituales.
 
+<p align="center">
+<img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/m3.png" alt="JuveR" width="300px">
+<img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/m4.png" alt="JuveR" width="300px">
+</p>  
+
 Gracias a estas acciones, se ha logrado que la mayor parte de las visitas al videojuego se ocasionen a través de las redes sociales, tal y cómo se puede observar, logrando 100 visitas al videojuego a través de Twitter en un período de 30 días (10-11 / 10-12).
+
+<p align="center">
+<img src="https://github.com/TeamSalchichill/La-Defensa-de-Trost/blob/main/ImagenesGDD/m5.png" alt="JuveR" width="500px">
+</p> 
 
   ## 13.2. Post-Lanzamiento del videojuego
 Para seguir aumentando las visitas al videojuego tras la publicación de la versión final se van a realizar diferentes acciones.
