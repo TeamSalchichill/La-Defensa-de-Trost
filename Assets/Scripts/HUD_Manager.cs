@@ -149,6 +149,10 @@ public class HUD_Manager : MonoBehaviour
     public Image playButton;
     [Space]
     public GameObject[] infoTowers;
+    [Space]
+    public float timerCamera;
+    public Image cameraButton1;
+    public Image cameraButton2;
 
     void Awake()
     {
@@ -175,6 +179,8 @@ public class HUD_Manager : MonoBehaviour
 
     void Update()
     {
+        timerCamera += Time.deltaTime;
+
         if (activeTower == null)
         {
             fichaTecnica.SetActive(false);
@@ -805,20 +811,28 @@ public class HUD_Manager : MonoBehaviour
 
     public void TurnCamera(bool dir)
     {
-        cameraController.doMovement = false;
-
-        SoundManager.instance.SoundSelection(3, 0.5f);
-
-        if (dir)
+        if (cameraController.doMovement && timerCamera > 1)
         {
-            Invoke("TurnCameraDelay1", 0.2f);
-        }
-        else
-        {
-            Invoke("TurnCameraDelay2", 0.2f);
-        }
+            timerCamera = 0;
+            cameraButton1.color = Color.gray;
+            cameraButton2.color = Color.gray;
 
-        Invoke("EnableMoveCamera", 0.5f);
+            cameraController.doMovement = false;
+
+            SoundManager.instance.SoundSelection(3, 0.5f);
+
+            if (dir)
+            {
+                Invoke("TurnCameraDelay1", 0.2f);
+            }
+            else
+            {
+                Invoke("TurnCameraDelay2", 0.2f);
+            }
+
+            Invoke("EnableMoveCamera", 0.5f);
+        }
+        
     }
     void TurnCameraDelay1()
     {
@@ -837,6 +851,8 @@ public class HUD_Manager : MonoBehaviour
     void EnableMoveCamera()
     {
         cameraController.doMovement = true;
+        cameraButton1.color = Color.white;
+        cameraButton2.color = Color.white;
     }
 
     public void NewImage(bool moment)
