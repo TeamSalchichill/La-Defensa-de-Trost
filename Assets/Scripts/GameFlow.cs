@@ -287,14 +287,17 @@ public class GameFlow : MonoBehaviour
             showCards = true;
         }
 
-        if ((round + 1) % 6 == 0)
+        if (round + 1 < totalRounds)
         {
-            mareaInfo.SetActive(true);
-            Invoke("DisableMareaInfo", 4);
+            if ((round + 1) % 6 == 0)
+            {
+                mareaInfo.SetActive(true);
+                Invoke("DisableMareaInfo", 4);
 
-            mareaInfoText.text = "En la siguiente ronda tienes que defender una base aliada";
+                mareaInfoText.text = "En la siguiente ronda tienes que defender una base aliada";
+            }
         }
-        //if (round % 10 == 0 && round > 2)
+        
         if (round + 1 < totalRounds)
         {
             if (enemiesPerRound3[round + 1] > 0)

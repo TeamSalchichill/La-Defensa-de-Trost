@@ -13868,6 +13868,11 @@ MonoBehaviour:
   gameManagerGO: {fileID: 755604240}
   canvas: {fileID: 0}
   selectScreen: {fileID: 0}
+  herosGO: []
+  zonesGO: []
+  mainTowersGO: []
+  towersGO: []
+  interrogacion: {fileID: 0}
   normalTerrain:
   - {fileID: 8998596808318238853, guid: f6f06c58271383b469dadb3427f3f468, type: 3}
   - {fileID: 7259134407810734859, guid: 1281a8a7aa6babf459bde3d4434673e0, type: 3}
@@ -17532,7 +17537,7 @@ MonoBehaviour:
   cardsRate: 3
   showCards: 0
   cardSelected: 1
-  canExpand: 1
+  canExpand: 0
   time: 0
   kills1: 0
   kills2: 0
