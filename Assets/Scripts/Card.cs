@@ -317,6 +317,8 @@ public class Card : MonoBehaviour
 
     public void SelectTowerCard()
     {
+        border.rectTransform.sizeDelta -= new Vector2(25, 25);
+
         SoundManager.instance.SoundSelection(4, 0.5f);
 
         if (iter == 0)

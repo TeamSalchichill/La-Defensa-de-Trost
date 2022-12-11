@@ -147,6 +147,8 @@ public class HUD_Manager : MonoBehaviour
     public Image exitButtonImage;
     public Image resetButtonImage;
     public Image playButton;
+    [Space]
+    public GameObject[] infoTowers;
 
     void Awake()
     {
@@ -357,6 +359,11 @@ public class HUD_Manager : MonoBehaviour
         SoundManager.instance.SoundSelection(3, 0.5f);
 
         isShowInfo = false;
+
+        foreach (var info in infoTowers)
+        {
+            info.SetActive(false);
+        }
 
         if (activeTower != null)
         {
@@ -699,6 +706,11 @@ public class HUD_Manager : MonoBehaviour
     {
         if (mainTower.restRounds <= 0)
         {
+            foreach (var info in infoTowers)
+            {
+                info.SetActive(false);
+            }
+
             SoundManager.instance.SoundSelection(3, 0.5f);
             
             MainTower.instance.activateTower = !MainTower.instance.activateTower;
@@ -821,23 +833,38 @@ public class HUD_Manager : MonoBehaviour
 
     public void TurnCamera(bool dir)
     {
+        cameraController.doMovement = false;
+
         SoundManager.instance.SoundSelection(3, 0.5f);
-
-        Vector3 originalPos = cameraController.gameObject.transform.position;
-
-        RaycastHit HitInfo;
-        Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out HitInfo, 100.0f);
 
         if (dir)
         {
-            cameraController.gameObject.transform.RotateAround(HitInfo.point, Vector3.up, 45);
+            Invoke("TurnCameraDelay1", 0.2f);
         }
         else
         {
-            cameraController.gameObject.transform.RotateAround(HitInfo.point, -Vector3.up, 45);
+            Invoke("TurnCameraDelay2", 0.2f);
         }
 
-        cameraController.gameObject.transform.position = originalPos;
+        Invoke("EnableMoveCamera", 0.5f);
+    }
+    void TurnCameraDelay1()
+    {
+        RaycastHit HitInfo;
+        Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out HitInfo, 100.0f);
+
+        cameraController.gameObject.transform.RotateAround(HitInfo.point, Vector3.up, 45);
+    }
+    void TurnCameraDelay2()
+    {
+        RaycastHit HitInfo;
+        Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out HitInfo, 100.0f);
+
+        cameraController.gameObject.transform.RotateAround(HitInfo.point, -Vector3.up, 45);
+    }
+    void EnableMoveCamera()
+    {
+        cameraController.doMovement = true;
     }
 
     public void NewImage(bool moment)
