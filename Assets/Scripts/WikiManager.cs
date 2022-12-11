@@ -40,11 +40,6 @@ public class WikiManager : MonoBehaviour
 
     public Image[] portalIcons;
     public Image backImage;
-    [Space]
-    [Space]
-    public GameObject videosPanel;
-    public int idClip;
-    public GameObject[] videos;
 
     void Start()
     {
@@ -645,7 +640,6 @@ public class WikiManager : MonoBehaviour
         backImage.rectTransform.sizeDelta -= new Vector2(25, 25);
 
         cards.SetActive(false);
-        videosPanel.SetActive(false);
         selector.SetActive(true);
     }
     public void BackMenu()
@@ -653,43 +647,5 @@ public class WikiManager : MonoBehaviour
         SoundManager.instance.SoundSelection(3, 0.5f);
 
         SceneManager.LoadScene(0);
-    }
-
-    public void ShowVideos()
-    {
-        SoundManager.instance.SoundSelection(3, 0.5f);
-
-        selector.SetActive(false);
-        videosPanel.SetActive(true);
-    }
-    public void ChangeVideo(bool dir)
-    {
-        SoundManager.instance.SoundSelection(3, 0.5f);
-
-        if (dir)
-        {
-            idClip++;
-
-            if (idClip == videos.Length)
-            {
-                idClip = 0;
-            }
-        }
-        else
-        {
-            idClip--;
-
-            if (idClip == -1)
-            {
-                idClip = videos.Length - 1;
-            }
-        }
-
-        foreach (var video in videos)
-        {
-            video.SetActive(false);
-        }
-
-        videos[idClip].SetActive(true);
     }
 }

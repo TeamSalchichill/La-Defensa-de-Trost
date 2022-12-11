@@ -9,11 +9,13 @@ public class LevelDataManager : MonoBehaviour
     public Button[] levelsButtons;
     public GameObject[] levelsShadows;
     [Space]
-    public GameObject vineta;
-    public GameObject[] videos;
-    [Space]
     public TextMeshProUGUI frase;
     public string[] frases;
+    [Space]
+    public Image background;
+    public GameObject vineta;
+    public Sprite[] imagesBackground;
+    public Sprite originalBackground;
 
     void Start()
     {
@@ -33,24 +35,14 @@ public class LevelDataManager : MonoBehaviour
         }
     }
 
-    public void ChangeVideo(int id)
+    public void ChangeBackground(int id)
     {
         vineta.SetActive(true);
-
-        foreach (var video in videos)
-        {
-            video.SetActive(false);
-        }
-
-        videos[id].SetActive(true);
+        background.sprite = imagesBackground[id];
     }
-    public void DisablesVideos()
+    public void DisableBackground()
     {
         vineta.SetActive(false);
-
-        foreach (var video in videos)
-        {
-            video.SetActive(false);
-        }
+        background.sprite = originalBackground;
     }
 }
