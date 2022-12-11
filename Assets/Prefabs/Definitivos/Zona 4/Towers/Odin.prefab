@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6833754349886500266}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Node  1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 8054802766399220340}
   - component: {fileID: 9079706766311657766}
   - component: {fileID: 6680169792264758269}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 'Node '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7513663620437309713}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 'Node '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8841335001149191388}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Node-global
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 2184557520609873338}
   - component: {fileID: 6999679065596857353}
   - component: {fileID: 492541399731852630}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Node-local
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5180684339337765844}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: part to rotate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -305,7 +305,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6316346574446481772}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Node  1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 1151599365906184132}
   - component: {fileID: 8368916288061768284}
   - component: {fileID: 4041345313646318763}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 'Node '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -422,7 +422,7 @@ GameObject:
   - component: {fileID: 7829856550059975901}
   - component: {fileID: 9070468645101121121}
   - component: {fileID: 8334788296453569661}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 'Node '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,7 +503,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 671928637917197106}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 'Node '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -537,7 +537,7 @@ GameObject:
   - component: {fileID: 7732717901107608097}
   - component: {fileID: 7534942111634439773}
   - component: {fileID: 5259559116520168763}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 'Node '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -717,9 +717,9 @@ GameObject:
   - component: {fileID: 8542774817393617798}
   - component: {fileID: 8542774817393617799}
   - component: {fileID: 5106576230391784028}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Odin
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -850,6 +850,7 @@ MonoBehaviour:
   timeInOverHeat: 10
   smokeOverHeat: {fileID: 8550112519114524154, guid: 0e92832738859c442a7291bfea6e6f75, type: 3}
   isHero: 0
+  hitParticle: {fileID: 0}
   iceWall: {fileID: 2875652900901777722, guid: 81a426079a166ec4c85a9c19e739a18e, type: 3}
   exploteIceWall: 0
   frezzeIceWall: 0
@@ -891,7 +892,7 @@ GameObject:
   - component: {fileID: 2073517523848763729}
   - component: {fileID: 1347650264743057977}
   - component: {fileID: 2032102771275848643}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 'Node '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -973,7 +974,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5961046484293052166}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Node  1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1057,8 +1058,16 @@ PrefabInstance:
       value: MejoraOdin-1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 72b8926344c4b694cba2fd037306cbcb, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 72b8926344c4b694cba2fd037306cbcb, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 72b8926344c4b694cba2fd037306cbcb, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72b8926344c4b694cba2fd037306cbcb, type: 3}
@@ -1139,6 +1148,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: rango
       objectReference: {fileID: 0}
+    - target: {fileID: 4417269780429767691, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724566107546707850, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814231855809447847, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}
 --- !u!4 &4650129024426021196 stripped
@@ -1211,8 +1232,16 @@ PrefabInstance:
       value: MejoraOdin-0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 11efb26e1041ccd4f91915594020e842, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 11efb26e1041ccd4f91915594020e842, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 11efb26e1041ccd4f91915594020e842, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11efb26e1041ccd4f91915594020e842, type: 3}

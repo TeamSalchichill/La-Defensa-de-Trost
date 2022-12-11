@@ -136,4 +136,9 @@ public class Login : MonoBehaviour
     {
         loginScreen.SetActive(false);
     }
+
+    public void OpenKeyBoard()
+    {
+        TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default);
+    }
 }
