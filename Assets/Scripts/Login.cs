@@ -66,6 +66,17 @@ public class Login : MonoBehaviour
         registerButtonInt.interactable = true;
         invitationButtonInt.interactable = true;
 
+        TMP_InputField[] inputsFliedsTMP = FindObjectsOfType<TMP_InputField>();
+        InputField[] inputsFlieds = FindObjectsOfType<InputField>();
+        foreach (var item in inputsFliedsTMP)
+        {
+            Destroy(item.gameObject);
+        }
+        foreach (var item in inputsFlieds)
+        {
+            Destroy(item.gameObject);
+        }
+
         info.text = "Registro completado";
         print("Successful account create!");
         loginScreen.SetActive(false);
@@ -102,6 +113,17 @@ public class Login : MonoBehaviour
         
         playerName.text = "Preparate para defender Trost " + user.text;
 
+        TMP_InputField[] inputsFliedsTMP = FindObjectsOfType<TMP_InputField>();
+        InputField[] inputsFlieds = FindObjectsOfType<InputField>();
+        foreach (var item in inputsFliedsTMP)
+        {
+            Destroy(item.gameObject);
+        }
+        foreach (var item in inputsFlieds)
+        {
+            Destroy(item.gameObject);
+        }
+
         DataManger.instance.GetData();
         GameManager.instance.UpdateFirstTime();
 
@@ -126,6 +148,19 @@ public class Login : MonoBehaviour
 
         SoundManager.instance.SoundSelection(3, 0.5f);
 
+        playerName.text = "En la prueba no se guarda el progreso ni desbloquearas nuevos mundos";
+
+        TMP_InputField[] inputsFliedsTMP = FindObjectsOfType<TMP_InputField>();
+        InputField[] inputsFlieds = FindObjectsOfType<InputField>();
+        foreach (var item in inputsFliedsTMP)
+        {
+            Destroy(item.gameObject);
+        }
+        foreach (var item in inputsFlieds)
+        {
+            Destroy(item.gameObject);
+        }
+
         GameManager.instance.UpdateInvitate();
         loginScreen.SetActive(false);
         wiki.interactable = false;
@@ -135,10 +170,5 @@ public class Login : MonoBehaviour
     void EnableStart()
     {
         loginScreen.SetActive(false);
-    }
-
-    public void OpenKeyBoard()
-    {
-        TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default);
     }
 }

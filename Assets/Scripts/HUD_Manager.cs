@@ -823,6 +823,8 @@ public class HUD_Manager : MonoBehaviour
     {
         SoundManager.instance.SoundSelection(3, 0.5f);
 
+        Vector3 originalPos = cameraController.gameObject.transform.position;
+
         RaycastHit HitInfo;
         Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out HitInfo, 100.0f);
 
@@ -834,6 +836,8 @@ public class HUD_Manager : MonoBehaviour
         {
             cameraController.gameObject.transform.RotateAround(HitInfo.point, -Vector3.up, 45);
         }
+
+        cameraController.gameObject.transform.position = originalPos;
     }
 
     public void NewImage(bool moment)
