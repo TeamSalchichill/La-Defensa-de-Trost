@@ -166,30 +166,11 @@ public class HUD_Manager : MonoBehaviour
 
         for (int i = 0; i < towersButton.Length; i++)
         {
-            //towersButton[i].text = colocatorManager.towers[i].GetComponent<Tower>().towerName + "\n" + "(" + colocatorManager.towers[i].GetComponent<Tower>().price + "€)";
             towersButton[i].text = "" + colocatorManager.towers[i].GetComponent<Tower>().price;
             towersButtonIcon[i].sprite = colocatorManager.towers[i].GetComponent<Tower>().icon;
-            /*
-            if (colocatorManager.towers[i].GetComponent<Tower>().canColocate == Tower.CanColocate.Path)
-            {
-                squareImages[i].sprite = squarePath;
-            }
-            else
-            {
-                squareImages[i].sprite = squareTerrain;
-            }
-            */
         }
 
         dadosBackGround.SetActive(false);
-        /*
-        generator.probabilityStraight = (int)(sliders[0].value * 100);
-        generator.probabilityNewWays = (int)(sliders[1].value * 100);
-        generator.probabilityDeleteWay = (int)(sliders[2].value * 100);
-        generator.probabilitySpecialTiles = (int)(sliders[3].value * 100);
-        generator.probabilityObstacles = (int)(sliders[4].value * 100);
-        generator.probabilityConectWays = (int)(sliders[5].value * 100);
-        */
     }
 
     void Update()
@@ -436,7 +417,6 @@ public class HUD_Manager : MonoBehaviour
             }
             else
             {
-                //activeTower.level5Update.SetActive(true);
                 if (activeTower.level5Updates.Length > 0)
                 {
                     foreach (GameObject update in activeTower.level5Updates)
@@ -543,12 +523,6 @@ public class HUD_Manager : MonoBehaviour
                     activeTower.transformationDamage += 2;
                     break;
             }
-            /*
-            if (activeTower.level == 5)
-            {
-                activeTower.level5Light.enabled = true;
-            }
-            */
         }
     }
     public void SellTower()
@@ -602,7 +576,6 @@ public class HUD_Manager : MonoBehaviour
     public void ChangeSpeed()
     {
         SoundManager.instance.SoundSelection(3, 0.5f);
-        //BackgroundMusic.instance.ChangeClip();
 
         switch (actualSpeed)
         {
@@ -686,7 +659,6 @@ public class HUD_Manager : MonoBehaviour
         int seconds = (int)gameFlow.time % 60;
 
         summaryTextDead.text =
-            //"Tiempo: " + (int)gameFlow.time + " segundos" + "\n" +
             "Tiempo: " + minutes + ":" + seconds + "\n" +
             "Ronda: " + gameFlow.round + "\n" +
             "Muertes enemigos enanos: " + gameFlow.kills1 + "\n" +

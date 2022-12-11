@@ -153,12 +153,8 @@ public class Generator : MonoBehaviour
         {
             for (int j = 0; j < sizeZ; j++)
             {
-                //Instantiate(groundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1), Quaternion.identity);
-
                 if (!((i == sizeX - 1 || i == sizeX - 2 || i == sizeX - 3) && j == 3))
                 {
-                    //Instantiate(grassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1), Quaternion.identity);
-
                     int specialTile = Random.Range(0, 101);
                     specialTile *= 12;
                     if (specialTile < probabilitySpecialTiles)
@@ -352,40 +348,6 @@ public class Generator : MonoBehaviour
             map[4, 1] = -1;
             map[4, 2] = -1;
             
-            /*
-            map[0, 0] = -1;
-            map[0, 1] = -1;
-            map[0, 2] = -1;
-            map[0, 3] = -1;
-            map[0, 4] = -1;
-            map[0, 5] = -1;
-            map[0, 6] = -1;
-
-            map[6, 0] = -1;
-            map[6, 1] = -1;
-            map[6, 2] = -1;
-            map[6, 3] = -1;
-            map[6, 4] = -1;
-            map[6, 5] = -1;
-            map[6, 6] = -1;
-
-            map[1, 0] = -1;
-            map[2, 0] = -1;
-            map[3, 0] = -1;
-            map[4, 0] = -1;
-            map[5, 0] = -1;
-
-            map[1, 6] = -1;
-            map[2, 6] = -1;
-            map[3, 6] = -1;
-            map[4, 6] = -1;
-            map[5, 6] = -1;
-
-            map[2, 2] = -1;
-            map[4, 4] = -1;
-            map[4, 2] = -1;
-            map[2, 4] = -1;
-            */
             int closeWays = Random.Range(0, 3);
 
             for (int i = 0; i < closeWays; i++)
@@ -409,6 +371,7 @@ public class Generator : MonoBehaviour
 
             Instantiate(groundBlock, new Vector3(spawnPos.x * 2, 0.25f, spawnPos.z * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
             Instantiate(groundBlock, new Vector3(spawnPosAux.x * 2, 0.25f, spawnPosAux.z * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
+
             // Ponemos césped donde no hay camino
             for (int i = 0; i < sizeX; i++)
             {
@@ -418,8 +381,6 @@ public class Generator : MonoBehaviour
                     {
                         if (new Vector3(i, 0, j) != spawnPos && new Vector3(i, 0, j) != spawnPosAux)
                         {
-                            //Instantiate(grassBlock, new Vector3(i * 2, 0, j * 2) + new Vector3(1, 0.75f, 1) + newOffsetStart, Quaternion.identity);
-
                             int specialTile = Random.Range(0, 101);
                             specialTile *= 12;
                             if (specialTile < probabilitySpecialTiles)
@@ -447,7 +408,6 @@ public class Generator : MonoBehaviour
                         {
                             GameObject instTile = Instantiate(specialGroundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
                             instTile.GetComponent<MapInfo>().id = idRoundTile;
-                            //instTile.GetComponent<MapInfo>().id = gameFlow.round;
                             gameFlow.idTile++;
 
                             if ((i * 2) > lastGroundBlockPosX)
@@ -460,7 +420,6 @@ public class Generator : MonoBehaviour
                         {
                             GameObject instTile = Instantiate(groundBlock, new Vector3(i * 2, 0.25f, j * 2) + new Vector3(1, 0, 1) + newOffsetStart, Quaternion.identity);
                             instTile.GetComponent<MapInfo>().id = idRoundTile;
-                            //instTile.GetComponent<MapInfo>().id = gameFlow.round;
                             gameFlow.idTile++;
 
                             if ((i * 2) > lastGroundBlockPosX)
@@ -673,7 +632,6 @@ public class Generator : MonoBehaviour
             }
 
             GameObject grassAux1;
-            //GameObject grassAux2;
 
             // Ponemos césped donde no hay camino
             for (int i = 0; i < sizeX; i++)
@@ -780,7 +738,6 @@ public class Generator : MonoBehaviour
 
         numNewMapNodes = numNewMapNodesAux;
         numNewMapNodesLimit = numNewMapNodesAux;
-        //numNewMapNodes = numNewMapNodesAux - repiteNewMapNode;
         repiteNewMapNode = 0;
     }
 
@@ -964,7 +921,6 @@ public class Generator : MonoBehaviour
                                     {
                                         GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
                                         instTile.GetComponent<MapInfo>().id = idRoundTile;
-                                        //instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                         gameFlow.idTile++;
 
                                         if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)
@@ -982,7 +938,6 @@ public class Generator : MonoBehaviour
                                         {
                                             GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
                                             instTile.GetComponent<MapInfo>().id = idRoundTile;
-                                            //instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                             gameFlow.idTile++;
 
                                             if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)
@@ -1000,7 +955,6 @@ public class Generator : MonoBehaviour
                                             {
                                                 GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
                                                 instTile.GetComponent<MapInfo>().id = idRoundTile;
-                                                //instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                                 gameFlow.idTile++;
 
                                                 if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)
@@ -1106,7 +1060,6 @@ public class Generator : MonoBehaviour
                                         {
                                             GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
                                             instTile.GetComponent<MapInfo>().id = idRoundTile;
-                                            //instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                             gameFlow.idTile++;
 
                                             if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)
@@ -1124,7 +1077,6 @@ public class Generator : MonoBehaviour
                                             {
                                                 GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
                                                 instTile.GetComponent<MapInfo>().id = idRoundTile;
-                                                //instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                                 gameFlow.idTile++;
 
                                                 if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)
@@ -1230,7 +1182,6 @@ public class Generator : MonoBehaviour
                                         {
                                             GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
                                             instTile.GetComponent<MapInfo>().id = idRoundTile;
-                                            //instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                             gameFlow.idTile++;
 
                                             if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)
@@ -1248,7 +1199,6 @@ public class Generator : MonoBehaviour
                                             {
                                                 GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
                                                 instTile.GetComponent<MapInfo>().id = idRoundTile;
-                                                //instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                                 gameFlow.idTile++;
 
                                                 if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)
@@ -1354,7 +1304,6 @@ public class Generator : MonoBehaviour
                                         {
                                             GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
                                             instTile.GetComponent<MapInfo>().id = idRoundTile;
-                                            //instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                             gameFlow.idTile++;
 
                                             if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)
@@ -1372,7 +1321,6 @@ public class Generator : MonoBehaviour
                                             {
                                                 GameObject instTile = Instantiate(groundBlock, hit.collider.gameObject.transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
                                                 instTile.GetComponent<MapInfo>().id = idRoundTile;
-                                                //instTile.GetComponent<MapInfo>().id = gameFlow.round;
                                                 gameFlow.idTile++;
 
                                                 if ((hit.collider.gameObject.transform.position.x) > lastGroundBlockPosX)

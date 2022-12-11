@@ -20,8 +20,6 @@ public class Enemy : MonoBehaviour
 
     GameFlow gameFlow;
     MainTower mainTower;
-    Generator generator;
-    CameraController camera;
 
     [Header("Components")]
     public Animator anim;
@@ -156,7 +154,6 @@ public class Enemy : MonoBehaviour
     {
         gameFlow = GameFlow.instance;
         mainTower = MainTower.instance;
-        generator = Generator.instance;
 
         mapPosId = 1000000;
 
@@ -381,7 +378,6 @@ public class Enemy : MonoBehaviour
                     return;
                 }
 
-                //nav.destination = miniMainTowerFound.transform.position;
                 nav.destination = new Vector3(miniMainTowerFound.transform.position.x, 0.5f, miniMainTowerFound.transform.position.z);
 
                 if (Vector3.Distance(transform.position, miniMainTowerFound.transform.position) < 2)
@@ -396,75 +392,6 @@ public class Enemy : MonoBehaviour
             {
                 nav.destination = target.position;
                 return;
-                /*
-                int auxID = 0;
-
-                if (canFindNextTile)
-                {
-                    auxID = 1;
-                }
-
-                //if (canFindNextTile || timerToFoundNewTile > 5)
-                if (true)
-                {
-                    timerToFoundNewTile = 0;
-
-                    canFindNextTile = false;
-
-                    Transform closestTarget = null;
-                    float closestTargetDistance = float.MaxValue;
-                    NavMeshPath path = new NavMeshPath();
-
-                    GameObject[] groundTiles = gameFlow.groundTiles;
-                    List<GameObject> groundTilesSelected = new List<GameObject>();
-                    GameObject tileSelected = targetGO;
-
-                    foreach (var groundTile in groundTiles)
-                    {
-                        if (groundTile.GetComponent<MapInfo>().id == mapPosId - auxID)
-                        {
-                            groundTilesSelected.Add(groundTile);
-                        }
-                    }
-
-                    for (int i = 0; i < groundTilesSelected.Count; i++)
-                    {
-                        if (NavMesh.CalculatePath(transform.position, groundTilesSelected[i].transform.position, nav.areaMask, path))
-                        {
-                            float distance = Vector3.Distance(transform.position, path.corners[0]);//
-
-                            for (int j = 1; j < path.corners.Length; j++)
-                            {
-                                distance += Vector3.Distance(path.corners[j - 1], path.corners[j]);
-                            }
-
-                            if (distance < closestTargetDistance)
-                            {
-                                closestTargetDistance = distance;
-                                closestTarget = groundTilesSelected[i].transform;
-                                tileSelected = groundTilesSelected[i];
-                                mapPosId = groundTilesSelected[i].GetComponent<MapInfo>().id;
-                            }
-                        }
-                    }
-
-                    if (path.corners.Length > 0 && nav.isActiveAndEnabled)
-                    {
-                        nav.SetDestination(closestTarget.position);//
-                        targetGO = tileSelected;
-                    }
-
-                    if (mapPosId < 2 && nav.isActiveAndEnabled)
-                    {
-                        nav.SetDestination(target.transform.position);
-                    }
-                }
-
-                if (mapPosId == -1 && nav.isActiveAndEnabled && !miniTowerFound)
-                {
-                    nav.destination = target.position;
-                }
-                */
             }
         }
     }
@@ -568,7 +495,6 @@ public class Enemy : MonoBehaviour
             GameObject instParticle = Instantiate(torbellinoParticle, transform.position, transform.rotation);
             Destroy(instParticle, waterEffectTime);
             
-            //waterParticles.SetActive(true);
             speed = 0;
             isWaterEffect = true;
             Invoke("DisableWaterEffect", waterEffectTime);
@@ -661,7 +587,6 @@ public class Enemy : MonoBehaviour
 
     void DisableWaterEffect()
     {
-        //waterParticles.SetActive(false);
         waterEffect = 0;
         speed = normalSpeed;
         isWaterEffect = false;

@@ -562,20 +562,6 @@ public class Tower : MonoBehaviour
                                     MultiShoot(localEnemies[i].transform);
                                 }
                             }
-                            /*
-                            for (int i = 0; i < numTargets; i++)
-                            {
-                                if (i < enemies.Length && enemies[i] != null && Vector3.Distance(transform.position, enemies[i].transform.position) < range)
-                                {
-                                    SoundManager.instance.SoundPlay(shootAudio, shootAudioVolume);
-                                    MultiShoot(enemies[i].transform);
-                                }
-                                else
-                                {
-                                    //i--;
-                                }
-                            }
-                            */
                             break;
                         case TargetType.AoE:
                             anim.SetTrigger("doShoot");
@@ -614,17 +600,7 @@ public class Tower : MonoBehaviour
                     healthDamage = 0;
                     break;
                 case AttackType.Health:
-                    /*
-                    anim.SetTrigger("doShoot");
-                    RaycastHit[] towerInrange1 = Physics.SphereCastAll(transform.position, range, transform.forward, 1.0f, LayerMask.GetMask("Tower"));
-                    if (towerInrange1.Length > 0)
-                    {
-                        foreach (var tower in towerInrange1)
-                        {
-                            tower.collider.gameObject.GetComponent<Tower>().health += healthDamage;
-                        }
-                    }
-                    */
+                    
                     break;
                 case AttackType.HealthDamage:
                     anim.SetTrigger("doShoot");

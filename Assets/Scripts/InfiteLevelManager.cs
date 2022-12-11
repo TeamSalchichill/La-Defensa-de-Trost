@@ -54,7 +54,6 @@ public class InfiteLevelManager : MonoBehaviour
     
     int lastIdZone = 0;
     int lastIdMainTower = 0;
-    int lastIdTowers = 0;
     int lastIdHeros = 0;
 
     void Start()

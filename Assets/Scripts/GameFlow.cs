@@ -157,7 +157,6 @@ public class GameFlow : MonoBehaviour
                     int seconds = (int)time % 60;
 
                     hudManager.summaryTextWin.text =
-                    //"Tiempo: " + (int)gameFlow.time + " segundos" + "\n" +
                     "Tiempo: " + minutes + ":" + seconds + "\n" +
                     "Ronda: " + round + "\n" +
                     "Muertes enemigos enanos: " + kills1 + "\n" +
@@ -320,13 +319,11 @@ public class GameFlow : MonoBehaviour
                     startSandStormRound = round;
                     isActiveSandStorm = true;
                     instSandStormGO = Instantiate(sandStormGO, lastNodePosition, Quaternion.identity);
-                    //instSandStormGO.transform.rotation = Quaternion.AngleAxis(90, Vector3.right);
                 }
             }
 
             if (round == (startSandStormRound + sandStormDuration))
             {
-                //instSandStormGO.GetComponent<BoxCollider>().enabled = false;
                 Destroy(instSandStormGO);
                 isActiveSandStorm = false;
             }
@@ -337,7 +334,6 @@ public class GameFlow : MonoBehaviour
             if (round % changeWaterRate == 0)
             {
                 int newSpeedRandom = Random.Range(0, 3);
-                //newSpeedRandom = 2;
                 mareaInfo.SetActive(true);
                 Invoke("DisableMareaInfo", 4);
 

@@ -6,9 +6,6 @@ public class CameraController : MonoBehaviour
 {
     public static CameraController instance;
 
-    ColocatorManager colocatorManager;
-    HUD_Manager hudManager;
-    
     public  bool doMovement;
 
     public float panSpeed = 30f;
@@ -30,9 +27,6 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         doMovement = true;
-
-        colocatorManager = ColocatorManager.instance;
-        hudManager = HUD_Manager.instance;
     }
 
     void FixedUpdate()

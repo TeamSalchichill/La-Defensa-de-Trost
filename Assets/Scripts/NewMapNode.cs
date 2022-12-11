@@ -64,7 +64,6 @@ public class NewMapNode : MonoBehaviour
 
             gameFlow.lastNodePosition = transform.position;
 
-            //MainTower.instance.restRounds--;
             if (Hero.instance != null)
             {
                 Hero.instance.nextRound = true;

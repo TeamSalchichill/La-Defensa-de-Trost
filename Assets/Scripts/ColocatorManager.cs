@@ -33,7 +33,6 @@ public class ColocatorManager : MonoBehaviour
     void Start()
     {
         gameFlow = GameFlow.instance;
-        //instTowerPlace = Instantiate(towerPlace, new Vector3(1000, 1000, 1000), Quaternion.identity);
         
         for (int i = 1; i < towers.Length; i++)
         {
@@ -229,8 +228,6 @@ public class ColocatorManager : MonoBehaviour
 
                         canBuild = false;
                         towerID = -1;
-
-                        //Instantiate(towers[towerID], rayHit.collider.gameObject.transform.position + new Vector3(0, 1.25f, 0), Quaternion.identity);
                     }
                 }
                 else if (rayHit.collider.gameObject.layer == 8 && towerScript.canColocate == Tower.CanColocate.Path)
