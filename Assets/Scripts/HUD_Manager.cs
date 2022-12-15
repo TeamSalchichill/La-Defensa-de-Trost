@@ -204,7 +204,14 @@ public class HUD_Manager : MonoBehaviour
 
         coinsText.text = gameFlow.coins.ToString();
         specialCoinsText.text = gameFlow.specialCoins.ToString();
-        roundText.text = "Ronda: " + gameFlow.round.ToString() + "/" + gameFlow.totalRounds.ToString();
+        if (gameFlow.totalRounds < 35)
+        {
+            roundText.text = "Ronda: " + gameFlow.round.ToString() + "/" + gameFlow.totalRounds.ToString();
+        }
+        else
+        {
+            roundText.text = "Ronda: " + gameFlow.round.ToString();
+        }
         if (mainTower == null)
         {
             mainTower = MainTower.instance;

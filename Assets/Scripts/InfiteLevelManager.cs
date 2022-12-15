@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -55,6 +56,13 @@ public class InfiteLevelManager : MonoBehaviour
     int lastIdZone = 0;
     int lastIdMainTower = 0;
     int lastIdHeros = 0;
+    
+    [Header("Hechizo")]
+    public InteractiveButton hechizo;
+    public Sprite[] hechizosInfo;
+
+    [Header("Info")]
+    public TextMeshProUGUI info;
 
     void Start()
     {
@@ -67,24 +75,25 @@ public class InfiteLevelManager : MonoBehaviour
         {
             towersGO[i].GetComponent<Image>().sprite = interrogacion;
             towersGO[i].GetComponent<Button>().interactable = false;
+            towersGO[i].GetComponent<InteractiveButton>().block = true;
         }
         for (int i = 0; i < (8 - gameManager.levelMaxPublic - 1); i++)
         {
             herosGO[i].GetComponent<Image>().sprite = interrogacion;
             herosGO[i].GetComponent<Button>().interactable = false;
+            herosGO[i].GetComponent<InteractiveButton>().block = true;
             zonesGO[i].GetComponent<Image>().sprite = interrogacion;
             zonesGO[i].GetComponent<Button>().interactable = false;
+            zonesGO[i].GetComponent<InteractiveButton>().block = true;
             mainTowersGO[i].GetComponent<Image>().sprite = interrogacion;
             mainTowersGO[i].GetComponent<Button>().interactable = false;
+            mainTowersGO[i].GetComponent<InteractiveButton>().block = true;
         }
-
-
-
-
 
         gameFlow.enemiesPerRound1 = new int[1000];
         gameFlow.enemiesPerRound2 = new int[1000];
         gameFlow.enemiesPerRound3 = new int[1000];
+        gameFlow.totalRounds = 1000;
 
         for (int i = 0; i < 1000; i++)
         {
@@ -123,7 +132,7 @@ public class InfiteLevelManager : MonoBehaviour
             }
 
             gameFlow.enemiesPerRound1[i] = (i * enemiesMultiplier1) + 1;
-            gameFlow.enemiesPerRound2[i] = (i * enemiesMultiplier2) + 1;
+            gameFlow.enemiesPerRound2[i] = (i * enemiesMultiplier2);
 
             if (i % 10 == 0)
             {
@@ -187,6 +196,8 @@ public class InfiteLevelManager : MonoBehaviour
 
         generator.mainTower = mainTower[id];
         generator.miniMainTower = miniMainTower[id];
+
+        hechizo.infoHechizo = hechizosInfo[id];
 
         mainTowerImages[lastIdMainTower].color = new Color(1, 1, 1, 1);
         if (mainTowerChoosed)
@@ -260,6 +271,29 @@ public class InfiteLevelManager : MonoBehaviour
             selectScreen.SetActive(false);
 
             canvas.GetComponent<HUD_Manager>().tutorialSpriteIdFinal = 3 + gameManager.levelMaxPublic;
+        }
+        else
+        {
+            if (!heroChoosed)
+            {
+                info.text = "Tienes que elegir un personaje";
+                return;
+            }
+            if (!zoneChoosed)
+            {
+                info.text = "Tienes que elegir un mapa";
+                return;
+            }
+            if (!mainTowerChoosed)
+            {
+                info.text = "Tienes que elegir un hechizo";
+                return;
+            }
+            if (!towersChoosed)
+            {
+                info.text = "Tienes que elegir 6 torres";
+                return;
+            }
         }
     }
 }

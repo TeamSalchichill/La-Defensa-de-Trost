@@ -1489,7 +1489,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5222763614533239964}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.325, y: 0, z: 0}
+  m_LocalPosition: {x: 0.275, y: 0, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1608,6 +1608,7 @@ MonoBehaviour:
   timeInOverHeat: 10
   smokeOverHeat: {fileID: 8550112519114524154, guid: 0e92832738859c442a7291bfea6e6f75, type: 3}
   isHero: 0
+  hitParticle: {fileID: 0}
   iceWall: {fileID: 0}
   exploteIceWall: 0
   frezzeIceWall: 0
@@ -1634,10 +1635,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3fbfe8f8037ed54285c9166d87b7002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetPos: {x: 0.325, y: 0, z: 0}
+  offsetPos: {x: 0.275, y: 0, z: 0}
   offsetRot: {x: 0, y: 0, z: 0, w: 0}
   isSpawn: 0
-  oritateToPath: 1
+  oritateToPath: 0
 --- !u!1 &5401306204071462196
 GameObject:
   m_ObjectHideFlags: 0
@@ -2296,11 +2297,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3892970291485597361, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3892970291485597361, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3892970291485597361, guid: 7be87cae78884df48a3e4b8d1273886e, type: 3}
       propertyPath: m_LocalPosition.z

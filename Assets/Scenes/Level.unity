@@ -1165,6 +1165,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &74652110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1713,6 +1715,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &98558272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2049,6 +2053,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &117399330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2466,6 +2472,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &140387977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3589,6 +3597,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!1 &173107298
 GameObject:
   m_ObjectHideFlags: 0
@@ -6223,6 +6233,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!1 &277863787
 GameObject:
   m_ObjectHideFlags: 0
@@ -8429,6 +8441,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &370267251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8706,6 +8720,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &375738240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9548,6 +9564,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &408219765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9923,6 +9941,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &420761822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10068,6 +10088,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &421235429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10836,6 +10858,8 @@ MonoBehaviour:
   idTorre: 2
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &464885389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11491,11 +11515,11 @@ MonoBehaviour:
   imageId: 1
   imageIdFinal: 1
   panel: {fileID: 57971670}
-  activeImageEnd: {fileID: 516601501}
+  activeImageEnd: {fileID: 548883583}
   imagesEnd:
   - {fileID: 21300000, guid: 0ef40bd1ee14e1e4191bb6f68f4a9945, type: 3}
   - {fileID: 21300000, guid: 0cde8a373072e3842a1cfe5c4b8deab6, type: 3}
-  panelEnd: {fileID: 464635058}
+  panelEnd: {fileID: 1294890391}
   loadingScreen: {fileID: 1468372944}
   summaryTextDead: {fileID: 1705797844}
   summaryTextWin: {fileID: 1114418364}
@@ -12057,6 +12081,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &510708222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12256,6 +12282,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &515165145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12935,6 +12963,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &536161199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13614,6 +13644,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &568580629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14027,6 +14059,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  hechizo: {fileID: 0}
+  hechizosInfo: []
+  info: {fileID: 0}
 --- !u!4 &572530704
 Transform:
   m_ObjectHideFlags: 0
@@ -14490,6 +14525,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &589586616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15312,6 +15349,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &634190641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17880,6 +17919,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!1 &771516397
 GameObject:
   m_ObjectHideFlags: 0
@@ -17985,6 +18026,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &771516401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18564,6 +18607,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &814935236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19068,6 +19113,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &821987556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19268,6 +19315,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &827464252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20584,6 +20633,8 @@ MonoBehaviour:
   idTorre: 3
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &907235110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21810,6 +21861,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!1 &959478899
 GameObject:
   m_ObjectHideFlags: 0
@@ -21916,6 +21969,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &959478903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22518,6 +22573,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &989349890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23199,6 +23256,8 @@ MonoBehaviour:
   idTorre: 4
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &1015596473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24047,6 +24106,8 @@ MonoBehaviour:
   idTorre: 1
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &1047558162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24626,6 +24687,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!1 &1083517933
 GameObject:
   m_ObjectHideFlags: 0
@@ -24928,6 +24991,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &1097740624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25800,6 +25865,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &1125948086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26063,6 +26130,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &1142559219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26463,6 +26532,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!1 &1167429605
 GameObject:
   m_ObjectHideFlags: 0
@@ -27596,6 +27667,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &1268909862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29257,6 +29330,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &1361094400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29811,6 +29886,8 @@ MonoBehaviour:
   idTorre: 5
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &1387530238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30491,6 +30568,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &1422978399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30636,6 +30715,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &1425082041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30835,6 +30916,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &1425129640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31128,6 +31211,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!1 &1445138014
 GameObject:
   m_ObjectHideFlags: 0
@@ -31445,6 +31530,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &1456331474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31833,6 +31920,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 1
   infoHechizo: {fileID: 21300000, guid: 67a7eb3d56d652e4e8698db94c17a741, type: 3}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &1481059212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32258,6 +32347,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &1494848431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32458,6 +32549,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &1497860121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32864,6 +32957,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!1 &1534280987
 GameObject:
   m_ObjectHideFlags: 0
@@ -33047,6 +33142,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &1534675968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34388,6 +34485,8 @@ MonoBehaviour:
   idTorre: 6
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &1614008040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35031,6 +35130,8 @@ MonoBehaviour:
   idTorre: 7
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &1647410791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35383,6 +35484,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &1662556015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35718,6 +35821,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &1665734062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36315,6 +36420,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &1705242469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36862,6 +36969,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &1720307278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37539,6 +37648,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &1778200147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38777,6 +38888,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!1 &1846102201
 GameObject:
   m_ObjectHideFlags: 0
@@ -40117,6 +40230,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &1905472186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41034,6 +41149,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!114 &1981904173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42978,6 +43095,8 @@ MonoBehaviour:
   idTorre: 0
   isHechizo: 0
   infoHechizo: {fileID: 0}
+  infiniteLevelSelector: 0
+  block: 0
 --- !u!1 &2091018751
 GameObject:
   m_ObjectHideFlags: 0

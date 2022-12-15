@@ -14,11 +14,14 @@ public class InteractiveButton : MonoBehaviour
     public bool isHechizo;
     public Sprite infoHechizo;
 
+    public bool infiniteLevelSelector;
+    public bool block;
+
     void Awake()
     {
         button = GetComponent<Image>();
         
-        if (infoImage)
+        if (infoImage && !infiniteLevelSelector)
         {
             infoImage.GetComponent<Image>().sprite = ColocatorManager.instance.towers[idTorre].GetComponent<Tower>().infoInGame;
         }
@@ -30,26 +33,32 @@ public class InteractiveButton : MonoBehaviour
 
     public void Enter()
     {
-        if (infoImage)
+        if (!block)
         {
-            infoImage.SetActive(true);
+            if (infoImage)
+            {
+                infoImage.SetActive(true);
+            }
+            if (hoverSprite && normalSprite)
+            {
+                button.sprite = hoverSprite;
+            }
+            button.rectTransform.sizeDelta += new Vector2(25, 25);
         }
-        if (hoverSprite && normalSprite)
-        {
-            button.sprite = hoverSprite;
-        }
-        button.rectTransform.sizeDelta += new Vector2(25, 25);
     }
     public void Exit()
     {
-        if (infoImage)
+        if (!block)
         {
-            infoImage.SetActive(false);
+            if (infoImage)
+            {
+                infoImage.SetActive(false);
+            }
+            if (hoverSprite && normalSprite)
+            {
+                button.sprite = normalSprite;
+            }
+            button.rectTransform.sizeDelta -= new Vector2(25, 25);
         }
-        if (hoverSprite && normalSprite)
-        {
-            button.sprite = normalSprite;
-        }
-        button.rectTransform.sizeDelta -= new Vector2(25, 25);
     }
 }
